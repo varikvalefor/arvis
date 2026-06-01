@@ -135,10 +135,15 @@ record Rucyca'a (b r : ℕ) : Set where
 
 \begin{code}
 record Skami {a} (b r m : ℕ) (A : Set a) : Set (Level.suc a) where
+  inductive
   field
     rucyca'a : Rucyca'a b r
     mem : Vec (𝔽 b) m
     vrici : A
+    Ecall : Function.typeOf rucyca'a
+          → Function.typeOf mem
+          → Function.typeOf vrici
+          → Skami b r m A
 \end{code}
 
 \section{le co'e ja midnoi se ctaipe}
