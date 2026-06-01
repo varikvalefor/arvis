@@ -115,6 +115,7 @@ open import Data.Vec
   )
 open import Function
   using (
+    typeOf;
     _$_
   )
 open import Relation.Nullary
@@ -140,9 +141,9 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (Level.suc a) where
     rucyca'a : Rucyca'a b r
     mem : Vec (𝔽 b) m
     vrici : A
-    Ecall : Function.typeOf rucyca'a
-          → Function.typeOf mem
-          → Function.typeOf vrici
+    Ecall : typeOf rucyca'a
+          → typeOf mem
+          → typeOf vrici
           → Skami b r m A
 \end{code}
 
