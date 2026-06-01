@@ -150,3 +150,4 @@ record Instruction : Set₁ where
     Mapti? : (b r : ℕ) → Dec $ Mapti b r
     f : (b r : ℕ) → Mapti b r → Rucyca'a b r → Rucyca'a b r
 \end{code}
+\end{document}
