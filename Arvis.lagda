@@ -198,11 +198,12 @@ module Instructions where
         r₁' = 𝔽.fromℕ< m₁
         r₂' = 𝔽.fromℕ< m₂
         r₃' = 𝔽.fromℕ< m₃
-        r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {mb}
-          where
-          l = 𝔽.toℕ ∘ 𝕍.lookup reg
         r2d2 : Vec _ _
         r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+          where
+          r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {mb}
+            where
+            l = 𝔽.toℕ ∘ 𝕍.lookup reg
       M? : (b r : ℕ) → _
       M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
       ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
