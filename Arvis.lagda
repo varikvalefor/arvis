@@ -199,26 +199,27 @@ module Instructions where
         m₂ : r₂ < r
         m₃ : r₃ < r
 
+    f : {b r : ℕ} → M b r → Rucyca'a b r → Rucyca'a b r
+    f {b} m rx = record rx {reg = r2d2}
+      where
+      r2d2 : Vec _ _
+      r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+        where
+        open M m
+        r₁' = 𝔽.fromℕ< m₁
+        reg = Rucyca'a.reg rx
+        r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {nz}
+          where
+          r₂' = 𝔽.fromℕ< m₂
+          r₃' = 𝔽.fromℕ< m₃
+          l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
     add : Instruction
     add = record {
       Mapti = M;
       Mapti? = M?;
       f = f}
       where
-        f : {b r : ℕ} → M b r → Rucyca'a b r → Rucyca'a b r
-        f {b} m rx = record rx {reg = r2d2}
-          where
-          r2d2 : Vec _ _
-          r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
-            where
-            open M m
-            r₁' = 𝔽.fromℕ< m₁
-            reg = Rucyca'a.reg rx
-            r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {nz}
-              where
-              r₂' = 𝔽.fromℕ< m₂
-              r₃' = 𝔽.fromℕ< m₃
-              l = 𝔽.toℕ ∘ 𝕍.lookup reg
         M? : (b r : ℕ) → Dec $ M b r
         M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
         ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
