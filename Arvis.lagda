@@ -114,6 +114,7 @@ open import Data.Nat
     ℕ
   )
 open import Data.Vec
+  as 𝕍
   using (
     Vec
   )
@@ -197,9 +198,9 @@ module Instructions where
         r₃' = 𝔽.fromℕ< m₃
         r₂+r₃ = _mod_ (l r₂' Data.Nat.+ l r₂') b {mb}
           where
-          l = 𝔽.toℕ Function.∘ Data.Vec.lookup reg
+          l = 𝔽.toℕ Function.∘ 𝕍.lookup reg
         r2d2 : Vec _ _
-        r2d2 = Data.Vec.updateAt r₁' (λ _ → r₂+r₃) reg
+        r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
       M? : (b r : ℕ) → _
       M? b r with b Data.Nat.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
       ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
