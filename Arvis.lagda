@@ -252,7 +252,8 @@ module Instructions where
                 rx
                 rx')
       dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
-        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
+        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ refl ⟩
+        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open _≡_.≡-Reasoning
