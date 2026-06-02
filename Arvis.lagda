@@ -199,7 +199,7 @@ module Instructions where
         r₃' = 𝔽.fromℕ< m₃
         r₂+r₃ = _mod_ (l r₂' Data.Nat.+ l r₂') b {mb}
           where
-          l = 𝔽.toℕ Function.∘ 𝕍.lookup reg
+          l = 𝔽.toℕ ∘ 𝕍.lookup reg
         r2d2 : Vec _ _
         r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
       M? : (b r : ℕ) → _
