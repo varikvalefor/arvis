@@ -182,37 +182,40 @@ record Instruction : Set₁ where
 
 \begin{code}
 module Instructions where
-  add : ℕ → ℕ → ℕ → Instruction
-  add r₁ r₂ r₃  = record {
-    Mapti = λ b r → False (b ℕ.≟ 0)
-                  × r₁ < r
-                  × r₂ < r
-                  × r₃ < r;
-    Mapti? = M?;
-    f = f}
-    where
-      f : (b r : ℕ) → _ → Rucyca'a b r → Rucyca'a b r
-      f b _ (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
-        where
-        r2d2 : Vec _ _
-        r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+  module add where
+    add : ℕ → ℕ → ℕ → Instruction
+    add r₁ r₂ r₃  = record {
+      Mapti = λ b r → False (b ℕ.≟ 0)
+                    × r₁ < r
+                    × r₂ < r
+                    × r₃ < r;
+      Mapti? = M?;
+      f = f}
+      where
+        f : (b r : ℕ) → _ → Rucyca'a b r → Rucyca'a b r
+        f b _ (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
           where
-          r₁' = 𝔽.fromℕ< m₁
-          reg = Rucyca'a.reg rx
-          r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {mb}
+          r2d2 : Vec _ _
+          r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
             where
-            r₂' = 𝔽.fromℕ< m₂
-            r₃' = 𝔽.fromℕ< m₃
-            l = 𝔽.toℕ ∘ 𝕍.lookup reg
-      M? : (b r : ℕ) → _
-      M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
-      ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
-      ... | yes d | _ | _ | _  = no $ λ (n , _) → Y⇒NF d n
-        where
-        Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
-        Y⇒NF = {!!}
-      ... | _ | no m₁ | _ | _  = no $ m₁ ∘ (λ (_ , x , _) → x)
-      ... | _ | _ | no m₂ | _  = no $ m₂ ∘ (λ (_ , _ , x , _) → x)
-      ... | _ | _ | _ | no m₃  = no $ m₃ ∘ (λ (_ , _ , _ , x) → x)
+            r₁' = 𝔽.fromℕ< m₁
+            reg = Rucyca'a.reg rx
+            r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {mb}
+              where
+              r₂' = 𝔽.fromℕ< m₂
+              r₃' = 𝔽.fromℕ< m₃
+              l = 𝔽.toℕ ∘ 𝕍.lookup reg
+        M? : (b r : ℕ) → _
+        M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
+        ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
+        ... | yes d | _ | _ | _  = no $ λ (n , _) → Y⇒NF d n
+          where
+          Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
+          Y⇒NF = {!!}
+        ... | _ | no m₁ | _ | _  = no $ m₁ ∘ (λ (_ , x , _) → x)
+        ... | _ | _ | no m₂ | _  = no $ m₂ ∘ (λ (_ , _ , x , _) → x)
+        ... | _ | _ | _ | no m₃  = no $ m₃ ∘ (λ (_ , _ , _ , x) → x)
+
+  add = add.add
 \end{code}
 \end{document}
