@@ -192,38 +192,48 @@ record Instruction : Set₁ where
 \begin{code}
 module Instructions where
   module add where
+    record M (r₁ r₂ r₃ b r : ℕ) : Set where
+      field
+        nz : False $ b ℕ.≟ 0
+        m₁ : r₁ < r
+        m₂ : r₂ < r
+        m₃ : r₃ < r
+
     add : ℕ → ℕ → ℕ → Instruction
     add r₁ r₂ r₃  = record {
-      Mapti = λ b r → False (b ℕ.≟ 0)
-                    × r₁ < r
-                    × r₂ < r
-                    × r₃ < r;
+      Mapti = M r₁ r₂ r₃;
       Mapti? = M?;
       f = f}
       where
         f : {b r : ℕ} → _ → Rucyca'a b r → Rucyca'a b r
-        f {b} (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
+        f {b} m rx = record rx {reg = r2d2}
           where
           r2d2 : Vec _ _
           r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
             where
+            open M m
             r₁' = 𝔽.fromℕ< m₁
             reg = Rucyca'a.reg rx
-            r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {mb}
+            r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {nz}
               where
               r₂' = 𝔽.fromℕ< m₂
               r₃' = 𝔽.fromℕ< m₃
               l = 𝔽.toℕ ∘ 𝕍.lookup reg
-        M? : (b r : ℕ) → _
+        M? : (b r : ℕ) → Dec $ M r₁ r₂ r₃ b r
         M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
-        ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
-        ... | yes d | _ | _ | _  = no $ λ (n , _) → Y⇒NF d n
+        ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
+          nz = {!!};
+          m₁ = {!!};
+          m₂ = {!!};
+          m₃ = {!!}
+          }
+        ... | yes d | _ | _ | _  = no $ Y⇒NF d ∘ M.nz
           where
           Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
           Y⇒NF = {!!}
-        ... | _ | no m₁ | _ | _  = no $ m₁ ∘ (λ (_ , x , _) → x)
-        ... | _ | _ | no m₂ | _  = no $ m₂ ∘ (λ (_ , _ , x , _) → x)
-        ... | _ | _ | _ | no m₃  = no $ m₃ ∘ (λ (_ , _ , _ , x) → x)
+        ... | _ | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
+        ... | _ | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
+        ... | _ | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
 
     module Veritas where
       dun⁻¹ : (b r : ℕ)
@@ -236,7 +246,7 @@ module Instructions where
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
                 rx
                 rx')
-      dun⁻¹ = {!!}
+      dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = {!!}
 
   add = add.add
 \end{code}
