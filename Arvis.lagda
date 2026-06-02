@@ -145,6 +145,10 @@ open import Relation.Nullary
     ¬_;
     no
   )
+open import Data.Vec.Properties
+  as 𝕍P
+  using (
+  )
 open import Relation.Nullary.Decidable
   using (
     False
@@ -243,12 +247,12 @@ module Instructions where
             → (m : Instruction.Mapti add b r)
             → let rx' = rx ▹ Instruction.f add m in
               (r₄ : 𝔽 r)
-            → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
+            → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ m)
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
                 rx
                 rx')
       dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
-        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ {!!} ⟩
+        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open _≡_.≡-Reasoning
