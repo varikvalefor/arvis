@@ -191,17 +191,17 @@ record Instruction : Set₁ where
 
 \begin{code}
 module Instructions where
-  module add where
-    record M (r₁ r₂ r₃ b r : ℕ) : Set where
+  module add (r₁ r₂ r₃ : ℕ) where
+    record M (b r : ℕ) : Set where
       field
         nz : False $ b ℕ.≟ 0
         m₁ : r₁ < r
         m₂ : r₂ < r
         m₃ : r₃ < r
 
-    add : ℕ → ℕ → ℕ → Instruction
-    add r₁ r₂ r₃  = record {
-      Mapti = M r₁ r₂ r₃;
+    add : Instruction
+    add = record {
+      Mapti = M;
       Mapti? = M?;
       f = f}
       where
@@ -219,7 +219,7 @@ module Instructions where
               r₂' = 𝔽.fromℕ< m₂
               r₃' = 𝔽.fromℕ< m₃
               l = 𝔽.toℕ ∘ 𝕍.lookup reg
-        M? : (b r : ℕ) → Dec $ M r₁ r₂ r₃ b r
+        M? : (b r : ℕ) → Dec $ M b r
         M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
         ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
           nz = {!!};
@@ -239,8 +239,8 @@ module Instructions where
       dun⁻¹ : (b r : ℕ)
             → (rx : Rucyca'a b r)
             → (r₁ r₂ r₃ : ℕ)
-            → (m : Instruction.Mapti (add r₁ r₂ r₃) b r)
-            → let rx' = rx ▹ Instruction.f (add r₁ r₂ r₃) m in
+            → (m : Instruction.Mapti add b r)
+            → let rx' = rx ▹ Instruction.f add m in
               (r₄ : 𝔽 r)
             → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
@@ -251,7 +251,7 @@ module Instructions where
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open _≡_.≡-Reasoning
-        rx' = rx ▹ Instruction.f (add r₁ r₂ r₃) m
+        rx' = rx ▹ Instruction.f add m
 
   add = add.add
 \end{code}
