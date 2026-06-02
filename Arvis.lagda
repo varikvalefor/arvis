@@ -108,6 +108,7 @@ open import Data.Fin
     Fin to 𝔽
   )
 open import Data.Nat
+  as ℕ
   using (
     _<?_;
     _<_;
@@ -183,7 +184,7 @@ record Instruction : Set₁ where
 module Instructions where
   add : ℕ → ℕ → ℕ → Instruction
   add r₁ r₂ r₃  = record {
-    Mapti = λ b r → False (b Data.Nat.≟ 0)
+    Mapti = λ b r → False (b ℕ.≟ 0)
                   × r₁ < r
                   × r₂ < r
                   × r₃ < r;
@@ -197,13 +198,13 @@ module Instructions where
         r₁' = 𝔽.fromℕ< m₁
         r₂' = 𝔽.fromℕ< m₂
         r₃' = 𝔽.fromℕ< m₃
-        r₂+r₃ = _mod_ (l r₂' Data.Nat.+ l r₂') b {mb}
+        r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {mb}
           where
           l = 𝔽.toℕ ∘ 𝕍.lookup reg
         r2d2 : Vec _ _
         r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
       M? : (b r : ℕ) → _
-      M? b r with b Data.Nat.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
+      M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
       ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
       ... | yes d | _ | _ | _  = no $ λ (n , _) → Y⇒NF d n
         where
