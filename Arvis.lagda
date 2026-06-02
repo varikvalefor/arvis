@@ -205,7 +205,7 @@ module Instructions where
       Mapti? = M?;
       f = f}
       where
-        f : {b r : ℕ} → _ → Rucyca'a b r → Rucyca'a b r
+        f : {b r : ℕ} → M b r → Rucyca'a b r → Rucyca'a b r
         f {b} m rx = record rx {reg = r2d2}
           where
           r2d2 : Vec _ _
