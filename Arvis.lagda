@@ -137,6 +137,7 @@ open import Relation.Nullary
   using (
     Dec;
     yes;
+    ¬_;
     no
   )
 open import Relation.Nullary.Decidable
@@ -204,7 +205,10 @@ module Instructions where
       M? : (b r : ℕ) → _
       M? b r with b Data.Nat.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
       ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
-      ... | yes d | _ | _ | _  = no {!!}
+      ... | yes d | _ | _ | _  = no $ λ (n , _) → Y⇒NF d n
+        where
+        Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
+        Y⇒NF = {!!}
       ... | _ | no m₁ | _ | _  = no $ m₁ ∘ (λ (_ , x , _) → x)
       ... | _ | _ | no m₂ | _  = no $ m₂ ∘ (λ (_ , _ , x , _) → x)
       ... | _ | _ | _ | no m₃  = no $ m₃ ∘ (λ (_ , _ , _ , x) → x)
