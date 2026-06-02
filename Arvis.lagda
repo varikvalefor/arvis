@@ -122,8 +122,12 @@ open import Data.Vec
 open import Function
   using (
     typeOf;
+    _on_;
     _∘_;
     _$_
+  )
+  renaming (
+    _|>_ to _▹_
   )
 open import Data.Product
   using (
@@ -144,6 +148,11 @@ open import Relation.Nullary
 open import Relation.Nullary.Decidable
   using (
     False
+  )
+open import Relation.Binary.PropositionalEquality
+  as _≡_
+  using (
+    _≡_
   )
 \end{code}
 
@@ -177,7 +186,7 @@ record Instruction : Set₁ where
   field
     Mapti : (b r : ℕ) → Set
     Mapti? : (b r : ℕ) → Dec $ Mapti b r
-    f : (b r : ℕ) → Mapti b r → Rucyca'a b r → Rucyca'a b r
+    f : {b r : ℕ} → Mapti b r → Rucyca'a b r → Rucyca'a b r
 \end{code}
 
 \begin{code}
@@ -192,8 +201,8 @@ module Instructions where
       Mapti? = M?;
       f = f}
       where
-        f : (b r : ℕ) → _ → Rucyca'a b r → Rucyca'a b r
-        f b _ (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
+        f : {b r : ℕ} → _ → Rucyca'a b r → Rucyca'a b r
+        f {b} (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
           where
           r2d2 : Vec _ _
           r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
@@ -215,6 +224,19 @@ module Instructions where
         ... | _ | no m₁ | _ | _  = no $ m₁ ∘ (λ (_ , x , _) → x)
         ... | _ | _ | no m₂ | _  = no $ m₂ ∘ (λ (_ , _ , x , _) → x)
         ... | _ | _ | _ | no m₃  = no $ m₃ ∘ (λ (_ , _ , _ , x) → x)
+
+    module Veritas where
+      dun⁻¹ : (b r : ℕ)
+            → (rx : Rucyca'a b r)
+            → (r₁ r₂ r₃ : ℕ)
+            → (m : Instruction.Mapti (add r₁ r₂ r₃) b r)
+            → let rx' = rx ▹ Instruction.f (add r₁ r₂ r₃) m in
+              (r₄ : 𝔽 r)
+            → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
+            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
+                rx
+                rx')
+      dun⁻¹ = {!!}
 
   add = add.add
 \end{code}
