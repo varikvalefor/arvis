@@ -94,7 +94,6 @@ ni'o bau la .lojban.\ joi la'oi .Agda.\ la .varik.\ cu ciksi tu'a la'o zoi.\ RIS
 
 \begin{code}
 {-# OPTIONS --safe #-}
-{-# OPTIONS --cubical-compatible #-}
 
 module Arvis where
 open import Level
@@ -102,11 +101,15 @@ open import Level
     Level
   )
 open import Data.Fin
+  using (
+  )
   renaming (
     Fin to 𝔽
   )
 open import Data.Nat
   using (
+    _<?_;
+    _<_;
     ℕ
   )
 open import Data.Vec
@@ -116,11 +119,27 @@ open import Data.Vec
 open import Function
   using (
     typeOf;
+    _∘_;
     _$_
+  )
+open import Data.Product
+  using (
+    _×_;
+    _,_
+  )
+open import Data.Nat.DivMod
+  using (
+    _mod_
   )
 open import Relation.Nullary
   using (
-    Dec
+    Dec;
+    yes;
+    no
+  )
+open import Relation.Nullary.Decidable
+  using (
+    False
   )
 \end{code}
 
@@ -155,5 +174,37 @@ record Instruction : Set₁ where
     Mapti : (b r : ℕ) → Set
     Mapti? : (b r : ℕ) → Dec $ Mapti b r
     f : (b r : ℕ) → Mapti b r → Rucyca'a b r → Rucyca'a b r
+\end{code}
+
+\begin{code}
+module Instructions where
+  add : ℕ → ℕ → ℕ → Instruction
+  add r₁ r₂ r₃  = record {
+    Mapti = λ b r → False (b Data.Nat.≟ 0)
+                  × r₁ < r
+                  × r₂ < r
+                  × r₃ < r;
+    Mapti? = M?;
+    f = f}
+    where
+      f : (b r : ℕ) → _ → Rucyca'a b r → Rucyca'a b r
+      f b _ (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
+        where
+        reg = Rucyca'a.reg rx
+        r₁' = Data.Fin.fromℕ< m₁
+        r₂' = Data.Fin.fromℕ< m₂
+        r₃' = Data.Fin.fromℕ< m₃
+        r₂+r₃ = _mod_ (l r₂' Data.Nat.+ l r₂') b {mb}
+          where
+          l = Data.Fin.toℕ Function.∘ Data.Vec.lookup reg
+        r2d2 : Vec _ _
+        r2d2 = Data.Vec.updateAt r₁' (λ _ → r₂+r₃) reg
+      M? : (b r : ℕ) → _
+      M? b r with b Data.Nat.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
+      ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes ({!!} , m₁ , m₂ , m₃)
+      ... | yes d | _ | _ | _  = no {!!}
+      ... | _ | no m₁ | _ | _  = no $ m₁ ∘ (λ (_ , x , _) → x)
+      ... | _ | _ | no m₂ | _  = no $ m₂ ∘ (λ (_ , _ , x , _) → x)
+      ... | _ | _ | _ | no m₃  = no $ m₃ ∘ (λ (_ , _ , _ , x) → x)
 \end{code}
 \end{document}
