@@ -246,9 +246,9 @@ module Instructions where
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
                 rx
                 rx')
-      dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = begin
-        𝕍.lookup (Rucyca'a.reg rx) r₄ ≡⟨ {!!} ⟩
-        𝕍.lookup (Rucyca'a.reg rx') r₄ ∎
+      dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
+        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ {!!} ⟩
+        𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open _≡_.≡-Reasoning
         rx' = rx ▹ Instruction.f (add r₁ r₂ r₃) m
