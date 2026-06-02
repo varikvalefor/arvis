@@ -223,9 +223,9 @@ module Instructions where
         M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
         ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
           nz = {!!};
-          m₁ = {!!};
-          m₂ = {!!};
-          m₃ = {!!}
+          m₁ = m₁;
+          m₂ = m₂;
+          m₃ = m₃
           }
         ... | yes d | _ | _ | _  = no $ Y⇒NF d ∘ M.nz
           where
