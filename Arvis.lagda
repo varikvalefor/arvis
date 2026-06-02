@@ -200,9 +200,9 @@ module Instructions where
         m₃ : r₃ < r
 
     f : {b r : ℕ} → M b r → Rucyca'a b r → Rucyca'a b r
-    f {b} m rx = record rx {reg = r2d2}
+    f {b} {r} m rx = record rx {reg = r2d2}
       where
-      r2d2 : Vec _ _
+      r2d2 : Vec (𝔽 b) r
       r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
         where
         open M m
