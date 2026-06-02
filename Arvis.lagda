@@ -101,6 +101,7 @@ open import Level
     Level
   )
 open import Data.Fin
+  as 𝔽
   using (
   )
   renaming (
@@ -191,12 +192,12 @@ module Instructions where
       f b _ (mb , m₁ , m₂ , m₃) rx = record rx {reg = r2d2}
         where
         reg = Rucyca'a.reg rx
-        r₁' = Data.Fin.fromℕ< m₁
-        r₂' = Data.Fin.fromℕ< m₂
-        r₃' = Data.Fin.fromℕ< m₃
+        r₁' = 𝔽.fromℕ< m₁
+        r₂' = 𝔽.fromℕ< m₂
+        r₃' = 𝔽.fromℕ< m₃
         r₂+r₃ = _mod_ (l r₂' Data.Nat.+ l r₂') b {mb}
           where
-          l = Data.Fin.toℕ Function.∘ Data.Vec.lookup reg
+          l = 𝔽.toℕ Function.∘ Data.Vec.lookup reg
         r2d2 : Vec _ _
         r2d2 = Data.Vec.updateAt r₁' (λ _ → r₂+r₃) reg
       M? : (b r : ℕ) → _
