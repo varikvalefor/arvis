@@ -221,11 +221,14 @@ module Instructions where
     M? : (b r : ℕ) → Dec $ M b r
     M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
     ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
-      nz = {!!};
+      nz = N⇒F Nd;
       m₁ = m₁;
       m₂ = m₂;
       m₃ = m₃
       }
+      where
+      N⇒F : ∀ {a} → {A : Set a} → {A? : Dec A} → ¬ A → False A?
+      N⇒F = {!!}
     ... | yes d | _ | _ | _  = no $ Y⇒NF d ∘ M.nz
       where
       Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
