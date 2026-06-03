@@ -218,27 +218,27 @@ module Instructions where
           r₃' = 𝔽.fromℕ< m₃
           l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
+    M? : (b r : ℕ) → Dec $ M b r
+    M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
+    ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
+      nz = {!!};
+      m₁ = m₁;
+      m₂ = m₂;
+      m₃ = m₃
+      }
+    ... | yes d | _ | _ | _  = no $ Y⇒NF d ∘ M.nz
+      where
+      Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
+      Y⇒NF = {!!}
+    ... | _ | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
+    ... | _ | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
+    ... | _ | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
+
     add : Instruction
     add = record {
       Mapti = M;
       Mapti? = M?;
       f = f}
-      where
-        M? : (b r : ℕ) → Dec $ M b r
-        M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
-        ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
-          nz = {!!};
-          m₁ = m₁;
-          m₂ = m₂;
-          m₃ = m₃
-          }
-        ... | yes d | _ | _ | _  = no $ Y⇒NF d ∘ M.nz
-          where
-          Y⇒NF : ∀ {a} → {A : Set a} → A → {A? : Dec A} → ¬ False A?
-          Y⇒NF = {!!}
-        ... | _ | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
-        ... | _ | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
-        ... | _ | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
 
     module Veritas where
       dun⁻¹ : (b r : ℕ)
