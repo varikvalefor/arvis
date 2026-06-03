@@ -252,7 +252,7 @@ module Instructions where
                 rx
                 rx')
       dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
-        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ refl ⟩
+        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ _≡_.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
@@ -260,5 +260,24 @@ module Instructions where
         rx' = rx ▹ Instruction.f add m
 
   add = add.add
+
+  module mv (r₁ r₂ : ℕ) where
+    record M (b r : ℕ) : Set where
+      field
+        m₁ : r₁ < r
+        m₂ : r₂ < r
+
+    Mapti? : (b r : ℕ) → Dec $ M b r
+    Mapti? = {!!}
+
+    M→M : {b r : ℕ} → M b r → add.M r₁ r₂ 0 b r
+    M→M = {!!}
+
+    mv : Instruction
+    mv = record {
+      Mapti = M;
+      Mapti? = Mapti?;
+      f = Instruction.f (add r₁ r₂ 0) ∘ M→M
+      }
 \end{code}
 \end{document}
