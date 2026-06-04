@@ -269,7 +269,7 @@ module Instructions where
     mv = record {
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
-      f = Instruction.f (add r₁ r₂ 0)
+      f = Instruction.f $ add r₁ r₂ 0
       }
 \end{code}
 \end{document}
