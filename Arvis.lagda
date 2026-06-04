@@ -188,22 +188,22 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (Level.suc a) where
 \begin{code}
 record Instruction : Set₁ where
   field
-    Mapti : (b r : ℕ) → Set
-    Mapti? : (b r : ℕ) → Dec $ Mapti b r
-    f : {b r : ℕ} → Mapti b r → Rucyca'a b r → Rucyca'a b r
+    Mapti : (b r m : ℕ) → Set
+    Mapti? : (b r m : ℕ) → Dec $ Mapti b r m
+    f : {b r m : ℕ} → Mapti b r m → Rucyca'a b r → Rucyca'a b r
 \end{code}
 
 \begin{code}
 module Instructions where
   module add (r₁ r₂ r₃ : ℕ) where
-    record M (b r : ℕ) : Set where
+    record M (b r _ : ℕ) : Set where
       field
         nz : False $ b ℕ.≟ 0
         m₁ : r₁ < r
         m₂ : r₂ < r
         m₃ : r₃ < r
 
-    f : {b r : ℕ} → M b r → Rucyca'a b r → Rucyca'a b r
+    f : {b r m : ℕ} → M b r m → Rucyca'a b r → Rucyca'a b r
     f {b} {r} m rx = record rx {reg = r2d2}
       where
       r2d2 : Vec (𝔽 b) r
@@ -218,8 +218,8 @@ module Instructions where
           r₃' = 𝔽.fromℕ< m₃
           l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
-    M? : (b r : ℕ) → Dec $ M b r
-    M? b r with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
+    M? : (b r m : ℕ) → Dec $ M b r m
+    M? b r _ with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
     ... | no Nd | yes m₁ | yes m₂ | yes m₃ = yes $ record {
       nz = N⇒F Nd;
       m₁ = m₁;
@@ -239,22 +239,22 @@ module Instructions where
 
     add : Instruction
     add = record {
-      Mapti = M;
+      Mapti = M ;
       Mapti? = M?;
       f = f}
 
     module Veritas where
-      dun⁻¹ : (b r : ℕ)
+      dun⁻¹ : (b r mx : ℕ)
             → (rx : Rucyca'a b r)
             → (r₁ r₂ r₃ : ℕ)
-            → (m : Instruction.Mapti add b r)
+            → (m : Instruction.Mapti add b r mx)
             → let rx' = rx ▹ Instruction.f add m in
               (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ m)
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
                 rx
                 rx')
-      dun⁻¹ b r rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
+      dun⁻¹ b r _ rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ _≡_.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
