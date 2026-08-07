@@ -212,7 +212,7 @@ module Instructions where
         open M m
         r₁' = 𝔽.fromℕ< m₁
         reg = Rucyca'a.reg rx
-        r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₂') b {nz}
+        r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') b {nz}
           where
           r₂' = 𝔽.fromℕ< m₂
           r₃' = 𝔽.fromℕ< m₃
