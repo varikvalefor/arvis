@@ -284,7 +284,15 @@ module Instructions where
             ((_≡_ on (λ x → 𝕍.lookup (rx x) r₁'))
               sk
               sk')
-      dun = {!!}
+      dun b r mx sk r₄ r₅ r₆ m = begin
+        ix rx ≡⟨ {!!} ⟩
+        ix rx' ∎
+        where
+        rx = Skami.rucyca'a sk
+        rx' = sk ▹ Instruction.f add m ▹ Skami.rucyca'a
+        r₁' = 𝔽.fromℕ< $ M.m₁ m
+        ix = λ x → 𝕍.lookup (Rucyca'a.reg x) r₁'
+        open _≡_.≡-Reasoning
 
   add = add.add
 
