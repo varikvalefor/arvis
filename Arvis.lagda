@@ -271,5 +271,9 @@ module Instructions where
       Mapti? = add.M? _ _ _;
       f = Instruction.f $ add r₁ r₂ 0
       }
+
+  module mul (r₁ r₂ r₃ : ℕ) where
+    mul : Instruction
+    mul = {!!}
 \end{code}
 \end{document}
