@@ -279,7 +279,7 @@ module Instructions where
     mul : Instruction
     mul = record {
       Mapti = add.M _ _ _;
-      Mapti? = {!!};
+      Mapti? = add.M? _ _ _;
       f = f
       }
 \end{code}
