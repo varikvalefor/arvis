@@ -274,7 +274,10 @@ module Instructions where
 
   module mul (r₁ r₂ r₃ : ℕ) where
     f : {b r m : ℕ} → add.M r₁ r₂ r₃ b r m → Rucyca'a b r → Rucyca'a b r
-    f = {!!}
+    f {b} {r} {m} M rx = record rx {reg = xd}
+      where
+      reg = Rucyca'a.reg rx
+      xd = {!!}
 
     mul : Instruction
     mul = record {
