@@ -281,17 +281,16 @@ module Instructions where
           → let sk' = sk ▹ Instruction.f add m in
             let r₁' = 𝔽.fromℕ< $ M.m₁ m in
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
-            ((_≡_ on (λ x → 𝕍.lookup (rx x) r₁'))
-              sk
-              sk')
-      dun b r mx sk r₄ r₅ r₆ m = begin
-        ix rx ≡⟨ {!!} ⟩
-        ix rx' ∎
+            (_≡_
+              (𝕍.lookup (rx $ Instruction.f add m sk) r₁')
+              (let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
+               let r₂' = 𝔽.fromℕ< (M.m₂ m) in
+               let r₃' = 𝔽.fromℕ< (M.m₃ m) in
+               _mod_ (l r₂' ℕ.+ l r₃') b {M.nz m}))
+      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ Rucyca'a.reg rx
         where
         rx = Skami.rucyca'a sk
-        rx' = sk ▹ Instruction.f add m ▹ Skami.rucyca'a
         r₁' = 𝔽.fromℕ< $ M.m₁ m
-        ix = λ x → 𝕍.lookup (Rucyca'a.reg x) r₁'
         open _≡_.≡-Reasoning
 
   add = add.add
