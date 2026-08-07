@@ -330,5 +330,26 @@ module Instructions where
         → Skami b r m A
         → Skami b r m A
       d = λ M sk → record sk {rucyca'a = f M $ Skami.rucyca'a sk}
+
+    module Veritas where
+      dun⁻¹ : ∀ {a} → {A : Set a}
+            → (b r mx : ℕ)
+            → (sk : Skami b r mx A)
+            → (r₁ r₂ r₃ : ℕ)
+            → (m : Instruction.Mapti {A = A} mul b r mx)
+            → let sk' = sk ▹ Instruction.f mul m in
+              (r₄ : 𝔽 r)
+            → ¬_ $ r₄ ≡ 𝔽.fromℕ< (add.M.m₁ m)
+            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
+                sk
+                sk')
+      dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
+        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ _≡_.refl ⟩
+        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
+        𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
+        where
+        open _≡_.≡-Reasoning
+        rx = Skami.rucyca'a sk
+        rx' = sk ▹ Instruction.f mul m ▹ Skami.rucyca'a
 \end{code}
 \end{document}
