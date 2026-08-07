@@ -186,11 +186,11 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (Level.suc a) where
 \section{le co'e ja midnoi se ctaipe}
 
 \begin{code}
-record Instruction : Set₁ where
+record Instruction {a} (A : Set a) : Set (Level.suc a Level.⊔ Level.suc Level.zero) where
   field
     Mapti : (b r m : ℕ) → Set
     Mapti? : (b r m : ℕ) → Dec $ Mapti b r m
-    f : {b r m : ℕ} → Mapti b r m → Rucyca'a b r → Rucyca'a b r
+    f : {b r m : ℕ} → Mapti b r m → Skami b r m A → Skami b r m A
 \end{code}
 
 \begin{code}
@@ -203,20 +203,28 @@ module Instructions where
         m₂ : r₂ < r
         m₃ : r₃ < r
 
-    f : {b r m : ℕ} → M b r m → Rucyca'a b r → Rucyca'a b r
-    f {b} {r} m rx = record rx {reg = r2d2}
+    f : ∀ {a} → {A : Set a}
+      → {b r m : ℕ}
+      → M b r m
+      → Skami b r m A
+      → Skami b r m A
+    f {b = b} {r} m sk = record sk {rucyca'a = rc}
       where
-      r2d2 : Vec (𝔽 b) r
-      r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+      rc : Rucyca'a b r
+      rc = record rx {reg = r2d2}
         where
-        open M m
-        r₁' = 𝔽.fromℕ< m₁
-        reg = Rucyca'a.reg rx
-        r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') b {nz}
+        rx = Skami.rucyca'a sk
+        r2d2 : Vec (𝔽 b) r
+        r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
           where
-          r₂' = 𝔽.fromℕ< m₂
-          r₃' = 𝔽.fromℕ< m₃
-          l = 𝔽.toℕ ∘ 𝕍.lookup reg
+          open M m
+          r₁' = 𝔽.fromℕ< m₁
+          reg = Rucyca'a.reg rx
+          r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') b {nz}
+            where
+            r₂' = 𝔽.fromℕ< m₂
+            r₃' = 𝔽.fromℕ< m₃
+            l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? b r _ with b ℕ.≟ 0 | r₁ <? r | r₂ <? r | r₃ <? r
@@ -237,35 +245,37 @@ module Instructions where
     ... | _ | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
     ... | _ | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
 
-    add : Instruction
+    add : ∀ {a} → {A : Set a} → Instruction A
     add = record {
       Mapti = M ;
       Mapti? = M?;
       f = f}
 
     module Veritas where
-      dun⁻¹ : (b r mx : ℕ)
-            → (rx : Rucyca'a b r)
+      dun⁻¹ : ∀ {a} → {A : Set a}
+            → (b r mx : ℕ)
+            → (sk : Skami b r mx A)
             → (r₁ r₂ r₃ : ℕ)
-            → (m : Instruction.Mapti add b r mx)
-            → let rx' = rx ▹ Instruction.f add m in
+            → (m : Instruction.Mapti {A = A} add b r mx)
+            → let sk' = sk ▹ Instruction.f add m in
               (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ m)
-            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg x) r₄))
-                rx
-                rx')
-      dun⁻¹ b r _ rx r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
+            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
+                sk
+                sk')
+      dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ _≡_.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open _≡_.≡-Reasoning
-        rx' = rx ▹ Instruction.f add m
+        rx = Skami.rucyca'a sk
+        rx' = sk ▹ Instruction.f add m ▹ Skami.rucyca'a
 
   add = add.add
 
   module mv (r₁ r₂ : ℕ) where
-    mv : Instruction
+    mv : ∀ {a} → {A : Set a} → Instruction A
     mv = record {
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
@@ -287,11 +297,14 @@ module Instructions where
           r₃' = 𝔽.fromℕ< m₃
           l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
-    mul : Instruction
-    mul = record {
+    mul : ∀ {a} → {A : Set a} → Instruction A
+    mul {A = A} = record {
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
-      f = f
+      f = d
       }
+      where
+      d : {b r m : ℕ} → add.M r₁ r₂ r₃ b r m → Skami b r m A → Skami b r m A
+      d = λ M sk → record sk {rucyca'a = f M $ Skami.rucyca'a sk}
 \end{code}
 \end{document}
