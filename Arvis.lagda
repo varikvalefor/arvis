@@ -273,6 +273,18 @@ module Instructions where
         rx = Skami.rucyca'a sk
         rx' = sk ▹ Instruction.f add m ▹ Skami.rucyca'a
 
+      dun : ∀ {a} → {A : Set a}
+          → (b r mx : ℕ)
+          → (sk : Skami b r mx A)
+          → (r₁ r₂ r₃ : ℕ)
+          → (m : Instruction.Mapti {A = A} add b r mx)
+          → let sk' = sk ▹ Instruction.f add m in
+            let r₁' = 𝔽.fromℕ< $ M.m₁ m in
+            ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₁'))
+              sk
+              sk')
+      dun = {!!}
+
   add = add.add
 
   module mv (r₁ r₂ : ℕ) where
