@@ -37,6 +37,7 @@
 \newunicodechar{ℝ}{\ensuremath{\mathnormal{\mathbb{R}}}}
 \newunicodechar{ℂ}{\ensuremath{\mathnormal{\mathbb{C}}}}
 \newunicodechar{𝔹}{\ensuremath{\mathnormal{\mathbb{B}}}}
+\newunicodechar{𝕍}{\ensuremath{\mathnormal{\mathbb{V}}}}
 \newunicodechar{ν}{\ensuremath{\mathnormal{\nu}}}
 \newunicodechar{μ}{\ensuremath{\mathnormal{\mu}}}
 \newunicodechar{◆}{\ensuremath{\mathnormal\blackdiamond}}
