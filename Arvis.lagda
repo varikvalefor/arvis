@@ -275,7 +275,7 @@ module Instructions where
   module mul (r₁ r₂ r₃ : ℕ) where
     mul : Instruction
     mul = record {
-      Mapti = {!!};
+      Mapti = add.M _ _ _;
       Mapti? = {!!};
       f = {!!}
       }
