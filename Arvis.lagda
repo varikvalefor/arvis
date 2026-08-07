@@ -274,6 +274,10 @@ module Instructions where
 
   module mul (r₁ r₂ r₃ : ℕ) where
     mul : Instruction
-    mul = {!!}
+    mul = record {
+      Mapti = {!!};
+      Mapti? = {!!};
+      f = {!!}
+      }
 \end{code}
 \end{document}
