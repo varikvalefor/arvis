@@ -277,7 +277,15 @@ module Instructions where
     f {b} {r} {m} M rx = record rx {reg = xd}
       where
       reg = Rucyca'a.reg rx
-      xd = {!!}
+      xd = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
+        where
+        open add.M M
+        r₁' = 𝔽.fromℕ< m₁
+        r₂*r₃ = _mod_ (l r₂' ℕ.* l r₃') b {nz}
+          where
+          r₂' = 𝔽.fromℕ< m₂
+          r₃' = 𝔽.fromℕ< m₃
+          l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
     mul : Instruction
     mul = record {
