@@ -273,11 +273,14 @@ module Instructions where
       }
 
   module mul (r₁ r₂ r₃ : ℕ) where
+    f : {b r m : ℕ} → add.M r₁ r₂ r₃ b r m → Rucyca'a b r → Rucyca'a b r
+    f = {!!}
+
     mul : Instruction
     mul = record {
       Mapti = add.M _ _ _;
       Mapti? = {!!};
-      f = {!!}
+      f = f
       }
 \end{code}
 \end{document}
