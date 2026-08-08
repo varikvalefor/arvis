@@ -341,12 +341,11 @@ module Instructions where
             → (sk : Skami b r mx A)
             → (r₁ r₂ r₃ : ℕ)
             → (m : Instruction.Mapti {A = A} mul b r mx)
-            → let sk' = sk ▹ Instruction.f mul m in
-              (r₄ : 𝔽 r)
+            → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (add.M.m₁ m)
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
                 sk
-                sk')
+                (sk ▹ Instruction.f mul m))
       dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ _≡_.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
