@@ -102,7 +102,8 @@ open import Level
     Level
   )
   renaming (
-    suc to lsuc
+    suc to lsuc;
+    zero to 0ₗ
   )
 open import Data.Fin
   as 𝔽
@@ -190,7 +191,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
 \section{le co'e ja midnoi se ctaipe}
 
 \begin{code}
-record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc Level.zero) where
+record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
   field
     Mapti : (b r m : ℕ) → Set
     Mapti? : (b r m : ℕ) → Dec $ Mapti b r m
