@@ -101,6 +101,9 @@ open import Level
   using (
     Level
   )
+  renaming (
+    suc to lsuc
+  )
 open import Data.Fin
   as 𝔽
   using (
@@ -172,7 +175,7 @@ record Rucyca'a (b r : ℕ) : Set where
 \section{le skami se ctaipe}
 
 \begin{code}
-record Skami {a} (b r m : ℕ) (A : Set a) : Set (Level.suc a) where
+record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
   inductive
   field
     rucyca'a : Rucyca'a b r
@@ -187,7 +190,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (Level.suc a) where
 \section{le co'e ja midnoi se ctaipe}
 
 \begin{code}
-record Instruction {a} (A : Set a) : Set (Level.suc a Level.⊔ Level.suc Level.zero) where
+record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc Level.zero) where
   field
     Mapti : (b r m : ℕ) → Set
     Mapti? : (b r m : ℕ) → Dec $ Mapti b r m
