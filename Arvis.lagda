@@ -435,5 +435,9 @@ module Instructions where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         r₁' = 𝔽.fromℕ< $ add.M.m₁ m
         open _≡_.≡-Reasoning
+
+  module addi (r₁ r₂ i : ℕ) where
+    addi : ∀ {a} → (A : Set a) → Instruction A
+    addi = {!!}
 \end{code}
 \end{document}
