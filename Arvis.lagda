@@ -284,6 +284,9 @@ module Instructions where
       rx : Rucyca'a b r
       rx = Skami.rucyca'a sk
 
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg rx
+
       pc' : 𝔽 $ ℕ.suc b
       pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
 
@@ -298,7 +301,6 @@ module Instructions where
             where
             open M mx
             r₁' = 𝔽.fromℕ< m₁
-            reg = Rucyca'a.reg rx
             r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
               where
               r₂' = 𝔽.fromℕ< m₂
