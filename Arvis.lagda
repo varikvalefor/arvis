@@ -401,10 +401,11 @@ module Instructions where
             → (b r mx : ℕ)
             → (sk : Skami b r mx A)
             → (r₁ r₂ r₃ : ℕ)
-            → (m : Instruction.Mapti {A = A} mul b r mx)
+            → (m : _)
             → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (add.M.m₁ m)
-            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
+            → (let r4i = λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄ in
+               (_≡_ on r4i)
                 sk
                 (sk ▹ Instruction.f mul m))
       dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
@@ -423,16 +424,37 @@ module Instructions where
           → (m : Instruction.Mapti {A = A} mul b r mx)
           → let r₁' = 𝔽.fromℕ< $ add.M.m₁ m in
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+            let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
+            let r₂' = 𝔽.fromℕ< (add.M.m₂ m) in
+            let r₃' = 𝔽.fromℕ< (add.M.m₃ m) in
             (_≡_
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁')
-              (let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
-               let r₂' = 𝔽.fromℕ< (add.M.m₂ m) in
-               let r₃' = 𝔽.fromℕ< (add.M.m₃ m) in
-               _mod_ (l r₂' ℕ.* l r₃') $ ℕ.suc b))
-      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ Rucyca'a.reg rx
+               ((l r₂' ℕ.* l r₃') mod ℕ.suc b))
+      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' rx
         where
-        rx = Skami.rucyca'a sk
+        rx = Rucyca'a.reg $ Skami.rucyca'a sk
         r₁' = 𝔽.fromℕ< $ add.M.m₁ m
         open _≡_.≡-Reasoning
+
+  module addi (r₁ r₂ i : ℕ) where
+    M : (b r m : ℕ) → Set
+    M = {!!}
+
+    f : ∀ {a} → {A : Set a}
+      → {b r m : ℕ}
+      → M b r m
+      → Skami b r m A
+      → Skami b r m A
+    f {A = A} {b} {r} {m} mp sk = record sk {rucyca'a = rx; pc = {!!}}
+      where
+      rx = record (Skami.rucyca'a sk) {reg = {!!}}
+
+    addi : ∀ {a} → (A : Set a) → Instruction A
+    addi = λ A → record {
+      nibarda = {!!};
+      Mapti = M;
+      Mapti? = {!!};
+      f = f
+      }
 \end{code}
 \end{document}
