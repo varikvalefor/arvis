@@ -340,7 +340,7 @@ module Instructions where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
     mv = record {
       nibarda = {!!};
-      Mapti = add.M b r mx _ _ _;
+      Mapti = add.M b r mx _ _ {!!};
       Mapti? = add.M? _ _ _ _ _ _;
       f = Instruction.f $ add b r mx r₁ r₂ {!!} -- 0
       }
