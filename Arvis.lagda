@@ -387,7 +387,7 @@ module Instructions where
 
     mul : ∀ {a} → {A : Set a} → Instruction A
     mul {A = A} = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
       f = f'
