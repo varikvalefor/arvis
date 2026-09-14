@@ -372,7 +372,7 @@ module Instructions where
             (_≡_
               (𝕍.lookup (rx $ Instruction.f add m sk) r₁')
               (f.r₂+r₃ m sk))
-      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ Rucyca'a.reg rx
+      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ f.reg m sk
         where
         open f m sk
         open _≡_.≡-Reasoning
