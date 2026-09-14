@@ -423,12 +423,12 @@ module Instructions where
           → (m : Instruction.Mapti {A = A} mul b r mx)
           → let r₁' = 𝔽.fromℕ< $ add.M.m₁ m in
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+            let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
+            let r₂' = 𝔽.fromℕ< (add.M.m₂ m) in
+            let r₃' = 𝔽.fromℕ< (add.M.m₃ m) in
             (_≡_
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁')
-              (let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
-               let r₂' = 𝔽.fromℕ< (add.M.m₂ m) in
-               let r₃' = 𝔽.fromℕ< (add.M.m₃ m) in
-               (l r₂' ℕ.* l r₃') mod ℕ.suc b))
+               ((l r₂' ℕ.* l r₃') mod ℕ.suc b))
       dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' rx
         where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
