@@ -214,13 +214,20 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    f : ∀ {a} → {A : Set a}
-      → M
-      → Skami b r m A
-      → Skami b r m A
-    f m sk = record sk {pc = 𝕍.lookup rx r₁}
-      where
+    module f {a} {A : Set a}
+             (mx : M)
+             (sk : Skami b r m A) where
+
+      rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      *r₁ : 𝔽 $ ℕ.suc b
+      *r₁ = 𝕍.lookup rx r₁
+
+      f : Skami b r m A
+      f = record sk {pc = *r₁}
+
+    f = f.f
 
     M? : Dec M
     M? = yes $ record {}
@@ -235,9 +242,9 @@ module Instructions where
     module Veritas {a} {A : Set a}
                    (Mx : M)
                    (sk : Skami b r m A) where
-      sk' = Instruction.f jr Mx sk
-      rx = Rucyca'a.reg $ Skami.rucyca'a sk
-      *r₁ = 𝕍.lookup rx r₁
+      open f Mx sk
+
+      sk' = record sk {pc = *r₁}
 
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = _≡_.refl
