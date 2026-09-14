@@ -244,7 +244,7 @@ module Instructions where
                    (sk : Skami b r m A) where
       open f Mx sk
 
-      sk' = record sk {pc = *r₁}
+      sk' = f.f Mx sk
 
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = _≡_.refl
