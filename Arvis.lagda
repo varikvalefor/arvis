@@ -216,7 +216,7 @@ module Instructions where
       → M b r m
       → Skami b r m A
       → Skami b r m A
-    f {b = b} {r} m sk = record sk {rucyca'a = rc}
+    f {b = b} {r} m sk = record sk {rucyca'a = rc; pc = {!!}}
       where
       rc : Rucyca'a b r
       rc = record rx {reg = r2d2}
