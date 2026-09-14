@@ -223,7 +223,9 @@ module Instructions where
       → M b r m
       → Skami b r m A
       → Skami b r m A
-    f m sk = record sk {pc = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) $ 𝔽.fromℕ< $ M.m₁ m}
+    f m sk = record sk {pc = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ m}
+      where
+      rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
