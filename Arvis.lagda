@@ -290,6 +290,9 @@ module Instructions where
       pc' : 𝔽 $ ℕ.suc b
       pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
 
+      r₁' : 𝔽 r
+      r₁' = 𝔽.fromℕ< $ M.m₁ mx
+
       r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
         where
         open M mx
@@ -307,7 +310,6 @@ module Instructions where
           r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
             where
             open M mx
-            r₁' = 𝔽.fromℕ< m₁
 
     f = f.f
 
