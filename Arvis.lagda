@@ -210,6 +210,29 @@ record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
 
 \begin{code}
 module Instructions where
+  module jr (r₁ : ℕ) where
+    record M (b r _ : ℕ) : Set where
+
+    nibarda : ℕ
+    nibarda = {!!}
+
+    f : ∀ {a} → {A : Set a}
+      → {b r m : ℕ}
+      → M b r m
+      → Skami b r m A
+      → Skami b r m A
+    f = {!!}
+
+    M? : (b r m : ℕ) → Dec $ M b r m
+    M? = {!!}
+
+    jr : ∀ {a} → {A : Set a} → Instruction A
+    jr = record {
+      nibarda = nibarda;
+      Mapti = M ;
+      Mapti? = M?;
+      f = f}
+
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
