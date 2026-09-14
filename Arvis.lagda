@@ -439,13 +439,20 @@ module Instructions where
   module addi (r₁ r₂ i : ℕ) where
     M : (b r m : ℕ) → Set
     M = {!!}
+
+    f : ∀ {a} → {A : Set a}
+      → {b r m : ℕ}
+      → M b r m
+      → Skami b r m A
+      → Skami b r m A
+    f = {!!}
     
     addi : ∀ {a} → (A : Set a) → Instruction A
     addi = λ A → record {
       nibarda = {!!};
       Mapti = M;
       Mapti? = {!!};
-      f = {!!}
+      f = f
       }
 \end{code}
 \end{document}
