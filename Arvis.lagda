@@ -374,8 +374,7 @@ module Instructions where
               (f.r₂+r₃ m sk))
       dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ Rucyca'a.reg rx
         where
-        rx = Skami.rucyca'a sk
-        r₁' = 𝔽.fromℕ< $ M.m₁ m
+        open f m sk
         open _≡_.≡-Reasoning
 
   add = add.add
