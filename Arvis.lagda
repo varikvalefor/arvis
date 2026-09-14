@@ -404,7 +404,8 @@ module Instructions where
             → (m : Instruction.Mapti {A = A} mul b r mx)
             → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (add.M.m₁ m)
-            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
+            → (let r4i = λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄ in
+               (_≡_ on r4i)
                 sk
                 (sk ▹ Instruction.f mul m))
       dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
