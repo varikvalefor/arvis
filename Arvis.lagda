@@ -176,9 +176,7 @@ open import Relation.Binary.PropositionalEquality
 record Rucyca'a (b r : ℕ) : Set where
   field
     reg : Vec (𝔽 $ ℕ.suc b) r
-
-  x0 : 𝔽 $ ℕ.suc b
-  x0 = 𝔽.zero
+    x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup reg $ 𝔽.fromℕ< ml)
 \end{code}
 
 \section{le skami se ctaipe}
@@ -267,7 +265,7 @@ module Instructions where
       where
       pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
       rc : Rucyca'a b r
-      rc = record rx {reg = r2d2}
+      rc = record rx {reg = r2d2; x0 = {!!}}
         where
         rx = Skami.rucyca'a sk
         r2d2 : Vec (𝔽 $ ℕ.suc b) r
@@ -335,7 +333,7 @@ module Instructions where
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽.Fin r) where
     f : add.M b r mx r₁ r₂ r₃ → Rucyca'a b r → Rucyca'a b r
-    f M rx = record rx {reg = xd}
+    f M rx = record rx {reg = xd; x0 = {!!}}
       where
       reg = Rucyca'a.reg rx
       xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
@@ -400,7 +398,7 @@ module Instructions where
       → Skami b r mx A
     f {A = A} mp sk = record sk {rucyca'a = rx; pc = {!!}}
       where
-      rx = record (Skami.rucyca'a sk) {reg = {!!}}
+      rx = record (Skami.rucyca'a sk) {reg = {!!}; x0 = {!!}}
 
     addi : ∀ {a} → (A : Set a) → Instruction A b r mx
     addi = λ A → record {
