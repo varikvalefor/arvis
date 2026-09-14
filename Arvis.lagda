@@ -290,6 +290,13 @@ module Instructions where
       pc' : 𝔽 $ ℕ.suc b
       pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
 
+      r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
+        where
+        open M mx
+        r₂' = 𝔽.fromℕ< m₂
+        r₃' = 𝔽.fromℕ< m₃
+        l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
       f : Skami b r m A
       f = record sk {rucyca'a = rc; pc = pc'}
         where
@@ -301,11 +308,6 @@ module Instructions where
             where
             open M mx
             r₁' = 𝔽.fromℕ< m₁
-            r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
-              where
-              r₂' = 𝔽.fromℕ< m₂
-              r₃' = 𝔽.fromℕ< m₃
-              l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
     f = f.f
 
