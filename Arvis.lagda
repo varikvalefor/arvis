@@ -401,7 +401,7 @@ module Instructions where
             → (b r mx : ℕ)
             → (sk : Skami b r mx A)
             → (r₁ r₂ r₃ : ℕ)
-            → (m : Instruction.Mapti {A = A} mul b r mx)
+            → (m : _)
             → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (add.M.m₁ m)
             → (let r4i = λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄ in
