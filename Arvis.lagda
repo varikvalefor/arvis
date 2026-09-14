@@ -226,11 +226,11 @@ module Instructions where
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
-      *r1 : 𝔽 $ ℕ.suc b
-      *r1 = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx
+      *r₁ : 𝔽 $ ℕ.suc b
+      *r₁ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx
 
       f : Skami b r m A
-      f = record sk {pc = *r1}
+      f = record sk {pc = *r₁}
 
     f = f.f
 
