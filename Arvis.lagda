@@ -224,7 +224,7 @@ module Instructions where
     f = {!!}
 
     M? : (b r m : ℕ) → Dec $ M b r m
-    M? = {!!}
+    M? = λ _ _ _ → yes $ record {}
 
     jr : ∀ {a} → {A : Set a} → Instruction A
     jr = record {
