@@ -348,7 +348,7 @@ module Instructions where
 
     mul : ∀ {a} → {A : Set a} → Instruction A b r mx
     mul {A = A} = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = add.M _ _ _ _ _ _;
       Mapti? = add.M? _ _ _ _ _ _;
       f = f'
