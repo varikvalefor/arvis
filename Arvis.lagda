@@ -353,7 +353,7 @@ module Instructions where
       xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
         where
         open add.M M
-        r₂*r₃ = _mod_ (l r₂ ℕ.* l r₃) $ ℕ.suc b
+        r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
           where
           l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
