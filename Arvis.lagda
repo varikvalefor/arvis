@@ -218,14 +218,21 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    f : ∀ {a} → {A : Set a}
-      → {b r m : ℕ}
-      → M b r m
-      → Skami b r m A
-      → Skami b r m A
-    f m sk = record sk {pc = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ m}
-      where
+    module f {a} {A : Set a}
+             {b r m : ℕ}
+             (mx : M b r m)
+             (sk : Skami b r m A) where
+
+      rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      *r1 : 𝔽 $ ℕ.suc b
+      *r1 = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx
+
+      f : Skami b r m A
+      f = record sk {pc = *r1}
+
+    f = f.f
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? _ r _ with r₁ ℕ.<? r
