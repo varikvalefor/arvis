@@ -212,6 +212,8 @@ record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
 module Instructions where
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
+      field
+        m₁ : r₁ < r
 
     nibarda : ℕ
     nibarda = {!!}
@@ -224,7 +226,7 @@ module Instructions where
     f = {!!}
 
     M? : (b r m : ℕ) → Dec $ M b r m
-    M? = λ _ _ _ → yes $ record {}
+    M? = {!!}
 
     jr : ∀ {a} → {A : Set a} → Instruction A
     jr = record {
