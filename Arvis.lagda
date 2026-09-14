@@ -429,9 +429,9 @@ module Instructions where
                let r₂' = 𝔽.fromℕ< (add.M.m₂ m) in
                let r₃' = 𝔽.fromℕ< (add.M.m₃ m) in
                _mod_ (l r₂' ℕ.* l r₃') $ ℕ.suc b))
-      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ Rucyca'a.reg rx
+      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' rx
         where
-        rx = Skami.rucyca'a sk
+        rx = Rucyca'a.reg $ Skami.rucyca'a sk
         r₁' = 𝔽.fromℕ< $ add.M.m₁ m
         open _≡_.≡-Reasoning
 \end{code}
