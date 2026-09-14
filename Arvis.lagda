@@ -438,6 +438,11 @@ module Instructions where
 
   module addi (r₁ r₂ i : ℕ) where
     addi : ∀ {a} → (A : Set a) → Instruction A
-    addi = {!!}
+    addi = λ A → record {
+      nibarda = {!!};
+      Mapti = {!!};
+      Mapti? = {!!};
+      f = {!!}
+      }
 \end{code}
 \end{document}
