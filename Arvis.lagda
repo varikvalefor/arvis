@@ -182,6 +182,7 @@ record Rucyca'a (b r : ℕ) : Set where
 record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
   inductive
   field
+    pc : 𝔽 $ ℕ.suc b
     rucyca'a : Rucyca'a b r
     mem : Vec (𝔽 b) m
     vrici : A
