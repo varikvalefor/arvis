@@ -243,7 +243,7 @@ module Instructions where
       }
       where
       N⇒F : ∀ {a} → {A : Set a} → {A? : Dec A} → ¬ A → False A?
-      N⇒F {A? = yes p} N = {!!}
+      N⇒F {A? = yes p} N = N p
       N⇒F {A? = no ¬p} N = {!!}
     ... | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
     ... | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
