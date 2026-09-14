@@ -343,6 +343,9 @@ module Instructions where
           where
           l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
+    nibarda : ℕ
+    nibarda = {!!}
+
     mul : ∀ {a} → {A : Set a} → Instruction A b r mx
     mul {A = A} = record {
       nibarda = {!!};
@@ -354,7 +357,9 @@ module Instructions where
       f' : add.M  b r mx r₁ r₂ r₃
          → Skami b r mx A
          → Skami b r mx A
-      f' M sk = record sk {rucyca'a = f M $ Skami.rucyca'a sk; pc = {!!}}
+      f' M sk = record sk {rucyca'a = f M $ Skami.rucyca'a sk; pc = pc'}
+        where
+        pc' = (_mod ℕ.suc b) $ 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda
 
     module Veritas where
       dun⁻¹ : ∀ {a} → {A : Set a}
