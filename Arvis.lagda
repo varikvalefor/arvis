@@ -250,9 +250,9 @@ module Instructions where
                    {b r m : ℕ}
                    (Mx : M b r m)
                    (sk : Skami b r m A) where
-      sk' = Instruction.f jr Mx sk
-      rx = Rucyca'a.reg $ Skami.rucyca'a sk
-      *r₁ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ Mx
+      open f Mx sk
+
+      sk' = record sk {pc = *r₁}
 
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = _≡_.refl
