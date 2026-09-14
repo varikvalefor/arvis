@@ -445,7 +445,7 @@ module Instructions where
       → M b r m
       → Skami b r m A
       → Skami b r m A
-    f = {!!}
+    f {A = A} {b} {r} {m} mp sk = record sk {rucyca'a = {!!}; pc = {!!}}
     
     addi : ∀ {a} → (A : Set a) → Instruction A
     addi = λ A → record {
