@@ -264,25 +264,35 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    f : ∀ {a} → {A : Set a}
-      → M
-      → Skami b r m A
-      → Skami b r m A
-    f mx sk = record sk {rucyca'a = rc; pc = pc'}
-      where
+    module f {a} {A : Set a}
+             (mx : M)
+             (sk : Skami b r m A) where
+
+      rx : Rucyca'a b r
+      rx = Skami.rucyca'a sk
+
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg rx
+
+      pc' : 𝔽 $ ℕ.suc b
       pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
-      rc : Rucyca'a b r
-      rc = record rx {reg = r2d2; x0 = {!!}}
+
+      r₂+r₃ : 𝔽 $ ℕ.suc b
+      r₂+r₃ = _mod_ (l r₂ ℕ.+ l r₃) (ℕ.suc b)
         where
-        rx = Skami.rucyca'a sk
-        r2d2 : Vec (𝔽 $ ℕ.suc b) r
-        r2d2 = 𝕍.updateAt r₁ (λ _ → r₂+r₃) reg
+        open M mx
+        l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
+      f : Skami b r m A
+      f = record sk {rucyca'a = rc; pc = pc'}
+        where
+        rc : Rucyca'a b r
+        rc = record rx {reg = r2d2; x0 = {!!}}
           where
-          open M mx
-          reg = Rucyca'a.reg rx
-          r₂+r₃ = _mod_ (l r₂ ℕ.+ l r₃) (ℕ.suc b)
-            where
-            l = 𝔽.toℕ ∘ 𝕍.lookup reg
+          r2d2 : Vec (𝔽 $ ℕ.suc b) r
+          r2d2 = 𝕍.updateAt r₁ (λ _ → r₂+r₃) reg
+
+    f = f.f
 
     M? : Dec M
     M? = yes $ record {}
@@ -309,22 +319,21 @@ module Instructions where
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
+        open f mx sk
         open _≡_.≡-Reasoning
-        rx = Skami.rucyca'a sk
         rx' = sk ▹ Instruction.f add mx ▹ Skami.rucyca'a
 
       dun : ∀ {a} → {A : Set a}
+          → (mx : _)
           → (sk : Skami b r m A)
-          → (mx : M)
-          → let sk' = sk ▹ Instruction.f add mx in
+          → let sk' = f.f mx sk in
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             (_≡_
-              (𝕍.lookup (rx $ Instruction.f add mx sk) r₁)
-              (let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
-               _mod_ (l r₂ ℕ.+ l r₃) $ ℕ.suc b))
-      dun sk mx = 𝕍P.lookup∘updateAt r₁ $ Rucyca'a.reg rx
+              (𝕍.lookup (rx sk') r₁)
+              (f.r₂+r₃ mx sk))
+      dun mx sk = 𝕍P.lookup∘updateAt r₁ reg
         where
-        rx = Skami.rucyca'a sk
+        open f mx sk
         open _≡_.≡-Reasoning
 
   add = add.add
