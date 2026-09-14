@@ -134,6 +134,11 @@ open import Function
   renaming (
     _|>_ to _▹_
   )
+open import Data.Unit
+  using (
+    tt;
+    ⊤
+  )
 open import Data.Product
   using (
     _×_;
@@ -244,7 +249,7 @@ module Instructions where
       where
       N⇒F : ∀ {a} → {A : Set a} → {A? : Dec A} → ¬ A → False A?
       N⇒F {A? = yes p} N = N p
-      N⇒F {A? = no ¬p} N = {!!}
+      N⇒F {A? = no ¬p} N = tt
     ... | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
     ... | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
     ... | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
