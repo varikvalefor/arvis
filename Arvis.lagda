@@ -276,29 +276,31 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    f : ∀ {a} → {A : Set a}
-      → {b r m : ℕ}
-      → M b r m
-      → Skami b r m A
-      → Skami b r m A
-    f {b = b} {r} m sk = record sk {rucyca'a = rc; pc = pc'}
-      where
-      pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
-      rc : Rucyca'a b r
-      rc = record rx {reg = r2d2}
+    module f {a} {A : Set a}
+             {b r m : ℕ}
+             (mx : M b r m)
+             (sk : Skami b r m A) where
+
+      f = record sk {rucyca'a = rc; pc = pc'}
         where
-        rx = Skami.rucyca'a sk
-        r2d2 : Vec (𝔽 $ ℕ.suc b) r
-        r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+        pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
+        rc : Rucyca'a b r
+        rc = record rx {reg = r2d2}
           where
-          open M m
-          r₁' = 𝔽.fromℕ< m₁
-          reg = Rucyca'a.reg rx
-          r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
+          rx = Skami.rucyca'a sk
+          r2d2 : Vec (𝔽 $ ℕ.suc b) r
+          r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
             where
-            r₂' = 𝔽.fromℕ< m₂
-            r₃' = 𝔽.fromℕ< m₃
-            l = 𝔽.toℕ ∘ 𝕍.lookup reg
+            open M mx
+            r₁' = 𝔽.fromℕ< m₁
+            reg = Rucyca'a.reg rx
+            r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
+              where
+              r₂' = 𝔽.fromℕ< m₂
+              r₃' = 𝔽.fromℕ< m₃
+              l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
+    f = f.f
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? b r _ with r₁ <? r | r₂ <? r | r₃ <? r
