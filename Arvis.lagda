@@ -364,10 +364,7 @@ module Instructions where
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             (_≡_
               (𝕍.lookup (rx $ Instruction.f add m sk) r₁')
-              (let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
-               let r₂' = 𝔽.fromℕ< (M.m₂ m) in
-               let r₃' = 𝔽.fromℕ< (M.m₃ m) in
-               _mod_ (l r₂' ℕ.+ l r₃') $ ℕ.suc b))
+              (f.r₂+r₃ m sk))
       dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' $ Rucyca'a.reg rx
         where
         rx = Skami.rucyca'a sk
