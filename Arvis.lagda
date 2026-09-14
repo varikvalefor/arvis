@@ -253,6 +253,9 @@ module Instructions where
       rdun : Skami.rucyca'a sk' ≡ Skami.rucyca'a sk
       rdun = _≡_.refl
 
+      mdun : (_≡_ on Skami.mem) sk' sk
+      mdun = _≡_.refl
+
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
