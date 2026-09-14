@@ -326,10 +326,9 @@ module Instructions where
       dun : ∀ {a} → {A : Set a}
           → (mx : _)
           → (sk : Skami b r m A)
-          → let sk' = f.f mx sk in
-            let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+          → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             (_≡_
-              (𝕍.lookup (rx sk') r₁)
+              (𝕍.lookup (rx $ f.f mx sk) r₁)
               (f.r₂+r₃ mx sk))
       dun mx sk = 𝕍P.lookup∘updateAt r₁ reg
         where
