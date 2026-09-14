@@ -210,10 +210,8 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0�
 
 \begin{code}
 module Instructions where
-  module jr (b r m : ℕ) (r₁ : ℕ) where
+  module jr (b r m : ℕ) (r₁ : 𝔽.Fin r) where
     record M : Set where
-      field
-        m₁ : r₁ < r
 
     nibarda : ℕ
     nibarda = {!!}
@@ -222,14 +220,12 @@ module Instructions where
       → M
       → Skami b r m A
       → Skami b r m A
-    f m sk = record sk {pc = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ m}
+    f m sk = record sk {pc = 𝕍.lookup rx r₁}
       where
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
     M? : Dec M
-    M? with r₁ ℕ.<? r
-    ... | yes p = yes $ record {m₁ = p}
-    ... | no N = no $ N ∘ M.m₁
+    M? = yes $ record {}
 
     jr : ∀ {a} → {A : Set a} → Instruction A b r m
     jr = record {
@@ -243,7 +239,7 @@ module Instructions where
                    (sk : Skami b r m A) where
       sk' = Instruction.f jr Mx sk
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
-      *r₁ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ Mx
+      *r₁ = 𝕍.lookup rx r₁
 
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = _≡_.refl
