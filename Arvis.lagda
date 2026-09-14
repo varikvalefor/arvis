@@ -293,12 +293,16 @@ module Instructions where
       r₁' : 𝔽 r
       r₁' = 𝔽.fromℕ< $ M.m₁ mx
 
+      r₂' : 𝔽 r
+      r₂' = 𝔽.fromℕ< $ M.m₂ mx
+
+      r₃' : 𝔽 r
+      r₃' = 𝔽.fromℕ< $ M.m₃ mx
+
       r₂+r₃ : 𝔽 $ ℕ.suc b
       r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
         where
         open M mx
-        r₂' = 𝔽.fromℕ< m₂
-        r₃' = 𝔽.fromℕ< m₃
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
       f : Skami b r m A
