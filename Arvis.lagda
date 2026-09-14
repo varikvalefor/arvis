@@ -281,6 +281,9 @@ module Instructions where
              (mx : M b r m)
              (sk : Skami b r m A) where
 
+      rx : Rucyca'a b r
+      rx = Skami.rucyca'a sk
+
       pc' : 𝔽 $ ℕ.suc b
       pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
 
@@ -290,7 +293,6 @@ module Instructions where
         rc : Rucyca'a b r
         rc = record rx {reg = r2d2}
           where
-          rx = Skami.rucyca'a sk
           r2d2 : Vec (𝔽 $ ℕ.suc b) r
           r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
             where
