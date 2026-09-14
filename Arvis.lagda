@@ -293,6 +293,7 @@ module Instructions where
       r₁' : 𝔽 r
       r₁' = 𝔽.fromℕ< $ M.m₁ mx
 
+      r₂+r₃ : 𝔽 $ ℕ.suc b
       r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
         where
         open M mx
