@@ -202,6 +202,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
 \begin{code}
 record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
   field
+    nibarda : ℕ
     Mapti : (b r m : ℕ) → Set
     Mapti? : (b r m : ℕ) → Dec $ Mapti b r m
     f : {b r m : ℕ} → Mapti b r m → Skami b r m A → Skami b r m A
@@ -256,6 +257,7 @@ module Instructions where
 
     add : ∀ {a} → {A : Set a} → Instruction A
     add = record {
+      nibarda = {!!};
       Mapti = M ;
       Mapti? = M?;
       f = f}
@@ -306,6 +308,7 @@ module Instructions where
   module mv (r₁ r₂ : ℕ) where
     mv : ∀ {a} → {A : Set a} → Instruction A
     mv = record {
+      nibarda = {!!};
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
       f = Instruction.f $ add r₁ r₂ 0
@@ -328,6 +331,7 @@ module Instructions where
 
     mul : ∀ {a} → {A : Set a} → Instruction A
     mul {A = A} = record {
+      nibarda = {!!};
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
       f = d
