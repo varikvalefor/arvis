@@ -394,7 +394,7 @@ module Instructions where
         → add.M r₁ r₂ r₃ b r m
         → Skami b r m A
         → Skami b r m A
-      d = λ M sk → record sk {rucyca'a = f M $ Skami.rucyca'a sk}
+      d = λ M sk → record sk {rucyca'a = f M $ Skami.rucyca'a sk; pc = {!!}}
 
     module Veritas where
       dun⁻¹ : ∀ {a} → {A : Set a}
