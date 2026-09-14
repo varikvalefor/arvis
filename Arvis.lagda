@@ -217,6 +217,9 @@ module Instructions where
         m₂ : r₂ < r
         m₃ : r₃ < r
 
+    nibarda : ℕ
+    nibarda = {!!}
+
     f : ∀ {a} → {A : Set a}
       → {b r m : ℕ}
       → M b r m
@@ -257,7 +260,7 @@ module Instructions where
 
     add : ∀ {a} → {A : Set a} → Instruction A
     add = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = M ;
       Mapti? = M?;
       f = f}
