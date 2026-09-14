@@ -350,8 +350,8 @@ module Instructions where
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
+        open f m sk
         open _≡_.≡-Reasoning
-        rx = Skami.rucyca'a sk
         rx' = sk ▹ Instruction.f add m ▹ Skami.rucyca'a
 
       dun : ∀ {a} → {A : Set a}
