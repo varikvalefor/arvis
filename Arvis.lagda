@@ -397,7 +397,7 @@ module Instructions where
         where
         open add.M M
         r₁' = 𝔽.fromℕ< m₁
-        r₂*r₃ = _mod_ (l r₂' ℕ.* l r₃') $ ℕ.suc b
+        r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
           where
           r₂' = 𝔽.fromℕ< m₂
           r₃' = 𝔽.fromℕ< m₃
