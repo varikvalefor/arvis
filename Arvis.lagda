@@ -348,7 +348,7 @@ module Instructions where
             → (m : Instruction.Mapti {A = A} add b r mx)
             → let sk' = sk ▹ Instruction.f add m in
               (r₄ : 𝔽 r)
-            → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ m)
+            → ¬_ $ r₄ ≡ f.r₁' m sk
             → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
                 sk
                 sk')
