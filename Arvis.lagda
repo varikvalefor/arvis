@@ -239,16 +239,16 @@ module Instructions where
       Mapti? = M?;
       f = f}
 
-    module Veritas where
-      pc-r₁ : ∀ {a} → {A : Set a}
-            → {b r m : ℕ}
-            → (Mx : M b r m)
-            → (sk : Skami b r m A)
-            → let sk' = Instruction.f jr Mx sk in
-              let rx = Rucyca'a.reg $ Skami.rucyca'a sk in
-              let *r₁ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ Mx in
-              Skami.pc sk' ≡ *r₁
-      pc-r₁ _ _ = _≡_.refl
+    module Veritas {a} {A : Set a}
+                   {b r m : ℕ}
+                   (Mx : M b r m)
+                   (sk : Skami b r m A) where
+      sk' = Instruction.f jr Mx sk
+      rx = Rucyca'a.reg $ Skami.rucyca'a sk
+      *r₁ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ Mx
+
+      pc-r₁ : Skami.pc sk' ≡ *r₁
+      pc-r₁ = _≡_.refl
 
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
