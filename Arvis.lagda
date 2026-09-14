@@ -387,14 +387,14 @@ module Instructions where
       nibarda = {!!};
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
-      f = d
+      f = f'
       }
       where
-      d : {b r m : ℕ}
-        → add.M r₁ r₂ r₃ b r m
-        → Skami b r m A
-        → Skami b r m A
-      d = λ M sk → record sk {rucyca'a = f M $ Skami.rucyca'a sk; pc = {!!}}
+      f' : {b r m : ℕ}
+         → add.M r₁ r₂ r₃ b r m
+         → Skami b r m A
+         → Skami b r m A
+      f' = λ M sk → record sk {rucyca'a = f M $ Skami.rucyca'a sk; pc = {!!}}
 
     module Veritas where
       dun⁻¹ : ∀ {a} → {A : Set a}
