@@ -223,7 +223,7 @@ module Instructions where
       → M b r m
       → Skami b r m A
       → Skami b r m A
-    f = {!!}
+    f = λ m sk → record sk {pc = {!!}}
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
