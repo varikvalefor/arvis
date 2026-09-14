@@ -256,6 +256,9 @@ module Instructions where
       mdun : (_≡_ on Skami.mem) sk' sk
       mdun = _≡_.refl
 
+      vdun : (_≡_ on Skami.vrici) sk' sk
+      vdun = _≡_.refl
+
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
