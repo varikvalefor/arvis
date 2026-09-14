@@ -281,6 +281,7 @@ module Instructions where
              (mx : M b r m)
              (sk : Skami b r m A) where
 
+      f : Skami b r m A
       f = record sk {rucyca'a = rc; pc = pc'}
         where
         pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
