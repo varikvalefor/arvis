@@ -333,7 +333,6 @@ module Instructions where
       dun mx sk = 𝕍P.lookup∘updateAt r₁ reg
         where
         open f mx sk
-        open _≡_.≡-Reasoning
 
   add = add.add
 
