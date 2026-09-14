@@ -248,7 +248,7 @@ module Instructions where
               let rx = Rucyca'a.reg $ Skami.rucyca'a sk in
               let *r₁ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ Mx in
               Skami.pc sk' ≡ *r₁
-      pc-r₁ = λ Mx sk → _≡_.refl
+      pc-r₁ Mx sk = _≡_.refl
 
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
