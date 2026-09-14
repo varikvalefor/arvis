@@ -228,7 +228,9 @@ module Instructions where
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
     M? : (b r m : ℕ) → Dec $ M b r m
-    M? = {!!}
+    M? _ r _ with r₁ ℕ.<? r
+    ... | yes p = yes $ record {m₁ = p}
+    ... | no N = no $ N ∘ M.m₁
 
     jr : ∀ {a} → {A : Set a} → Instruction A
     jr = record {
