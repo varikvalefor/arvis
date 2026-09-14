@@ -227,7 +227,7 @@ module Instructions where
       → Skami b r m A
     f {b = b} {r} m sk = record sk {rucyca'a = rc; pc = pc'}
       where
-      pc' = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
+      pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
       rc : Rucyca'a b r
       rc = record rx {reg = r2d2}
         where
