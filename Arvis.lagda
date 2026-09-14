@@ -250,6 +250,9 @@ module Instructions where
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = _≡_.refl
 
+      rdun : Skami.rucyca'a sk' ≡ Skami.rucyca'a sk
+      rdun = _≡_.refl
+
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
