@@ -232,7 +232,6 @@ module Instructions where
 
       f : Skami b r m A
       f = record sk {pc = r₂'; rucyca'a = {!!}}
-        where
 
     f = f.f
 
