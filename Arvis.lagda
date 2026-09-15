@@ -230,8 +230,11 @@ module Instructions where
       r₂' : 𝔽 $ ℕ.suc b
       r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
+      rc' : Rucyca'a b r
+      rc' = record (Skami.rucyca'a sk) {reg = {!!}}
+
       f : Skami b r m A
-      f = record sk {pc = r₂'; rucyca'a = {!!}}
+      f = record sk {pc = r₂'; rucyca'a = rc'}
 
     f = f.f
 
