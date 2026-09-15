@@ -224,7 +224,7 @@ module Instructions where
       → M b r m
       → Skami b r m A
       → Skami b r m A
-    f = {!!}
+    f {b = b} {r} {m} mx sk = record sk {pc = {!!}; rucyca'a = {!!}}
 
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = record {
