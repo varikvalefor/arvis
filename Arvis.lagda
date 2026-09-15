@@ -219,12 +219,19 @@ module Instructions where
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
 
+    f : ∀ {a} → {A : Set a}
+      → {b r m : ℕ}
+      → M b r m
+      → Skami b r m A
+      → Skami b r m A
+    f = {!!}
+
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = record {
       nibarda = {!!};
       Mapti = M;
       Mapti? = M?;
-      f = {!!}
+      f = f
       }
 
   module jr (r₁ : ℕ) where
