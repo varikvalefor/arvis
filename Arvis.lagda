@@ -249,7 +249,9 @@ module Instructions where
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
       x0 ml with 𝔽.toℕ r₁ ≟ 0
-      ... | yes d = {!!}
+      ... | yes d = _≡_.subst (λ f → 0 ≡ 𝔽.toℕ f) {!!} $ Rucyca'a.x0 rc ml
+        where
+        rc = Skami.rucyca'a sk
       ... | no N = {!!}
 
       rc' : Rucyca'a b r
