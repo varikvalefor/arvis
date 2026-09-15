@@ -266,6 +266,15 @@ module Instructions where
       f = f
       }
 
+    module Veritas {a} {A : Set a}
+                   (b r m : ℕ)
+                   (mx : M b r m)
+                   (sk : Skami b r m A) where
+      open f mx sk
+
+      dpc : *r₂ ≡ Skami.pc (Instruction.f jalr mx sk)
+      dpc = _≡_.refl
+
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
