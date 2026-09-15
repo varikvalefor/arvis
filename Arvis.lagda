@@ -238,8 +238,11 @@ module Instructions where
       *r₂' : 𝔽 $ ℕ.suc b
       *r₂' = 𝕍.lookup rx r₂
 
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
+
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) {!!}
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
 
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
