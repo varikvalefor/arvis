@@ -276,7 +276,7 @@ module Instructions where
       dpc = _≡_.refl
 
       drx : (r₄ : 𝔽 r)
-          → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
+          → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
           → ((_≡_ on (λ s → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a s) r₄))
               sk
               (Instruction.f jalr mx sk))
