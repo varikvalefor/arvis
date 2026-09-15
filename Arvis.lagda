@@ -262,7 +262,7 @@ module Instructions where
       vdun : (_≡_ on Skami.vrici) sk' sk
       vdun = _≡_.refl
 
-  module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽.Fin r) where
+  module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     record M : Set where
 
     nibarda : ℕ
@@ -340,7 +340,7 @@ module Instructions where
 
   add = add.add
 
-  module mv (b r mx : ℕ) (r₁ r₂ : 𝔽.Fin r) where
+  module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
     mv = record {
       nibarda = {!!};
@@ -349,7 +349,7 @@ module Instructions where
       f = Instruction.f $ add b r mx r₁ r₂ {!!} -- 0
       }
 
-  module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽.Fin r) where
+  module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     f : add.M b r mx r₁ r₂ r₃ → Rucyca'a b r → Rucyca'a b r
     f M rx = record rx {reg = xd; x0 = {!!}}
       where
