@@ -212,7 +212,12 @@ record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
 module Instructions where
   module jalr (r₁ r₂ : ℕ) where
     jalr : ∀ {a} → {A : Set a} → Instruction A
-    jalr = {!!}
+    jalr = record {
+      nibarda = {!!};
+      Mapti = {!!};
+      Mapti? = {!!};
+      f = {!!}
+      }
 
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
