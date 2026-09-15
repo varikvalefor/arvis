@@ -216,11 +216,14 @@ module Instructions where
         m₁ : r₁ < r
         m₂ : r₂ < r
 
+    M? : (b r m : ℕ) → Dec $ M b r m
+    M? = {!!}
+
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = record {
       nibarda = {!!};
       Mapti = M;
-      Mapti? = {!!};
+      Mapti? = M?;
       f = {!!}
       }
 
