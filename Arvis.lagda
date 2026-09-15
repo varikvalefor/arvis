@@ -242,12 +242,9 @@ module Instructions where
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = _≡_.sym $ begin
-        𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-          ≡⟨ {!!} ⟩
-        0 ∎
-        where
-        open _≡_.≡-Reasoning
+      x0 ml with 𝔽.toℕ r₁ ≟ 0
+      ... | yes d = {!!}
+      ... | no N = {!!}
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
