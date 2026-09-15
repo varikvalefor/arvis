@@ -208,6 +208,10 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0�
 
 \begin{code}
 module Instructions where
+  module jalr (b r m : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
+    jalr : ∀ {a} → {A : Set a} → Instruction A b r m
+    jalr = {!!}
+
   module jr (b r m : ℕ) (r₁ : 𝔽.Fin r) where
     record M : Set where
 
