@@ -280,7 +280,7 @@ module Instructions where
           → ((_≡_ on (λ s → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a s) r₄))
               sk
               (Instruction.f jalr mx sk))
-      drx = {!!}
+      drx = λ _ N → _≡_.sym $ 𝕍P.lookup∘updateAt′ _ _ N _
 
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
