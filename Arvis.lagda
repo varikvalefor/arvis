@@ -211,10 +211,15 @@ record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
 \begin{code}
 module Instructions where
   module jalr (r₁ r₂ : ℕ) where
+    record M (_ r _ : ℕ) : Set where
+      field
+        m₁ : r₁ < r
+        m₂ : r₂ < r
+
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = record {
       nibarda = {!!};
-      Mapti = {!!};
+      Mapti = M;
       Mapti? = {!!};
       f = {!!}
       }
