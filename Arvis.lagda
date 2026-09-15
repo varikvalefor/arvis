@@ -210,7 +210,7 @@ record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
 
 \begin{code}
 module Instructions where
-  module jalr (r₁ imm : ℕ) where
+  module jalr (r₁ r₂ : ℕ) where
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = {!!}
 
