@@ -226,7 +226,7 @@ module Instructions where
     record M : Set where
 
     M? : Dec M
-    M? = {!!}
+    M? = yes $ record {}
 
     module f {a} {A : Set a}
              (mx : M)
