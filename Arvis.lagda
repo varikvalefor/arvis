@@ -134,6 +134,12 @@ open import Function
   renaming (
     _|>_ to _▹_
   )
+open import Data.Bool
+  using (
+  )
+  renaming (
+    if_then_else_ to if
+  )
 open import Data.Unit
   using (
     tt;
@@ -158,6 +164,10 @@ open import Relation.Nullary
 open import Data.Vec.Properties
   as 𝕍P
   using (
+  )
+open import Truthbrary.Record.Eq
+  using (
+    _≡ᵇ_
   )
 open import Relation.Nullary.Decidable
   using (
@@ -209,8 +219,42 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0�
 \begin{code}
 module Instructions where
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
+    record M : Set where
+
+    M? : Dec M
+    M? = {!!}
+
+    module f {a} {A : Set a}
+             (mx : M)
+             (sk : Skami b r m A) where
+
+      rx : Vec (𝔽 $ ℕ.suc b) r
+      rx = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      *r₂' : 𝔽 $ ℕ.suc b
+      *r₂' = 𝕍.lookup rx r₂
+
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) {!!}
+
+      rx' : typeOf rx
+      rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
+
+      rc' : Rucyca'a b r
+      rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = {!!}}
+
+      f : Skami b r m A
+      f = record sk {pc = *r₂'; rucyca'a = rc'}
+
+    f = f.f
+
     jalr : ∀ {a} → {A : Set a} → Instruction A b r m
-    jalr = {!!}
+    jalr = record {
+      nibarda = {!!};
+      Mapti = M;
+      Mapti? = M?;
+      f = f
+      }
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
