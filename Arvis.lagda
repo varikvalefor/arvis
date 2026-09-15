@@ -275,6 +275,13 @@ module Instructions where
       dpc : *r₂ ≡ Skami.pc (Instruction.f jalr mx sk)
       dpc = _≡_.refl
 
+      drx : (r₄ : 𝔽 r)
+          → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
+          → ((_≡_ on (λ s → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a s) r₄))
+              sk
+              (Instruction.f jalr mx sk))
+      drx = {!!}
+
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
