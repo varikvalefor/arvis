@@ -219,16 +219,19 @@ module Instructions where
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
 
-    f : ∀ {a} → {A : Set a}
-      → {b r m : ℕ}
-      → M b r m
-      → Skami b r m A
-      → Skami b r m A
-    f {b = b} {r} {m} mx sk = record sk {pc = r₂'; rucyca'a = {!!}}
-      where
-      rx = Rucyca'a.reg $ Skami.rucyca'a sk
-      r₂' : 𝔽 $ ℕ.suc b
-      r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
+    module f {a} {A : Set a}
+             {b r m : ℕ}
+             (mx : M b r m)
+             (sk : Skami b r m A) where
+
+      f : Skami b r m A
+      f = record sk {pc = r₂'; rucyca'a = {!!}}
+        where
+        rx = Rucyca'a.reg $ Skami.rucyca'a sk
+        r₂' : 𝔽 $ ℕ.suc b
+        r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
+
+    f = f.f 
 
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = record {
