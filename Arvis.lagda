@@ -241,8 +241,8 @@ module Instructions where
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
-      *r₂' : 𝔽 $ ℕ.suc b
-      *r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
+      *r₂ : 𝔽 $ ℕ.suc b
+      *r₂ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) {!!}
@@ -254,7 +254,7 @@ module Instructions where
       rc' = record (Skami.rucyca'a sk) {reg = rx'}
 
       f : Skami b r m A
-      f = record sk {pc = *r₂'; rucyca'a = rc'}
+      f = record sk {pc = *r₂; rucyca'a = rc'}
 
     f = f.f
 
