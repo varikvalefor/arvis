@@ -210,6 +210,10 @@ record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
 
 \begin{code}
 module Instructions where
+  module jalr (r₁ imm : ℕ) where
+    jalr : ∀ {a} → {A : Set a} → Instruction A
+    jalr = {!!}
+
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
@@ -265,10 +269,6 @@ module Instructions where
 
       vdun : (_≡_ on Skami.vrici) sk' sk
       vdun = _≡_.refl
-
-  module jalr (r₁ imm : ℕ) where
-    jalr : ∀ {a} → {A : Set a} → Instruction A
-    jalr = {!!}
 
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
