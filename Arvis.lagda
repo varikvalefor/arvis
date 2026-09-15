@@ -266,6 +266,10 @@ module Instructions where
       vdun : (_≡_ on Skami.vrici) sk' sk
       vdun = _≡_.refl
 
+  module jalr (r₁ imm : ℕ) where
+    jalr : ∀ {a} → {A : Set a} → Instruction A
+    jalr = {!!}
+
   module add (r₁ r₂ r₃ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
