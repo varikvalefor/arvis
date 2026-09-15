@@ -224,10 +224,12 @@ module Instructions where
              (mx : M b r m)
              (sk : Skami b r m A) where
 
+      rx : Vec (𝔽 $ ℕ.suc b) r
+      rx = Rucyca'a.reg $ Skami.rucyca'a sk
+
       f : Skami b r m A
       f = record sk {pc = r₂'; rucyca'a = {!!}}
         where
-        rx = Rucyca'a.reg $ Skami.rucyca'a sk
         r₂' : 𝔽 $ ℕ.suc b
         r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
