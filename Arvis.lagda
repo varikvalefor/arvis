@@ -261,7 +261,7 @@ module Instructions where
           ud : f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡ f rx
           ud with 𝔽.fromℕ< ml ≟ r₁
           ... | yes d = {!!}
-          ... | no N = {!!}
+          ... | no N = 𝕍P.lookup∘updateAt′ _ _ N _
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
