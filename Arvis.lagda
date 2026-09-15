@@ -252,7 +252,8 @@ module Instructions where
         where
         d0 = Rucyca'a.x0 (Skami.rucyca'a sk) ml
         drx = _≡_.cong 𝔽.toℕ $ begin
-          f rx' ≡⟨ {!!} ⟩
+          f rx' ≡⟨ _≡_.refl ⟩
+          f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ {!!} ⟩
           f rx ∎
           where
           f = λ x → 𝕍.lookup x $ 𝔽.fromℕ< ml
