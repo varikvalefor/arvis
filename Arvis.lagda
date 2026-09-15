@@ -134,6 +134,12 @@ open import Function
   renaming (
     _|>_ to _▹_
   )
+open import Data.Bool
+  using (
+  )
+  renaming (
+    if_then_else_ to if
+  )
 open import Data.Unit
   using (
     tt;
@@ -158,6 +164,10 @@ open import Relation.Nullary
 open import Data.Vec.Properties
   as 𝕍P
   using (
+  )
+open import Truthbrary.Record.Eq
+  using (
+    _≡ᵇ_
   )
 open import Relation.Nullary.Decidable
   using (
@@ -230,8 +240,14 @@ module Instructions where
       r₂' : 𝔽 $ ℕ.suc b
       r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) {!!}
+
+      reg' : typeOf rx
+      reg' = 𝕍.updateAt (𝔽.fromℕ< $ M.m₁ mx) (λ _ → *r₁') rx
+
       rc' : Rucyca'a b r
-      rc' = record (Skami.rucyca'a sk) {reg = {!!}}
+      rc' = record (Skami.rucyca'a sk) {reg = reg'}
 
       f : Skami b r m A
       f = record sk {pc = r₂'; rucyca'a = rc'}
