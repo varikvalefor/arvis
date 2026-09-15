@@ -167,7 +167,8 @@ open import Data.Vec.Properties
   )
 open import Truthbrary.Record.Eq
   using (
-    _≡ᵇ_
+    _≡ᵇ_;
+    _≟_
   )
 open import Relation.Nullary.Decidable
   using (
@@ -241,7 +242,9 @@ module Instructions where
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 = {!!}
+      x0 ml with r ≟ 0
+      ... | yes d = {!!}
+      ... | no N = {!!}
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
