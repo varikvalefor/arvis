@@ -212,7 +212,7 @@ module Instructions where
     jalr : ∀ {a} → {A : Set a} → Instruction A b r m
     jalr = {!!}
 
-  module jr (b r m : ℕ) (r₁ : 𝔽.Fin r) where
+  module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
 
     nibarda : ℕ
