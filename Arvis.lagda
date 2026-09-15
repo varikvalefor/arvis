@@ -231,7 +231,7 @@ module Instructions where
         r₂' : 𝔽 $ ℕ.suc b
         r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
-    f = f.f 
+    f = f.f
 
     jalr : ∀ {a} → {A : Set a} → Instruction A
     jalr = record {
