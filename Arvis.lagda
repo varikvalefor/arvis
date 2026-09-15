@@ -248,10 +248,10 @@ module Instructions where
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = _≡_.sym $ _≡_.trans drx $ _≡_.sym d0
+      x0 ml = _≡_.sym $ _≡_.trans rxdun $ _≡_.sym d0
         where
         d0 = Rucyca'a.x0 (Skami.rucyca'a sk) ml
-        drx = _≡_.cong 𝔽.toℕ $ begin
+        rxdun = _≡_.cong 𝔽.toℕ $ begin
           f rx' ≡⟨ _≡_.refl ⟩
           f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ ud ⟩
           f rx ∎
