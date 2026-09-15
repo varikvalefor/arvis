@@ -248,11 +248,7 @@ module Instructions where
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml with 𝔽.toℕ r₁ ≟ 0
-      ... | yes d = _≡_.subst (λ f → 0 ≡ 𝔽.toℕ f) {!!} $ Rucyca'a.x0 rc ml
-        where
-        rc = Skami.rucyca'a sk
-      ... | no N = {!!}
+      x0 ml = _≡_.sym $ _≡_.trans {!!} $ _≡_.sym $ Rucyca'a.x0 (Skami.rucyca'a sk) ml
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
