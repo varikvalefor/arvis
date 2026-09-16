@@ -244,8 +244,11 @@ module Instructions where
       *r₂ : 𝔽 $ ℕ.suc b
       *r₂ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = {!!}
+
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) {!!}
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb
 
       rx' : typeOf rx
       rx' = 𝕍.updateAt (𝔽.fromℕ< $ M.m₁ mx) (λ _ → *r₁') rx
