@@ -292,6 +292,12 @@ module Instructions where
            → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
       drx' = {!!}
 
+      0-dro : r₁ ≡ 0
+            →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
+               sk
+               (Instruction.f jalr mx sk))
+      0-dro = {!!}
+
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
