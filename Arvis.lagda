@@ -167,10 +167,14 @@ open import Data.Vec.Properties
   )
 open import Truthbrary.Record.Eq
   using (
-    _≡ᵇ_
+    _≡ᵇ_;
+    _≟_;
+    Eq
   )
 open import Relation.Nullary.Decidable
   using (
+    isYes≗does;
+    dec-true;
     False
   )
 open import Relation.Binary.PropositionalEquality
@@ -241,11 +245,14 @@ module Instructions where
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
-      *r₂' : 𝔽 $ ℕ.suc b
-      *r₂' = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
+      *r₂ : 𝔽 $ ℕ.suc b
+      *r₂ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
+
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = {!!}
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) {!!}
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb
 
       rx' : typeOf rx
       rx' = 𝕍.updateAt (𝔽.fromℕ< $ M.m₁ mx) (λ _ → *r₁') rx
@@ -254,7 +261,7 @@ module Instructions where
       rc' = record (Skami.rucyca'a sk) {reg = rx'}
 
       f : Skami b r m A
-      f = record sk {pc = *r₂'; rucyca'a = rc'}
+      f = record sk {pc = *r₂; rucyca'a = rc'}
 
     f = f.f
 
@@ -265,6 +272,65 @@ module Instructions where
       Mapti? = M?;
       f = f
       }
+
+    module Veritas {a} {A : Set a}
+                   (b r m : ℕ)
+                   (mx : M b r m)
+                   (sk : Skami b r m A) where
+      open f mx sk
+
+      dpc : *r₂ ≡ Skami.pc (Instruction.f jalr mx sk)
+      dpc = _≡_.refl
+
+      drx : (r₄ : 𝔽 r)
+          → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
+          → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+            ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
+              sk
+              (Instruction.f jalr mx sk))
+      drx _ N = _≡_.sym $ 𝕍P.lookup∘updateAt′ _ _ N _
+
+      drx' : ¬_ $ r₁ ≡ 0
+           → (r₄ : 𝔽 r)
+           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
+               sk
+               (Instruction.f jalr mx sk))
+           → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
+      drx' = {!!}
+
+      0-dro : r₁ ≡ 0
+            →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
+               sk
+               (Instruction.f jalr mx sk))
+      0-dro d = _≡_.sym $ updateAt-id _ _ _ d'
+        where
+        d' = begin
+          *r₁'
+            ≡⟨ _≡_.refl ⟩
+          if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) _
+            ≡⟨ _≡_.cong (λ b → if b (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb) db ⟩
+          𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) (𝔽.fromℕ< $ M.m₁ mx) ∎
+          where
+          open _≡_.≡-Reasoning
+          db : r₁ ≡ᵇ 0 ≡ Data.Bool.true
+          db = ≡⇒≡ᵇ d
+            where
+            ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
+                 → ⦃ _ : Eq A ⦄
+                 → {x z : A}
+                 → x ≡ z
+                 → x ≡ᵇ z ≡ Data.Bool.true
+            ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (isYes≗does _) ∘ dec-true (x ≟ z)
+        updateAt-id : ∀ {a} → {A : Set a}
+                    → {n : ℕ}
+                    → (x : Vec A n)
+                    → (i : 𝔽 n)
+                    → (f : A → A)
+                    → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
+                    → 𝕍.updateAt i f x ≡ x
+        updateAt-id (x 𝕍.∷ xs) 𝔽.zero f d = {!!}
+        updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = {!!}
 
   module jr (r₁ : ℕ) where
     jr : ∀ {a} → {A : Set a} → Instruction A
@@ -279,7 +345,7 @@ module Instructions where
 
       sk' = f.f Mx sk
 
-      pc-r₁ : Skami.pc sk' ≡ *r₂'
+      pc-r₁ : Skami.pc sk' ≡ *r₂
       pc-r₁ = _≡_.refl
 
       rdun : Skami.rucyca'a sk' ≡ Skami.rucyca'a sk
