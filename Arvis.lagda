@@ -337,43 +337,26 @@ module Instructions where
                     → (f : A → A)
                     → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
                     → 𝕍.updateAt i f x ≡ x
-        updateAt-id = {!!}
+        updateAt-id (x 𝕍.∷ xs) 𝔽.zero f d = {!!}
+        updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = {!!}
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
 
-    nibarda : ℕ
-    nibarda = {!!}
-
-    module f {a} {A : Set a}
-             (mx : M)
-             (sk : Skami b r m A) where
-
-      rx : Vec (𝔽 $ ℕ.suc b) r
-      rx = Rucyca'a.reg $ Skami.rucyca'a sk
-
-      *r₁ : 𝔽 $ ℕ.suc b
-      *r₁ = 𝕍.lookup rx r₁
-
-      f : Skami b r m A
-      f = record sk {pc = *r₁}
-
-    f = f.f
-
-    M? : Dec M
-    M? = yes $ record {}
+    f0 : 𝔽 r
+    f0 = {!!}
 
     jr : ∀ {a} → {A : Set a} → Instruction A b r m
-    jr = record {
-      nibarda = nibarda;
-      Mapti = M ;
-      Mapti? = M?;
-      f = f}
+    jr = jalr.jalr b r m f0 r₁
 
     module Veritas {a} {A : Set a}
-                   (Mx : M)
+                   (Mx : jalr.M b r m f0 r₁)
                    (sk : Skami b r m A) where
+      open jalr b r m f0 r₁
       open f Mx sk
+        renaming (
+          *r₂ to *r₁
+        )
 
       sk' = f.f Mx sk
 
@@ -381,7 +364,7 @@ module Instructions where
       pc-r₁ = _≡_.refl
 
       rdun : Skami.rucyca'a sk' ≡ Skami.rucyca'a sk
-      rdun = _≡_.refl
+      rdun = {!!}
 
       mdun : (_≡_ on Skami.mem) sk' sk
       mdun = _≡_.refl
