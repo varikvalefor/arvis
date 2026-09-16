@@ -308,7 +308,33 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                (Instruction.f jalr mx sk))
-      0-dro = {!!}
+      0-dro d = _≡_.sym $ updateAt-id _ _ _ d'
+        where
+        d' = begin
+          *r₁'
+            ≡⟨ _≡_.refl ⟩
+          if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) _
+            ≡⟨ _≡_.cong (λ b → if b (𝕍.lookup rx r₁) pc+nb) db ⟩
+          𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ∎
+          where
+          open _≡_.≡-Reasoning
+          db : 𝔽.toℕ r₁ ≡ᵇ 0 ≡ Data.Bool.true
+          db = ≡⇒≡ᵇ d
+            where
+            ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
+                 → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
+                 → {x z : A}
+                 → x ≡ z
+                 → x ≡ᵇ z ≡ Data.Bool.true
+            ≡⇒≡ᵇ _≡_.refl = {!!}
+        updateAt-id : ∀ {a} → {A : Set a}
+                    → {n : ℕ}
+                    → (x : Vec A n)
+                    → (i : 𝔽 n)
+                    → (f : A → A)
+                    → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
+                    → 𝕍.updateAt i f x ≡ x
+        updateAt-id = {!!}
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
