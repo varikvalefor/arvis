@@ -299,7 +299,8 @@ module Instructions where
       0-dro d = _≡_.sym $ updateAt-id _ _ _ d'
         where
         d' = begin
-          *r₁' ≡⟨ _≡_.refl ⟩
+          *r₁'
+            ≡⟨ _≡_.refl ⟩
           if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx)
             _ ≡⟨ {!!} ⟩
           𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) (𝔽.fromℕ< $ M.m₁ mx) ∎
