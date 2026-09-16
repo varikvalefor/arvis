@@ -317,7 +317,7 @@ module Instructions where
                  → {x z : A}
                  → x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.true
-            ≡⇒≡ᵇ {x = x} {z} d = _≡_.trans (Relation.Nullary.Decidable.isYes≗does _) $ Relation.Nullary.Decidable.dec-true (x Truthbrary.Record.Eq.≟ z) d
+            ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (Relation.Nullary.Decidable.isYes≗does _) ∘ Relation.Nullary.Decidable.dec-true (x Truthbrary.Record.Eq.≟ z)
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
