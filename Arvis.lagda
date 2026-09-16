@@ -168,10 +168,13 @@ open import Data.Vec.Properties
 open import Truthbrary.Record.Eq
   using (
     _≡ᵇ_;
-    _≟_
+    _≟_;
+    Eq
   )
 open import Relation.Nullary.Decidable
   using (
+    isYes≗does;
+    dec-true;
     False
   )
 open import Relation.Binary.PropositionalEquality
@@ -322,11 +325,11 @@ module Instructions where
           db = ≡⇒≡ᵇ d
             where
             ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
-                 → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
+                 → ⦃ _ : Eq A ⦄
                  → {x z : A}
                  → x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.true
-            ≡⇒≡ᵇ _≡_.refl = {!!}
+            ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (isYes≗does _) ∘ dec-true (x ≟ z)
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
