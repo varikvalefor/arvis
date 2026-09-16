@@ -296,8 +296,13 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                (Instruction.f jalr mx sk))
-      0-dro d = _≡_.sym $ updateAt-id _ _ _ {!!}
+      0-dro d = _≡_.sym $ updateAt-id _ _ _ d'
         where
+        d' = begin
+          *r₁' ≡⟨ {!!} ⟩
+          𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) (𝔽.fromℕ< $ M.m₁ mx) ∎
+          where
+          open _≡_.≡-Reasoning
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
