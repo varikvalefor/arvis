@@ -283,7 +283,8 @@ module Instructions where
               (Instruction.f jalr mx sk))
       drx _ N = _≡_.sym $ 𝕍P.lookup∘updateAt′ _ _ N _
 
-      drx' : (r₄ : 𝔽 r)
+      drx' : ¬_ $ r₁ ≡ 0
+           → (r₄ : 𝔽 r)
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
              ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
                sk
