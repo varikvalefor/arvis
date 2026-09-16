@@ -296,7 +296,16 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                (Instruction.f jalr mx sk))
-      0-dro = {!!}
+      0-dro = λ d → _≡_.sym $ updateAt-id _ _ _ {!!}
+        where
+        updateAt-id : ∀ {a} → {A : Set a}
+                    → {n : ℕ}
+                    → (x : Vec A n)
+                    → (i : 𝔽 n)
+                    → (f : A → A)
+                    → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
+                    → 𝕍.updateAt i f x ≡ x
+        updateAt-id = {!!}
 
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
