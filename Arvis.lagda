@@ -283,6 +283,14 @@ module Instructions where
               (Instruction.f jalr mx sk))
       drx _ N = _≡_.sym $ 𝕍P.lookup∘updateAt′ _ _ N _
 
+      drx' : (r₄ : 𝔽 r)
+           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
+               sk
+               (Instruction.f jalr mx sk))
+           → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
+      drx' = {!!}
+
   module jr (r₁ : ℕ) where
     record M (b r _ : ℕ) : Set where
       field
