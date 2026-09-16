@@ -296,7 +296,7 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                (Instruction.f jalr mx sk))
-      0-dro = λ d → _≡_.sym $ updateAt-id _ _ _ {!!}
+      0-dro d = _≡_.sym $ updateAt-id _ _ _ {!!}
         where
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
