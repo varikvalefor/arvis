@@ -342,10 +342,13 @@ module Instructions where
                    (sk : Skami b r m A) where
       open jalr 0 r₁
       open f Mx sk
+        renaming (
+          *r₂ to *r₁
+        )
 
       sk' = f.f Mx sk
 
-      pc-r₁ : Skami.pc sk' ≡ *r₂
+      pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = _≡_.refl
 
       rdun : Skami.rucyca'a sk' ≡ Skami.rucyca'a sk
