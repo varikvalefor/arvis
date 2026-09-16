@@ -171,6 +171,8 @@ open import Truthbrary.Record.Eq
   )
 open import Relation.Nullary.Decidable
   using (
+    isYes≗does;
+    dec-true;
     False
   )
 open import Relation.Binary.PropositionalEquality
@@ -317,7 +319,7 @@ module Instructions where
                  → {x z : A}
                  → x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.true
-            ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (Relation.Nullary.Decidable.isYes≗does _) ∘ Relation.Nullary.Decidable.dec-true (x Truthbrary.Record.Eq.≟ z)
+            ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (isYes≗does _) ∘ dec-true (x Truthbrary.Record.Eq.≟ z)
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
