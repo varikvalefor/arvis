@@ -480,11 +480,14 @@ module Instructions where
     M : (b r m : ℕ) → Set
     M = {!!}
 
+    M? : (b r m : ℕ) → Dec $ M b r m
+    M? = {!!}
+
     slli : ∀ {a} → {A : Set a} → Instruction A
     slli = record {
       nibarda = nibarda;
       Mapti = M;
-      Mapti? = {!!};
+      Mapti? = M?;
       f = {!!}
       }
 
