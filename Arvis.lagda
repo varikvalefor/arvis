@@ -491,11 +491,29 @@ module Instructions where
              (mx : M b r m)
              (sk : Skami b r m A) where
 
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg $ Skami.rucyca'a sk
+
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
+      r₁' : 𝔽 r
+      r₁' = 𝔽.fromℕ< $ M.m₁ mx
+
+      r₂' : 𝔽 r
+      r₂' = 𝔽.fromℕ< $ M.m₂ mx
+
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = (𝔽.toℕ (𝕍.lookup reg r₂') ℕ.* (2 ℕ.^ imm)) mod _
+
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = 𝕍.updateAt r₁' (λ _ → *r₁') reg
+
+      rc' : Rucyca'a b r
+      rc' = record (Skami.rucyca'a sk) {reg = reg'}
+
       f : Skami b r m A
-      f = record sk {pc = pc+nb; rucyca'a = {!!}}
+      f = record sk {pc = pc+nb; rucyca'a = rc'}
 
     slli : ∀ {a} → {A : Set a} → Instruction A
     slli = record {
