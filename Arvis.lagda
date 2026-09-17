@@ -477,10 +477,13 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
+    M : (b r m : ℕ) → Set
+    M = {!!}
+
     slli : ∀ {a} → {A : Set a} → Instruction A
     slli = record {
       nibarda = nibarda;
-      Mapti = {!!};
+      Mapti = M;
       Mapti? = {!!};
       f = {!!}
       }
