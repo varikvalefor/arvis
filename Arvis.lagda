@@ -475,7 +475,12 @@ module Instructions where
 
   module slli (r₁ r₂ imm : ℕ) where
     slli : ∀ {a} → {A : Set a} → Instruction A
-    slli = {!!}
+    slli = record {
+      nibarda = {!!};
+      Mapti = {!!};
+      Mapti? = {!!};
+      f = {!!}
+      }
 
   slli = slli.slli
 
