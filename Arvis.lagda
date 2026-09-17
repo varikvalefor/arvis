@@ -484,7 +484,13 @@ module Instructions where
         m₂ : r₂ < r
 
     M? : (b r m : ℕ) → Dec $ M b r m
-    M? = {!!}
+    M? b r _ with r₁ <? r | r₂ <? r
+    ... | yes m₁ | yes m₂ = yes $ record {
+      m₁ = m₁;
+      m₂ = m₂
+      }
+    ... | no m₁ | _ = no $ m₁ ∘ M.m₁
+    ... | _ | no m₂ = no $ m₂ ∘ M.m₂
 
     module f {a} {A : Set a}
              {b r m : ℕ}
