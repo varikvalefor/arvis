@@ -481,7 +481,7 @@ module Instructions where
       exp = (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % 32))) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ $ exp
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ exp
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
       reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
