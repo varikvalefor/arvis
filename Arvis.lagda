@@ -477,8 +477,11 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    M : (b r m : ℕ) → Set
-    M = {!!}
+    record M (b r m : ℕ) : Set
+      where
+      field
+        m₁ : r₁ < r
+        m₂ : r₂ < r
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
