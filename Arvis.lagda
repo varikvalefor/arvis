@@ -483,12 +483,20 @@ module Instructions where
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
 
+    module f {a} {A : Set a}
+             {b r m : ℕ}
+             (mx : M b r m)
+             (sk : Skami b r m A) where
+
+      f : Skami b r m A
+      f = {!!}
+
     slli : ∀ {a} → {A : Set a} → Instruction A
     slli = record {
       nibarda = nibarda;
       Mapti = M;
       Mapti? = M?;
-      f = {!!}
+      f = f.f
       }
 
   slli = slli.slli
