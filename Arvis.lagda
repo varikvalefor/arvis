@@ -474,9 +474,12 @@ module Instructions where
   add = add.add
 
   module slli (r₁ r₂ imm : ℕ) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     slli : ∀ {a} → {A : Set a} → Instruction A
     slli = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = {!!};
       Mapti? = {!!};
       f = {!!}
