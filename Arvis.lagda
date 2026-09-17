@@ -473,6 +473,12 @@ module Instructions where
 
   add = add.add
 
+  module slli (r₁ r₂ imm : ℕ) where
+    slli : ∀ {a} → {A : Set a} → Instruction A
+    slli = {!!}
+
+  slli = slli.slli
+
   module mv (r₁ r₂ : ℕ) where
     mv : ∀ {a} → {A : Set a} → Instruction A
     mv = record {
