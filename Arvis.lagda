@@ -152,7 +152,8 @@ open import Data.Product
   )
 open import Data.Nat.DivMod
   using (
-    _mod_
+    _mod_;
+    _%_
   )
 open import Relation.Nullary
   using (
@@ -510,7 +511,7 @@ module Instructions where
       r₂' = 𝔽.fromℕ< $ M.m₂ mx
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = (𝔽.toℕ (𝕍.lookup reg r₂') ℕ.* (2 ℕ.^ (imm Data.Nat.DivMod.% 32))) mod _
+      *r₁' = (𝔽.toℕ (𝕍.lookup reg r₂') ℕ.* (2 ℕ.^ (imm % 32))) mod _
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
       reg' = 𝕍.updateAt r₁' (λ _ → *r₁') reg
