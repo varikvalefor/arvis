@@ -474,8 +474,11 @@ module Instructions where
       *r₂ : 𝔽 $ ℕ.suc b
       *r₂ = 𝕍.lookup reg r₂
 
+      *r₁ : 𝔽 $ ℕ.suc b
+      *r₁ = 𝕍.lookup reg r₁
+
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % 32))) mod _
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ $ (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % 32))) mod _
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
       reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
