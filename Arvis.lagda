@@ -152,7 +152,8 @@ open import Data.Product
   )
 open import Data.Nat.DivMod
   using (
-    _mod_
+    _mod_;
+    _%_
   )
 open import Relation.Nullary
   using (
@@ -449,6 +450,58 @@ module Instructions where
         open f mx sk
 
   add = add.add
+
+  module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ ℕ.suc b) where
+    nibarda : ℕ
+    nibarda = {!!}
+
+    record M : Set
+      where
+
+    M? : Dec M
+    M? = yes $ record {}
+
+    module f {a} {A : Set a}
+             (mx : M)
+             (sk : Skami b r m A) where
+
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
+
+      *r₂ : 𝔽 $ ℕ.suc b
+      *r₂ = 𝕍.lookup reg r₂
+
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % 32))) mod _
+
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
+
+      rc' : Rucyca'a b r
+      rc' = record (Skami.rucyca'a sk) {reg = reg'; x0 = {!!}}
+
+      f : Skami b r m A
+      f = record sk {pc = pc+nb; rucyca'a = rc'}
+
+    slli : ∀ {a} → {A : Set a} → Instruction A b r m
+    slli = record {
+      nibarda = nibarda;
+      Mapti = M;
+      Mapti? = M?;
+      f = f.f
+      }
+
+    module Veritas {a} {A : Set a}
+                   (mx : M)
+                   (sk : Skami b r m A) where
+
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
+  slli = slli.slli
 
   module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
