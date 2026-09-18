@@ -181,6 +181,7 @@ open import Relation.Nullary.Decidable
 open import Relation.Binary.PropositionalEquality
   as _≡_
   using (
+    cong;
     _≡_
   )
 \end{code}
@@ -251,7 +252,7 @@ module Instructions where
       x0 ml = _≡_.sym $ _≡_.trans rxdun $ _≡_.sym d0
         where
         d0 = Rucyca'a.x0 (Skami.rucyca'a sk) ml
-        rxdun = _≡_.cong 𝔽.toℕ $ begin
+        rxdun = cong 𝔽.toℕ $ begin
           f rx' ≡⟨ _≡_.refl ⟩
           f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ ud ⟩
           f rx ∎
@@ -314,7 +315,7 @@ module Instructions where
           *r₁'
             ≡⟨ _≡_.refl ⟩
           if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) _
-            ≡⟨ _≡_.cong (λ b → if b (𝕍.lookup rx r₁) pc+nb) db ⟩
+            ≡⟨ cong (λ b → if b (𝕍.lookup rx r₁) pc+nb) db ⟩
           𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ∎
           where
           open _≡_.≡-Reasoning
@@ -342,7 +343,7 @@ module Instructions where
                     → (f : A → A)
                     → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
                     → 𝕍.updateAt i f x ≡ x
-        updateAt-id (x 𝕍.∷ _) 𝔽.zero f d = _≡_.cong (𝕍._∷ _) d
+        updateAt-id (x 𝕍.∷ _) 𝔽.zero f d = cong (𝕍._∷ _) d
         updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = 𝕍cong _≡_.refl rd
           where
           rd = updateAt-id (x₁ 𝕍.∷ xs) i f d
