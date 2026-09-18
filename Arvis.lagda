@@ -328,14 +328,6 @@ module Instructions where
                  → x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.true
             ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (isYes≗does _) ∘ dec-true (x ≟ z)
-        𝕍cong : ∀ {a} → {A : Set a}
-              → {n : ℕ}
-              → {x z : A}
-              → {xs zs : Vec A n}
-              → x ≡ z
-              → xs ≡ zs
-              → (x 𝕍.∷ xs) ≡ (z 𝕍.∷ zs)
-        𝕍cong _≡_.refl _≡_.refl = _≡_.refl
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
