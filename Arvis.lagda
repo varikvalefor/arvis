@@ -204,7 +204,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
   field
     pc : 𝔽 $ ℕ.suc b
     rucyca'a : Rucyca'a b r
-    mem : Vec (𝔽 b) m
+    mem : Vec (𝔽 $ ℕ.suc b) m
     vrici : A
     Ecall : typeOf rucyca'a
           → typeOf mem
