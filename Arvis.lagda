@@ -549,6 +549,10 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
+      dun : ¬_ $ r₁ ≡ 0
+          → 𝕍.lookup (f.reg' mx sk) (f.r₁' mx sk) ≡ (f.exp mx sk)
+      dun = {!!}
+
   slli = slli.slli
 
   module mv (r₁ r₂ : ℕ) where
