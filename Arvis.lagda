@@ -634,6 +634,9 @@ module Instructions where
         open _≡_.≡-Reasoning
 
   module addi (r₁ r₂ i : ℕ) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     M : (b r m : ℕ) → Set
     M = {!!}
 
@@ -648,7 +651,7 @@ module Instructions where
 
     addi : ∀ {a} → (A : Set a) → Instruction A
     addi = λ A → record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = M;
       Mapti? = {!!};
       f = f
