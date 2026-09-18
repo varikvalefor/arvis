@@ -206,10 +206,6 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
     rucyca'a : Rucyca'a b r
     mem : Vec (𝔽 $ ℕ.suc b) m
     vrici : A
-    Ecall : typeOf rucyca'a
-          → typeOf mem
-          → typeOf vrici
-          → Skami b r m A
 \end{code}
 
 \section{le co'e ja midnoi se ctaipe}
