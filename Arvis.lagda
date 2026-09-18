@@ -546,11 +546,13 @@ module Instructions where
                    (mx : M b r m)
                    (sk : Skami b r m A) where
 
+      open f mx sk
+
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
       dun : ¬_ $ r₁ ≡ 0
-          → 𝕍.lookup (f.reg' mx sk) (f.r₁' mx sk) ≡ (f.exp mx sk)
+          → 𝕍.lookup reg' r₁' ≡ exp
       dun = {!!}
 
   slli = slli.slli
