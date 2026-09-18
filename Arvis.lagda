@@ -555,19 +555,24 @@ module Instructions where
       }
 
   module mul (r₁ r₂ r₃ : ℕ) where
-    f : {b r m : ℕ} → add.M r₁ r₂ r₃ b r m → Rucyca'a b r → Rucyca'a b r
-    f {b} {r} {m} M rx = record rx {reg = xd}
-      where
-      reg = Rucyca'a.reg rx
-      xd = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
+    module f {b r m : ℕ}
+             (M : add.M r₁ r₂ r₃ b r m)
+             (rx : Rucyca'a b r) where
+
+      f = record rx {reg = xd}
         where
-        open add.M M
-        r₁' = 𝔽.fromℕ< m₁
-        r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
+        reg = Rucyca'a.reg rx
+        xd = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
           where
-          r₂' = 𝔽.fromℕ< m₂
-          r₃' = 𝔽.fromℕ< m₃
-          l = 𝔽.toℕ ∘ 𝕍.lookup reg
+          open add.M M
+          r₁' = 𝔽.fromℕ< m₁
+          r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
+            where
+            r₂' = 𝔽.fromℕ< m₂
+            r₃' = 𝔽.fromℕ< m₃
+            l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
+    f = f.f
 
     nibarda : ℕ
     nibarda = {!!}
