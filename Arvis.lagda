@@ -477,7 +477,7 @@ module Instructions where
       *r₁ = 𝕍.lookup reg r₁
 
       exp : 𝔽 $ ℕ.suc b
-      exp = (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % 32))) mod _
+      exp = (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % ℕ.suc b))) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ exp
@@ -503,8 +503,14 @@ module Instructions where
                    (mx : M)
                    (sk : Skami b r m A) where
 
+      open f mx sk
+
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
+
+      dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → 𝕍.lookup reg' r₁ ≡ exp
+      dun = {!!}
 
   slli = slli.slli
 
