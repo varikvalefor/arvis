@@ -479,15 +479,18 @@ module Instructions where
       field
         m₁ : r₁ < r
         m₂ : r₂ < r
+        mi : imm < ℕ.suc b
 
     M? : (b r m : ℕ) → Dec $ M b r m
-    M? b r _ with r₁ <? r | r₂ <? r
-    ... | yes m₁ | yes m₂ = yes $ record {
+    M? b r _ with r₁ <? r | r₂ <? r | imm <? ℕ.suc b
+    ... | yes m₁ | yes m₂ | yes mi = yes $ record {
       m₁ = m₁;
-      m₂ = m₂
+      m₂ = m₂;
+      mi = mi
       }
-    ... | no m₁ | _ = no $ m₁ ∘ M.m₁
-    ... | _ | no m₂ = no $ m₂ ∘ M.m₂
+    ... | no m₁ | _ | _ = no $ m₁ ∘ M.m₁
+    ... | _ | no m₂ | _ = no $ m₂ ∘ M.m₂
+    ... | _ | _ | no mi = no $ mi ∘ M.mi
 
     module f {a} {A : Set a}
              {b r m : ℕ}
