@@ -477,8 +477,7 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    record M (b r m : ℕ) : Set
-      where
+    record M (b r m : ℕ) : Set where
       field
         m₁ : r₁ < r
         m₂ : r₂ < r
