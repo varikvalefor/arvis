@@ -656,5 +656,13 @@ module Instructions where
       Mapti? = {!!};
       f = f
       }
+
+    module Veritas {a} {A : Set a}
+                   (b r m : ℕ)
+                   (mx : M b r m)
+                   (sk : Skami b r m A) where
+
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
 \end{code}
 \end{document}
