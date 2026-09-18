@@ -319,6 +319,14 @@ module Instructions where
                  → x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.true
             ≡⇒≡ᵇ {x = x} {z} = _≡_.trans (isYes≗does _) ∘ dec-true (x ≟ z)
+        𝕍cong : ∀ {a} → {A : Set a}
+              → {n : ℕ}
+              → {x z : A}
+              → {xs zs : Vec A n}
+              → x ≡ z
+              → xs ≡ zs
+              → (x 𝕍.∷ xs) ≡ (z 𝕍.∷ zs)
+        𝕍cong = {!!}
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
@@ -326,7 +334,7 @@ module Instructions where
                     → (f : A → A)
                     → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
                     → 𝕍.updateAt i f x ≡ x
-        updateAt-id (x 𝕍.∷ xs) 𝔽.zero f d = {!!}
+        updateAt-id (x 𝕍.∷ xs) 𝔽.zero f d = 𝕍cong d {!!}
         updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = {!!}
 
   module jr (r₁ : ℕ) where
