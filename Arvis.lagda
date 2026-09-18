@@ -326,7 +326,7 @@ module Instructions where
               → x ≡ z
               → xs ≡ zs
               → (x 𝕍.∷ xs) ≡ (z 𝕍.∷ zs)
-        𝕍cong = {!!}
+        𝕍cong = λ {_≡_.refl _≡_.refl → _≡_.refl}
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
