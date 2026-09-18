@@ -454,8 +454,7 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    record M : Set
-      where
+    record M : Set where
 
     M? : Dec M
     M? = yes $ record {}
