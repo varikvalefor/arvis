@@ -202,12 +202,8 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
   field
     pc : 𝔽 $ ℕ.suc b
     rucyca'a : Rucyca'a b r
-    mem : Vec (𝔽 b) m
+    mem : Vec (𝔽 $ ℕ.suc b) m
     vrici : A
-    Ecall : typeOf rucyca'a
-          → typeOf mem
-          → typeOf vrici
-          → Skami b r m A
 \end{code}
 
 \section{le co'e ja midnoi se ctaipe}
@@ -519,16 +515,20 @@ module Instructions where
       }
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    f : add.M b r mx r₁ r₂ r₃ → Rucyca'a b r → Rucyca'a b r
-    f M rx = record rx {reg = xd; x0 = {!!}}
-      where
-      reg = Rucyca'a.reg rx
-      xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
+    module f (M : add.M b r mx r₁ r₂ r₃)
+             (rx : Rucyca'a b r) where
+      f : Rucyca'a b r
+      f = record rx {reg = xd; x0 = {!!}}
         where
-        open add.M M
-        r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
+        reg = Rucyca'a.reg rx
+        xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
           where
-          l = 𝔽.toℕ ∘ 𝕍.lookup reg
+          open add.M M
+          r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
+            where
+            l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
+    f = f.f
 
     nibarda : ℕ
     nibarda = {!!}
@@ -581,6 +581,9 @@ module Instructions where
         open _≡_.≡-Reasoning
 
   module addi (b r mx : ℕ) (r₁ r₂ i : ℕ) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     M : Set
     M = {!!}
 
@@ -594,10 +597,17 @@ module Instructions where
 
     addi : ∀ {a} → (A : Set a) → Instruction A b r mx
     addi = λ A → record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = M;
       Mapti? = {!!};
       f = f
       }
+
+    module Veritas {a} {A : Set a}
+                   (m : M)
+                   (sk : Skami b r mx A) where
+
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
 \end{code}
 \end{document}
