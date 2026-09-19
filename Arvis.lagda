@@ -511,7 +511,8 @@ module Instructions where
           → 𝕍.lookup reg' r₁ ≡ exp
       dun = λ N → begin
         𝕍.lookup reg' r₁ ≡⟨ {!!} ⟩
-        *r₁' ≡⟨ {!!} ⟩
+        *r₁' ≡⟨ _≡_.refl ⟩
+        if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ exp ≡⟨ {!!} ⟩
         exp ∎
         where
         open _≡_.≡-Reasoning
