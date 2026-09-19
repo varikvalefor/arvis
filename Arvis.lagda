@@ -521,11 +521,13 @@ module Instructions where
   module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
     mv {A = A} = record {
-      nibarda = Instruction.nibarda {A = A} $ add b r mx r₁ r₂ {!!}; -- 0
-      Mapti = add.M b r mx _ _ {!!};
+      nibarda = Instruction.nibarda {A = A} ad;
+      Mapti = add.M _ _ _ _ _ _;
       Mapti? = add.M? _ _ _ _ _ _;
-      f = Instruction.f $ add b r mx r₁ r₂ {!!} -- 0
+      f = Instruction.f ad
       }
+      where
+      ad = add b r mx r₁ r₂ {!!} -- 0
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     module f (M : add.M b r mx r₁ r₂ r₃)
@@ -534,11 +536,13 @@ module Instructions where
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg rx
 
+      r₂*r₃ : 𝔽 $ ℕ.suc b
       r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
         where
         open add.M M
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
+      f : Rucyca'a b r
       f = record rx {reg = xd; x0 = {!!}}
         where
         xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
