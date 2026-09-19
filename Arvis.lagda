@@ -589,11 +589,13 @@ module Instructions where
       r₂' : 𝔽 r
       r₂' = 𝔽.fromℕ< $ M .add.M.m₂
 
+      r₃' : 𝔽 r
+      r₃' = 𝔽.fromℕ< $ M .add.M.m₃
+
       r₂*r₃ : 𝔽 $ ℕ.suc b
       r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
         where
         open add.M M
-        r₃' = 𝔽.fromℕ< m₃
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
       f : Rucyca'a b r
