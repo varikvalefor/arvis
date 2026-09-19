@@ -552,7 +552,11 @@ module Instructions where
 
       dun : ¬_ $ r₁ ≡ 0
           → 𝕍.lookup reg' r₁' ≡ exp
-      dun = {!!}
+      dun = λ N → begin
+        𝕍.lookup reg' r₁' ≡⟨ {!!} ⟩
+        exp ∎
+        where
+        open _≡_.≡-Reasoning
 
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
