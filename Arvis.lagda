@@ -511,12 +511,17 @@ module Instructions where
           → 𝕍.lookup reg' r₁ ≡ exp
       dun = {!!}
 
+      dun' : (r₄ : 𝔽 _)
+           → ¬_ $ 𝔽.toℕ r₄ ≡ 𝔽.toℕ r₁
+           → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
+      dun' = {!!}
+
   slli = slli.slli
 
   module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
-    mv = record {
-      nibarda = {!!};
+    mv {A = A} = record {
+      nibarda = Instruction.nibarda {A = A} $ add b r mx r₁ r₂ {!!}; -- 0
       Mapti = add.M b r mx _ _ {!!};
       Mapti? = add.M? _ _ _ _ _ _;
       f = Instruction.f $ add b r mx r₁ r₂ {!!} -- 0
@@ -525,16 +530,18 @@ module Instructions where
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     module f (M : add.M b r mx r₁ r₂ r₃)
              (rx : Rucyca'a b r) where
-      f : Rucyca'a b r
+
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg rx
+
+      r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
+        where
+        open add.M M
+        l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
       f = record rx {reg = xd; x0 = {!!}}
         where
-        reg = Rucyca'a.reg rx
         xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
-          where
-          open add.M M
-          r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
-            where
-            l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
     f = f.f
 
