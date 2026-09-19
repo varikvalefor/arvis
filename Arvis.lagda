@@ -512,7 +512,7 @@ module Instructions where
       dun = λ N → begin
         𝕍.lookup reg' r₁ ≡⟨ {!!} ⟩
         *r₁' ≡⟨ _≡_.refl ⟩
-        if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ exp ≡⟨ {!!} ⟩
+        if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ exp ≡⟨ cong (λ b → if b *r₁ exp) {!!} ⟩
         exp ∎
         where
         open _≡_.≡-Reasoning
