@@ -398,11 +398,11 @@ module Instructions where
         where
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
+      r2d2 : Vec (𝔽 $ ℕ.suc b) r
+      r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+
       rc : Rucyca'a b r
       rc = record rx {reg = r2d2}
-        where
-        r2d2 : Vec (𝔽 $ ℕ.suc b) r
-        r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
 
       f : Skami b r m A
       f = record sk {rucyca'a = rc; pc = pc'}
