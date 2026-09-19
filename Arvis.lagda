@@ -406,8 +406,6 @@ module Instructions where
           where
           r2d2 : Vec (𝔽 $ ℕ.suc b) r
           r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
-            where
-            open M mx
 
     f = f.f
 
