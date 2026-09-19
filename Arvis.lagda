@@ -394,17 +394,16 @@ module Instructions where
       r₂+r₃ : 𝔽 $ ℕ.suc b
       r₂+r₃ = _mod_ (l r₂ ℕ.+ l r₃) (ℕ.suc b)
         where
-        open M mx
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
+
+      r2d2 : Vec (𝔽 $ ℕ.suc b) r
+      r2d2 = 𝕍.updateAt r₁ (λ _ → r₂+r₃) reg
+
+      rc : Rucyca'a b r
+      rc = record rx {reg = r2d2; x0 = {!!}}
 
       f : Skami b r m A
       f = record sk {rucyca'a = rc; pc = pc'}
-        where
-        rc : Rucyca'a b r
-        rc = record rx {reg = r2d2; x0 = {!!}}
-          where
-          r2d2 : Vec (𝔽 $ ℕ.suc b) r
-          r2d2 = 𝕍.updateAt r₁ (λ _ → r₂+r₃) reg
 
     f = f.f
 
