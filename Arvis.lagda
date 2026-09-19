@@ -554,6 +554,7 @@ module Instructions where
           → 𝕍.lookup reg' r₁' ≡ exp
       dun = λ N → begin
         𝕍.lookup reg' r₁' ≡⟨ {!!} ⟩
+        *r₁' ≡⟨ {!!} ⟩
         exp ∎
         where
         open _≡_.≡-Reasoning
