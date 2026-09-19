@@ -580,6 +580,7 @@ module Instructions where
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg rx
 
+      r₂*r₃ : 𝔽 $ ℕ.suc b
       r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
         where
         open add.M M
