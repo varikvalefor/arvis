@@ -564,11 +564,13 @@ module Instructions where
   module mv (r₁ r₂ : ℕ) where
     mv : ∀ {a} → {A : Set a} → Instruction A
     mv {A = A} = record {
-      nibarda = Instruction.nibarda {A = A} $ add r₁ r₂ 0;
+      nibarda = Instruction.nibarda {A = A} ad;
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
-      f = Instruction.f $ add r₁ r₂ 0
+      f = Instruction.f ad
       }
+      where
+      ad = add r₁ r₂ 0
 
   module mul (r₁ r₂ r₃ : ℕ) where
     module f {b r m : ℕ}
