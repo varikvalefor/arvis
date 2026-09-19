@@ -554,6 +554,11 @@ module Instructions where
           → 𝕍.lookup reg' r₁' ≡ exp
       dun = {!!}
 
+      dun' : (r₄ : 𝔽 _)
+           → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
+           → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
+      dun' = {!!}
+
   slli = slli.slli
 
   module mv (r₁ r₂ : ℕ) where
