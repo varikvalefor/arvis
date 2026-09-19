@@ -563,8 +563,8 @@ module Instructions where
 
   module mv (r₁ r₂ : ℕ) where
     mv : ∀ {a} → {A : Set a} → Instruction A
-    mv = record {
-      nibarda = {!!};
+    mv {A = A} = record {
+      nibarda = Instruction.nibarda {A = A} $ add r₁ r₂ 0;
       Mapti = add.M _ _ _;
       Mapti? = add.M? _ _ _;
       f = Instruction.f $ add r₁ r₂ 0
