@@ -398,6 +398,9 @@ module Instructions where
         where
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') r₂+r₃
+
       r2d2 : Vec (𝔽 $ ℕ.suc b) r
       r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
 
