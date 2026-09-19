@@ -396,7 +396,6 @@ module Instructions where
       r₂+r₃ : 𝔽 $ ℕ.suc b
       r₂+r₃ = _mod_ (l r₂' ℕ.+ l r₃') (ℕ.suc b)
         where
-        open M mx
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
       f : Skami b r m A
