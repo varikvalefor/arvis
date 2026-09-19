@@ -586,11 +586,13 @@ module Instructions where
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg rx
 
+      r₂' : 𝔽 r
+      r₂' = 𝔽.fromℕ< $ M .add.M.m₂
+
       r₂*r₃ : 𝔽 $ ℕ.suc b
       r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
         where
         open add.M M
-        r₂' = 𝔽.fromℕ< m₂
         r₃' = 𝔽.fromℕ< m₃
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
