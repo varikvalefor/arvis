@@ -575,19 +575,18 @@ module Instructions where
              (M : add.M r₁ r₂ r₃ b r m)
              (rx : Rucyca'a b r) where
 
-      reg : Vec (𝔽 $ ℕ.suc b) r
-      reg = Rucyca'a.reg rx
-
-      r₂*r₃ : 𝔽 $ ℕ.suc b
       r₂*r₃ = (l r₂' ℕ.* l r₃') mod ℕ.suc b
         where
         open add.M M
         r₂' = 𝔽.fromℕ< m₂
         r₃' = 𝔽.fromℕ< m₃
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
+          where
+          reg = Rucyca'a.reg rx
 
       f = record rx {reg = xd}
         where
+        reg = Rucyca'a.reg rx
         xd = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
           where
           open add.M M
