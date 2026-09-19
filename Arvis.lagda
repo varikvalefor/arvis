@@ -587,6 +587,7 @@ module Instructions where
         r₃' = 𝔽.fromℕ< m₃
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
+      f : Rucyca'a b r
       f = record rx {reg = xd}
         where
         xd = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
