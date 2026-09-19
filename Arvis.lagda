@@ -192,9 +192,6 @@ open import Relation.Binary.PropositionalEquality
 record Rucyca'a (b r : ℕ) : Set where
   field
     reg : Vec (𝔽 $ ℕ.suc b) r
-
-  x0 : 𝔽 $ ℕ.suc b
-  x0 = 𝔽.zero
 \end{code}
 
 \section{le skami se ctaipe}
