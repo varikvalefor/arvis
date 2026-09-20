@@ -267,6 +267,8 @@ module Instructions where
               ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → f $ 𝕍.updateAt d _ _) ⟩
             f (𝕍.updateAt (𝔽.fromℕ< ml) (λ _ → *r₁') rx)
               ≡⟨ {!!} ⟩
+            if (𝔽.toℕ (𝔽.fromℕ< ml) ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
+              ≡⟨ {!!} ⟩
             if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
               ≡⟨ {!!} ⟩
             f rx ∎
