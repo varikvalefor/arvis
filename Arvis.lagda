@@ -265,6 +265,8 @@ module Instructions where
           ... | yes d = begin
             f (𝕍.updateAt r₁ (λ _ → *r₁') rx)
               ≡⟨ {!!} ⟩
+            if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
+              ≡⟨ {!!} ⟩
             f rx ∎
 
       rc' : Rucyca'a b r
