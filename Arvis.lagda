@@ -551,8 +551,6 @@ module Instructions where
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
       reg' = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
-        where
-        open add.M M
 
       f : Rucyca'a b r
       f = record rx {reg = reg'; x0 = {!!}}
