@@ -272,12 +272,14 @@ module Instructions where
             if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
               ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) (𝕍.lookup rx d) pc+nb) ⟩
             if (𝔽.toℕ (𝔽.fromℕ< ml) ≡ᵇ 0) (𝕍.lookup rx (𝔽.fromℕ< ml)) pc+nb
-              ≡⟨ {!!} ⟩
+              ≡⟨ 𝔽P.toℕ-fromℕ< _ ▹ cong (λ d → if (d ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< ml) pc+nb) ⟩
             f rx ∎
             where
             lud : (x : Vec (𝔽 $ ℕ.suc b) _)
                 → f x ≡ 𝕍.lookup x r₁
             lud = {!!}
+            import Data.Fin.Properties
+              as 𝔽P
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
