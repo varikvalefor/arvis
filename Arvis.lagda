@@ -264,14 +264,20 @@ module Instructions where
           ... | no N = 𝕍P.lookup∘updateAt′ _ _ N _
           ... | yes d = begin
             f (𝕍.updateAt r₁ (λ _ → *r₁') rx)
-              ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → f $ 𝕍.updateAt d _ _) ⟩
-            f (𝕍.updateAt (𝔽.fromℕ< ml) (λ _ → *r₁') rx)
               ≡⟨ {!!} ⟩
-            if (𝔽.toℕ (𝔽.fromℕ< ml) ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
+            𝕍.lookup (𝕍.updateAt r₁ (λ _ → *r₁') rx) r₁
+              ≡⟨ 𝕍P.lookup∘updateAt r₁ {f = λ _ → *r₁'} rx ⟩
+            *r₁'
+              ≡⟨ {!!} ⟩
+            if (𝔽.toℕ (𝔽.fromℕ< ml) ≡ᵇ 0) (𝕍.lookup rx (𝔽.fromℕ< ml)) pc+nb
               ≡⟨ {!!} ⟩
             if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
               ≡⟨ {!!} ⟩
             f rx ∎
+            where
+            lud : (x : Vec (𝔽 $ ℕ.suc b) _)
+                → f x ≡ 𝕍.lookup x r₁
+            lud = {!!}
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
