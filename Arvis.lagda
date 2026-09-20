@@ -316,7 +316,7 @@ module Instructions where
 
       drx' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
            → (r₄ : 𝔽 r)
-           → ¬_ $ *r₁' ≡ 𝕍.lookup rx r₂
+           → Set Function.∋ {!!}
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
              ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
                sk
