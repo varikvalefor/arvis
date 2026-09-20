@@ -397,7 +397,7 @@ module Instructions where
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') r₂+r₃
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃
 
       r2d2 : Vec (𝔽 $ ℕ.suc b) r
       r2d2 = 𝕍.updateAt r₁ (λ _ → r₂+r₃) reg
@@ -550,10 +550,13 @@ module Instructions where
         open add.M M
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
-      f : Rucyca'a b r
-      f = record rx {reg = xd; x0 = {!!}}
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
         where
-        xd = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
+        open add.M M
+
+      f : Rucyca'a b r
+      f = record rx {reg = reg'; x0 = {!!}}
 
     f = f.f
 
