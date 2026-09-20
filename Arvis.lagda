@@ -595,13 +595,14 @@ module Instructions where
         open add.M M
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
-      f : Rucyca'a b r
-      f = record rx {reg = xd}
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
         where
-        xd = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
-          where
-          open add.M M
-          r₁' = 𝔽.fromℕ< m₁
+        open add.M M
+        r₁' = 𝔽.fromℕ< m₁
+
+      f : Rucyca'a b r
+      f = record rx {reg = reg'}
 
     f = f.f
 
