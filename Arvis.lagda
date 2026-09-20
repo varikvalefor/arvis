@@ -273,8 +273,6 @@ module Instructions where
               ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) (𝕍.lookup rx d) pc+nb) ⟩
             if (𝔽.toℕ (𝔽.fromℕ< ml) ≡ᵇ 0) (𝕍.lookup rx (𝔽.fromℕ< ml)) pc+nb
               ≡⟨ {!!} ⟩
-            if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
-              ≡⟨ {!!} ⟩
             f rx ∎
             where
             lud : (x : Vec (𝔽 $ ℕ.suc b) _)
