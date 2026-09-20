@@ -466,7 +466,6 @@ module Instructions where
       dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' reg
         where
         open f m sk
-        open _≡_.≡-Reasoning
 
   add = add.add
 
