@@ -266,7 +266,7 @@ module Instructions where
             f (𝕍.updateAt r₁ (λ _ → *r₁') rx)
               ≡⟨ lud $ 𝕍.updateAt r₁ (λ _ → *r₁') rx ⟩
             𝕍.lookup (𝕍.updateAt r₁ (λ _ → *r₁') rx) r₁
-              ≡⟨ 𝕍P.lookup∘updateAt r₁ {f = λ _ → *r₁'} rx ⟩
+              ≡⟨ 𝕍P.lookup∘updateAt r₁ rx ⟩
             *r₁'
               ≡⟨ _≡_.refl ⟩
             if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
