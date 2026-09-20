@@ -614,20 +614,23 @@ module Instructions where
     M : Set
     M = {!!}
 
-    f : ∀ {a} → {A : Set a}
-      → M
-      → Skami b r mx A
-      → Skami b r mx A
-    f {A = A} mp sk = record sk {rucyca'a = rx; pc = {!!}}
-      where
+    module f {a} {A : Set a}
+             {b r m : ℕ}
+             (mx : M)
+             (sk : Skami b r m A) where
+
+      rx : Rucyca'a b r
       rx = record (Skami.rucyca'a sk) {reg = {!!}; x0 = {!!}}
+
+      f : Skami b r m A
+      f = record sk {rucyca'a = rx; pc = {!!}}
 
     addi : ∀ {a} → (A : Set a) → Instruction A b r mx
     addi = λ A → record {
       nibarda = nibarda;
       Mapti = M;
       Mapti? = {!!};
-      f = f
+      f = f.f
       }
 
     module Veritas {a} {A : Set a}
