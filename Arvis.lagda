@@ -264,7 +264,7 @@ module Instructions where
           ... | no N = 𝕍P.lookup∘updateAt′ _ _ N _
           ... | yes d = begin
             f (𝕍.updateAt r₁ (λ _ → *r₁') rx)
-              ≡⟨ {!!} ⟩
+              ≡⟨ lud $ 𝕍.updateAt r₁ (λ _ → *r₁') rx ⟩
             𝕍.lookup (𝕍.updateAt r₁ (λ _ → *r₁') rx) r₁
               ≡⟨ 𝕍P.lookup∘updateAt r₁ {f = λ _ → *r₁'} rx ⟩
             *r₁'
