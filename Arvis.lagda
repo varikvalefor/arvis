@@ -272,7 +272,7 @@ module Instructions where
             if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
               ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) _ _) ⟩
             if (𝔽.toℕ n0 ≡ᵇ 0) (𝕍.lookup rx n0) pc+nb
-              ≡⟨ 𝔽P.toℕ-fromℕ< _ ▹ cong (λ d → if (d ≡ᵇ 0) (𝕍.lookup rx n0) pc+nb) ⟩
+              ≡⟨ 𝔽P.toℕ-fromℕ< _ ▹ cong (λ d → if (d ≡ᵇ 0) (f rx) pc+nb) ⟩
             f rx ∎
             where
             n0 = 𝔽.fromℕ< ml
