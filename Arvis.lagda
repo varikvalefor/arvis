@@ -247,7 +247,7 @@ module Instructions where
       pc+nb = {!!}
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb
+      *r₁' = if (r₁ ≡ᵇ 0) *r₂ pc+nb
 
       rx' : typeOf rx
       rx' = 𝕍.updateAt (𝔽.fromℕ< $ M.m₁ mx) (λ _ → *r₁') rx
