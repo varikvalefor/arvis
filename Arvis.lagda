@@ -270,7 +270,7 @@ module Instructions where
             *r₁'
               ≡⟨ _≡_.refl ⟩
             if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
-              ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) (𝕍.lookup rx d) pc+nb) ⟩
+              ≡⟨ d ▹ _≡_.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) _ _) ⟩
             if (𝔽.toℕ (𝔽.fromℕ< ml) ≡ᵇ 0) (𝕍.lookup rx (𝔽.fromℕ< ml)) pc+nb
               ≡⟨ 𝔽P.toℕ-fromℕ< _ ▹ cong (λ d → if (d ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< ml) pc+nb) ⟩
             f rx ∎
