@@ -244,7 +244,7 @@ module Instructions where
       *r₂ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
 
       pc+nb : 𝔽 $ ℕ.suc b
-      pc+nb = {!!}
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb
