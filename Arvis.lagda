@@ -287,6 +287,7 @@ module Instructions where
 
       drx' : ¬_ $ r₁ ≡ 0
            → (r₄ : 𝔽 r)
+           → ¬_ $ *r₁' ≡ 𝕍.lookup rx (𝔽.fromℕ< $ M.m₂ mx)
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
              ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
                sk
