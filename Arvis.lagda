@@ -628,7 +628,6 @@ module Instructions where
       dun⁻¹ : ∀ {a} → {A : Set a}
             → (b r mx : ℕ)
             → (sk : Skami b r mx A)
-            → (r₁ r₂ r₃ : ℕ)
             → (m : _)
             → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ 𝔽.fromℕ< (add.M.m₁ m)
@@ -636,7 +635,7 @@ module Instructions where
                (_≡_ on r4i)
                 sk
                 (sk ▹ Instruction.f mul m))
-      dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = _≡_.sym $ begin
+      dun⁻¹ b r _ sk m r₄ N = _≡_.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ _≡_.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
