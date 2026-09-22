@@ -222,12 +222,10 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0�
 module Instructions where
   x0-vrici : {b r m : ℕ}
            → (r₁ : 𝔽 r)
+           → (n : 𝔽 $ ℕ.suc b)
            → (rc rc' : Rucyca'a b r)
-           → (Data.Product.Σ
-               _
-               (λ n →
-                 let reg = Rucyca'a.reg rc in
-                 Rucyca'a.reg rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) n) reg))
+           → let reg = Rucyca'a.reg rc in
+             Rucyca'a.reg rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) n) reg
            → (ml : 0 ℕ.< r)
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg rc') $ 𝔽.fromℕ< ml
   x0-vrici = {!!}
