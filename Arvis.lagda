@@ -220,6 +220,18 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0�
 
 \begin{code}
 module Instructions where
+  x0-vrici : {b r m : ℕ}
+           → (r₁ : 𝔽 r)
+           → (rc rc' : Rucyca'a b r)
+           → (Data.Product.Σ
+               (_ × _)
+               (λ (i , n) →
+                 let reg = Rucyca'a.reg rc in
+                 Rucyca'a.reg rc' ≡ 𝕍.updateAt i (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup reg i) n) reg))
+           → (ml : 0 ℕ.< r)
+           → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg rc') $ 𝔽.fromℕ< ml
+  x0-vrici = {!!}
+
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
