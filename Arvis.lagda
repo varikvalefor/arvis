@@ -228,7 +228,41 @@ module Instructions where
              Rucyca'a.reg rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) n) reg
            → (ml : 0 ℕ.< r)
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg rc') $ 𝔽.fromℕ< ml
-  x0-vrici = {!!}
+  x0-vrici {b = b} {r} {m} r₁ n rc rc' d ml = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
+    where
+    *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup (Rucyca'a.reg rc) r₁) n
+    d0 = Rucyca'a.x0 rc ml
+    rxdun = cong 𝔽.toℕ $ begin
+      f rx' ≡⟨ cong f d ⟩
+      f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ ud ⟩
+      f rx ∎
+      where
+      rx = Rucyca'a.reg rc
+      rx' = Rucyca'a.reg rc'
+      f = λ x → 𝕍.lookup x $ 𝔽.fromℕ< ml
+      open ≡.≡-Reasoning
+      ud : f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡ f rx
+      ud with 𝔽.fromℕ< ml ≟ r₁
+      ... | no N = 𝕍P.lookup∘updateAt′ _ _ N _
+      ... | yes d = begin
+        f (𝕍.updateAt r₁ (λ _ → *r₁') rx)
+          ≡⟨ lud $ 𝕍.updateAt r₁ (λ _ → *r₁') rx ⟩
+        𝕍.lookup (𝕍.updateAt r₁ (λ _ → *r₁') rx) r₁
+          ≡⟨ 𝕍P.lookup∘updateAt r₁ rx ⟩
+        *r₁'
+          ≡⟨ ≡.refl ⟩
+        if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) n
+          ≡⟨ d ▹ ≡.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) _ _) ⟩
+        if (𝔽.toℕ n0 ≡ᵇ 0) (𝕍.lookup rx n0) n
+          ≡⟨ 𝔽P.toℕ-fromℕ< _ ▹ cong (λ d → if (d ≡ᵇ 0) (f rx) n) ⟩
+        f rx ∎
+        where
+        n0 = 𝔽.fromℕ< ml
+        lud : (x : Vec (𝔽 $ ℕ.suc b) _)
+            → f x ≡ 𝕍.lookup x r₁
+        lud = λ x → d ▹ cong (𝕍.lookup x)
+        import Data.Fin.Properties
+          as 𝔽P
 
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
