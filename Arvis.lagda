@@ -484,7 +484,7 @@ module Instructions where
               (𝕍.lookup (rx $ f.f mx sk) r₁)
               (f.r₂+r₃ mx sk))
       dun mx sk N = begin
-        𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a $ f.f mx sk) r₁ ≡⟨ {!!} ⟩
+        𝕍.lookup r2d2 r₁ ≡⟨ {!!} ⟩
         if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃ ≡⟨ {!!} ⟩
         r₂+r₃ ≡⟨ _≡_.refl ⟩
         f.r₂+r₃ mx sk ∎
