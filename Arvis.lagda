@@ -433,8 +433,13 @@ module Instructions where
       r2d2 : Vec (𝔽 $ ℕ.suc b) r
       r2d2 = 𝕍.updateAt r₁ (λ _ → *r₁') reg
 
+      x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup r2d2 $ 𝔽.fromℕ< ml)
+      x0 ml = x0-vrici r₁ r₂+r₃ reg r2d2 ≡.refl ml x0'
+        where
+        x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
+
       rc : Rucyca'a b r
-      rc = record rx {reg = r2d2; x0 = {!!}}
+      rc = record rx {reg = r2d2; x0 = x0}
 
       f : Skami b r m A
       f = record sk {rucyca'a = rc; pc = pc'}
