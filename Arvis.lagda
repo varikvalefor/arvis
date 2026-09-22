@@ -478,8 +478,7 @@ module Instructions where
       dun : ∀ {a} → {A : Set a}
           → (mx : _)
           → (sk : Skami b r m A)
-          → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
-            ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (_≡_
               (𝕍.lookup (f.r2d2 mx sk) r₁)
               (f.r₂+r₃ mx sk))
