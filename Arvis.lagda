@@ -224,10 +224,10 @@ module Instructions where
            → (r₁ : 𝔽 r)
            → (rc rc' : Rucyca'a b r)
            → (Data.Product.Σ
-               (_ × _)
-               (λ (i , n) →
+               _
+               (λ n →
                  let reg = Rucyca'a.reg rc in
-                 Rucyca'a.reg rc' ≡ 𝕍.updateAt i (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup reg i) n) reg))
+                 Rucyca'a.reg rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) n) reg))
            → (ml : 0 ℕ.< r)
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg rc') $ 𝔽.fromℕ< ml
   x0-vrici = {!!}
