@@ -289,41 +289,10 @@ module Instructions where
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
-      -- | .i xu frili cumki fa lo nu zbasu lo zmadu
-      -- be fi lo ka ce'u vrici mapti
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
+      x0 ml = x0-vrici {m = m} r₁ pc+nb rx rx' ≡.refl ml x0'
         where
-        d0 = Rucyca'a.x0 (Skami.rucyca'a sk) ml
-        rxdun = cong 𝔽.toℕ $ begin
-          f rx' ≡⟨ ≡.refl ⟩
-          f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ ud ⟩
-          f rx ∎
-          where
-          f = λ x → 𝕍.lookup x $ 𝔽.fromℕ< ml
-          open ≡.≡-Reasoning
-          ud : f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡ f rx
-          ud with 𝔽.fromℕ< ml ≟ r₁
-          ... | no N = 𝕍P.lookup∘updateAt′ _ _ N _
-          ... | yes d = begin
-            f (𝕍.updateAt r₁ (λ _ → *r₁') rx)
-              ≡⟨ lud $ 𝕍.updateAt r₁ (λ _ → *r₁') rx ⟩
-            𝕍.lookup (𝕍.updateAt r₁ (λ _ → *r₁') rx) r₁
-              ≡⟨ 𝕍P.lookup∘updateAt r₁ rx ⟩
-            *r₁'
-              ≡⟨ ≡.refl ⟩
-            if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
-              ≡⟨ d ▹ ≡.sym ▹ cong (λ d → if (𝔽.toℕ d ≡ᵇ 0) _ _) ⟩
-            if (𝔽.toℕ n0 ≡ᵇ 0) (𝕍.lookup rx n0) pc+nb
-              ≡⟨ 𝔽P.toℕ-fromℕ< _ ▹ cong (λ d → if (d ≡ᵇ 0) (f rx) pc+nb) ⟩
-            f rx ∎
-            where
-            n0 = 𝔽.fromℕ< ml
-            lud : (x : Vec (𝔽 $ ℕ.suc b) _)
-                → f x ≡ 𝕍.lookup x r₁
-            lud = λ x → d ▹ cong (𝕍.lookup x)
-            import Data.Fin.Properties
-              as 𝔽P
+        x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
