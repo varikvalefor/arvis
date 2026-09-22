@@ -431,7 +431,7 @@ module Instructions where
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃
 
       r2d2 : Vec (𝔽 $ ℕ.suc b) r
-      r2d2 = 𝕍.updateAt r₁ (λ _ → r₂+r₃) reg
+      r2d2 = 𝕍.updateAt r₁ (λ _ → *r₁') reg
 
       rc : Rucyca'a b r
       rc = record rx {reg = r2d2; x0 = {!!}}
@@ -477,7 +477,7 @@ module Instructions where
             (_≡_
               (𝕍.lookup (rx $ f.f mx sk) r₁)
               (f.r₂+r₃ mx sk))
-      dun mx sk = 𝕍P.lookup∘updateAt r₁ reg
+      dun mx sk = {!!}
         where
         open f mx sk
 
