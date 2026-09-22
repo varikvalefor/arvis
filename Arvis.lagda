@@ -481,7 +481,7 @@ module Instructions where
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (_≡_
-              (𝕍.lookup (rx $ f.f mx sk) r₁)
+              (𝕍.lookup (rx $ f mx sk) r₁)
               (f.r₂+r₃ mx sk))
       dun mx sk N = begin
         𝕍.lookup r2d2 r₁ ≡⟨ {!!} ⟩
