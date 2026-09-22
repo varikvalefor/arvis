@@ -483,9 +483,12 @@ module Instructions where
           → (_≡_
               (𝕍.lookup (rx $ f.f mx sk) r₁)
               (f.r₂+r₃ mx sk))
-      dun mx sk N = {!!}
+      dun mx sk N = begin
+        𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a $ f.f mx sk) r₁ ≡⟨ {!!} ⟩
+        f.r₂+r₃ mx sk ∎
         where
         open f mx sk
+        open ≡.≡-Reasoning
 
   add = add.add
 
