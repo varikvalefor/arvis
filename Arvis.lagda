@@ -223,22 +223,19 @@ module Instructions where
   x0-vrici : {b r m : ℕ}
            → (r₁ : 𝔽 r)
            → (n : 𝔽 $ ℕ.suc b)
-           → (rc rc' : Rucyca'a b r)
-           → let reg = Rucyca'a.reg rc in
-             Rucyca'a.reg rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) n) reg
+           → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
+           → rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rc r₁) n) rc
            → (ml : 0 ℕ.< r)
-           → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg rc') $ 𝔽.fromℕ< ml
-  x0-vrici {b = b} {r} {m} r₁ n rc rc' d ml = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
+           → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc $ 𝔽.fromℕ< ml
+           → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc' $ 𝔽.fromℕ< ml
+  x0-vrici {b = b} {r} {m} r₁ n rx rx' d ml d0 = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
     where
-    *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup (Rucyca'a.reg rc) r₁) n
-    d0 = Rucyca'a.x0 rc ml
+    *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) n
     rxdun = cong 𝔽.toℕ $ begin
       f rx' ≡⟨ cong f d ⟩
       f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ ud ⟩
       f rx ∎
       where
-      rx = Rucyca'a.reg rc
-      rx' = Rucyca'a.reg rc'
       f = λ x → 𝕍.lookup x $ 𝔽.fromℕ< ml
       open ≡.≡-Reasoning
       ud : f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡ f rx
