@@ -220,7 +220,7 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0�
 
 \begin{code}
 module Instructions where
-  x0-vrici : {b r m : ℕ}
+  x0-vrici : {b r : ℕ}
            → (r₁ : 𝔽 r)
            → (n : 𝔽 $ ℕ.suc b)
            → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
@@ -228,7 +228,7 @@ module Instructions where
            → (ml : 0 ℕ.< r)
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc $ 𝔽.fromℕ< ml
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc' $ 𝔽.fromℕ< ml
-  x0-vrici {b = b} {r} {m} r₁ n rx rx' d ml d0 = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
+  x0-vrici {b = b} {r} r₁ n rx rx' d ml d0 = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
     where
     *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) n
     rxdun = cong 𝔽.toℕ $ begin
@@ -290,7 +290,7 @@ module Instructions where
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = x0-vrici {m = m} r₁ pc+nb rx rx' ≡.refl ml x0'
+      x0 ml = x0-vrici r₁ pc+nb rx rx' ≡.refl ml x0'
         where
         x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
 
