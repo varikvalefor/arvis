@@ -479,10 +479,11 @@ module Instructions where
           → (mx : _)
           → (sk : Skami b r m A)
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
-            (_≡_
+            ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → (_≡_
               (𝕍.lookup (rx $ f.f mx sk) r₁)
               (f.r₂+r₃ mx sk))
-      dun mx sk = {!!}
+      dun mx sk N = {!!}
         where
         open f mx sk
 
