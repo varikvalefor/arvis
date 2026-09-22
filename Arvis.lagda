@@ -461,10 +461,11 @@ module Instructions where
           → let sk' = f.f m sk in
             let r₁' = f.r₁' m sk in
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
-            (_≡_
+            ¬_ $ r₁ ≡ 0
+          → (_≡_
               (𝕍.lookup (rx $ f.f m sk) r₁')
               (f.r₂+r₃ m sk))
-      dun b r mx sk r₁ r₂ r₃ m = {!!}
+      dun b r mx sk r₁ r₂ r₃ m N = {!!}
         where
         open f m sk
 
