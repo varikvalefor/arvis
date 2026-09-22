@@ -400,7 +400,7 @@ module Instructions where
       *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') r₂+r₃
 
       r2d2 : Vec (𝔽 $ ℕ.suc b) r
-      r2d2 = 𝕍.updateAt r₁' (λ _ → r₂+r₃) reg
+      r2d2 = 𝕍.updateAt r₁' (λ _ → *r₁') reg
 
       rc : Rucyca'a b r
       rc = record rx {reg = r2d2}
@@ -462,9 +462,9 @@ module Instructions where
             let r₁' = f.r₁' m sk in
             let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             (_≡_
-              (𝕍.lookup (rx $ Instruction.f add m sk) r₁')
+              (𝕍.lookup (rx $ f.f m sk) r₁')
               (f.r₂+r₃ m sk))
-      dun b r mx sk r₄ r₅ r₆ m = 𝕍P.lookup∘updateAt r₁' reg
+      dun b r mx sk r₁ r₂ r₃ m = {!!}
         where
         open f m sk
 
