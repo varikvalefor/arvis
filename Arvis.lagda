@@ -248,6 +248,8 @@ module Instructions where
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
+      -- | .i xu frili cumki fa lo nu zbasu lo zmadu
+      -- be fi lo ka ce'u vrici mapti
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
       x0 ml = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
         where
