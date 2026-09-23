@@ -281,7 +281,7 @@ module Instructions where
                    (sk : Skami b r m A) where
       open f mx sk
 
-      dpc : *r₂ ≡ Skami.pc (Instruction.f jalr mx sk)
+      dpc : 𝕍.lookup rx (𝔽.fromℕ< $ M.m₂ mx) ≡ Skami.pc (Instruction.f jalr mx sk)
       dpc = _≡_.refl
 
       drx : (r₄ : 𝔽 r)
