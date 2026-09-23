@@ -43,6 +43,7 @@
 \newunicodechar{◆}{\ensuremath{\mathnormal\blackdiamond}}
 \newunicodechar{∸}{\ensuremath{\mathnormal\dotdiv}}
 \newunicodechar{ᵇ}{\ensuremath{\mathnormal{^\AgdaFontStyle{b}}}}
+\newunicodechar{⁻}{\ensuremath{\mathnormal{^-}}}
 \newunicodechar{≥}{\ensuremath{\mathnormal{\geq}}}
 \newunicodechar{ϕ}{\ensuremath{\mathnormal{\phi}}}
 \newunicodechar{χ}{\ensuremath{\mathnormal{\chi}}}
@@ -58,6 +59,7 @@
 \newunicodechar{₂}{\ensuremath{\mathnormal{_2}}}
 \newunicodechar{₃}{\ensuremath{\mathnormal{_3}}}
 \newunicodechar{₄}{\ensuremath{\mathnormal{_4}}}
+\newunicodechar{₅}{\ensuremath{\mathnormal{_5}}}
 \newunicodechar{ₘ}{\ensuremath{\mathnormal{_\mathsf{m}}}}
 \newunicodechar{ₛ}{\ensuremath{\mathnormal{_\mathsf{s}}}}
 \newunicodechar{⊤}{\ensuremath{\mathnormal{\top}}}
