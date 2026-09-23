@@ -670,22 +670,28 @@ module Instructions where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
 
-  module addi (b r mx : ℕ) (r₁ r₂ i : ℕ) where
+  module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : ℕ) where
     nibarda : ℕ
     nibarda = {!!}
 
-    M : Set
-    M = {!!}
+    record M : Set where
+      field
+        im : i ℕ.< r
 
     module f {a} {A : Set a}
-             {b r m : ℕ}
-             (mx : M)
-             (sk : Skami b r m A) where
+             (m : M)
+             (sk : Skami b r mx A) where
+
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = 𝕍.updateAt r₁ {!!} reg
 
       rx : Rucyca'a b r
-      rx = record (Skami.rucyca'a sk) {reg = {!!}; x0 = {!!}}
+      rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = {!!}}
 
-      f : Skami b r m A
+      f : Skami b r mx A
       f = record sk {rucyca'a = rx; pc = {!!}}
 
     addi : ∀ {a} → (A : Set a) → Instruction A b r mx
@@ -699,6 +705,23 @@ module Instructions where
     module Veritas {a} {A : Set a}
                    (m : M)
                    (sk : Skami b r mx A) where
+
+      open f m sk
+
+      dun : (_≡_
+              (𝔽.toℕ
+                (𝕍.lookup
+                  (Rucyca'a.reg $ Skami.rucyca'a f)
+                  r₁))
+              ((_% ℕ.suc b)
+                (ℕ._+_
+                 i
+                 (𝔽.toℕ
+                   (𝕍.lookup
+                     (Rucyca'a.reg $ Skami.rucyca'a sk)
+                     r₁)))))
+      dun = {!!}
+
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
