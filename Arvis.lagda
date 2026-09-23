@@ -456,8 +456,8 @@ module Instructions where
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open f m sk
-        open ≡.≡-Reasoning
         rx' = sk ▹ Instruction.f add m ▹ Skami.rucyca'a
+        open ≡.≡-Reasoning
 
       dun : ∀ {a} → {A : Set a}
           → (b r mx : ℕ)
