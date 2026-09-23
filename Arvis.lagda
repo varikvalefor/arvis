@@ -489,8 +489,8 @@ module Instructions where
       dun mx sk N = begin
         𝔽.toℕ (𝕍.lookup r2d2 r₁)
           ≡⟨ 𝕍P.lookup∘updateAt r₁ reg ▹ cong 𝔽.toℕ ⟩
-        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃)
-          ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) r₂+r₃) ⟩
+        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ r₂+r₃)
+          ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b *r₁ r₂+r₃) ⟩
         𝔽.toℕ r₂+r₃
           ≡⟨ _≡_.refl ⟩
         𝔽.toℕ (f.r₂+r₃ mx sk)
@@ -500,6 +500,7 @@ module Instructions where
         (fℕ r₂ ℕ.+ fℕ r₃) % ℕ.suc b ∎
         where
         open f mx sk
+        *r₁ = 𝕍.lookup reg r₁
         fℕ = 𝔽.toℕ ∘ 𝕍.lookup reg
         open ≡.≡-Reasoning
 
