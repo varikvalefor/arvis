@@ -700,7 +700,7 @@ module Instructions where
       reg = Rucyca'a.reg $ Skami.rucyca'a sk
 
       r₁' : 𝔽 r
-      r₁' = {!!}
+      r₁' = 𝔽.fromℕ< $ M.m₁ mx
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
       reg' = 𝕍.updateAt r₁' {!!} reg
