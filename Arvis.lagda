@@ -676,7 +676,7 @@ module Instructions where
 
     record M : Set where
       field
-        im : i ℕ.< r
+        im : i < {!!}
 
     module f {a} {A : Set a}
              (m : M)
