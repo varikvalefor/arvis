@@ -494,6 +494,8 @@ module Instructions where
         𝔽.toℕ r₂+r₃
           ≡⟨ _≡_.refl ⟩
         𝔽.toℕ (f.r₂+r₃ mx sk)
+          ≡⟨ ≡.refl ⟩
+        𝔽.toℕ ((fℕ r₂ ℕ.+ fℕ r₃) mod ℕ.suc b)
           ≡⟨ {!!} ⟩
         (fℕ r₂ ℕ.+ fℕ r₃) % ℕ.suc b ∎
         where
