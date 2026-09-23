@@ -683,7 +683,6 @@ module Instructions where
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg $ Skami.rucyca'a sk
 
-
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) {!!}
 
