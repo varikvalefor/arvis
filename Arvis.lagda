@@ -724,6 +724,23 @@ module Instructions where
                    (mx : M b r m)
                    (sk : Skami b r m A) where
 
+      open f mx sk
+
+      dun : (_≡_
+              (𝔽.toℕ
+                (𝕍.lookup
+                  (Rucyca'a.reg $ Skami.rucyca'a f)
+                  r₁'))
+              ((_% ℕ.suc b)
+                (ℕ._+_
+                 i
+                 (𝔽.toℕ
+                   (𝕍.lookup
+                     (Rucyca'a.reg $ Skami.rucyca'a sk)
+                     r₁')))))
+      dun = {!!}
+
+
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 \end{code}
