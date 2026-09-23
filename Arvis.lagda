@@ -670,13 +670,11 @@ module Instructions where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
 
-  module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : ℕ) where
+  module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : 𝔽 {!!}) where
     nibarda : ℕ
     nibarda = {!!}
 
     record M : Set where
-      field
-        im : i < {!!}
 
     module f {a} {A : Set a}
              (m : M)
@@ -715,7 +713,7 @@ module Instructions where
                   r₁))
               ((_% ℕ.suc b)
                 (ℕ._+_
-                 i
+                 (𝔽.toℕ i)
                  (𝔽.toℕ
                    (𝕍.lookup
                      (Rucyca'a.reg $ Skami.rucyca'a sk)
