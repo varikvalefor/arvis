@@ -43,6 +43,7 @@
 \newunicodechar{◆}{\ensuremath{\mathnormal\blackdiamond}}
 \newunicodechar{∸}{\ensuremath{\mathnormal\dotdiv}}
 \newunicodechar{ᵇ}{\ensuremath{\mathnormal{^\AgdaFontStyle{b}}}}
+\newunicodechar{⁻}{\ensuremath{\mathnormal{^-}}}
 \newunicodechar{≥}{\ensuremath{\mathnormal{\geq}}}
 \newunicodechar{ϕ}{\ensuremath{\mathnormal{\phi}}}
 \newunicodechar{χ}{\ensuremath{\mathnormal{\chi}}}
@@ -56,6 +57,9 @@
 \newunicodechar{σ}{\ensuremath{\mathnormal{\sigma}}}
 \newunicodechar{₁}{\ensuremath{\mathnormal{_1}}}
 \newunicodechar{₂}{\ensuremath{\mathnormal{_2}}}
+\newunicodechar{₃}{\ensuremath{\mathnormal{_3}}}
+\newunicodechar{₄}{\ensuremath{\mathnormal{_4}}}
+\newunicodechar{₅}{\ensuremath{\mathnormal{_5}}}
 \newunicodechar{ₘ}{\ensuremath{\mathnormal{_\mathsf{m}}}}
 \newunicodechar{ₛ}{\ensuremath{\mathnormal{_\mathsf{s}}}}
 \newunicodechar{⊤}{\ensuremath{\mathnormal{\top}}}
@@ -72,6 +76,7 @@
 \newunicodechar{′}{\ensuremath{\mathnormal{'}}}
 \newunicodechar{⊎}{\ensuremath{\mathnormal{\uplus}}}
 \newunicodechar{≗}{\ensuremath{\mathnormal{\circeq}}}
+\newunicodechar{⍨}{\ensuremath{\raisebox{-0.25ex}{\ddot\sim}}}
 
 \newcommand\Sym\AgdaSymbol
 \newcommand\D\AgdaDatatype
@@ -132,7 +137,8 @@ open import Function
     _$_
   )
   renaming (
-    _|>_ to _▹_
+    _|>_ to _▹_;
+    flip to _⍨
   )
 open import Data.Bool
   using (
@@ -315,8 +321,10 @@ module Instructions where
                    (sk : Skami b r m A) where
       open f mx sk
 
-      dpc : *r₂ ≡ Skami.pc (Instruction.f jalr mx sk)
-      dpc = ≡.refl
+      dpc : ((_≡_ ⍨)
+              (Skami.pc $ f.f mx sk)
+              (𝕍.lookup rx r₂))
+      dpc = _≡_.refl
 
       drx : (r₄ : 𝔽 r)
           → ¬_ $ r₄ ≡ r₁
@@ -330,7 +338,7 @@ module Instructions where
            → (r₄ : 𝔽 r)
            → Set Function.∋ {!!}
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
-             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
+             ((_≡_ on ((𝕍.lookup ⍨) r₄ ∘ rx))
                sk
                (Instruction.f jalr mx sk))
            → ¬_ $ r₄ ≡ r₁
