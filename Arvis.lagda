@@ -599,6 +599,9 @@ module Instructions where
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg rx
 
+      r₁' : 𝔽 r
+      r₁' = 𝔽.fromℕ< $ M .add.M.m₁
+
       r₂' : 𝔽 r
       r₂' = 𝔽.fromℕ< $ M .add.M.m₂
 
@@ -614,7 +617,6 @@ module Instructions where
       reg' = 𝕍.updateAt r₁' (λ _ → r₂*r₃) reg
         where
         open add.M M
-        r₁' = 𝔽.fromℕ< m₁
 
       f : Rucyca'a b r
       f = record rx {reg = reg'}
