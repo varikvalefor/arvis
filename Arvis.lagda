@@ -76,6 +76,7 @@
 \newunicodechar{′}{\ensuremath{\mathnormal{'}}}
 \newunicodechar{⊎}{\ensuremath{\mathnormal{\uplus}}}
 \newunicodechar{≗}{\ensuremath{\mathnormal{\circeq}}}
+\newunicodechar{⍨}{\ensuremath{\raisebox{-0.25ex}{\ddot\sim}}}
 
 \newcommand\Sym\AgdaSymbol
 \newcommand\D\AgdaDatatype
