@@ -456,7 +456,7 @@ module Instructions where
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open f m sk
-        rx' = sk ▹ f.f m ▹ Skami.rucyca'a
+        rx' = Skami.rucyca'a $ f.f m sk
         open ≡.≡-Reasoning
 
       dun : ∀ {a} → {A : Set a}
