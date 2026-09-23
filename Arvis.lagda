@@ -487,10 +487,14 @@ module Instructions where
                   (𝔽.toℕ $ 𝕍.lookup (rx sk) r₂)
                   (𝔽.toℕ $ 𝕍.lookup (rx sk) r₃))))
       dun mx sk N = begin
-        𝔽.toℕ (𝕍.lookup r2d2 r₁) ≡⟨ 𝕍P.lookup∘updateAt r₁ reg ▹ cong 𝔽.toℕ ⟩
-        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃) ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) r₂+r₃) ⟩
-        𝔽.toℕ r₂+r₃ ≡⟨ _≡_.refl ⟩
-        𝔽.toℕ (f.r₂+r₃ mx sk) ≡⟨ {!!} ⟩
+        𝔽.toℕ (𝕍.lookup r2d2 r₁)
+          ≡⟨ 𝕍P.lookup∘updateAt r₁ reg ▹ cong 𝔽.toℕ ⟩
+        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃)
+          ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) r₂+r₃) ⟩
+        𝔽.toℕ r₂+r₃
+          ≡⟨ _≡_.refl ⟩
+        𝔽.toℕ (f.r₂+r₃ mx sk)
+          ≡⟨ {!!} ⟩
         (fℕ r₂ ℕ.+ fℕ r₃) % ℕ.suc b ∎
         where
         open f mx sk
