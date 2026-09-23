@@ -240,8 +240,11 @@ module Instructions where
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
+      r₂' : 𝔽 r
+      r₂' = 𝔽.fromℕ< $ M.m₂ mx
+
       *r₂ : 𝔽 $ ℕ.suc b
-      *r₂ = 𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₂ mx
+      *r₂ = 𝕍.lookup rx r₂'
 
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
