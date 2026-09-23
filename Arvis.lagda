@@ -693,8 +693,11 @@ module Instructions where
              (mx : M b r m)
              (sk : Skami b r m A) where
 
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = {!!}
+
       rx : Rucyca'a b r
-      rx = record (Skami.rucyca'a sk) {reg = {!!}}
+      rx = record (Skami.rucyca'a sk) {reg = reg'}
 
       f : Skami b r m A
       f = record sk {rucyca'a = rx; pc = {!!}}
