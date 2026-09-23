@@ -463,17 +463,18 @@ module Instructions where
             → let sk' = sk ▹ Instruction.f add mx in
               (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ r₁
-            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
+            → let reg = Rucyca'a.reg ∘ Skami.rucyca'a in
+              ((_≡_ on (λ x → 𝕍.lookup (reg x) r₄))
                 sk
                 sk')
       dun⁻¹ sk mx r₄ N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
-        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
+        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
         open f mx sk
+        rx' = Skami.rucyca'a $ f.f mx sk
         open ≡.≡-Reasoning
-        rx' = sk ▹ Instruction.f add mx ▹ Skami.rucyca'a
 
       dun : ∀ {a} → {A : Set a}
           → (mx : _)
