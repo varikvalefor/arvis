@@ -447,7 +447,8 @@ module Instructions where
             → let sk' = sk ▹ Instruction.f add m in
               (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ f.r₁' m sk
-            → ((_≡_ on (λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄))
+            → let reg = Rucyca'a.reg ∘ Skami.rucyca'a in
+              ((_≡_ on (λ x → 𝕍.lookup (reg x) r₄))
                 sk
                 sk')
       dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = ≡.sym $ begin
