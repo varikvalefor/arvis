@@ -685,8 +685,11 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    M : (b r m : ℕ) → Set
-    M = {!!}
+    record M (b r m : ℕ) : Set where
+      field
+        m₁ : r₁ < r
+        m₂ : r₂ < r
+        im : i ℕ.< r
 
     module f {a} {A : Set a}
              {b r m : ℕ}
