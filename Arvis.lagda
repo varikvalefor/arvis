@@ -702,8 +702,11 @@ module Instructions where
       r₁' : 𝔽 r
       r₁' = 𝔽.fromℕ< $ M.m₁ mx
 
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') {!!}
+
       reg' : Vec (𝔽 $ ℕ.suc b) r
-      reg' = 𝕍.updateAt r₁' {!!} reg
+      reg' = 𝕍.updateAt r₁' (λ _ → *r₁') reg
 
       rx : Rucyca'a b r
       rx = record (Skami.rucyca'a sk) {reg = reg'}
