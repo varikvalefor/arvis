@@ -240,6 +240,9 @@ module Instructions where
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
 
+      r₁' : 𝔽 r
+      r₁' = 𝔽.fromℕ< $ M.m₁ mx
+
       r₂' : 𝔽 r
       r₂' = 𝔽.fromℕ< $ M.m₂ mx
 
@@ -250,10 +253,10 @@ module Instructions where
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup rx r₁') pc+nb
 
       rx' : typeOf rx
-      rx' = 𝕍.updateAt (𝔽.fromℕ< $ M.m₁ mx) (λ _ → *r₁') rx
+      rx' = 𝕍.updateAt r₁' (λ _ → *r₁') rx
 
       rc' : Rucyca'a b r
       rc' = record (Skami.rucyca'a sk) {reg = rx'}
@@ -281,7 +284,7 @@ module Instructions where
       dpc = _≡_.refl
 
       drx : (r₄ : 𝔽 r)
-          → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
+          → ¬_ $ r₄ ≡ r₁'
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
               sk
@@ -295,7 +298,7 @@ module Instructions where
              ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
                sk
                (Instruction.f jalr mx sk))
-           → ¬_ $ r₄ ≡ 𝔽.fromℕ< (M.m₁ mx)
+           → ¬_ $ r₄ ≡ r₁'
       drx' = {!!}
 
       0-dro : r₁ ≡ 0
@@ -307,9 +310,9 @@ module Instructions where
         d' = begin
           *r₁'
             ≡⟨ ≡.refl ⟩
-          if (r₁ ≡ᵇ 0) (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) _
-            ≡⟨ cong (λ b → if b (𝕍.lookup rx $ 𝔽.fromℕ< $ M.m₁ mx) pc+nb) db ⟩
-          𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) (𝔽.fromℕ< $ M.m₁ mx) ∎
+          if (r₁ ≡ᵇ 0) (𝕍.lookup rx r₁') _
+            ≡⟨ cong (λ b → if b (𝕍.lookup rx r₁') pc+nb) db ⟩
+          𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁' ∎
           where
           open ≡.≡-Reasoning
           db : r₁ ≡ᵇ 0 ≡ Data.Bool.true
