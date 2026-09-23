@@ -696,8 +696,11 @@ module Instructions where
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg $ Skami.rucyca'a sk
 
+      r₁' : 𝔽 r
+      r₁' = {!!}
+
       reg' : Vec (𝔽 $ ℕ.suc b) r
-      reg' = 𝕍.updateAt {!!} {!!} reg
+      reg' = 𝕍.updateAt r₁' {!!} reg
 
       rx : Rucyca'a b r
       rx = record (Skami.rucyca'a sk) {reg = reg'}
