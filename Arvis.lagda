@@ -689,7 +689,7 @@ module Instructions where
       field
         m₁ : r₁ < r
         m₂ : r₂ < r
-        im : i ℕ.< r
+        im : i ℕ.< {!!}
 
     module f {a} {A : Set a}
              {b r m : ℕ}
