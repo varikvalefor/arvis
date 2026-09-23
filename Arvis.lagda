@@ -296,7 +296,7 @@ module Instructions where
            → (r₄ : 𝔽 r)
            → Set Function.∋ {!!}
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
-             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
+             ((_≡_ on ((𝕍.lookup ⍨) r₄ ∘ rx))
                sk
                (Instruction.f jalr mx sk))
            → ¬_ $ r₄ ≡ r₁'
