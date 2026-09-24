@@ -696,6 +696,9 @@ module Instructions where
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? _ r _ with r₁ <? r | r₂ <? r | i <? max
+    ... | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
+    ... | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
+    ... | _ | _ | no ix  = no $ ix ∘ M.im
     ... | yes m₁ | yes m₂ | yes ix = yes $ record {
       m₁ = m₁;
       m₂ = m₂;
@@ -705,9 +708,6 @@ module Instructions where
       N⇒F : ∀ {a} → {A : Set a} → {A? : Dec A} → ¬ A → False A?
       N⇒F {A? = yes p} N = N p
       N⇒F {A? = no ¬p} N = tt
-    ... | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
-    ... | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
-    ... | _ | _ | no ix  = no $ ix ∘ M.im
 
     module f {a} {A : Set a}
              {b r m : ℕ}
