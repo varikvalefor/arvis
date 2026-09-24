@@ -691,6 +691,9 @@ module Instructions where
         m₂ : r₂ < r
         im : i < {!!}
 
+    M? : (b r m : ℕ) → Dec $ M b r m
+    M? = {!!}
+
     module f {a} {A : Set a}
              {b r m : ℕ}
              (mx : M b r m)
@@ -727,7 +730,7 @@ module Instructions where
     addi = λ A → record {
       nibarda = nibarda;
       Mapti = M;
-      Mapti? = {!!};
+      Mapti? = M?;
       f = f.f
       }
 
