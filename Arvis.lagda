@@ -702,8 +702,11 @@ module Instructions where
       r₁' : 𝔽 r
       r₁' = 𝔽.fromℕ< $ M.m₁ mx
 
+      *r₂+i : 𝔽 $ ℕ.suc b
+      *r₂+i = {!!}
+
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') {!!}
+      *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') *r₂+i
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
       reg' = 𝕍.updateAt r₁' (λ _ → *r₁') reg
