@@ -676,6 +676,9 @@ module Instructions where
 
     record M : Set where
 
+    M? : Dec M
+    M? = yes $ record {}
+
     module f {a} {A : Set a}
              (m : M)
              (sk : Skami b r mx A) where
@@ -712,7 +715,7 @@ module Instructions where
     addi = λ A → record {
       nibarda = nibarda;
       Mapti = M;
-      Mapti? = {!!};
+      Mapti? = M?;
       f = f.f
       }
 
