@@ -696,6 +696,9 @@ module Instructions where
              (mx : M b r m)
              (sk : Skami b r m A) where
 
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
+
       reg : Vec (𝔽 $ ℕ.suc b) r
       reg = Rucyca'a.reg $ Skami.rucyca'a sk
 
@@ -718,7 +721,7 @@ module Instructions where
       rx = record (Skami.rucyca'a sk) {reg = reg'}
 
       f : Skami b r m A
-      f = record sk {rucyca'a = rx; pc = {!!}}
+      f = record sk {rucyca'a = rx; pc = pc+nb}
 
     addi : ∀ {a} → (A : Set a) → Instruction A
     addi = λ A → record {
