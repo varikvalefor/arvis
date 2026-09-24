@@ -321,9 +321,9 @@ module Instructions where
                    (sk : Skami b r m A) where
       open f mx sk
 
-      dpc : ((_≡_ ⍨)
-              (Skami.pc $ f.f mx sk)
-              (𝕍.lookup rx r₂))
+      dpc : (_≡_
+              (𝕍.lookup rx r₂)
+              (Skami.pc $ f.f mx sk))
       dpc = _≡_.refl
 
       drx : (r₄ : 𝔽 r)
