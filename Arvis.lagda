@@ -685,11 +685,14 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
+    max : ℕ
+    max = {!!}
+
     record M (b r m : ℕ) : Set where
       field
         m₁ : r₁ < r
         m₂ : r₂ < r
-        im : i < {!!}
+        im : i < max
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? = {!!}
