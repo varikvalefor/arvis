@@ -721,8 +721,11 @@ module Instructions where
                    (𝕍.lookup
                      (Rucyca'a.reg $ Skami.rucyca'a sk)
                      r₁)))))
-      dun = {!!}
-
+      dun = begin
+        𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
+          ≡⟨ {!!} ⟩
+        _ ∎
+        where open ≡.≡-Reasoning
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
