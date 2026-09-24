@@ -701,7 +701,7 @@ module Instructions where
       rx : Rucyca'a b r
       rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = x0}
         where
-        x0 = λ ml → x0-vrici r₁ *r₂+i reg _ ≡.refl ml $ x0' ml
+        x0 = λ ml → x0-vrici r₁ _ reg _ ≡.refl ml $ x0' ml
           where
           x0' = Rucyca'a.x0 $ Skami.rucyca'a sk
 
