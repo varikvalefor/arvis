@@ -699,7 +699,11 @@ module Instructions where
       reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
 
       rx : Rucyca'a b r
-      rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = {!!}}
+      rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = x0}
+        where
+        x0 = λ ml → x0-vrici r₁ *r₂+i reg _ ≡.refl ml $ x0' ml
+          where
+          x0' = Rucyca'a.x0 $ Skami.rucyca'a sk
 
       f : Skami b r mx A
       f = record sk {rucyca'a = rx; pc = pc+nb}
