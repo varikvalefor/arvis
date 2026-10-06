@@ -725,7 +725,8 @@ module Instructions where
 
       open f m sk
 
-      dun : (_≡_
+      dun : ¬ (𝔽.toℕ r₁ ≡ 0)
+          → (_≡_
               (𝔽.toℕ
                 (𝕍.lookup
                   (Rucyca'a.reg $ Skami.rucyca'a f)
@@ -737,7 +738,7 @@ module Instructions where
                    (𝕍.lookup
                      (Rucyca'a.reg $ Skami.rucyca'a sk)
                      r₁)))))
-      dun = begin
+      dun N = begin
         𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
           ≡⟨ {!!} ⟩
         _ ∎
