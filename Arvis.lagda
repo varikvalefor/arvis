@@ -528,8 +528,11 @@ module Instructions where
              (mx : M)
              (sk : Skami b r m A) where
 
+      rc : Rucyca'a b r
+      rc = Skami.rucyca'a sk
+
       reg : Vec (𝔽 $ ℕ.suc b) r
-      reg = Rucyca'a.reg $ Skami.rucyca'a sk
+      reg = Rucyca'a.reg rc
 
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
@@ -555,7 +558,7 @@ module Instructions where
         x0 : (ml : 0 ℕ.< r) → 0 ≡ _
         x0 ml = x0-vrici r₁ exp _ _ ≡.refl ml x0'
           where
-          x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
+          x0' = Rucyca'a.x0 rc ml
 
 
       f : Skami b r m A
