@@ -573,6 +573,14 @@ module Instructions where
         where
         open ≡.≡-Reasoning
 
+      dunV : ¬_ $ r₁ ≡ 0
+          → (_≡_
+              (𝔽.toℕ $ 𝕍.lookup reg' r₁')
+              (_%_
+                (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (imm % ℕ.suc b)))
+                (ℕ.suc b)))
+      dunV = {!!}
+
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
            → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
