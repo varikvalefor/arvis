@@ -756,7 +756,8 @@ module Instructions where
 
       open f mx sk
 
-      dun : (_≡_
+      dun : ¬ (r₁ ≡ 0)
+          → (_≡_
               (𝔽.toℕ
                 (𝕍.lookup
                   (Rucyca'a.reg $ Skami.rucyca'a f)
