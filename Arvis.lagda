@@ -779,8 +779,7 @@ module Instructions where
               ((_% ℕ.suc b)
                 (ℕ._+_
                  i
-                 (𝔽.toℕ
-                   (𝕍.lookup (rgra sk) r₁')))))
+                 (𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁'))))
       dun N = begin
         𝔽.toℕ (𝕍.lookup (rgra f) r₁') ≡⟨ {!!} ⟩
         _ ∎
