@@ -776,11 +776,11 @@ module Instructions where
       rgra = Rucyca'a.reg ∘ Skami.rucyca'a
 
       module _ (N : ¬_ $ r₁ ≡ 0) where
-        dun : (_≡_
+        r₁+ : (_≡_
                 (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁')
                 ((_% ℕ.suc b)
                   (i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂')))
-        dun = begin
+        r₁+ = begin
           𝔽.toℕ (𝕍.lookup (rgra f) r₁') ≡⟨ ≡.refl ⟩
           _ ≡⟨ 𝕍P.lookup∘updateAt r₁' _ ▹ cong 𝔽.toℕ ⟩
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
