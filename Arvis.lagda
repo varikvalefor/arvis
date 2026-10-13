@@ -779,13 +779,13 @@ module Instructions where
         dun : (_≡_
                 (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁')
                 ((_% ℕ.suc b)
-                  (i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁')))
+                  (i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂')))
         dun = begin
           𝔽.toℕ (𝕍.lookup (rgra f) r₁') ≡⟨ ≡.refl ⟩
           _ ≡⟨ 𝕍P.lookup∘updateAt r₁' _ ▹ cong 𝔽.toℕ ⟩
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
           𝔽.toℕ (if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') *r₂+i) ≡⟨ {!!} ⟩
-          𝔽.toℕ *r₂+i ≡⟨ mod-% (i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁') _ ⟩
+          𝔽.toℕ *r₂+i ≡⟨ mod-% (i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂') _ ⟩
           _ ∎
           where
           mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
