@@ -780,6 +780,7 @@ module Instructions where
       dun N = begin
         𝔽.toℕ (𝕍.lookup (rgra f) r₁') ≡⟨ {!!} ▹ cong 𝔽.toℕ ⟩
         𝔽.toℕ *r₁' ≡⟨ {!!} ⟩
+        𝔽.toℕ (if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') *r₂+i) ≡⟨ {!!} ⟩
         𝔽.toℕ *r₂+i ≡⟨ {!!} ⟩
         _ ∎
         where
