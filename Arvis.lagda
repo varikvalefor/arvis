@@ -518,7 +518,7 @@ module Instructions where
 
   add = add.add
 
-  module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ ℕ.suc b) where
+  module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
     nibarda = {!!}
 
