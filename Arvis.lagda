@@ -712,7 +712,7 @@ module Instructions where
       *r₂ = 𝕍.lookup reg r₂
 
       *r₂+i : 𝔽 $ ℕ.suc b
-      *r₂+i = (𝔽.toℕ *r₂ ℕ.+ 𝔽.toℕ i) mod _
+      *r₂+i = (𝔽.toℕ i ℕ.+ 𝔽.toℕ *r₂) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i
@@ -754,14 +754,17 @@ module Instructions where
         dun : (_≡_
                 (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁)
                 ((_% ℕ.suc b)
-                  (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁)))
+                  (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂)))
         dun = begin
-          𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ {!!} ▹ cong 𝔽.toℕ ⟩
+          𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ ≡.refl ⟩
+          _ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ▹ cong 𝔽.toℕ ⟩
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
           𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ {!!} ⟩
-          𝔽.toℕ *r₂+i ≡⟨ {!!} ⟩
+          𝔽.toℕ *r₂+i ≡⟨ mod-% (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂) _ ⟩
           _ ∎
           where
+          mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
+          mod-% = {!!}
           open ≡.≡-Reasoning
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
