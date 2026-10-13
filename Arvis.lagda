@@ -134,6 +134,7 @@ open import Function
   using (
     typeOf;
     _on_;
+    _ˢ_;
     _∘_;
     _$_
   )
@@ -723,7 +724,7 @@ module Instructions where
       rx : Rucyca'a b r
       rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = x0}
         where
-        x0 = x0-vrici r₁ _ reg _ ≡.refl Function.ˢ x0'
+        x0 = x0-vrici r₁ _ reg _ ≡.refl ˢ x0'
           where
           x0' = Rucyca'a.x0 $ Skami.rucyca'a sk
 
