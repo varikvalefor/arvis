@@ -775,9 +775,7 @@ module Instructions where
       dun : ¬ (r₁ ≡ 0)
           → (_≡_
               (𝔽.toℕ
-                (𝕍.lookup
-                  (rgra f)
-                  r₁'))
+                (𝕍.lookup (rgra f) r₁'))
               ((_% ℕ.suc b)
                 (ℕ._+_
                  i
