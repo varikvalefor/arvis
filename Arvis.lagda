@@ -750,19 +750,19 @@ module Instructions where
            → Vec (𝔽 $ ℕ.suc b) r
       rgra = Rucyca'a.reg ∘ Skami.rucyca'a
 
-      dun : ¬ (𝔽.toℕ r₁ ≡ 0)
-          → (_≡_
-              (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁)
-              ((_% ℕ.suc b)
-                (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁)))
-      dun N = begin
-        𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ {!!} ▹ cong 𝔽.toℕ ⟩
-        𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
-        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ {!!} ⟩
-        𝔽.toℕ *r₂+i ≡⟨ {!!} ⟩
-        _ ∎
-        where
-        open ≡.≡-Reasoning
+      module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
+        dun : (_≡_
+                (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁)
+                ((_% ℕ.suc b)
+                  (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁)))
+        dun = begin
+          𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ {!!} ▹ cong 𝔽.toℕ ⟩
+          𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
+          𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ {!!} ⟩
+          𝔽.toℕ *r₂+i ≡⟨ {!!} ⟩
+          _ ∎
+          where
+          open ≡.≡-Reasoning
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
