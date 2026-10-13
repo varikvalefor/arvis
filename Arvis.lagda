@@ -784,7 +784,6 @@ module Instructions where
         where
         open ≡.≡-Reasoning
 
-
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 \end{code}
