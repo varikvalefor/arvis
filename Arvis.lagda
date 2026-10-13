@@ -104,6 +104,7 @@ ni'o bau la .lojban.\ joi la'oi .Agda.\ la .varik.\ cu ciksi tu'a la'o zoi.\ RIS
 module Arvis where
 open import Level
   using (
+    _⊔_;
     Level
   )
   renaming (
@@ -215,7 +216,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
 \section{le co'e ja midnoi se ctaipe}
 
 \begin{code}
-record Instruction {a} (A : Set a) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
+record Instruction {a} (A : Set a) : Set (lsuc a ⊔ lsuc 0ₗ) where
   field
     nibarda : ℕ
     Mapti : (b r m : ℕ) → Set
