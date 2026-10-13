@@ -756,7 +756,9 @@ module Instructions where
               ((_% ℕ.suc b)
                 (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁)))
       dun N = begin
-        𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ {!!} ⟩
+        𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ {!!} ▹ cong 𝔽.toℕ ⟩
+        𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
+        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ {!!} ⟩
         𝔽.toℕ *r₂+i ≡⟨ {!!} ⟩
         _ ∎
         where
