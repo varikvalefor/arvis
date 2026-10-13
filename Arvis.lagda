@@ -737,7 +737,7 @@ module Instructions where
       *r₂ = 𝕍.lookup reg $ 𝔽.fromℕ< $ M.m₁ mx
 
       *r₂+i : 𝔽 $ ℕ.suc b
-      *r₂+i = (𝔽.toℕ *r₂ ℕ.+ i) mod _
+      *r₂+i = (i ℕ.+ 𝔽.toℕ *r₂) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (r₁ ≡ᵇ 0) (𝕍.lookup reg r₁') *r₂+i
