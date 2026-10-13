@@ -733,6 +733,9 @@ module Instructions where
       r₁' : 𝔽 r
       r₁' = 𝔽.fromℕ< $ M.m₁ mx
 
+      r₂' : 𝔽 r
+      r₂' = 𝔽.fromℕ< $ M.m₁ mx
+
       *r₂ : 𝔽 $ ℕ.suc b
       *r₂ = 𝕍.lookup reg $ 𝔽.fromℕ< $ M.m₁ mx
 
