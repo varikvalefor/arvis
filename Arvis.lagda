@@ -427,6 +427,9 @@ module Instructions where
 
     M? : (b r m : ℕ) → Dec $ M b r m
     M? b r _ with r₁ <? r | r₂ <? r | r₃ <? r
+    ... | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
+    ... | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
+    ... | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
     ... | yes m₁ | yes m₂ | yes m₃ = yes $ record {
       m₁ = m₁;
       m₂ = m₂;
@@ -436,9 +439,6 @@ module Instructions where
       N⇒F : ∀ {a} → {A : Set a} → {A? : Dec A} → ¬ A → False A?
       N⇒F {A? = yes p} N = N p
       N⇒F {A? = no ¬p} N = tt
-    ... | no m₁ | _ | _  = no $ m₁ ∘ M.m₁
-    ... | _ | no m₂ | _  = no $ m₂ ∘ M.m₂
-    ... | _ | _ | no m₃  = no $ m₃ ∘ M.m₃
 
     add : ∀ {a} → {A : Set a} → Instruction A
     add = record {
