@@ -766,21 +766,27 @@ module Instructions where
 
       open f mx sk
 
+      rgra : ∀ {a} → {A : Set a}
+           → {b r m : ℕ}
+           → Skami b r m A
+           → Vec (𝔽 $ ℕ.suc b) r
+      rgra = Rucyca'a.reg ∘ Skami.rucyca'a
+
       dun : ¬ (r₁ ≡ 0)
           → (_≡_
               (𝔽.toℕ
                 (𝕍.lookup
-                  (Rucyca'a.reg $ Skami.rucyca'a f)
+                  (rgra f)
                   r₁'))
               ((_% ℕ.suc b)
                 (ℕ._+_
                  i
                  (𝔽.toℕ
                    (𝕍.lookup
-                     (Rucyca'a.reg $ Skami.rucyca'a sk)
+                     (rgra sk)
                      r₁')))))
       dun N = begin
-        𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁') ≡⟨ {!!} ⟩
+        𝔽.toℕ (𝕍.lookup (rgra f) r₁') ≡⟨ {!!} ⟩
         _ ∎
         where
         open ≡.≡-Reasoning
