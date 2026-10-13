@@ -779,7 +779,7 @@ module Instructions where
                    (𝕍.lookup
                      (Rucyca'a.reg $ Skami.rucyca'a sk)
                      r₁')))))
-      dun = λ N → begin
+      dun N = begin
         𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁') ≡⟨ {!!} ⟩
         _ ∎
         where
