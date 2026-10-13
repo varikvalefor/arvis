@@ -104,6 +104,7 @@ ni'o bau la .lojban.\ joi la'oi .Agda.\ la .varik.\ cu ciksi tu'a la'o zoi.\ RIS
 module Arvis where
 open import Level
   using (
+    _⊔_;
     Level
   )
   renaming (
@@ -216,7 +217,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
 \section{le co'e ja midnoi se ctaipe}
 
 \begin{code}
-record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a Level.⊔ lsuc 0ₗ) where
+record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) where
   field
     nibarda : ℕ
     Mapti : Set
@@ -477,6 +478,7 @@ module Instructions where
                 sk')
       dun⁻¹ sk mx r₄ N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
+        𝕍.lookup r2d2 r₄ ≡⟨ ≡.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
@@ -742,24 +744,23 @@ module Instructions where
 
       open f m sk
 
+      rgra : ∀ {a} → {A : Set a}
+           → {b r m : ℕ}
+           → Skami b r m A
+           → Vec (𝔽 $ ℕ.suc b) r
+      rgra = Rucyca'a.reg ∘ Skami.rucyca'a
+
       dun : ¬ (𝔽.toℕ r₁ ≡ 0)
           → (_≡_
-              (𝔽.toℕ
-                (𝕍.lookup
-                  (Rucyca'a.reg $ Skami.rucyca'a f)
-                  r₁))
+              (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁)
               ((_% ℕ.suc b)
-                (ℕ._+_
-                 (𝔽.toℕ i)
-                 (𝔽.toℕ
-                   (𝕍.lookup
-                     (Rucyca'a.reg $ Skami.rucyca'a sk)
-                     r₁)))))
+                (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₁)))
       dun N = begin
-        𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
-          ≡⟨ {!!} ⟩
+        𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ {!!} ⟩
+        𝔽.toℕ *r₂+i ≡⟨ {!!} ⟩
         _ ∎
-        where open ≡.≡-Reasoning
+        where
+        open ≡.≡-Reasoning
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
