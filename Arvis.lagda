@@ -462,6 +462,7 @@ module Instructions where
                 sk')
       dun⁻¹ b r _ sk r₁ r₂ r₃ m r₄ N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
+        𝕍.lookup r2d2 r₄ ≡⟨ ≡.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
