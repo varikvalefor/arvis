@@ -737,7 +737,7 @@ module Instructions where
       r₂' = 𝔽.fromℕ< $ M.m₁ mx
 
       *r₂ : 𝔽 $ ℕ.suc b
-      *r₂ = 𝕍.lookup reg $ 𝔽.fromℕ< $ M.m₁ mx
+      *r₂ = 𝕍.lookup reg r₂'
 
       *r₂+i : 𝔽 $ ℕ.suc b
       *r₂+i = (i ℕ.+ 𝔽.toℕ *r₂) mod _
