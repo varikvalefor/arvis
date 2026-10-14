@@ -169,6 +169,10 @@ open import Relation.Nullary
     ¬_;
     no
   )
+open import Data.Fin.Properties
+  as DFP
+  using (
+  )
 open import Data.Vec.Properties
   as 𝕍P
   using (
@@ -790,8 +794,6 @@ module Instructions where
           where
           mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
           mod-% _ _ = DFP.toℕ-fromℕ< _
-            where
-            import Data.Fin.Properties as DFP
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
