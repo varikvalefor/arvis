@@ -789,7 +789,9 @@ module Instructions where
           _ ∎
           where
           mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
-          mod-% = {!!}
+          mod-% = λ _ _ → DFP.toℕ-fromℕ< _
+            where
+            import Data.Fin.Properties as DFP
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
