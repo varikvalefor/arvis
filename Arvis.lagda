@@ -765,7 +765,8 @@ module Instructions where
           𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ ≡.refl ⟩
           _ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ▹ cong 𝔽.toℕ ⟩
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
-          𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ {!!} ⟩
+          𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ ≡.refl ⟩
+          _ ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) *r₂+i) ⟩
           𝔽.toℕ *r₂+i ≡⟨ mod-% (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂) _ ⟩
           _ ∎
           where
