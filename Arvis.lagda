@@ -772,9 +772,10 @@ module Instructions where
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
           𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ ≡.refl ⟩
           _ ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) *r₂+i) ⟩
-          𝔽.toℕ *r₂+i ≡⟨ mod-% (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂) _ ⟩
+          𝔽.toℕ *r₂+i ≡⟨ mod-% i+*r₂ _ ⟩
           _ ∎
           where
+          i+*r₂ = 𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂
           mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
           mod-% _ _ = toℕ-fromℕ< _
           open ≡.≡-Reasoning
