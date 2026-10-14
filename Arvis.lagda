@@ -799,7 +799,7 @@ module Instructions where
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
-            → ¬_ $ 𝔽.toℕ r₄ ≡ r₁
+            → ¬_ $ r₄ ≡ r₁'
             → ((_≡_ on λ x → 𝕍.lookup (rgra x) r₄)
                 sk
                 f)
