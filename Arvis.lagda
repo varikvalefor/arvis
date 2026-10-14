@@ -237,7 +237,9 @@ module Instructions where
            → (r₁ : 𝔽 r)
            → (n : 𝔽 $ ℕ.suc b)
            → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
-           → rc' ≡ 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rc r₁) n) rc
+           → (_≡_
+               rc'
+               (𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rc r₁) n) rc))
            → (ml : 0 ℕ.< r)
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc $ 𝔽.fromℕ< ml
            → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc' $ 𝔽.fromℕ< ml
