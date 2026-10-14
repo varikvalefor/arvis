@@ -170,6 +170,11 @@ open import Relation.Nullary
     ¬_;
     no
   )
+open import Data.Fin.Properties
+  as DFP
+  using (
+    toℕ-fromℕ<
+  )
 open import Data.Vec.Properties
   as 𝕍P
   using (
@@ -765,7 +770,7 @@ module Instructions where
           _ ∎
           where
           mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
-          mod-% = {!!}
+          mod-% _ _ = toℕ-fromℕ< _
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
