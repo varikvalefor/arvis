@@ -785,7 +785,7 @@ module Instructions where
             → ((_≡_ on λ x → 𝕍.lookup (rgra x) r₄)
                 sk
                 f)
-        rₓd r₄ N = 𝕍P.lookup∘updateAt′ r₄ r₁ N _ ▹ ≡.sym
+        rₓd _ N = 𝕍P.lookup∘updateAt′ _ _ N _ ▹ ≡.sym
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
