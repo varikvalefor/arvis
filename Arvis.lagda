@@ -374,7 +374,6 @@ module Instructions where
                 i
                 (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n)
                 rc))
-          → ¬_ $ 𝔽.toℕ i ≡ 0
           → (j : 𝔽 r)
           → ¬_ $ j ≡ i
           → 𝕍.lookup rc' j ≡ 𝕍.lookup rc j
@@ -681,7 +680,7 @@ module Instructions where
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ r₄ ≡ r₁
            → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
-      dun' = λ r₄ N → N0-d-s' r₁ exp reg reg' ≡.refl {!!} r₄ N
+      dun' = λ r₄ N → N0-d-s' r₁ exp reg reg' ≡.refl r₄ N
 
   slli = slli.slli
 
