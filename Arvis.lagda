@@ -204,7 +204,7 @@ open import Relation.Binary.PropositionalEquality
   )
 \end{code}
 
-\section{le vrici}
+\section{le vrici je fancu}
 
 \begin{code}
 module 𝔽0 where
