@@ -415,6 +415,9 @@ module Instructions where
      𝔽0 {0} ()
      𝔽0 {ℕ.suc _} _ = 𝔽.zero
 
+     𝔽0v : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (𝔽0 x)
+     𝔽0v = {!!}
+
     jr : ∀ {a} → {A : Set a} → Instruction A b r m
     jr = jalr.jalr b r m f0 r₁
 
