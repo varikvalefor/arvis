@@ -313,7 +313,7 @@ module Instructions where
                 rc))
           → 𝔽.toℕ i ≡ 0
           → rc ≡ rc'
-  0-dro-s {b} i n rc rc' d d0 = ≡.trans d ud ▹ ≡.sym
+  0-dro-s i n rc rc' d d0 = ≡.trans d ud ▹ ≡.sym
     where
     ud = updateAt-id rc _ _ $ ≡⇒≡ᵇ d0 ▹ cong (λ b → if b (𝕍.lookup rc i) n)
       where
