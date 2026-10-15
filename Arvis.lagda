@@ -364,6 +364,22 @@ module Instructions where
     where
     open ≡.≡-Reasoning
 
+  N0-d-s' : {b r : ℕ}
+          → (i : 𝔽 r)
+          → (n : 𝔽 $ ℕ.suc b)
+          → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
+          → (_≡_
+              rc'
+              (𝕍.updateAt
+                i
+                (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n)
+                rc))
+          → ¬_ $ 𝔽.toℕ i ≡ 0
+          → (j : 𝔽 r)
+          → ¬_ $ j ≡ i
+          → 𝕍.lookup rc' j ≡ 𝕍.lookup rc j
+  N0-d-s' = {!!}
+
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
