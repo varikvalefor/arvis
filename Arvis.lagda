@@ -243,8 +243,21 @@ module Instructions where
                 rc))
           → 𝔽.toℕ i ≡ 0
           → rc ≡ rc'
-  0-dro-s {b} {r} i n rc rc' d d0 = ≡.trans {!!} $ ≡.sym d
+  0-dro-s {b} {r} i n rc rc' d d0 = ≡.trans (≡.sym ud) $ ≡.sym d
     where
+    ud = updateAt-id rc _ _ {!!}
+      where
+      updateAt-id : ∀ {a} → {A : Set a}
+                  → {n : ℕ}
+                  → (x : Vec A n)
+                  → (i : 𝔽 n)
+                  → (f : A → A)
+                  → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
+                  → 𝕍.updateAt i f x ≡ x
+      updateAt-id (x 𝕍.∷ _) 𝔽.zero f d = cong (𝕍._∷ _) d
+      updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = cong (_ 𝕍.∷_) rd
+        where
+        rd = updateAt-id (x₁ 𝕍.∷ xs) i f d
     open ≡.≡-Reasoning
   module jalr (r₁ r₂ : ℕ) where
 
