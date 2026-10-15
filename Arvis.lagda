@@ -213,9 +213,9 @@ module 𝔽0 where
   𝔽0 {ℕ.suc _} _ = 𝔽.zero
 
   module Veritas where
-    𝔽0v : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (𝔽0 x)
-    𝔽0v {0} ()
-    𝔽0v {ℕ.suc _} _ = ≡.refl
+    d0 : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (𝔽0 x)
+    d0 {0} ()
+    d0 {ℕ.suc _} _ = ≡.refl
 
 𝔽0 = 𝔽0.𝔽0
 \end{code}
