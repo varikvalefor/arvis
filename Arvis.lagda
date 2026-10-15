@@ -348,7 +348,11 @@ module Instructions where
                rc))
          → ¬_ $ 𝔽.toℕ i ≡ 0
          → 𝕍.lookup rc' i ≡ n
-  N0-d-s = {!!}
+  N0-d-s = λ i n rc rc' d N → begin
+    𝕍.lookup rc' i ≡⟨ {!!} ⟩
+    n ∎
+    where
+    open ≡.≡-Reasoning
 
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
