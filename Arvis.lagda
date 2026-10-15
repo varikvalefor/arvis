@@ -327,7 +327,7 @@ module Instructions where
       updateAt-id (x 𝕍.∷ _) 𝔽.zero f d = cong (𝕍._∷ _) d
       updateAt-id (_ 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = cong (_ 𝕍.∷_) rd
         where
-        rd = updateAt-id (x₁ 𝕍.∷ xs) i f d
+        rd = updateAt-id (_ 𝕍.∷ xs) i f d
       ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
            → ⦃ _ : Eq A ⦄
            → {x z : A}
