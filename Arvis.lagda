@@ -757,7 +757,6 @@ module Instructions where
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
       dun N m = N0-d-s _ _ _ _ ≡.refl N
         where
-        rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
 
   module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : 𝔽 {!!}) where
