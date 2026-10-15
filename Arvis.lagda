@@ -279,6 +279,41 @@ module Instructions where
         import Data.Fin.Properties
           as 𝔽P
 
+  0-dro-s : {b r : ℕ}
+          → (i : 𝔽 r)
+          → (n : 𝔽 $ ℕ.suc b)
+          → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
+          → (_≡_
+              rc'
+              (𝕍.updateAt
+                i
+                (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n)
+                rc))
+          → 𝔽.toℕ i ≡ 0
+          → rc ≡ rc'
+  0-dro-s {b} {r} i n rc rc' d d0 = ≡.trans (≡.sym ud) $ ≡.sym d
+    where
+    ud = updateAt-id rc _ _ $ ≡⇒≡ᵇ d0 ▹ cong (λ b → if b (𝕍.lookup rc i) n)
+      where
+      updateAt-id : ∀ {a} → {A : Set a}
+                  → {n : ℕ}
+                  → (x : Vec A n)
+                  → (i : 𝔽 n)
+                  → (f : A → A)
+                  → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
+                  → 𝕍.updateAt i f x ≡ x
+      updateAt-id (x 𝕍.∷ _) 𝔽.zero f d = cong (𝕍._∷ _) d
+      updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = cong (_ 𝕍.∷_) rd
+        where
+        rd = updateAt-id (x₁ 𝕍.∷ xs) i f d
+      ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
+           → ⦃ _ : Eq A ⦄
+           → {x z : A}
+           → x ≡ z
+           → x ≡ᵇ z ≡ Data.Bool.true
+      ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
+    open ≡.≡-Reasoning
+
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -360,33 +395,10 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                (Instruction.f jalr mx sk))
-      0-dro d = ≡.sym $ updateAt-id _ _ _ d'
+      0-dro d = 0-dro-s r₁ pc+nb (rvra sk) (rvra f') {!!} {!!}
         where
-        d' = begin
-          *r₁'
-            ≡⟨ ≡.refl ⟩
-          if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) _
-            ≡⟨ cong (λ b → if b (𝕍.lookup rx r₁) pc+nb) $ ≡⇒≡ᵇ d ⟩
-          𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ∎
-          where
-          open ≡.≡-Reasoning
-          ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
-               → ⦃ _ : Eq A ⦄
-               → {x z : A}
-               → x ≡ z
-               → x ≡ᵇ z ≡ Data.Bool.true
-          ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
-        updateAt-id : ∀ {a} → {A : Set a}
-                    → {n : ℕ}
-                    → (x : Vec A n)
-                    → (i : 𝔽 n)
-                    → (f : A → A)
-                    → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
-                    → 𝕍.updateAt i f x ≡ x
-        updateAt-id (x 𝕍.∷ _) 𝔽.zero f d = cong (𝕍._∷ _) d
-        updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = cong (_ 𝕍.∷_) rd
-          where
-          rd = updateAt-id (x₁ 𝕍.∷ xs) i f d
+        rvra = Rucyca'a.reg ∘ Skami.rucyca'a
+        f' = Instruction.f jalr mx sk
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
