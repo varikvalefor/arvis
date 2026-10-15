@@ -350,7 +350,7 @@ module Instructions where
          → 𝕍.lookup rc' i ≡ n
   N0-d-s = λ i n rc rc' d N → begin
     𝕍.lookup rc' i ≡⟨ ≡.trans (d ▹ cong (λ x → 𝕍.lookup x i)) $ 𝕍P.lookup∘updateAt i rc ⟩
-    if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n ≡⟨ {!!} ⟩
+    if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n ≡⟨ {!!} ▹ cong (λ b → if b (𝕍.lookup rc i) n) ⟩
     n ∎
     where
     open ≡.≡-Reasoning
