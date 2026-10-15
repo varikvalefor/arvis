@@ -245,7 +245,7 @@ module Instructions where
           → rc ≡ rc'
   0-dro-s {b} {r} i n rc rc' d d0 = ≡.trans (≡.sym ud) $ ≡.sym d
     where
-    ud = updateAt-id rc _ _ {!!}
+    ud = updateAt-id rc _ _ $ ≡⇒≡ᵇ d0 ▹ cong (λ b → if b (𝕍.lookup rc i) n)
       where
       updateAt-id : ∀ {a} → {A : Set a}
                   → {n : ℕ}
@@ -258,6 +258,12 @@ module Instructions where
       updateAt-id (x 𝕍.∷ x₁ 𝕍.∷ xs) (𝔽.suc i) f d = cong (_ 𝕍.∷_) rd
         where
         rd = updateAt-id (x₁ 𝕍.∷ xs) i f d
+      ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
+           → ⦃ _ : Eq A ⦄
+           → {x z : A}
+           → x ≡ z
+           → x ≡ᵇ z ≡ Data.Bool.true
+      ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
     open ≡.≡-Reasoning
   module jalr (r₁ r₂ : ℕ) where
 
