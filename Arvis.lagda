@@ -336,6 +336,20 @@ module Instructions where
            → x ≡ᵇ z ≡ Data.Bool.true
       ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
 
+  N0-d-s : {b r : ℕ}
+         → (i : 𝔽 r)
+         → (n : 𝔽 $ ℕ.suc b)
+         → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
+         → (_≡_
+             rc'
+             (𝕍.updateAt
+               i
+               (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n)
+               rc))
+         → ¬_ $ 𝔽.toℕ i ≡ 0
+         → 𝕍.lookup rc' i ≡ n
+  N0-d-s = {!!}
+
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
