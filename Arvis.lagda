@@ -679,7 +679,7 @@ module Instructions where
       dunV N = ≡.trans (dun N ▹ cong 𝔽.toℕ) $ toℕ-fromℕ< _
 
       dun' : (r₄ : 𝔽 _)
-           → ¬_ $ 𝔽.toℕ r₄ ≡ 𝔽.toℕ r₁
+           → ¬_ $ r₄ ≡ r₁
            → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
       dun' = {!!}
 
