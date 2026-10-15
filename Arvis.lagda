@@ -265,6 +265,7 @@ module Instructions where
            → x ≡ᵇ z ≡ Data.Bool.true
       ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
     open ≡.≡-Reasoning
+
   module jalr (r₁ r₂ : ℕ) where
 
     nibarda : ℕ
