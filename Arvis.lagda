@@ -349,7 +349,7 @@ module Instructions where
          → ¬_ $ 𝔽.toℕ i ≡ 0
          → 𝕍.lookup rc' i ≡ n
   N0-d-s = λ i n rc rc' d N → begin
-    𝕍.lookup rc' i ≡⟨ {!!} ⟩
+    𝕍.lookup rc' i ≡⟨ ≡.sym $ ≡.trans (𝕍P.lookup∘updateAt i rc ▹ ≡.sym) $ d ▹ cong (λ x → 𝕍.lookup x i) ▹ ≡.sym ⟩
     if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n ≡⟨ {!!} ⟩
     n ∎
     where
