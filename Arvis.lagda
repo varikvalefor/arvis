@@ -231,6 +231,23 @@ record Instruction {a} (A : Set a) : Set (lsuc a ⊔ lsuc 0ₗ) where
 
 \begin{code}
 module Instructions where
+  0-dro-s : {b r : ℕ}
+          → (i : 𝔽 r)
+          → (n : 𝔽 $ ℕ.suc b)
+          → (rc rc' : Vec (𝔽 $ ℕ.suc b) r)
+          → (_≡_
+              rc'
+              (𝕍.updateAt
+                i
+                (λ _ → if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n)
+                rc))
+          → 𝔽.toℕ i ≡ 0
+          → rc ≡ rc'
+  0-dro-s {b} {r} i n rc rc' d d0 = begin
+    rc ≡⟨ {!!} ⟩
+    rc' ∎
+    where
+    open ≡.≡-Reasoning
   module jalr (r₁ r₂ : ℕ) where
 
     nibarda : ℕ
