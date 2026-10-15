@@ -731,17 +731,15 @@ module Instructions where
         where
         pc' = (_mod ℕ.suc b) $ 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda
 
-    module Veritas where
-      dun⁻¹ : ∀ {a} → {A : Set a}
-            → (sk : Skami b r mx A)
-            → (m : _)
+    module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
+      dun⁻¹ : (m : _)
             → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ r₁
             → (let r4i = λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄ in
                (_≡_ on r4i)
                 sk
                 (sk ▹ Instruction.f mul m))
-      dun⁻¹ sk m r₄ N = ≡.sym $ begin
+      dun⁻¹ m r₄ N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
@@ -750,15 +748,13 @@ module Instructions where
         rx = Skami.rucyca'a sk
         rx' = sk ▹ Instruction.f mul m ▹ Skami.rucyca'a
 
-      dun : ∀ {a} → {A : Set a}
-          → (sk : Skami b r mx A)
-          → (m : _)
+      dun : (m : _)
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
             (_≡_
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁)
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
-      dun sk m = {!!}
+      dun m = {!!}
         where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
