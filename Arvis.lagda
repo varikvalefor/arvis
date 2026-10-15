@@ -704,7 +704,9 @@ module Instructions where
       reg' = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
 
       f : Rucyca'a b r
-      f = record rx {reg = reg'; x0 = x0-vrici r₁ r₂*r₃ reg reg' {!!} ˢ Rucyca'a.x0 rx}
+      f = record rx {reg = reg'; x0 = x0-vrici r₁ r₂*r₃ reg reg' {!!} ˢ x0}
+        where
+        x0 = Rucyca'a.x0 rx
 
     f = f.f
 
