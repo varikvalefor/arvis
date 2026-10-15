@@ -219,6 +219,13 @@ module 𝔽0 where
     d0 {ℕ.suc _} _ = ≡.refl
 
 𝔽0 = 𝔽0.f
+
+¬≡⇒¬≡ᵇ : ∀ {a} → {A : Set a}
+       → ⦃ _ : Eq A ⦄
+       → {x z : A}
+       → ¬_ $ x ≡ z
+       → x ≡ᵇ z ≡ Data.Bool.false
+¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-false (x ≟ z)
 \end{code}
 
 \section{le rucyca'a se ctaipe}
@@ -828,12 +835,6 @@ module Instructions where
           i+*r₂ = 𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂
           mod-% : (m n : ℕ) → 𝔽.toℕ (m mod ℕ.suc n) ≡ m % ℕ.suc n
           mod-% _ _ = toℕ-fromℕ< _
-          ¬≡⇒¬≡ᵇ : ∀ {a} → {A : Set a}
-                 → ⦃ _ : Eq A ⦄
-                 → {x z : A}
-                 → ¬_ $ x ≡ z
-                 → x ≡ᵇ z ≡ Data.Bool.false
-          ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-false (x ≟ z)
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
