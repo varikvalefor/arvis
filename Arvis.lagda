@@ -153,6 +153,11 @@ open import Data.Unit
     tt;
     ⊤
   )
+open import Data.Empty
+  as ⊥
+  using (
+    ⊥-elim
+  )
 open import Data.Product
   using (
     _×_;
@@ -404,7 +409,11 @@ module Instructions where
     record M : Set where
 
     f0 : 𝔽 r
-    f0 = {!!}
+    f0 = 𝔽0 r₁
+     where
+     𝔽0 : {n : ℕ} → 𝔽 n → 𝔽 n
+     𝔽0 {0} ()
+     𝔽0 {ℕ.suc _} _ = 𝔽.zero
 
     jr : ∀ {a} → {A : Set a} → Instruction A b r m
     jr = jalr.jalr b r m f0 r₁
