@@ -643,9 +643,7 @@ module Instructions where
       rc' = record (Skami.rucyca'a sk) {reg = reg'; x0 = x0}
         where
         x0 : (ml : 0 ℕ.< r) → 0 ≡ _
-        x0 ml = x0-vrici r₁ exp _ _ ≡.refl ml x0'
-          where
-          x0' = Rucyca'a.x0 rc ml
+        x0 ml = (x0-vrici r₁ exp _ _ ≡.refl ˢ Rucyca'a.x0 rc) ml
 
 
       f : Skami b r m A
