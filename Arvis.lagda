@@ -680,7 +680,7 @@ module Instructions where
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ r₄ ≡ r₁
            → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
-      dun' = λ r₄ → N0-d-s' r₁ exp reg reg' ≡.refl r₄
+      dun' = N0-d-s' r₁ exp reg reg' ≡.refl
 
   slli = slli.slli
 
