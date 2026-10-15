@@ -211,10 +211,11 @@ module 𝔽0 where
   𝔽0 : {n : ℕ} → 𝔽 n → 𝔽 n
   𝔽0 {0} ()
   𝔽0 {ℕ.suc _} _ = 𝔽.zero
-  
-  𝔽0v : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (𝔽0 x)
-  𝔽0v {0} ()
-  𝔽0v {ℕ.suc _} _ = ≡.refl
+
+  module Veritas where
+    𝔽0v : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (𝔽0 x)
+    𝔽0v {0} ()
+    𝔽0v {ℕ.suc _} _ = ≡.refl
 
 𝔽0 = 𝔽0.𝔽0
 \end{code}
