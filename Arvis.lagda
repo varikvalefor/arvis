@@ -756,8 +756,6 @@ module Instructions where
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁)
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
       dun N m = N0-d-s _ _ _ _ ≡.refl N
-        where
-        open ≡.≡-Reasoning
 
   module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : 𝔽 {!!}) where
     nibarda : ℕ
