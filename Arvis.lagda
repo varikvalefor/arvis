@@ -324,7 +324,7 @@ module Instructions where
                   → (f : A → A)
                   → f (𝕍.lookup x i) ≡ 𝕍.lookup x i
                   → 𝕍.updateAt i f x ≡ x
-      updateAt-id (x 𝕍.∷ _) 𝔽.zero f = cong (𝕍._∷ _)
+      updateAt-id (x 𝕍.∷ _) 𝔽.zero _ = cong (𝕍._∷ _)
       updateAt-id (_ 𝕍.∷ _ 𝕍.∷ xs) (𝔽.suc i) f = cong (_ 𝕍.∷_) ∘ rd
         where
         rd = updateAt-id (_ 𝕍.∷ xs) i f
