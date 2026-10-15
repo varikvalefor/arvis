@@ -208,16 +208,16 @@ open import Relation.Binary.PropositionalEquality
 
 \begin{code}
 module 𝔽0 where
-  𝔽0 : {n : ℕ} → 𝔽 n → 𝔽 n
-  𝔽0 {0} ()
-  𝔽0 {ℕ.suc _} _ = 𝔽.zero
+  f : {n : ℕ} → 𝔽 n → 𝔽 n
+  f {0} ()
+  f {ℕ.suc _} _ = 𝔽.zero
 
   module Veritas where
-    d0 : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (𝔽0 x)
+    d0 : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (f x)
     d0 {0} ()
     d0 {ℕ.suc _} _ = ≡.refl
 
-𝔽0 = 𝔽0.𝔽0
+𝔽0 = 𝔽0.f
 \end{code}
 
 \section{le rucyca'a se ctaipe}
