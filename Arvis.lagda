@@ -243,9 +243,7 @@ module Instructions where
                 rc))
           → 𝔽.toℕ i ≡ 0
           → rc ≡ rc'
-  0-dro-s {b} {r} i n rc rc' d d0 = begin
-    rc ≡⟨ {!!} ⟩
-    rc' ∎
+  0-dro-s {b} {r} i n rc rc' d d0 = ≡.trans {!!} $ ≡.sym d
     where
     open ≡.≡-Reasoning
   module jalr (r₁ r₂ : ℕ) where
