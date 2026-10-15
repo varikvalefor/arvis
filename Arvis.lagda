@@ -678,7 +678,7 @@ module Instructions where
               (_%_
                 (𝔽.toℕ *r₂ ℕ.* (2 ℕ.^ (𝔽.toℕ imm % ℕ.suc b)))
                 (ℕ.suc b)))
-      dunV = λ N → ≡.trans (dun N ▹ cong 𝔽.toℕ) (toℕ-fromℕ< _)
+      dunV = λ N → ≡.trans (dun N ▹ cong 𝔽.toℕ) $ toℕ-fromℕ< _
 
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ 𝔽.toℕ r₄ ≡ 𝔽.toℕ r₁
