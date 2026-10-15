@@ -655,8 +655,6 @@ module Instructions where
       dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → 𝕍.lookup reg' r₁ ≡ exp
       dun N = N0-d-s _ _ _ _ ≡.refl N
-        where
-        open ≡.≡-Reasoning
 
       dunV : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (_≡_
