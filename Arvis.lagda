@@ -350,6 +350,7 @@ module Instructions where
          → 𝕍.lookup rc' i ≡ n
   N0-d-s = λ i n rc rc' d N → begin
     𝕍.lookup rc' i ≡⟨ {!!} ⟩
+    if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n ≡⟨ {!!} ⟩
     n ∎
     where
     open ≡.≡-Reasoning
