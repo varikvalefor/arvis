@@ -681,7 +681,7 @@ module Instructions where
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ r₄ ≡ r₁
            → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
-      dun' = {!!}
+      dun' = λ r₄ N → N0-d-s' r₁ exp reg reg' ≡.refl {!!} r₄ N
 
   slli = slli.slli
 
