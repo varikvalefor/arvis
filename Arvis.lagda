@@ -748,13 +748,14 @@ module Instructions where
         rx = Skami.rucyca'a sk
         rx' = sk ▹ Instruction.f mul m ▹ Skami.rucyca'a
 
-      dun : (m : _)
+      dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → (m : _)
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             let l = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
             (_≡_
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁)
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
-      dun m = {!!}
+      dun N m = {!!}
         where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
