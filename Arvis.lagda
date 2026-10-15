@@ -701,7 +701,7 @@ module Instructions where
         l = 𝔽.toℕ ∘ 𝕍.lookup reg
 
       reg' : Vec (𝔽 $ ℕ.suc b) r
-      reg' = 𝕍.updateAt r₁ (λ _ → r₂*r₃) reg
+      reg' = 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) r₂*r₃ $ 𝕍.lookup reg r₁) reg
 
       f : Rucyca'a b r
       f = record rx {reg = reg'; x0 = x0-vrici r₁ r₂*r₃ reg reg' {!!} ˢ x0}
@@ -755,7 +755,7 @@ module Instructions where
             (_≡_
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁)
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
-      dun sk m = 𝕍P.lookup∘updateAt r₁ rx
+      dun sk m = {!!}
         where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
