@@ -547,12 +547,13 @@ module Instructions where
           → (sk : Skami b r m A)
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ¬_ $ 𝔽.toℕ r₁ ≡ 0
-          → (_≡_
+          → (let ri = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
+             _≡_
               (𝔽.toℕ $ 𝕍.lookup (rx $ f mx sk) r₁)
               ((_% ℕ.suc b)
                 (ℕ._+_
-                  (𝔽.toℕ $ 𝕍.lookup (rx sk) r₂)
-                  (𝔽.toℕ $ 𝕍.lookup (rx sk) r₃))))
+                  (ri r₂)
+                  (ri r₃))))
       dun mx sk N = begin
         𝔽.toℕ (𝕍.lookup r2d2 r₁)
           ≡⟨ N0-d-s _ _ _ _ ≡.refl N ▹ cong 𝔽.toℕ ⟩
