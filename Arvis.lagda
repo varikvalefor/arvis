@@ -356,7 +356,8 @@ module Instructions where
          → ¬_ $ 𝔽.toℕ i ≡ 0
          → 𝕍.lookup rc' i ≡ n
   N0-d-s = λ i n rc rc' d N → begin
-    𝕍.lookup rc' i ≡⟨ ≡.trans (d ▹ cong (λ x → 𝕍.lookup x i)) $ 𝕍P.lookup∘updateAt i rc ⟩
+    𝕍.lookup rc' i ≡⟨ d ▹ cong (λ x → 𝕍.lookup x i) ⟩
+    𝕍.lookup (𝕍.updateAt i _ _) i ≡⟨ 𝕍P.lookup∘updateAt i rc ⟩
     if (𝔽.toℕ i ≡ᵇ 0) (𝕍.lookup rc i) n ≡⟨ ≡.refl ⟩
     _ ≡⟨ ¬≡⇒¬≡ᵇ N ▹ cong (λ b → if b (𝕍.lookup rc i) n) ⟩
     n ∎
