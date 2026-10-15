@@ -395,7 +395,7 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                (Instruction.f jalr mx sk))
-      0-dro d = 0-dro-s r₁ pc+nb (rvra sk) (rvra f') {!!} {!!}
+      0-dro d = 0-dro-s r₁ pc+nb (rvra sk) (rvra f') ≡.refl {!!}
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
         f' = Instruction.f jalr mx sk
