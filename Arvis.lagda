@@ -555,9 +555,7 @@ module Instructions where
                   (𝔽.toℕ $ 𝕍.lookup (rx sk) r₃))))
       dun mx sk N = begin
         𝔽.toℕ (𝕍.lookup r2d2 r₁)
-          ≡⟨ 𝕍P.lookup∘updateAt r₁ reg ▹ cong 𝔽.toℕ ⟩
-        𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ r₂+r₃)
-          ≡⟨ {!!} ▹ cong (λ b → 𝔽.toℕ $ if b *r₁ r₂+r₃) ⟩
+          ≡⟨ N0-d-s r₁ r₂+r₃ reg r2d2 ≡.refl N ▹ cong 𝔽.toℕ ⟩
         𝔽.toℕ r₂+r₃
           ≡⟨ _≡_.refl ⟩
         𝔽.toℕ (f.r₂+r₃ mx sk)
