@@ -801,7 +801,7 @@ module Instructions where
           _ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ▹ cong 𝔽.toℕ ⟩
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
           𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i) ≡⟨ ≡.refl ⟩
-          _ ≡⟨ ¬≡⇒¬≡ᵇ _ _ N ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) *r₂+i) ⟩
+          _ ≡⟨ ¬≡⇒¬≡ᵇ N ▹ cong (λ b → 𝔽.toℕ $ if b (𝕍.lookup reg r₁) *r₂+i) ⟩
           𝔽.toℕ *r₂+i ≡⟨ mod-% i+*r₂ _ ⟩
           _ ∎
           where
@@ -810,7 +810,7 @@ module Instructions where
           mod-% _ _ = toℕ-fromℕ< _
           ¬≡⇒¬≡ᵇ : ∀ {a} → {A : Set a}
                  → ⦃ _ : Eq A ⦄
-                 → (x z : A)
+                 → {x z : A}
                  → ¬_ $ x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.false
           ¬≡⇒¬≡ᵇ = {!!}
