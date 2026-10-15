@@ -315,8 +315,9 @@ module Instructions where
           → rc ≡ rc'
   0-dro-s i n rc rc' d d0 = ≡.trans d ud ▹ ≡.sym
     where
-    ud = updateAt-id rc _ _ $ ≡⇒≡ᵇ d0 ▹ cong (λ b → if b (𝕍.lookup rc i) n)
+    ud = updateAt-id rc _ _ $ ≡⇒≡ᵇ d0 ▹ cong (λ b → if b *i n)
       where
+      *i = 𝕍.lookup rc i
       updateAt-id : ∀ {a} → {A : Set a}
                   → {n : ℕ}
                   → (x : Vec A n)
