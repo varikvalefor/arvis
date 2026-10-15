@@ -755,7 +755,7 @@ module Instructions where
             (_≡_
               (𝕍.lookup (rx $ Instruction.f mul m sk) r₁)
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
-      dun N m = {!!}
+      dun N m = N0-d-s _ _ _ _ ≡.refl N
         where
         rx = Rucyca'a.reg $ Skami.rucyca'a sk
         open ≡.≡-Reasoning
