@@ -814,7 +814,7 @@ module Instructions where
                  → {x z : A}
                  → ¬_ $ x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.false
-          ¬≡⇒¬≡ᵇ = {!!}
+          ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ Relation.Nullary.Decidable.dec-false (x ≟ z)
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
