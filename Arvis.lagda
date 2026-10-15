@@ -193,6 +193,7 @@ open import Truthbrary.Record.Eq
 open import Relation.Nullary.Decidable
   using (
     isYes≗does;
+    dec-false;
     dec-true;
     False
   )
@@ -814,7 +815,7 @@ module Instructions where
                  → {x z : A}
                  → ¬_ $ x ≡ z
                  → x ≡ᵇ z ≡ Data.Bool.false
-          ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ Relation.Nullary.Decidable.dec-false (x ≟ z)
+          ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-false (x ≟ z)
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
