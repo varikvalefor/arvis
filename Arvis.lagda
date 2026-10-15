@@ -366,19 +366,16 @@ module Instructions where
           *r₁'
             ≡⟨ ≡.refl ⟩
           if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) _
-            ≡⟨ cong (λ b → if b (𝕍.lookup rx r₁) pc+nb) db ⟩
+            ≡⟨ cong (λ b → if b (𝕍.lookup rx r₁) pc+nb) $ ≡⇒≡ᵇ d ⟩
           𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ∎
           where
           open ≡.≡-Reasoning
-          db : 𝔽.toℕ r₁ ≡ᵇ 0 ≡ Data.Bool.true
-          db = ≡⇒≡ᵇ d
-            where
-            ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
-                 → ⦃ _ : Eq A ⦄
-                 → {x z : A}
-                 → x ≡ z
-                 → x ≡ᵇ z ≡ Data.Bool.true
-            ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
+          ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
+               → ⦃ _ : Eq A ⦄
+               → {x z : A}
+               → x ≡ z
+               → x ≡ᵇ z ≡ Data.Bool.true
+          ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
         updateAt-id : ∀ {a} → {A : Set a}
                     → {n : ℕ}
                     → (x : Vec A n)
