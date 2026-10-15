@@ -654,7 +654,7 @@ module Instructions where
 
       dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → 𝕍.lookup reg' r₁ ≡ exp
-      dun = λ N → begin
+      dun N = begin
         𝕍.lookup reg' r₁ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ⟩
         *r₁' ≡⟨ ≡.refl ⟩
         if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ exp ≡⟨ {!!} ▹ cong (λ b → if b *r₁ exp) ⟩
