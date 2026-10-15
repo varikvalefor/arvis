@@ -658,7 +658,7 @@ module Instructions where
       f = Instruction.f ad
       }
       where
-      ad = add b r mx r₁ r₂ {!!} -- 0
+      ad = add b r mx r₁ r₂ (𝔽0 r₁)
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     module f (M : add.M b r mx r₁ r₂ r₃)
