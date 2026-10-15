@@ -704,7 +704,7 @@ module Instructions where
       reg' = 𝕍.updateAt r₁ (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂*r₃) reg
 
       f : Rucyca'a b r
-      f = record rx {reg = reg'; x0 = x0-vrici r₁ r₂*r₃ reg reg' ≡.refl ˢ x0}
+      f = record rx {reg = reg'; x0 = x0-vrici r₁ r₂*r₃ _ _ ≡.refl ˢ x0}
         where
         x0 = Rucyca'a.x0 rx
 
