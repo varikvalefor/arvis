@@ -267,7 +267,6 @@ module Instructions where
     open ≡.≡-Reasoning
 
   module jalr (r₁ r₂ : ℕ) where
-
     nibarda : ℕ
     nibarda = {!!}
 
