@@ -866,8 +866,11 @@ module Instructions where
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = {!!}
 
+      rc' : Rucyca'a b r
+      rc' = {!!}
+
       f : Skami b r mx A
-      f = record sk {rucyca'a = {!!}; pc = pc+nb}
+      f = record sk {rucyca'a = rc'; pc = pc+nb}
 
     auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
     auipc A = record {
