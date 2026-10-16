@@ -493,7 +493,7 @@ module Instructions where
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
       rpcs = record {
-        dr = {!!};
+        dr = λ j N → drx j (N 𝔽.zero) ▹ ≡.sym;
         dv = ≡.refl;
         dm = ≡.refl
         }
