@@ -708,7 +708,8 @@ module Instructions where
 
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ r₄ ≡ r₁
-           → 𝕍.lookup reg' r₄ ≡ 𝕍.lookup reg r₄
+           → let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
+             𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ exp reg reg' ≡.refl
 
   slli = slli.slli
