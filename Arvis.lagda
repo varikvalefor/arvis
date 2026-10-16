@@ -907,20 +907,17 @@ module Instructions where
       f = f.f
       }
 
-    module Veritas where
+    module Veritas {a} {A : Set a} (m : ⊤) (sk : Skami b r mx A) where
+      open f m sk
+
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
-      lup : ∀ {a} → {A : Set a}
-          → ¬_ $ 𝔽.toℕ r₁ ≡ 0
-          → (m : ⊤)
-          → (sk : Skami b r mx A)
+      lup : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
              _≡_
               (𝔽.toℕ $ 𝕍.lookup (ra $ f.f m sk) r₁)
               ((𝔽.toℕ (Skami.pc sk) ℕ.+ 𝔽.toℕ imm) % ℕ.suc b))
-      lup N m sk = ≡.trans (N0-d-s r₁ pc+i rx rx' ≡.refl N ▹ cong 𝔽.toℕ) (toℕ-fromℕ< _)
-        where
-        open f m sk
+      lup N = ≡.trans (N0-d-s r₁ pc+i rx rx' ≡.refl N ▹ cong 𝔽.toℕ) (toℕ-fromℕ< _)
 \end{code}
 \end{document}
