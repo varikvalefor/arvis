@@ -883,6 +883,9 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
+      drpc : RPc-S A b r mx r₁ sk f
+      drpc = {!!}
+
   module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
     nibarda = {!!}
