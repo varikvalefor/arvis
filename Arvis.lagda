@@ -885,7 +885,7 @@ module Instructions where
 
       drpc : RPc-S A b r mx r₁ sk f
       drpc = record {
-        dr = {!!};
+        dr = ≡.sym Function.∘₂ rₓd;
         dv = ≡.refl;
         dm = ≡.refl
         }
