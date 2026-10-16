@@ -469,7 +469,6 @@ module Instructions where
       0-dro = 0-dro-s r₁ pc+nb (rvra sk) _ ≡.refl
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
-        f' = Instruction.f jalr mx sk
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
