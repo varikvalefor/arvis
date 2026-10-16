@@ -882,7 +882,7 @@ module Instructions where
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+i
 
       rx' : Vec (𝔽 $ ℕ.suc b) r
-      rx' = 𝕍.updateAt r₁ (λ _ → *r₁) rx
+      rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       rc' : Rucyca'a b r
       rc' = record rc {reg = rx'; x0 = x0-vrici r₁ pc+i rx rx' {!!} ˢ x0}
