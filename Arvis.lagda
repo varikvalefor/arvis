@@ -394,7 +394,7 @@ module Instructions where
       ra = Rucyca'a.reg ∘ Skami.rucyca'a
 
       D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
-      D f = f x ≡ f z
+      D f = f z ≡ f x
 
     field
       dr : (j : 𝔽 r)
