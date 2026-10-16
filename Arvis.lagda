@@ -494,7 +494,7 @@ module Instructions where
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = {!!};
-        dv = {!!};
+        dv = ≡.refl;
         dm = {!!}
         }
 
