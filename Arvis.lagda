@@ -753,7 +753,8 @@ module Instructions where
       dun⁻¹ : (m : _)
             → (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ r₁
-            → (let r4i = λ x → 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a x) r₄ in
+            → (let rrc = Rucyca'a.reg ∘ Skami.rucyca'a in
+               let r4i = λ x → 𝕍.lookup (rrc x) r₄ in
                (_≡_ on r4i)
                 sk
                 (sk ▹ Instruction.f mul m))
