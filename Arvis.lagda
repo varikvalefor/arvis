@@ -883,7 +883,7 @@ module Instructions where
       *r₁ = 𝕍.lookup rx r₁
 
       pc+i : 𝔽 $ ℕ.suc b
-      pc+i = (𝔽.toℕ (Skami.pc sk) ℕ.+ 𝔽.toℕ *r₁) mod _
+      pc+i = (𝔽.toℕ (Skami.pc sk) ℕ.+ 𝔽.toℕ imm) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+i
