@@ -304,7 +304,7 @@ module Instructions where
         n0 = 𝔽.fromℕ< ml
         lud : (x : Vec (𝔽 $ ℕ.suc b) _)
             → f x ≡ 𝕍.lookup x r₁
-        lud = λ x → d ▹ cong (𝕍.lookup x)
+        lud x = d ▹ cong (𝕍.lookup x)
         import Data.Fin.Properties
           as 𝔽P
 
