@@ -495,7 +495,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = ≡.refl;
-        dm = {!!}
+        dm = ≡.refl
         }
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
