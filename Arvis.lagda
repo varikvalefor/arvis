@@ -862,9 +862,12 @@ module Instructions where
       b32→32 = {!!}
 
   module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
     auipc A = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       Mapti = {!!};
       Mapti? = {!!};
       f = {!!}
