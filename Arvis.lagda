@@ -875,5 +875,10 @@ module Instructions where
       Mapti? = yes tt;
       f = f
       }
+
+    module Veritas where
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+      
 \end{code}
 \end{document}
