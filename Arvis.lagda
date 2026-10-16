@@ -884,7 +884,11 @@ module Instructions where
       b32→32 = {!!}
 
       drpc : RPc-S A b r mx r₁ sk f
-      drpc = {!!}
+      drpc = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
