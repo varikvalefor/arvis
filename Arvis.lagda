@@ -489,19 +489,7 @@ module Instructions where
       pc-r₁ = ≡.refl
 
       rdun : (_≡_ on Rucyca'a.reg ∘ Skami.rucyca'a) sk' sk
-      rdun = CMB f0 {!!} $ N0-d-s' f0 pc+nb rx rx' ≡.refl
-        where
-        CMB : ∀ {a} → {A : Set a}
-            → {n : ℕ}
-            → {x z : Vec A n}
-            → (i : 𝔽 n)
-            → (𝕍.lookup x i ≡ 𝕍.lookup z i)
-            → (_ : (j : 𝔽 n)
-                 → ¬_ $ j ≡ i
-                 → 𝕍.lookup x j ≡ 𝕍.lookup z j)
-            → x ≡ z
-        CMB {n = ℕ.suc n} {x} {z} 𝔽.zero di dj = {!!}
-        CMB {n = ℕ.suc n} {x} {z} (𝔽.suc f) di dj = {!!}
+      rdun = 0-dro-s f0 pc+nb rx rx' ≡.refl (𝔽0.Veritas.d0 _ ▹ ≡.sym) ▹ ≡.sym
 
       mdun : (_≡_ on Skami.mem) sk' sk
       mdun = ≡.refl
