@@ -873,12 +873,12 @@ module Instructions where
           *r₁ = 𝕍.lookup reg r₁
           open ≡.≡-Reasoning
 
-        rₓd : (r₄ : 𝔽 r)
-            → ¬_ $ r₄ ≡ r₁
-            → ((_≡_ on λ x → 𝕍.lookup (rgra x) r₄)
-                sk
-                f)
-        rₓd _ N = 𝕍P.lookup∘updateAt′ _ _ N _ ▹ ≡.sym
+      rₓd : (r₄ : 𝔽 r)
+          → ¬_ $ r₄ ≡ r₁
+          → ((_≡_ on λ x → 𝕍.lookup (rgra x) r₄)
+              sk
+              f)
+      rₓd _ N = 𝕍P.lookup∘updateAt′ _ _ N _ ▹ ≡.sym
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
