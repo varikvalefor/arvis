@@ -732,7 +732,7 @@ module Instructions where
 
       drpc : RPc-S A b r mx r₁ sk f
       drpc = record {
-        dr = {!!};
+        dr = add.Veritas.dun⁻¹ b r mx r₁ r₂ (𝔽0 r₁) sk _;
         dv = ≡.refl;
         dm = ≡.refl
         }
