@@ -927,8 +927,8 @@ module Instructions where
           → ¬_ $ r₄ ≡ r₁
           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
              _≡_
-              (𝕍.lookup (ra $ f.f m sk) r₁)
-              (𝕍.lookup (ra sk) r₁))
+              (𝕍.lookup (ra $ f.f m sk) r₄)
+              (𝕍.lookup (ra sk) r₄))
       lur = {!!}
 \end{code}
 \end{document}
