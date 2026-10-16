@@ -952,7 +952,7 @@ module Instructions where
       drpc : RPc-S A b r mx r₁ sk f
       drpc = record {
         dr = lup';
-        dv = {!!};
+        dv = ≡.refl;
         dm = {!!}
         }
 \end{code}
