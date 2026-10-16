@@ -869,7 +869,7 @@ module Instructions where
     auipc A = record {
       nibarda = nibarda;
       Mapti = ⊤;
-      Mapti? = {!!};
+      Mapti? = yes tt;
       f = {!!}
       }
 \end{code}
