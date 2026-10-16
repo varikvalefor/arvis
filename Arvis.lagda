@@ -497,6 +497,9 @@ module Instructions where
       vdun : (_≡_ on Skami.vrici) sk' sk
       vdun = ≡.refl
 
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
   module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     record M : Set where
 
