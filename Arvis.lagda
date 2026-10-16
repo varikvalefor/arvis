@@ -812,7 +812,7 @@ module Instructions where
       f = record sk {rucyca'a = rx; pc = pc+nb}
 
     addi : ∀ {a} → (A : Set a) → Instruction A b r mx
-    addi = λ A → record {
+    addi A = record {
       nibarda = nibarda;
       Mapti = M;
       Mapti? = M?;
