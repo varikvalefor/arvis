@@ -903,7 +903,7 @@ module Instructions where
 
       drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
       drpc = record {
-        dr = {!!}; -- ≡.sym Function.∘₂ rₓd;
+        dr = λ j N → rₓd j (N 𝔽.zero) ▹ ≡.sym;
         dv = ≡.refl;
         dm = ≡.refl
         }
