@@ -491,6 +491,9 @@ module Instructions where
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
 
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs = {!!}
+
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     record M : Set where
 
