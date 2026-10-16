@@ -148,6 +148,11 @@ open import Data.Bool
   renaming (
     if_then_else_ to if
   )
+open import Data.List
+  as 𝕃
+  using (
+    List
+  )
 open import Data.Unit
   using (
     tt;
@@ -387,7 +392,7 @@ module Instructions where
 
   record RPc-S {a} (A : Set a)
                   (b r m : ℕ)
-                  (i : 𝔽 r)
+                  (is : List $ 𝔽 r)
                   (x z : Skami b r m A) : Set a where
     private
       ra : Skami b r m A → Vec (𝔽 $ ℕ.suc b) r
@@ -398,7 +403,7 @@ module Instructions where
 
     field
       dr : (j : 𝔽 r)
-         → ¬_ $ j ≡ i
+         → ((i : 𝔽 _) → ¬_ $ 𝕃.lookup is i ≡ j)
          → D $ λ x → 𝕍.lookup (ra x) j
       dv : D Skami.vrici
       dm : D Skami.mem
@@ -730,9 +735,9 @@ module Instructions where
                    (sk : Skami b r mx A) where
       open add.f b r mx r₁ r₂ (𝔽0 r₁) m sk
 
-      drpc : RPc-S A b r mx r₁ sk f
+      drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
       drpc = record {
-        dr = add.Veritas.dun⁻¹ b r mx r₁ r₂ (𝔽0 r₁) sk _;
+        dr = λ j N → {!!}; -- add.Veritas.dun⁻¹ b r mx r₁ r₂ (𝔽0 r₁) sk _;
         dv = ≡.refl;
         dm = ≡.refl
         }
@@ -896,9 +901,9 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
-      drpc : RPc-S A b r mx r₁ sk f
+      drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
       drpc = record {
-        dr = ≡.sym Function.∘₂ rₓd;
+        dr = {!!}; -- ≡.sym Function.∘₂ rₓd;
         dv = ≡.refl;
         dm = ≡.refl
         }
@@ -969,9 +974,9 @@ module Instructions where
                (𝕍.lookup (ra sk) r₄))
       lup' = N0-d-s' r₁ pc+i rx rx' ≡.refl
 
-      drpc : RPc-S A b r mx r₁ sk f
+      drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
       drpc = record {
-        dr = lup';
+        dr = {!!};
         dv = ≡.refl;
         dm = ≡.refl
         }
