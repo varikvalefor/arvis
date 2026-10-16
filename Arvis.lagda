@@ -862,15 +862,16 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    f : ∀ {a} → {A : Set a} → ⊤ → Skami b r mx A → Skami b r mx A
-    f = {!!}
+    module f {a} {A : Set a} (_ : ⊤) (sk : Skami b r mx A) where
+      f : Skami b r mx A
+      f = {!!}
 
     auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
     auipc A = record {
       nibarda = nibarda;
       Mapti = ⊤;
       Mapti? = yes tt;
-      f = f
+      f = f.f
       }
 
     module Veritas where
