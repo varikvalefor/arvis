@@ -602,6 +602,9 @@ module Instructions where
         fℕ = 𝔽.toℕ ∘ 𝕍.lookup reg
         open ≡.≡-Reasoning
 
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
   add = add.add
 
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
