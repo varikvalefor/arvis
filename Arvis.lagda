@@ -489,7 +489,7 @@ module Instructions where
       pc-r₁ = ≡.refl
 
       rdun : (_≡_ on Rucyca'a.reg ∘ Skami.rucyca'a) sk' sk
-      rdun = CMB r₁ {!!} $ λ j → N0-d-s' r₁ pc+nb rx rx' {!!} j
+      rdun = CMB r₁ {!!} $ N0-d-s' r₁ pc+nb rx rx' {!!}
         where
         CMB : ∀ {a} → {A : Set a}
             → {n : ℕ}
