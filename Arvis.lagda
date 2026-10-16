@@ -846,7 +846,6 @@ module Instructions where
           _ ∎
           where
           *r₁ = 𝕍.lookup reg r₁
-          i+*r₂ = 𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂
           open ≡.≡-Reasoning
 
         rₓd : (r₄ : 𝔽 r)
