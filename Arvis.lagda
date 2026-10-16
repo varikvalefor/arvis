@@ -377,7 +377,11 @@ module Instructions where
           → (j : 𝔽 r)
           → ¬_ $ j ≡ i
           → 𝕍.lookup rc' j ≡ 𝕍.lookup rc j
-  N0-d-s' = {!!}
+  N0-d-s' = λ i n rc rc' d j N → begin
+    𝕍.lookup rc' j ≡⟨ {!!} ⟩
+    𝕍.lookup rc j ∎
+    where
+    open ≡.≡-Reasoning
 
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
