@@ -950,6 +950,10 @@ module Instructions where
       lup' = N0-d-s' r₁ pc+i rx rx' ≡.refl
 
       drpc : RPc-S A b r mx r₁ sk f
-      drpc = {!!}
+      drpc = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 \end{code}
 \end{document}
