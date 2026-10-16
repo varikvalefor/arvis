@@ -745,8 +745,9 @@ module Instructions where
       f' : add.M  b r mx r₁ r₂ r₃
          → Skami b r mx A
          → Skami b r mx A
-      f' M sk = record sk {rucyca'a = f M $ Skami.rucyca'a sk; pc = pc'}
+      f' M sk = record sk {rucyca'a = rcx; pc = pc'}
         where
+        rcx = f M $ Skami.rucyca'a sk
         pc' = (_mod ℕ.suc b) $ 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda
 
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
