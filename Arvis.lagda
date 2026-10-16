@@ -866,8 +866,11 @@ module Instructions where
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = {!!}
 
+      rc : Rucyca'a b r
+      rc = Skami.rucyca'a sk
+
       rc' : Rucyca'a b r
-      rc' = {!!}
+      rc' = record rc {reg = {!!}; x0 = {!!}}
 
       f : Skami b r mx A
       f = record sk {rucyca'a = rc'; pc = pc+nb}
