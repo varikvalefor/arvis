@@ -929,6 +929,6 @@ module Instructions where
              _≡_
               (𝕍.lookup (ra $ f.f m sk) r₄)
               (𝕍.lookup (ra sk) r₄))
-      lur = {!!}
+      lur = N0-d-s' r₁ pc+i rx rx' ≡.refl
 \end{code}
 \end{document}
