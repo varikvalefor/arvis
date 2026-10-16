@@ -863,7 +863,7 @@ module Instructions where
 
   module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
     auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
-    auipc = λ A → record {
+    auipc A = record {
       nibarda = {!!};
       Mapti = {!!};
       Mapti? = {!!};
