@@ -951,7 +951,7 @@ module Instructions where
 
       drpc : RPc-S A b r mx r₁ sk f
       drpc = record {
-        dr = {!!};
+        dr = lup';
         dv = {!!};
         dm = {!!}
         }
