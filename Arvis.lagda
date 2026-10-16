@@ -910,5 +910,15 @@ module Instructions where
     module Veritas where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
+
+      lup : ∀ {a} → {A : Set a}
+          → ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → (m : ⊤)
+          → (sk : Skami b r mx A)
+          → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
+             _≡_
+              (𝔽.toℕ $ 𝕍.lookup (ra $ f.f m sk) r₁)
+              ((𝔽.toℕ imm ℕ.+ 𝔽.toℕ (Skami.pc sk)) % ℕ.suc b))
+      lup = {!!}
 \end{code}
 \end{document}
