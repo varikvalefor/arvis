@@ -731,7 +731,11 @@ module Instructions where
       open add.f b r mx r₁ r₂ (𝔽0 r₁) m sk
 
       drpc : RPc-S A b r mx r₁ sk f
-      drpc = {!!}
+      drpc = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     module f (M : add.M b r mx r₁ r₂ r₃)
