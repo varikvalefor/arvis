@@ -447,14 +447,12 @@ module Instructions where
       f : Skami b r m A
       f = record sk {pc = *r₂; rucyca'a = rc'}
 
-    f = f.f
-
     jalr : ∀ {a} → {A : Set a} → Instruction A b r m
     jalr = record {
       nibarda = nibarda;
       Mapti = M;
       Mapti? = M?;
-      f = f
+      f = f.f
       }
 
     module Veritas {a} {A : Set a}
@@ -472,7 +470,7 @@ module Instructions where
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
               sk
-              (Instruction.f jalr mx sk))
+              f)
       drx _ N = 𝕍P.lookup∘updateAt′ _ _ N _ ▹ ≡.sym
 
       drx' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
@@ -481,14 +479,14 @@ module Instructions where
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
              ((_≡_ on ((𝕍.lookup ⍨) r₄ ∘ rx))
                sk
-               (Instruction.f jalr mx sk))
+               f)
            → ¬_ $ r₄ ≡ r₁
       drx' = {!!}
 
       0-dro : 𝔽.toℕ r₁ ≡ 0
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
-               (Instruction.f jalr mx sk))
+               f)
       0-dro = 0-dro-s r₁ pc+nb (rvra sk) _ ≡.refl
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
