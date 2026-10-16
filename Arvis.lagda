@@ -377,7 +377,7 @@ module Instructions where
           → (j : 𝔽 r)
           → ¬_ $ j ≡ i
           → 𝕍.lookup rc' j ≡ 𝕍.lookup rc j
-  N0-d-s' i n rc rc' d j N = begin
+  N0-d-s' i _ rc rc' d j N = begin
     𝕍.lookup rc' j ≡⟨ d ▹ cong (λ x → 𝕍.lookup x j) ⟩
     _ ≡⟨ 𝕍P.lookup∘updateAt′ j i N rc ⟩
     𝕍.lookup rc j ∎
