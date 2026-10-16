@@ -734,7 +734,7 @@ module Instructions where
       drpc = record {
         dr = {!!};
         dv = {!!};
-        dm = {!!}
+        dm = ≡.refl
         }
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
