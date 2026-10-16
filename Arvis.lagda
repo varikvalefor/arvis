@@ -403,7 +403,7 @@ module Instructions where
 
     field
       dr : (j : 𝔽 r)
-         → ((i : 𝔽 _) → ¬_ $ 𝕃.lookup is i ≡ j)
+         → ((i : 𝔽 _) → ¬_ $ j ≡ 𝕃.lookup is i)
          → D $ λ x → 𝕍.lookup (ra x) j
       dv : D Skami.vrici
       dm : D Skami.mem
