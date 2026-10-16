@@ -887,7 +887,7 @@ module Instructions where
       drpc = record {
         dr = {!!};
         dv = ≡.refl;
-        dm = {!!}
+        dm = ≡.refl
         }
 
   module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
