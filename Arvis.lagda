@@ -864,7 +864,7 @@ module Instructions where
 
     module f {a} {A : Set a} (_ : ⊤) (sk : Skami b r mx A) where
       f : Skami b r mx A
-      f = {!!}
+      f = record sk {rucyca'a = {!!}; pc = {!!}}
 
     auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
     auipc A = record {
