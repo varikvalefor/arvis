@@ -497,7 +497,7 @@ module Instructions where
             → (i : 𝔽 n)
             → (𝕍.lookup x i ≡ 𝕍.lookup z i)
             → (_ : (j : 𝔽 n)
-                 → ¬_ $ i ≡ j
+                 → ¬_ $ j ≡ i
                  → 𝕍.lookup x j ≡ 𝕍.lookup z j)
             → x ≡ z
         CMB = {!!}
