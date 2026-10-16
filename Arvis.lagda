@@ -500,7 +500,7 @@ module Instructions where
                  → ¬_ $ j ≡ i
                  → 𝕍.lookup x j ≡ 𝕍.lookup z j)
             → x ≡ z
-        CMB {n = ℕ.suc n} {x} {z} 𝔽.zero = {!!}
+        CMB {n = ℕ.suc n} {x} {z} 𝔽.zero di dj = {!!}
         CMB {n = ℕ.suc n} {x} {z} (𝔽.suc f) = {!!}
 
       mdun : (_≡_ on Skami.mem) sk' sk
