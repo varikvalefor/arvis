@@ -501,7 +501,7 @@ module Instructions where
                  → 𝕍.lookup x j ≡ 𝕍.lookup z j)
             → x ≡ z
         CMB {n = ℕ.suc n} {x} {z} 𝔽.zero di dj = {!!}
-        CMB {n = ℕ.suc n} {x} {z} (𝔽.suc f) = {!!}
+        CMB {n = ℕ.suc n} {x} {z} (𝔽.suc f) di dj = {!!}
 
       mdun : (_≡_ on Skami.mem) sk' sk
       mdun = ≡.refl
