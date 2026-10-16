@@ -953,7 +953,7 @@ module Instructions where
       drpc = record {
         dr = lup';
         dv = ≡.refl;
-        dm = {!!}
+        dm = ≡.refl
         }
 \end{code}
 \end{document}
