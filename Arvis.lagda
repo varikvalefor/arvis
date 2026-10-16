@@ -450,7 +450,7 @@ module Instructions where
             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
               sk
               (Instruction.f jalr mx sk))
-      drx _ N = ≡.sym $ 𝕍P.lookup∘updateAt′ _ _ N _
+      drx _ N = 𝕍P.lookup∘updateAt′ _ _ N _ ▹ ≡.sym
 
       drx' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
            → (r₄ : 𝔽 r)
