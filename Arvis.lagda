@@ -923,12 +923,12 @@ module Instructions where
         where
         *r₁'≡mod = N0-d-s r₁ pc+i rx rx' ≡.refl N ▹ cong 𝔽.toℕ
 
-      lur : (r₄ : 𝔽 r)
-          → ¬_ $ r₄ ≡ r₁
-          → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
-             _≡_
-              (𝕍.lookup (ra $ f.f m sk) r₄)
-              (𝕍.lookup (ra sk) r₄))
-      lur = N0-d-s' r₁ pc+i rx rx' ≡.refl
+      lup' : (r₄ : 𝔽 r)
+           → ¬_ $ r₄ ≡ r₁
+           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
+              _≡_
+               (𝕍.lookup (ra $ f.f m sk) r₄)
+               (𝕍.lookup (ra sk) r₄))
+      lup' = N0-d-s' r₁ pc+i rx rx' ≡.refl
 \end{code}
 \end{document}
