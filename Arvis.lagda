@@ -488,8 +488,8 @@ module Instructions where
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = ≡.refl
 
-      rdun : (_≡_ on Rucyca'a.reg ∘ Skami.rucyca'a) sk' sk
-      rdun = 0-dro-s f0 pc+nb rx rx' ≡.refl (𝔽0.Veritas.d0 _ ▹ ≡.sym) ▹ ≡.sym
+      rdun : (_≡_ on Rucyca'a.reg ∘ Skami.rucyca'a) sk sk'
+      rdun = 0-dro-s f0 pc+nb rx rx' ≡.refl (𝔽0.Veritas.d0 _ ▹ ≡.sym)
 
       mdun : (_≡_ on Skami.mem) sk' sk
       mdun = ≡.refl
