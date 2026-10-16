@@ -871,7 +871,7 @@ module Instructions where
 
     module f {a} {A : Set a} (_ : ⊤) (sk : Skami b r mx A) where
       pc+nb : 𝔽 $ ℕ.suc b
-      pc+nb = {!!}
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       rc : Rucyca'a b r
       rc = Skami.rucyca'a sk
