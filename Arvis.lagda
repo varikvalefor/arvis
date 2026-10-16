@@ -860,5 +860,9 @@ module Instructions where
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
+
+  module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
+    auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
+    auipc = {!!}
 \end{code}
 \end{document}
