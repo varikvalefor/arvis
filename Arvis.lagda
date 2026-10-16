@@ -976,7 +976,7 @@ module Instructions where
 
       drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
       drpc = record {
-        dr = {!!};
+        dr = λ j N → lup' _ $ N 𝔽.zero;
         dv = ≡.refl;
         dm = ≡.refl
         }
