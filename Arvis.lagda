@@ -585,9 +585,9 @@ module Instructions where
             → ¬_ $ r₄ ≡ r₁
             → let reg = Rucyca'a.reg ∘ Skami.rucyca'a in
               ((_≡_ on (λ x → 𝕍.lookup (reg x) r₄))
-                sk
-                sk')
-      dun⁻¹ sk mx r₄ N = ≡.sym $ begin
+                sk'
+                sk)
+      dun⁻¹ sk mx r₄ N = begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
         𝕍.lookup r2d2 r₄ ≡⟨ ≡.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
