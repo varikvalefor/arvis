@@ -283,8 +283,9 @@ module Instructions where
                  (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rc r₁) n)
                  rc))
            → (ml : 0 ℕ.< r)
-           → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc $ 𝔽.fromℕ< ml
-           → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup rc' $ 𝔽.fromℕ< ml
+           → let 0d = λ R → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup R $ 𝔽.fromℕ< ml in
+             0d rc
+           → 0d rc'
   x0-vrici {b = b} r₁ n rx rx' d ml d0 = ≡.sym $ ≡.trans rxdun $ ≡.sym d0
     where
     *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) n
