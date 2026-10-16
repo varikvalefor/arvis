@@ -385,6 +385,24 @@ module Instructions where
     where
     open ≡.≡-Reasoning
 
+  record RPc-S {a} (A : Set a)
+                  (b r m : ℕ)
+                  (i : 𝔽 r)
+                  (x z : Skami b r m A) : Set a where
+    private
+      ra : Skami b r m A → Vec (𝔽 $ ℕ.suc b) r
+      ra = Rucyca'a.reg ∘ Skami.rucyca'a
+
+      D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
+      D f = f x ≡ f z
+
+    field
+      dr : (j : 𝔽 r)
+         → ¬_ $ j ≡ i
+         → D $ λ x → 𝕍.lookup (ra x) i
+      dv : D Skami.vrici
+      dm : D Skami.mem
+
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
