@@ -868,7 +868,7 @@ module Instructions where
     auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
     auipc A = record {
       nibarda = nibarda;
-      Mapti = {!!};
+      Mapti = ⊤;
       Mapti? = {!!};
       f = {!!}
       }
