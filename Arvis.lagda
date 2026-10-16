@@ -220,6 +220,13 @@ module 𝔽0 where
 
 𝔽0 = 𝔽0.f
 
+≡⇒≡ᵇ : ∀ {a} → {A : Set a}
+     → ⦃ _ : Eq A ⦄
+     → {x z : A}
+     → x ≡ z
+     → x ≡ᵇ z ≡ Data.Bool.true
+≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
+
 ¬≡⇒¬≡ᵇ : ∀ {a} → {A : Set a}
        → ⦃ _ : Eq A ⦄
        → {x z : A}
@@ -336,12 +343,6 @@ module Instructions where
       updateAt-id (_ 𝕍.∷ _ 𝕍.∷ xs) (𝔽.suc i) f = cong (_ 𝕍.∷_) ∘ rd
         where
         rd = updateAt-id (_ 𝕍.∷ xs) i f
-      ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
-           → ⦃ _ : Eq A ⦄
-           → {x z : A}
-           → x ≡ z
-           → x ≡ᵇ z ≡ Data.Bool.true
-      ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
 
   N0-d-s : {b r : ℕ}
          → (i : 𝔽 r)
