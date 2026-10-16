@@ -842,7 +842,7 @@ module Instructions where
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
           𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ *r₂+i) ≡⟨ ≡.refl ⟩
           _ ≡⟨ ¬≡⇒¬≡ᵇ N ▹ cong (λ b → 𝔽.toℕ $ if b *r₁ *r₂+i) ⟩
-          𝔽.toℕ *r₂+i ≡⟨ mod-% i+*r₂ _ ⟩
+          𝔽.toℕ *r₂+i ≡⟨ toℕ-fromℕ< _ ⟩
           _ ∎
           where
           *r₁ = 𝕍.lookup reg r₁
