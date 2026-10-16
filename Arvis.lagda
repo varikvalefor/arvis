@@ -488,8 +488,19 @@ module Instructions where
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = ≡.refl
 
-      rdun : Skami.rucyca'a sk' ≡ Skami.rucyca'a sk
-      rdun = {!!}
+      rdun : (_≡_ on Rucyca'a.reg ∘ Skami.rucyca'a) sk' sk
+      rdun = CMB r₁ {!!} {!!}
+        where
+        CMB : ∀ {a} → {A : Set a}
+            → {n : ℕ}
+            → {x z : Vec A n}
+            → (i : 𝔽 n)
+            → (𝕍.lookup x i ≡ 𝕍.lookup z i)
+            → (_ : (j : 𝔽 n)
+                 → ¬_ $ i ≡ j
+                 → 𝕍.lookup x j ≡ 𝕍.lookup z j)
+            → x ≡ z
+        CMB = {!!}
 
       mdun : (_≡_ on Skami.mem) sk' sk
       mdun = ≡.refl
