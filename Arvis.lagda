@@ -918,7 +918,7 @@ module Instructions where
              _≡_
               (𝔽.toℕ $ 𝕍.lookup (ra $ f.f m sk) r₁)
               ((𝔽.toℕ (Skami.pc sk) ℕ.+ 𝔽.toℕ imm) % ℕ.suc b))
-      lup N = ≡.trans *r₁'≡mod (toℕ-fromℕ< _)
+      lup N = ≡.trans *r₁'≡mod $ toℕ-fromℕ< _
         where
         *r₁'≡mod = N0-d-s r₁ pc+i rx rx' ≡.refl N ▹ cong 𝔽.toℕ
 \end{code}
