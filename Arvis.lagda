@@ -918,7 +918,7 @@ module Instructions where
           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
              _≡_
               (𝔽.toℕ $ 𝕍.lookup (ra $ f.f m sk) r₁)
-              ((𝔽.toℕ imm ℕ.+ 𝔽.toℕ (Skami.pc sk)) % ℕ.suc b))
+              ((𝔽.toℕ (Skami.pc sk) ℕ.+ 𝔽.toℕ imm) % ℕ.suc b))
       lup = {!!}
 \end{code}
 \end{document}
