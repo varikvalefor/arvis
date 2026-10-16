@@ -399,7 +399,7 @@ module Instructions where
     field
       dr : (j : 𝔽 r)
          → ¬_ $ j ≡ i
-         → D $ λ x → 𝕍.lookup (ra x) i
+         → D $ λ x → 𝕍.lookup (ra x) j
       dv : D Skami.vrici
       dm : D Skami.mem
 
