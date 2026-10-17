@@ -617,10 +617,14 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
+    module f {a} {A : Set a} (sk : Skami b r m A) where
+      f : Skami b r m A
+      f = {!!}
+
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = record {
       nibarda = nibarda;
-      f = {!!}
+      f = f.f
       }
 
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
