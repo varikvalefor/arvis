@@ -619,7 +619,7 @@ module Instructions where
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
       pc+nb : 𝔽 $ ℕ.suc b
-      pc+nb = {!!}
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       f : Skami b r m A
       f = record sk {pc = pc+nb; rucyca'a = {!!}}
