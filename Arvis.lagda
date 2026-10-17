@@ -618,8 +618,11 @@ module Instructions where
     nibarda = {!!}
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = {!!}
+
       f : Skami b r m A
-      f = record sk {pc = {!!}; rucyca'a = {!!}}
+      f = record sk {pc = pc+nb; rucyca'a = {!!}}
 
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = record {
