@@ -613,6 +613,10 @@ module Instructions where
 
   add = add.add
 
+  module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    sub : ∀ {a} → {A : Set a} → Instruction A b r m
+    sub = {!!}
+
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
     nibarda = {!!}
