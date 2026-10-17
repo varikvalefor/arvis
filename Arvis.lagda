@@ -618,8 +618,14 @@ module Instructions where
     nibarda = {!!}
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
+      rc : Rucyca'a b r
+      rc = Skami.rucyca'a sk
+
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
+
+      rc' : Rucyca'a b r
+      rc' = record rc {reg = {!!}; x0 = {!!}}
 
       f : Skami b r m A
       f = record sk {pc = pc+nb; rucyca'a = {!!}}
