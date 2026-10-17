@@ -483,7 +483,7 @@ module Instructions where
       *r₂ = 𝕍.lookup reg r₂
 
       *r₁'! : 𝔽 $ ℕ.suc b
-      *r₁'! = opf (𝔽.toℕ *r₂) (𝔽.toℕ imm) mod _
+      *r₁'! = opf (𝔽.toℕ imm) (𝔽.toℕ *r₂) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₁'!
