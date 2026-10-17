@@ -796,6 +796,8 @@ module Instructions where
     mul = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
+      open f sk
+
       dun⁻¹ : (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ r₁
             → (let rrc = Rucyca'a.reg ∘ Skami.rucyca'a in
@@ -804,13 +806,11 @@ module Instructions where
                 sk
                 (sk ▹ Instruction.f mul))
       dun⁻¹ r₄ N = ≡.sym $ begin
-        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
-        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N $ Rucyca'a.reg rx ⟩
-        𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
+        𝕍.lookup rx' r₄ ≡⟨ ≡.refl ⟩
+        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N rx ⟩
+        𝕍.lookup rx r₄ ∎
         where
         open ≡.≡-Reasoning
-        rx = Skami.rucyca'a sk
-        rx' = sk ▹ Instruction.f mul ▹ Skami.rucyca'a
 
       dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
