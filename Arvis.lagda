@@ -192,6 +192,11 @@ open import Data.Fin.Properties
   using (
     toℕ-fromℕ<
   )
+open import Data.Nat.Properties
+  as ℕP
+  using (
+    m^n≡0⇒m≡0
+  )
 open import Data.Vec.Properties
   as 𝕍P
   using (
@@ -981,10 +986,6 @@ module Instructions where
     opf : ℕ → ℕ → ℕ
     opf r₂ r₃ = _% 2 $ Data.Nat.DivMod._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
       where
-      open import Data.Nat.Properties
-        using (
-          m^n≡0⇒m≡0
-        )
       2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
       2^n≢0 n with (2 ℕ.^ n) ≟ 0
       ... | no N = tt
