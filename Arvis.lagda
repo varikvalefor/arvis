@@ -893,7 +893,7 @@ module Instructions where
       rc' : Rucyca'a b r
       rc' = record rc {reg = rx'; x0 = x0-vrici r₁ pc+i rx rx' ≡.refl ˢ x0}
         where
-        x0 = Rucyca'a.x0 $ Skami.rucyca'a sk
+        x0 = Rucyca'a.x0 rc
 
       f : Skami b r mx A
       f = record sk {rucyca'a = rc'; pc = pc+nb}
