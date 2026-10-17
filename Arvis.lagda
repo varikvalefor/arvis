@@ -615,7 +615,10 @@ module Instructions where
 
   module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
-    sub = {!!}
+    sub = record {
+      nibarda = {!!};
+      f = {!!}
+      }
 
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
