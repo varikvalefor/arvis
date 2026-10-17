@@ -407,6 +407,47 @@ module Instructions where
       dv : D Skami.vrici
       dm : D Skami.mem
 
+  module op1x3 (b r m nibarda : ℕ)
+               (r₁ r₂ r₃ : 𝔽 r)
+               (opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b) where
+    module f {a} {A : Set a}
+             (sk : Skami b r m A) where
+
+      rx : Vec (𝔽 $ ℕ.suc b) r
+      rx = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      *r₂ : 𝔽 $ ℕ.suc b
+      *r₂ = 𝕍.lookup rx r₂
+
+      *r₃ : 𝔽 $ ℕ.suc b
+      *r₃ = 𝕍.lookup rx r₃
+
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = opf *r₂ *r₃
+
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
+
+      rx' : typeOf rx
+      rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
+
+      x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
+      x0 ml = x0-vrici r₁ pc+nb rx rx' ≡.refl ml x0'
+        where
+        x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
+
+      rc' : Rucyca'a b r
+      rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
+
+      f : Skami b r m A
+      f = record sk {pc = *r₂; rucyca'a = rc'}
+
+    op : ∀ {a} → {A : Set a} → Instruction A b r m
+    op = record {
+      nibarda = nibarda;
+      f = f.f
+      }
+
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
