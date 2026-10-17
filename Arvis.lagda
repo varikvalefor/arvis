@@ -63,6 +63,7 @@
 \newunicodechar{ₘ}{\ensuremath{\mathnormal{_\mathsf{m}}}}
 \newunicodechar{ₛ}{\ensuremath{\mathnormal{_\mathsf{s}}}}
 \newunicodechar{⊤}{\ensuremath{\mathnormal{\top}}}
+\newunicodechar{⊥}{\ensuremath{\mathnormal{\bot}}}
 \newunicodechar{≤}{\ensuremath{\mathnormal{\leq}}}
 \newunicodechar{⍉}{\ensuremath{\mathnormal{∘\hspace{-0.455em}\backslash}}}
 \newunicodechar{⦃}{\ensuremath{\mathnormal{\lbrace\!\lbrace}}}
@@ -76,6 +77,9 @@
 \newunicodechar{′}{\ensuremath{\mathnormal{'}}}
 \newunicodechar{⊎}{\ensuremath{\mathnormal{\uplus}}}
 \newunicodechar{≗}{\ensuremath{\mathnormal{\circeq}}}
+\newunicodechar{⇒}{\ensuremath{\mathnormal{\Rightarrow}}}
+\newunicodechar{ˢ}{\ensuremath{\mathnormal{^s}}}
+\newunicodechar{⊔}{\ensuremath{\mathnormal{\sqcup}}}
 \newunicodechar{⍨}{\ensuremath{\raisebox{-0.25ex}{\ddot\sim}}}
 
 \newcommand\Sym\AgdaSymbol
