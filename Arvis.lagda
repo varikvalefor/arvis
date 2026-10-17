@@ -623,24 +623,13 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    module f {a} {A : Set a} (sk : Skami b r m A) where
-      rc : Rucyca'a b r
-      rc = Skami.rucyca'a sk
+    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
+    opf = {!!}
 
-      pc+nb : 𝔽 $ ℕ.suc b
-      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
-
-      rc' : Rucyca'a b r
-      rc' = record rc {reg = {!!}; x0 = {!!}}
-
-      f : Skami b r m A
-      f = record sk {pc = pc+nb; rucyca'a = {!!}}
+    open op1x3 b r m nibarda r₁ r₂ r₃ opf
 
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
-    sub = record {
-      nibarda = nibarda;
-      f = f.f
-      }
+    sub = op
 
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
