@@ -644,6 +644,19 @@ module Instructions where
 
   sll = sll.sll
 
+  module srl (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    nibarda : ℕ
+    nibarda = {!!}
+
+    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
+    opf = {!!}
+
+    open op1x3 b r m nibarda r₁ r₂ r₃ opf
+
+    srl = op
+
+  srl = srl.srl
+
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
     nibarda = {!!}
