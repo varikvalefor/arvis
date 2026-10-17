@@ -619,7 +619,7 @@ module Instructions where
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
       f : Skami b r m A
-      f = {!!}
+      f = record sk {pc = {!!}; rucyca'a = {!!}}
 
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = record {
