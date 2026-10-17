@@ -432,7 +432,7 @@ module Instructions where
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = x0-vrici r₁ pc+nb rx rx' {!!} ml x0'
+      x0 ml = x0-vrici r₁ (opf *r₂ *r₃) rx rx' ≡.refl ml x0'
         where
         x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
 
