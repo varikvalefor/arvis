@@ -979,7 +979,16 @@ module Instructions where
 
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : ℕ → ℕ → ℕ
-    opf r₂ r₃ = _% 2 $ Data.Nat.DivMod._div_ r₂ (2 ℕ.^ r₃) {{!!}}
+    opf r₂ r₃ = _% 2 $ Data.Nat.DivMod._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
+      where
+      open import Data.Nat.Properties
+        using (
+          m^n≡0⇒m≡0
+        )
+      2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
+      2^n≢0 n with (2 ℕ.^ n) ≟ 0
+      ... | no N = tt
+      ... | yes d = ((¬_ $ 2 ≡ 0) Function.∋ λ ()) $ m^n≡0⇒m≡0 2 n d
 
     nibarda : ℕ
     nibarda = {!!}
