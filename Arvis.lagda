@@ -285,6 +285,9 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
 
 \begin{code}
 module Instructions where
+  i-size : (b r m nibarda : ℕ) → ℕ
+  i-size = {!!}
+
   x0-vrici : {b r : ℕ}
            → (r₁ : 𝔽 r)
            → (n : 𝔽 $ ℕ.suc b)
@@ -468,7 +471,7 @@ module Instructions where
 
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
-                (imm : 𝔽 {!!})
+                (imm : 𝔽 $ i-size b r mx nibarda)
                 (opf : ℕ → ℕ → ℕ) where
     module f {a} {A : Set a}
              (sk : Skami b r mx A) where
