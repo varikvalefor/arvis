@@ -783,6 +783,58 @@ module Instructions where
 
   slli = slli.slli
 
+  private
+    srli-nibarda : ℕ
+    srli-nibarda = {!!}
+
+  module srli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m srli-nibarda) where
+    nibarda : ℕ
+    nibarda = srli-nibarda
+
+    opf : ℕ → ℕ → ℕ
+    opf imm *r₂ = ℕ._div_ *r₂ (2 ℕ.^_ $ imm % ℕ.suc b) {2^n≢0 $ imm % ℕ.suc b}
+      where
+      2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
+      2^n≢0 n with (2 ℕ.^ n) ≟ 0
+      ... | no N = tt
+      ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
+
+    open op1x1i b r m nibarda r₁ r₂ imm opf
+
+    srli : ∀ {a} → (A : Set a) → Instruction A b r m
+    srli = op
+
+    module Veritas {a} {A : Set a}
+                   (sk : Skami b r m A) where
+
+      open f sk
+
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
+      dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → 𝕍.lookup reg' r₁ ≡ *r₁'!
+      dun = N0-d-s _ _ _ _ ≡.refl
+
+      dunV : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → (_≡_
+              (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
+              (_%_
+                (ℕ._div_
+                  (𝔽.toℕ *r₂)
+                  (2 ℕ.^ (𝔽.toℕ imm % ℕ.suc b))
+                  {_})
+                (ℕ.suc b)))
+      dunV N = ≡.trans (dun N ▹ cong 𝔽.toℕ) $ toℕ-fromℕ< _
+
+      dun' : (r₄ : 𝔽 _)
+           → ¬_ $ r₄ ≡ r₁
+           → let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
+             𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
+      dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
+
+  srli = srli.srli
+
   module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
     mv {A = A} = record {
