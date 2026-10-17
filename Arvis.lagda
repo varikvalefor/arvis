@@ -979,7 +979,7 @@ module Instructions where
 
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : ℕ → ℕ → ℕ
-    opf = λ r₂ r₃ → _% 2 $ Data.Nat.DivMod._div_ r₂ (2 ℕ.^ r₃) {{!!}}
+    opf r₂ r₃ = _% 2 $ Data.Nat.DivMod._div_ r₂ (2 ℕ.^ r₃) {{!!}}
 
     nibarda : ℕ
     nibarda = {!!}
