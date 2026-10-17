@@ -176,6 +176,7 @@ open import Data.Product
     _,_
   )
 open import Data.Nat.DivMod
+  as ℕ
   using (
     _mod_;
     _%_
@@ -984,7 +985,7 @@ module Instructions where
 
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : ℕ → ℕ → ℕ
-    opf r₂ r₃ = _% 2 $ Data.Nat.DivMod._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
+    opf r₂ r₃ = _% 2 $ ℕ._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
       where
       2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
       2^n≢0 n with (2 ℕ.^ n) ≟ 0
