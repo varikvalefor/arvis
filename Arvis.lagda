@@ -559,12 +559,10 @@ module Instructions where
       f : Skami b r m A
       f = record sk {rucyca'a = rc; pc = pc'}
 
-    f = f.f
-
     add : ∀ {a} → {A : Set a} → Instruction A b r m
     add = record {
       nibarda = nibarda;
-      f = f
+      f = f.f
       }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
@@ -583,14 +581,14 @@ module Instructions where
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
-        rx' = Skami.rucyca'a $ f.f sk
+        rx' = Skami.rucyca'a f
         open ≡.≡-Reasoning
 
       dun : let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (let ri = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
              _≡_
-              (𝔽.toℕ $ 𝕍.lookup (rx $ f.f sk) r₁)
+              (𝔽.toℕ $ 𝕍.lookup (rx f) r₁)
               ((_% ℕ.suc b)
                 (ℕ._+_
                   (ri r₂)
