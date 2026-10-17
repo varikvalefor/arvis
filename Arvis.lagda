@@ -989,7 +989,7 @@ module Instructions where
       2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
       2^n≢0 n with (2 ℕ.^ n) ≟ 0
       ... | no N = tt
-      ... | yes d = ((¬_ $ 2 ≡ 0) Function.∋ λ ()) $ m^n≡0⇒m≡0 2 n d
+      ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
 
     nibarda : ℕ
     nibarda = {!!}
