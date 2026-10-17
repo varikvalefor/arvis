@@ -729,44 +729,16 @@ module Instructions where
         }
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    module f (rx : Rucyca'a b r) where
-
-      reg : Vec (𝔽 $ ℕ.suc b) r
-      reg = Rucyca'a.reg rx
-
-      r₂*r₃ : 𝔽 $ ℕ.suc b
-      r₂*r₃ = (l r₂ ℕ.* l r₃) mod ℕ.suc b
-        where
-        l = 𝔽.toℕ ∘ 𝕍.lookup reg
-
-      *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂*r₃
-
-      reg' : Vec (𝔽 $ ℕ.suc b) r
-      reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
-
-      f : Rucyca'a b r
-      f = record rx {reg = reg'; x0 = x0-vrici r₁ r₂*r₃ _ _ ≡.refl ˢ x0}
-        where
-        x0 = Rucyca'a.x0 rx
-
-    f = f.f
+    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
+    opf x z = (𝔽.toℕ x ℕ.* 𝔽.toℕ z) mod ℕ.suc b
 
     nibarda : ℕ
     nibarda = {!!}
 
+    open op1x3 b r mx nibarda r₁ r₂ r₃ opf
+
     mul : ∀ {a} → {A : Set a} → Instruction A b r mx
-    mul {A = A} = record {
-      nibarda = nibarda;
-      f = f'
-      }
-      where
-      f' : Skami b r mx A
-         → Skami b r mx A
-      f' sk = record sk {rucyca'a = rcx; pc = pc'}
-        where
-        rcx = f $ Skami.rucyca'a sk
-        pc' = (_mod ℕ.suc b) $ 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda
+    mul = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
       dun⁻¹ : (r₄ : 𝔽 r)
