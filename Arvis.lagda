@@ -564,7 +564,8 @@ module Instructions where
     add : ∀ {a} → {A : Set a} → Instruction A b r m
     add = record {
       nibarda = nibarda;
-      f = f}
+      f = f
+      }
 
     module Veritas where
       dun⁻¹ : ∀ {a} → {A : Set a}
