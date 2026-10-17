@@ -614,9 +614,12 @@ module Instructions where
   add = add.add
 
   module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       f = {!!}
       }
 
