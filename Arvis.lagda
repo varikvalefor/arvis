@@ -665,6 +665,16 @@ module Instructions where
 
     srl = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      open f sk
+
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs = record {
+        dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
+        dv = ≡.refl;
+        dm = ≡.refl
+        }
+
   srl = srl.srl
 
   module slli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
