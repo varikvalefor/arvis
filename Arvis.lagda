@@ -787,13 +787,13 @@ module Instructions where
         }
 
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
-    opf x z = (𝔽.toℕ x ℕ.* 𝔽.toℕ z) mod ℕ.suc b
+    opf : ℕ → ℕ → ℕ
+    opf = ℕ._*_
 
     nibarda : ℕ
     nibarda = {!!}
 
-    open op1x3 b r mx nibarda r₁ r₂ r₃ (inj₁ opf)
+    open op1x3 b r mx nibarda r₁ r₂ r₃ (inj₂ opf)
 
     mul : ∀ {a} → {A : Set a} → Instruction A b r mx
     mul = op
