@@ -567,38 +567,35 @@ module Instructions where
       f = f
       }
 
-    module Veritas where
-      dun⁻¹ : ∀ {a} → {A : Set a}
-            → (sk : Skami b r m A)
-            → let sk' = sk ▹ Instruction.f add in
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      open f sk
+
+      dun⁻¹ : let sk' = sk ▹ Instruction.f add in
               (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ r₁
             → let reg = Rucyca'a.reg ∘ Skami.rucyca'a in
               ((_≡_ on (λ x → 𝕍.lookup (reg x) r₄))
                 sk'
                 sk)
-      dun⁻¹ sk r₄ N = begin
+      dun⁻¹ r₄ N = begin
         𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
         𝕍.lookup r2d2 r₄ ≡⟨ ≡.refl ⟩
         _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
         𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
         where
-        open f sk
         rx' = Skami.rucyca'a $ f.f sk
         open ≡.≡-Reasoning
 
-      dun : ∀ {a} → {A : Set a}
-          → (sk : Skami b r m A)
-          → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
+      dun : let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (let ri = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
              _≡_
-              (𝔽.toℕ $ 𝕍.lookup (rx $ f sk) r₁)
+              (𝔽.toℕ $ 𝕍.lookup (rx $ f.f sk) r₁)
               ((_% ℕ.suc b)
                 (ℕ._+_
                   (ri r₂)
                   (ri r₃))))
-      dun sk N = begin
+      dun N = begin
         𝔽.toℕ (𝕍.lookup r2d2 r₁)
           ≡⟨ N0-d-s _ _ _ _ ≡.refl N ▹ cong 𝔽.toℕ ⟩
         𝔽.toℕ r₂+r₃
@@ -609,7 +606,6 @@ module Instructions where
           ≡⟨ toℕ-fromℕ< _ ⟩
         (fℕ r₂ ℕ.+ fℕ r₃) % ℕ.suc b ∎
         where
-        open f sk
         *r₁ = 𝕍.lookup reg r₁
         fℕ = 𝔽.toℕ ∘ 𝕍.lookup reg
         open ≡.≡-Reasoning
