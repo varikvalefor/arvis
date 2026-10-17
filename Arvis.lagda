@@ -632,7 +632,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = {!!};
-        dm = {!!}
+        dm = ≡.refl
         }
 
   module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
