@@ -757,7 +757,6 @@ module Instructions where
 
     module Veritas {a} {A : Set a}
                    (sk : Skami b r m A) where
-
       open f sk
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
