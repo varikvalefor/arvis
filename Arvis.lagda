@@ -423,16 +423,16 @@ module Instructions where
       *r₃ = 𝕍.lookup rx r₃
 
       pc+nb : 𝔽 $ ℕ.suc b
-      pc+nb = opf *r₂ *r₃
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) pc+nb
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) $ opf *r₂ *r₃
 
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = x0-vrici r₁ pc+nb rx rx' ≡.refl ml x0'
+      x0 ml = x0-vrici r₁ pc+nb rx rx' {!!} ml x0'
         where
         x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
 
@@ -563,48 +563,16 @@ module Instructions where
       b32→32 = {!!}
 
   module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
+    opf x z = (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod _
+
     nibarda : ℕ
     nibarda = {!!}
 
-    module f {a} {A : Set a}
-             (sk : Skami b r m A) where
-
-      rx : Rucyca'a b r
-      rx = Skami.rucyca'a sk
-
-      reg : Vec (𝔽 $ ℕ.suc b) r
-      reg = Rucyca'a.reg rx
-
-      pc' : 𝔽 $ ℕ.suc b
-      pc' = 𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda ▹ _mod (ℕ.suc b)
-
-      r₂+r₃ : 𝔽 $ ℕ.suc b
-      r₂+r₃ = _mod_ (l r₂ ℕ.+ l r₃) (ℕ.suc b)
-        where
-        l = 𝔽.toℕ ∘ 𝕍.lookup reg
-
-      *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) r₂+r₃
-
-      r2d2 : Vec (𝔽 $ ℕ.suc b) r
-      r2d2 = 𝕍.updateAt r₁ (λ _ → *r₁') reg
-
-      x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup r2d2 $ 𝔽.fromℕ< ml)
-      x0 ml = x0-vrici r₁ r₂+r₃ reg r2d2 ≡.refl ml x0'
-        where
-        x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
-
-      rc : Rucyca'a b r
-      rc = record rx {reg = r2d2; x0 = x0}
-
-      f : Skami b r m A
-      f = record sk {rucyca'a = rc; pc = pc'}
+    open op1x3 b r m nibarda r₁ r₂ r₃ opf
 
     add : ∀ {a} → {A : Set a} → Instruction A b r m
-    add = record {
-      nibarda = nibarda;
-      f = f.f
-      }
+    add = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
@@ -617,12 +585,11 @@ module Instructions where
                 sk'
                 sk)
       dun⁻¹ r₄ N = begin
-        𝕍.lookup (Rucyca'a.reg rx') r₄ ≡⟨ ≡.refl ⟩
-        𝕍.lookup r2d2 r₄ ≡⟨ ≡.refl ⟩
-        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N reg ⟩
-        𝕍.lookup (Rucyca'a.reg rx) r₄ ∎
+        𝕍.lookup (Rucyca'a.reg rc') r₄ ≡⟨ ≡.refl ⟩
+        𝕍.lookup rx' r₄ ≡⟨ ≡.refl ⟩
+        _ ≡⟨ 𝕍P.lookup∘updateAt′ _ _ N rx ⟩
+        𝕍.lookup rx r₄ ∎
         where
-        rx' = Skami.rucyca'a f
         open ≡.≡-Reasoning
 
       dun : let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
@@ -635,18 +602,16 @@ module Instructions where
                   (ri r₂)
                   (ri r₃))))
       dun N = begin
-        𝔽.toℕ (𝕍.lookup r2d2 r₁)
+        𝔽.toℕ (𝕍.lookup rx' r₁)
           ≡⟨ N0-d-s _ _ _ _ ≡.refl N ▹ cong 𝔽.toℕ ⟩
-        𝔽.toℕ r₂+r₃
-          ≡⟨ _≡_.refl ⟩
-        𝔽.toℕ (f.r₂+r₃ sk)
+        𝔽.toℕ (opf *r₂ *r₃)
           ≡⟨ ≡.refl ⟩
         𝔽.toℕ ((fℕ r₂ ℕ.+ fℕ r₃) mod ℕ.suc b)
           ≡⟨ toℕ-fromℕ< _ ⟩
         (fℕ r₂ ℕ.+ fℕ r₃) % ℕ.suc b ∎
         where
-        *r₁ = 𝕍.lookup reg r₁
-        fℕ = 𝔽.toℕ ∘ 𝕍.lookup reg
+        *r₁ = 𝕍.lookup rx r₁
+        fℕ = 𝔽.toℕ ∘ 𝕍.lookup rx
         open ≡.≡-Reasoning
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
@@ -763,7 +728,9 @@ module Instructions where
 
     module Veritas {a} {A : Set a}
                    (sk : Skami b r mx A) where
-      open add.f b r mx r₁ r₂ (𝔽0 r₁) sk
+      open add b r mx r₁ r₂ (𝔽0 r₁)
+      open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) opf
+      open f sk
 
       drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
       drpc = record {
