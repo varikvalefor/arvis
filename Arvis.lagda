@@ -125,6 +125,13 @@ open import Data.Nat
     _<_;
     ℕ
   )
+open import Data.Sum
+  as _⊎_
+  using (
+    inj₁;
+    inj₂;
+    _⊎_
+  )
 open import Data.Vec
   as 𝕍
   using (
@@ -409,7 +416,9 @@ module Instructions where
 
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
-               (opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b) where
+               (opf : (_⊎_
+                        ((_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b)
+                        (ℕ → ℕ → ℕ))) where
     module f {a} {A : Set a}
              (sk : Skami b r m A) where
 
@@ -426,7 +435,7 @@ module Instructions where
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       *r₁'! : 𝔽 $ ℕ.suc b
-      *r₁'! = opf *r₂ *r₃
+      *r₁'! = _⊎_.[_,_] (λ f → f *r₂ *r₃) (λ f → (f (𝔽.toℕ *r₂) (𝔽.toℕ *r₃)) mod _) opf
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) *r₁'!
@@ -572,7 +581,7 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    open op1x3 b r m nibarda r₁ r₂ r₃ opf
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₁ opf)
 
     add : ∀ {a} → {A : Set a} → Instruction A b r m
     add = op
@@ -629,7 +638,7 @@ module Instructions where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf = {!!}
 
-    open op1x3 b r m nibarda r₁ r₂ r₃ opf
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₁ opf)
 
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = op
@@ -641,7 +650,7 @@ module Instructions where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf = {!!}
 
-    open op1x3 b r m nibarda r₁ r₂ r₃ opf
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₁ opf)
 
     sll = op
 
@@ -664,7 +673,7 @@ module Instructions where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf = {!!}
 
-    open op1x3 b r m nibarda r₁ r₂ r₃ opf
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₁ opf)
 
     srl = op
 
@@ -767,7 +776,7 @@ module Instructions where
     module Veritas {a} {A : Set a}
                    (sk : Skami b r mx A) where
       open add b r mx r₁ r₂ (𝔽0 r₁)
-      open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) opf
+      open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) (inj₁ opf)
       open f sk
 
       drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
@@ -784,7 +793,7 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    open op1x3 b r mx nibarda r₁ r₂ r₃ opf
+    open op1x3 b r mx nibarda r₁ r₂ r₃ (inj₁ opf)
 
     mul : ∀ {a} → {A : Set a} → Instruction A b r mx
     mul = op
