@@ -870,46 +870,18 @@ module Instructions where
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
       dun = N0-d-s _ _ _ _ ≡.refl
 
-  module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : 𝔽 {!!}) where
+  private
+    addi-nibarda : ℕ
+    addi-nibarda = {!!}
+
+  module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : 𝔽 $ i-size b r mx addi-nibarda) where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = addi-nibarda
 
-    module f {a} {A : Set a}
-             (sk : Skami b r mx A) where
-
-      pc+nb : 𝔽 $ ℕ.suc b
-      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
-
-      reg : Vec (𝔽 $ ℕ.suc b) r
-      reg = Rucyca'a.reg $ Skami.rucyca'a sk
-
-      *r₂ : 𝔽 $ ℕ.suc b
-      *r₂ = 𝕍.lookup reg r₂
-
-      *r₂+i : 𝔽 $ ℕ.suc b
-      *r₂+i = (𝔽.toℕ i ℕ.+ 𝔽.toℕ *r₂) mod _
-
-      *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₂+i
-
-      reg' : Vec (𝔽 $ ℕ.suc b) r
-      reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
-
-      rx : Rucyca'a b r
-      rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = x0}
-        where
-        x0 = x0-vrici r₁ _ reg _ ≡.refl ˢ x0'
-          where
-          x0' = Rucyca'a.x0 $ Skami.rucyca'a sk
-
-      f : Skami b r mx A
-      f = record sk {rucyca'a = rx; pc = pc+nb}
+    open op1x1i b r mx nibarda r₁ r₂ i ℕ._+_
 
     addi : ∀ {a} → (A : Set a) → Instruction A b r mx
-    addi A = record {
-      nibarda = nibarda;
-      f = f.f
-      }
+    addi = op
 
     module Veritas {a} {A : Set a}
                    (sk : Skami b r mx A) where
@@ -931,9 +903,9 @@ module Instructions where
           𝔽.toℕ (𝕍.lookup (rgra f) r₁) ≡⟨ ≡.refl ⟩
           _ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ▹ cong 𝔽.toℕ ⟩
           𝔽.toℕ *r₁' ≡⟨ ≡.refl ⟩
-          𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ *r₂+i) ≡⟨ ≡.refl ⟩
-          _ ≡⟨ ¬≡⇒¬≡ᵇ N ▹ cong (λ b → 𝔽.toℕ $ if b *r₁ *r₂+i) ⟩
-          𝔽.toℕ *r₂+i ≡⟨ toℕ-fromℕ< _ ⟩
+          𝔽.toℕ (if (𝔽.toℕ r₁ ≡ᵇ 0) *r₁ *r₁'!) ≡⟨ ≡.refl ⟩
+          _ ≡⟨ ¬≡⇒¬≡ᵇ N ▹ cong (λ b → 𝔽.toℕ $ if b *r₁ *r₁'!) ⟩
+          𝔽.toℕ *r₁'! ≡⟨ toℕ-fromℕ< _ ⟩
           _ ∎
           where
           *r₁ = 𝕍.lookup reg r₁
