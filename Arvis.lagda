@@ -646,7 +646,11 @@ module Instructions where
       open f sk
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   sll = sll.sll
 
