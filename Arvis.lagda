@@ -425,14 +425,17 @@ module Instructions where
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
+      *r₁'! : 𝔽 $ ℕ.suc b
+      *r₁'! = opf *r₂ *r₃
+
       *r₁' : 𝔽 $ ℕ.suc b
-      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) $ opf *r₂ *r₃
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) *r₁'!
 
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
       x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
-      x0 ml = x0-vrici r₁ (opf *r₂ *r₃) rx rx' ≡.refl ml x0'
+      x0 ml = x0-vrici r₁ *r₁'! rx rx' ≡.refl ml x0'
         where
         x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
 
