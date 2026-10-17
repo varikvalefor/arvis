@@ -629,7 +629,11 @@ module Instructions where
       b32→32 = {!!}
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
