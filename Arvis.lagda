@@ -1069,6 +1069,8 @@ module Instructions where
         bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
 
       module _ where
+        open ≡.≡-Reasoning
+
         d0 : bit ≡ 𝔽.zero
            → (_≡_
                *r₁'!
@@ -1087,7 +1089,6 @@ module Instructions where
           *r₂ℕ = 𝔽.toℕ *r₂
           2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
-          open ≡.≡-Reasoning
 
         d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
         d1 N = begin
@@ -1105,6 +1106,5 @@ module Instructions where
           1⇒¬0 : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
           1⇒¬0 {𝔽.zero} ()
           1⇒¬0 {𝔽.suc _} _ ()
-          open ≡.≡-Reasoning
 \end{code}
 \end{document}
