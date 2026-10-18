@@ -1136,9 +1136,7 @@ module Instructions where
             → bit ≡ 𝔽.suc 𝔽.zero
             → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
                let rai = λ r i → 𝕍.lookup (ra r) i in
-                _≡_
-                (rai f r₁)
-                (rai sk r₂))
+               rai f r₁ ≡ rai sk r₂)
         d1' N = ≡.trans (N0-d N) ∘ d1
 \end{code}
 \end{document}
