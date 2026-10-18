@@ -1092,14 +1092,16 @@ module Instructions where
       d1 N = begin
         *r₁'! ≡⟨ ≡.refl ⟩
         (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        _ ≡⟨ ¬≡⇒¬≡ᵇ (1⇒¬0 N) ▹ cong (λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _) ⟩
+        iF iz ≡⟨ ≡.refl ⟩
+        _ ≡⟨ ¬≡⇒¬≡ᵇ (1⇒¬0 N) ▹ cong iF ⟩
         (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
         *r₂ ∎
         where
         *r₂ℕ = 𝔽.toℕ *r₂
         2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
         iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
+        iF : _ → 𝔽 $ ℕ.suc b
+        iF = λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _
         1⇒¬0 : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
         1⇒¬0 {𝔽.zero} ()
         1⇒¬0 {𝔽.suc _} _ ()
