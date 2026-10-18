@@ -1075,7 +1075,14 @@ module Instructions where
                (ℕ._+_
                  (𝔽.toℕ *r₂)
                  (2 ℕ.^ 𝔽.toℕ *r₃))))
-      d0 = {!!}
+      d0 = λ d → begin
+        *r₁'! ≡⟨ {!!} ⟩
+        (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
+        where
+        *r₂ℕ = 𝔽.toℕ *r₂
+        2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
+        open ≡.≡-Reasoning
+        
 
       d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
       d1 = {!!}
