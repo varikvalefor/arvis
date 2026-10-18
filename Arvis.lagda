@@ -1161,9 +1161,9 @@ module Instructions where
                 → bit ≡ 𝔽.suc 𝔽.zero
                 → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂ in
                    RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk f)
-        rpcsd-1 = λ x x₁ → record {
+        rpcsd-1 = λ N d → record {
           rpcs = rpcs;
-          dr' = λ {𝔽.zero → d1' x x₁ ▹ ≡.sym}
+          dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
           }
 \end{code}
 \end{document}
