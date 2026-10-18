@@ -1090,5 +1090,12 @@ module Instructions where
 
       d0' : ¬_ $ bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
       d0' = {!!}
+
+      d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
+      d1 = d0' ∘ fx
+        where
+        fx : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
+        fx {𝔽.zero} ()
+        fx {𝔽.suc _} _ ()
 \end{code}
 \end{document}
