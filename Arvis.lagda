@@ -878,7 +878,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = {!!};
-        dm = {!!}
+        dm = ≡.refl
         }
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
