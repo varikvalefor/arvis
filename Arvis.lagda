@@ -1038,8 +1038,11 @@ module Instructions where
     bext = op
 
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    smj : ℕ → ℕ → ℕ
+    smj x z = x ℕ.+_ $ 2 ℕ.^ z
+
     opf : ℕ → ℕ → ℕ
-    opf *r₂ *r₃ = if (bitn *r₂ *r₃ ≡ᵇ 𝔽.zero) {!!} *r₂
+    opf *r₂ *r₃ = if (bitn *r₂ *r₃ ≡ᵇ 𝔽.zero) (smj *r₂ *r₃) *r₂
 
     nibarda : ℕ
     nibarda = {!!}
