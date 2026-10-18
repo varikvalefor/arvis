@@ -1087,7 +1087,6 @@ module Instructions where
         2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
         iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
         open ≡.≡-Reasoning
-        
 
       d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
       d1 = {!!}
