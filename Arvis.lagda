@@ -1076,7 +1076,8 @@ module Instructions where
                  (𝔽.toℕ *r₂)
                  (2 ℕ.^ 𝔽.toℕ *r₃))))
       d0 d = begin
-        *r₁'! ≡⟨ {!!} ⟩
+        *r₁'! ≡⟨ ≡.refl ⟩
+        (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ {!!} ⟩
         (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
         where
         *r₂ℕ = 𝔽.toℕ *r₂
