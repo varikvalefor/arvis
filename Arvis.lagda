@@ -1070,5 +1070,11 @@ module Instructions where
              (𝔽.toℕ *r₁'!)
              {!!})
       d0 = {!!}
+
+      d1 : bit ≡ 𝔽.suc 𝔽.zero
+         → (_≡_
+             (𝔽.toℕ *r₁'!)
+             {!!})
+      d1 = {!!}
 \end{code}
 \end{document}
