@@ -1038,5 +1038,17 @@ module Instructions where
 
     bext : ∀ {a} → {A : Set a} → Instruction A b r m
     bext = op
+
+  module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    opf : ℕ → ℕ → ℕ
+    opf = {!!}
+
+    nibarda : ℕ
+    nibarda = {!!}
+
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
+
+    bext : ∀ {a} → {A : Set a} → Instruction A b r m
+    bext = op
 \end{code}
 \end{document}
