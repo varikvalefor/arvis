@@ -762,10 +762,13 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
-    opf = {!!}
+    opf : ℕ → ℕ → ℕ
+    opf imm *r₂ = (ℕ._div_
+                    *r₂
+                    (2 ℕ.^_ $ imm % ℕ.suc b)
+                    {2^n≢0 $ imm % ℕ.suc b})
 
-    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₁ opf)
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
     srl = op
 
