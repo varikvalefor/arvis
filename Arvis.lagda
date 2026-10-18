@@ -1050,5 +1050,11 @@ module Instructions where
 
     bext : ∀ {a} → {A : Set a} → Instruction A b r m
     bext = op
+
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      open f sk
+
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs = {!!}
 \end{code}
 \end{document}
