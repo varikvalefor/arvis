@@ -1058,7 +1058,7 @@ module Instructions where
                 (ℕ._div_
                   (𝔽.toℕ *r₂)
                   (2 ℕ.^ 𝔽.toℕ *r₃)
-                  {{!!}}))
+                  {2^n≢0 $ 𝔽.toℕ *r₃}))
 
       d0 : bit ≡ 𝔽.zero
          → (_≡_
