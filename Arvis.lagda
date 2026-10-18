@@ -255,6 +255,11 @@ module 𝔽0 where
        → ¬_ $ x ≡ z
        → x ≡ᵇ z ≡ Data.Bool.false
 ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-false (x ≟ z)
+
+2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
+2^n≢0 n with (2 ℕ.^ n) ≟ 0
+... | no N = tt
+... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
 \end{code}
 
 \section{le rucyca'a se ctaipe}
@@ -803,11 +808,6 @@ module Instructions where
 
     opf : ℕ → ℕ → ℕ
     opf imm *r₂ = ℕ._div_ *r₂ (2 ℕ.^_ $ imm % ℕ.suc b) {2^n≢0 $ imm % ℕ.suc b}
-      where
-      2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
-      2^n≢0 n with (2 ℕ.^ n) ≟ 0
-      ... | no N = tt
-      ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
 
     open op1x1i b r m nibarda r₁ r₂ imm opf
 
@@ -1025,11 +1025,6 @@ module Instructions where
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : ℕ → ℕ → ℕ
     opf r₂ r₃ = _% 2 $ ℕ._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
-      where
-      2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
-      2^n≢0 n with (2 ℕ.^ n) ≟ 0
-      ... | no N = tt
-      ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
 
     nibarda : ℕ
     nibarda = {!!}
