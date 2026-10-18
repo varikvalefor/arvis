@@ -260,6 +260,9 @@ module 𝔽0 where
 2^n≢0 n with (2 ℕ.^ n) ≟ 0
 ... | no N = tt
 ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
+
+bitn : ℕ → ℕ → 𝔽 2
+bitn n b = (_mod 2) $ ℕ._div_ n (2 ℕ.^ b) {2^n≢0 b}
 \end{code}
 
 \section{le rucyca'a se ctaipe}
@@ -1058,11 +1061,7 @@ module Instructions where
 
       private
         bit : 𝔽 2
-        bit = ((_mod 2)
-                (ℕ._div_
-                  (𝔽.toℕ *r₂)
-                  (2 ℕ.^ 𝔽.toℕ *r₃)
-                  {2^n≢0 $ 𝔽.toℕ *r₃}))
+        bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
 
       d0 : bit ≡ 𝔽.zero
          → (_≡_
