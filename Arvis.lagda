@@ -1063,7 +1063,10 @@ module Instructions where
       d0 : bit ≡ 𝔽.zero
          → (_≡_
              (𝔽.toℕ *r₁'!)
-             {!!})
+             ((_% ℕ.suc b)
+               (ℕ._+_
+                 (𝔽.toℕ *r₂)
+                 (2 ℕ.^ 𝔽.toℕ *r₃))))
       d0 = {!!}
 
       d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
