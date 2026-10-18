@@ -1074,7 +1074,7 @@ module Instructions where
       d1 : bit ≡ 𝔽.suc 𝔽.zero
          → (_≡_
              (𝔽.toℕ *r₁'!)
-             {!!})
+             (𝔽.toℕ *r₂))
       d1 = {!!}
 \end{code}
 \end{document}
