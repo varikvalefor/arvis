@@ -437,6 +437,30 @@ module Instructions where
       dv : D Skami.vrici
       dm : D Skami.mem
 
+  record RPc-Sd {a} (A : Set a)
+                (b r m : ℕ)
+                (is : List $ 𝔽 r × 𝔽 (ℕ.suc b))
+                (x z : Skami b r m A) : Set a where
+    private
+      ra : Skami b r m A → Vec (𝔽 $ ℕ.suc b) r
+      ra = Rucyca'a.reg ∘ Skami.rucyca'a
+
+      D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
+      D f = f z ≡ f x
+
+    field
+      dr : (j : 𝔽 r)
+         → ((i : 𝔽 _) → ¬_ $ j ≡ Data.Product.proj₁ (𝕃.lookup is i))
+         → D $ λ x → 𝕍.lookup (ra x) j
+      dv : D Skami.vrici
+      dm : D Skami.mem
+      dr' : (i : 𝔽 _)
+          → (_≡_
+              (Data.Product.proj₂ $ 𝕃.lookup is i)
+              (𝕍.lookup
+                (Rucyca'a.reg $ Skami.rucyca'a z)
+                (Data.Product.proj₁ $ 𝕃.lookup is i)))
+
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
                (opf : (_⊎_
