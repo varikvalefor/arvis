@@ -1071,8 +1071,7 @@ module Instructions where
              {!!})
       d0 = {!!}
 
-      d1 : bit ≡ 𝔽.suc 𝔽.zero
-         → *r₁'! ≡ *r₂
+      d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
       d1 = {!!}
 \end{code}
 \end{document}
