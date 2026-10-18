@@ -1082,7 +1082,7 @@ module Instructions where
           2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
 
           iF : _ → 𝔽 $ ℕ.suc b
-          iF = λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _
+          iF = λ d → (_mod _) $ if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ
 
         d0 : bit ≡ 𝔽.zero
            → (_≡_
