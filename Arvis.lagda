@@ -1159,7 +1159,7 @@ module Instructions where
 
         rpcsd-1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                 → bit ≡ 𝔽.suc 𝔽.zero
-                → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ in
+                → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂ in
                    RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk f)
         rpcsd-1 = λ x x₁ → record {
           rpcs = rpcs;
