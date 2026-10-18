@@ -1053,7 +1053,7 @@ module Instructions where
     nibarda = {!!}
 
     opf : ℕ → ℕ → ℕ
-    opf r₂ r₃ = _% 2 $ ℕ._div_ r₂ (2 ℕ.^ (r₃ % ℕ.suc b)) {2^n≢0 $ r₃ % ℕ.suc b}
+    opf r₂ r₃ = 𝔽.toℕ $ bitn r₂ $ r₃ % ℕ.suc b
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
