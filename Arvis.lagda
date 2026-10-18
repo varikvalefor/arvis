@@ -1077,11 +1077,13 @@ module Instructions where
                  (2 ℕ.^ 𝔽.toℕ *r₃))))
       d0 d = begin
         *r₁'! ≡⟨ ≡.refl ⟩
-        (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ {!!} ⟩
+        (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+        (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ {!!} ⟩
         (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
         where
         *r₂ℕ = 𝔽.toℕ *r₂
         2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
+        iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
         open ≡.≡-Reasoning
         
 
