@@ -1119,5 +1119,17 @@ module Instructions where
           1⇒¬0 : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
           1⇒¬0 {𝔽.zero} ()
           1⇒¬0 {𝔽.suc _} _ ()
+
+        d0' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → bit ≡ 𝔽.zero
+            → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
+               let rai = λ r i → 𝕍.lookup (ra r) i in
+                _≡_
+                (rai f r₁)
+                ((_mod ℕ.suc b)
+                  (ℕ._+_
+                    (𝔽.toℕ $ rai sk r₂)
+                    (2 ℕ.^ 𝔽.toℕ (rai sk r₃)))))
+        d0' N = ≡.trans (N0-d N) ∘ d0
 \end{code}
 \end{document}
