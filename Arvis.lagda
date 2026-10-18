@@ -873,7 +873,10 @@ module Instructions where
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk f
-      rpcsd = {!!}
+      rpcsd = λ N → record {
+        rpcs = {!!};
+        dr' = {!!}
+        }
 
   srli = srli.srli
 
