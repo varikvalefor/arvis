@@ -1079,6 +1079,7 @@ module Instructions where
         *r₁'! ≡⟨ ≡.refl ⟩
         (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
         (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ {!!} ⟩
+        (smj *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ {!!} ⟩
         (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
         where
         *r₂ℕ = 𝔽.toℕ *r₂
