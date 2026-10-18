@@ -177,6 +177,7 @@ open import Data.Empty
     ⊥-elim
   )
 open import Data.Product
+  as Σ
   using (
     _×_;
     _,_
@@ -449,13 +450,13 @@ module Instructions where
       D f = f z ≡ f x
 
     field
-      rpcs : RPc-S A b r m (𝕃.map Data.Product.proj₁ is) x z
+      rpcs : RPc-S A b r m (𝕃.map Σ.proj₁ is) x z
       dr' : (i : 𝔽 _)
           → (_≡_
-              (Data.Product.proj₂ $ 𝕃.lookup is i)
+              (Σ.proj₂ $ 𝕃.lookup is i)
               (𝕍.lookup
                 (Rucyca'a.reg $ Skami.rucyca'a z)
-                (Data.Product.proj₁ $ 𝕃.lookup is i)))
+                (Σ.proj₁ $ 𝕃.lookup is i)))
 
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
