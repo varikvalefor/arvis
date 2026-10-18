@@ -20,6 +20,7 @@
 \newunicodechar{∉}{\ensuremath{\mathnormal\notin}}
 \newunicodechar{∋}{\ensuremath{\mathnormal\ni}}
 \newunicodechar{≡}{\ensuremath{\mathnormal\equiv}}
+\newunicodechar{≢}{\ensuremath{\mathnormal\nequiv}}
 \newunicodechar{≈}{\ensuremath{\mathnormal\approx}}
 \newunicodechar{≟}{\ensuremath{\stackrel{?}{=}}}
 \newunicodechar{⟨}{\ensuremath{\mathnormal\langle}}
