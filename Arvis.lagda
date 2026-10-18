@@ -1042,7 +1042,9 @@ module Instructions where
     smj x z = x ℕ.+_ $ 2 ℕ.^ z
 
     opf : ℕ → ℕ → ℕ
-    opf *r₂ *r₃ = if (bitn *r₂ *r₃ ≡ᵇ 𝔽.zero) (smj *r₂ *r₃) *r₂
+    opf *r₂ *r₃ = if iz (smj *r₂ *r₃) *r₂
+      where
+      iz = bitn *r₂ *r₃ ≡ᵇ 𝔽.zero
 
     nibarda : ℕ
     nibarda = {!!}
