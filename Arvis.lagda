@@ -1066,8 +1066,8 @@ module Instructions where
 
       d0 : bit ≡ 𝔽.zero
          → (_≡_
-             (𝔽.toℕ *r₁'!)
-             ((_% ℕ.suc b)
+             *r₁'!
+             ((_mod ℕ.suc b)
                (ℕ._+_
                  (𝔽.toℕ *r₂)
                  (2 ℕ.^ 𝔽.toℕ *r₃))))
