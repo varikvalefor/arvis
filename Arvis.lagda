@@ -1039,7 +1039,7 @@ module Instructions where
 
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : ℕ → ℕ → ℕ
-    opf = {!!}
+    opf = λ *r₂ *r₃ → if (bitn *r₂ *r₃ ≡ᵇ 𝔽.zero) {!!} {!!}
 
     nibarda : ℕ
     nibarda = {!!}
