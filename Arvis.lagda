@@ -33,6 +33,7 @@
 \newunicodechar{ℙ}{\ensuremath{\mathnormal{\mathbb{P}}}}
 \newunicodechar{𝔽}{\ensuremath{\mathnormal{\mathbb{F}}}}
 \newunicodechar{𝕊}{\ensuremath{\mathnormal{\mathbb{S}}}}
+\newunicodechar{bŁ}{\ensuremath{\mathnormal{\mathbb{L}}}}
 \newunicodechar{𝕄}{\ensuremath{\mathnormal{\mathbb{M}}}}
 \newunicodechar{ℕ}{\ensuremath{\mathnormal{\mathbb{N}}}}
 \newunicodechar{ℝ}{\ensuremath{\mathnormal{\mathbb{R}}}}
