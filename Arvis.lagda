@@ -1092,8 +1092,7 @@ module Instructions where
       d1 N = begin
         *r₁'! ≡⟨ ≡.refl ⟩
         (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        iF iz ≡⟨ ≡.refl ⟩
-        _ ≡⟨ ¬≡⇒¬≡ᵇ (1⇒¬0 N) ▹ cong iF ⟩
+        iF iz ≡⟨ ¬≡⇒¬≡ᵇ (1⇒¬0 N) ▹ cong iF ⟩
         (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
         *r₂ ∎
         where
