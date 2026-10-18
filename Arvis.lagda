@@ -446,9 +446,6 @@ module Instructions where
       ra : Skami b r m A → Vec (𝔽 $ ℕ.suc b) r
       ra = Rucyca'a.reg ∘ Skami.rucyca'a
 
-      D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
-      D f = f z ≡ f x
-
     field
       rpcs : RPc-S A b r m (𝕃.map Σ.proj₁ is) x z
       dr' : (i : 𝔽 _)
