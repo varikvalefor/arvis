@@ -875,7 +875,7 @@ module Instructions where
             → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk f
       rpcsd = λ N → record {
         rpcs = {!!};
-        dr' = {!!}
+        dr' = λ {𝔽.zero → dun N ▹ ≡.sym}
         }
 
   srli = srli.srli
