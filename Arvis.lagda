@@ -868,6 +868,10 @@ module Instructions where
              𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
 
+      rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk f
+      rpcsd = {!!}
+
   srli = srli.srli
 
   module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
