@@ -449,11 +449,7 @@ module Instructions where
       D f = f z ≡ f x
 
     field
-      dr : (j : 𝔽 r)
-         → ((i : 𝔽 _) → ¬_ $ j ≡ Data.Product.proj₁ (𝕃.lookup is i))
-         → D $ λ x → 𝕍.lookup (ra x) j
-      dv : D Skami.vrici
-      dm : D Skami.mem
+      rpcs : RPc-S A b r m (𝕃.map Data.Product.proj₁ is) x z
       dr' : (i : 𝔽 _)
           → (_≡_
               (Data.Product.proj₂ $ 𝕃.lookup is i)
