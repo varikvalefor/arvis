@@ -1141,7 +1141,7 @@ module Instructions where
         d0' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → bit ≡ 𝔽.zero
             → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
-               let rai = λ r i → 𝕍.lookup (ra r) i in
+               let rai = λ r → 𝕍.lookup (ra r) in
                _≡_
                (rai f r₁)
                ((_mod ℕ.suc b)
