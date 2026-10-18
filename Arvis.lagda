@@ -458,7 +458,10 @@ module Instructions where
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
       *r₁'! : 𝔽 $ ℕ.suc b
-      *r₁'! = _⊎_.[_,_] (λ f → f *r₂ *r₃) (λ f → (f (𝔽.toℕ *r₂) (𝔽.toℕ *r₃)) mod _) opf
+      *r₁'! = (_⊎_.[_,_]
+                (λ f → f *r₂ *r₃)
+                (λ f → (f (𝔽.toℕ *r₂) (𝔽.toℕ *r₃)) mod _)
+                opf)
 
       *r₁' : 𝔽 $ ℕ.suc b
       *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) *r₁'!
