@@ -455,7 +455,7 @@ module Instructions where
           → (_≡_
               (Σ.proj₂ $ 𝕃.lookup is i)
               (𝕍.lookup
-                (Rucyca'a.reg $ Skami.rucyca'a z)
+                (ra z)
                 (Σ.proj₁ $ 𝕃.lookup is i)))
 
   module op1x3 (b r m nibarda : ℕ)
