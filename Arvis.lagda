@@ -1076,6 +1076,9 @@ module Instructions where
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
           2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
 
+          iF : _ → 𝔽 $ ℕ.suc b
+          iF = λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _
+
         d0 : bit ≡ 𝔽.zero
            → (_≡_
                *r₁'!
@@ -1099,8 +1102,6 @@ module Instructions where
           (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
           *r₂ ∎
           where
-          iF : _ → 𝔽 $ ℕ.suc b
-          iF = λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _
           1⇒¬0 : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
           1⇒¬0 {𝔽.zero} ()
           1⇒¬0 {𝔽.suc _} _ ()
