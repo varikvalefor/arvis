@@ -1163,7 +1163,7 @@ module Instructions where
                    RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk f)
         rpcsd-1 = λ x x₁ → record {
           rpcs = rpcs;
-          dr' = {!!}
+          dr' = λ {𝔽.zero → d1' x x₁ ▹ ≡.sym}
           }
 \end{code}
 \end{document}
