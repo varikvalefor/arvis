@@ -1156,5 +1156,11 @@ module Instructions where
                let rai = λ r i → 𝕍.lookup (ra r) i in
                rai f r₁ ≡ rai sk r₂)
         d1' N = ≡.trans (N0-d N) ∘ d1
+
+        rpcsd-1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+                → bit ≡ 𝔽.suc 𝔽.zero
+                → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ in
+                   RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk f)
+        rpcsd-1 = {!!}
 \end{code}
 \end{document}
