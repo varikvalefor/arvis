@@ -33,7 +33,7 @@
 \newunicodechar{ℙ}{\ensuremath{\mathnormal{\mathbb{P}}}}
 \newunicodechar{𝔽}{\ensuremath{\mathnormal{\mathbb{F}}}}
 \newunicodechar{𝕊}{\ensuremath{\mathnormal{\mathbb{S}}}}
-\newunicodechar{bŁ}{\ensuremath{\mathnormal{\mathbb{L}}}}
+\newunicodechar{𝕃}{\ensuremath{\mathnormal{\mathbb{L}}}}
 \newunicodechar{𝕄}{\ensuremath{\mathnormal{\mathbb{M}}}}
 \newunicodechar{ℕ}{\ensuremath{\mathnormal{\mathbb{N}}}}
 \newunicodechar{ℝ}{\ensuremath{\mathnormal{\mathbb{R}}}}
@@ -1028,11 +1028,11 @@ module Instructions where
         }
 
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    opf : ℕ → ℕ → ℕ
-    opf r₂ r₃ = _% 2 $ ℕ._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
-
     nibarda : ℕ
     nibarda = {!!}
+
+    opf : ℕ → ℕ → ℕ
+    opf r₂ r₃ = _% 2 $ ℕ._div_ r₂ (2 ℕ.^ r₃) {2^n≢0 r₃}
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
