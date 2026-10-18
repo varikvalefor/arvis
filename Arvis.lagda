@@ -1056,5 +1056,19 @@ module Instructions where
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
       rpcs = {!!}
+
+      private
+        bit : 𝔽 2
+        bit = ((_mod 2)
+                (ℕ._div_
+                  (𝔽.toℕ *r₂)
+                  (2 ℕ.^ 𝔽.toℕ *r₃)
+                  {{!!}}))
+
+      d0 : bit ≡ 𝔽.zero
+         → (_≡_
+             (𝔽.toℕ *r₁'!)
+             {!!})
+      d0 = {!!}
 \end{code}
 \end{document}
