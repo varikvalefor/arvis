@@ -1069,6 +1069,16 @@ module Instructions where
         dm = ≡.refl
         }
 
+      N0-d : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
+              _≡_
+               (𝕍.lookup (ra f) r₁)
+               ((_mod _)
+                 (opf
+                   (𝔽.toℕ $ 𝕍.lookup (ra sk) r₂)
+                   (𝔽.toℕ $ 𝕍.lookup (ra sk) r₃))))
+      N0-d = N0-d-s _ _ _ _ ≡.refl
+
       private
         bit : 𝔽 2
         bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
