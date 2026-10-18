@@ -1088,7 +1088,7 @@ module Instructions where
         iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
         open ≡.≡-Reasoning
 
-      d1 : ¬_ $ bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
-      d1 = {!!}
+      d0' : ¬_ $ bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
+      d0' = {!!}
 \end{code}
 \end{document}
