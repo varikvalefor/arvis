@@ -1068,42 +1068,43 @@ module Instructions where
         bit : 𝔽 2
         bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
 
-      d0 : bit ≡ 𝔽.zero
-         → (_≡_
-             *r₁'!
-             ((_mod ℕ.suc b)
-               (ℕ._+_
-                 (𝔽.toℕ *r₂)
-                 (2 ℕ.^ 𝔽.toℕ *r₃))))
-      d0 d = begin
-        *r₁'! ≡⟨ ≡.refl ⟩
-        (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        _ ≡⟨ ≡⇒≡ᵇ d ▹ cong (λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _) ⟩
-        (smj *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
-        where
-        *r₂ℕ = 𝔽.toℕ *r₂
-        2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
-        iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
-        open ≡.≡-Reasoning
+      module _ where
+        d0 : bit ≡ 𝔽.zero
+           → (_≡_
+               *r₁'!
+               ((_mod ℕ.suc b)
+                 (ℕ._+_
+                   (𝔽.toℕ *r₂)
+                   (2 ℕ.^ 𝔽.toℕ *r₃))))
+        d0 d = begin
+          *r₁'! ≡⟨ ≡.refl ⟩
+          (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+          (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+          _ ≡⟨ ≡⇒≡ᵇ d ▹ cong (λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _) ⟩
+          (smj *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+          (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
+          where
+          *r₂ℕ = 𝔽.toℕ *r₂
+          2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
+          iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
+          open ≡.≡-Reasoning
 
-      d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
-      d1 N = begin
-        *r₁'! ≡⟨ ≡.refl ⟩
-        (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        iF iz ≡⟨ ¬≡⇒¬≡ᵇ (1⇒¬0 N) ▹ cong iF ⟩
-        (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
-        *r₂ ∎
-        where
-        *r₂ℕ = 𝔽.toℕ *r₂
-        2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
-        iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
-        iF : _ → 𝔽 $ ℕ.suc b
-        iF = λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _
-        1⇒¬0 : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
-        1⇒¬0 {𝔽.zero} ()
-        1⇒¬0 {𝔽.suc _} _ ()
-        open ≡.≡-Reasoning
+        d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
+        d1 N = begin
+          *r₁'! ≡⟨ ≡.refl ⟩
+          (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+          iF iz ≡⟨ ¬≡⇒¬≡ᵇ (1⇒¬0 N) ▹ cong iF ⟩
+          (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
+          *r₂ ∎
+          where
+          *r₂ℕ = 𝔽.toℕ *r₂
+          2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
+          iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
+          iF : _ → 𝔽 $ ℕ.suc b
+          iF = λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _
+          1⇒¬0 : {f : 𝔽 2} → f ≡ 𝔽.suc 𝔽.zero → ¬_ $ f ≡ 𝔽.zero
+          1⇒¬0 {𝔽.zero} ()
+          1⇒¬0 {𝔽.suc _} _ ()
+          open ≡.≡-Reasoning
 \end{code}
 \end{document}
