@@ -1079,7 +1079,7 @@ module Instructions where
         *r₁'! ≡⟨ ≡.refl ⟩
         (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
         (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ ≡.refl ⟩
-        _ ≡⟨ ≡⇒≡ᵇ d ▹ cong (λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b) ⟩
+        _ ≡⟨ ≡⇒≡ᵇ d ▹ cong (λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _) ⟩
         (smj *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
         (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
         where
