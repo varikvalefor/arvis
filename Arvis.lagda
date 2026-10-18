@@ -460,7 +460,7 @@ module Instructions where
       *r₁'! : 𝔽 $ ℕ.suc b
       *r₁'! = (_⊎_.[_,_]
                 (λ f → f *r₂ *r₃)
-                (λ f → (f (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃) mod _)
+                (λ f → (_mod _) $ f (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃)
                 opf)
 
       *r₁' : 𝔽 $ ℕ.suc b
