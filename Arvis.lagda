@@ -1089,7 +1089,18 @@ module Instructions where
         open ≡.≡-Reasoning
 
       d0' : ¬_ $ bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
-      d0' = {!!}
+      d0' N = begin
+        *r₁'! ≡⟨ ≡.refl ⟩
+        (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+        (if iz (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod ℕ.suc b ≡⟨ ≡.refl ⟩
+        _ ≡⟨ ¬≡⇒¬≡ᵇ N ▹ cong (λ d → (if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ) mod _) ⟩
+        (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
+        *r₂ ∎
+        where
+        *r₂ℕ = 𝔽.toℕ *r₂
+        2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
+        iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
+        open ≡.≡-Reasoning
 
       d1 : bit ≡ 𝔽.suc 𝔽.zero → *r₁'! ≡ *r₂
       d1 = d0' ∘ fx
