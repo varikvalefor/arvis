@@ -1124,12 +1124,12 @@ module Instructions where
             → bit ≡ 𝔽.zero
             → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
                let rai = λ r i → 𝕍.lookup (ra r) i in
-                _≡_
-                (rai f r₁)
-                ((_mod ℕ.suc b)
-                  (ℕ._+_
-                    (𝔽.toℕ $ rai sk r₂)
-                    (2 ℕ.^ 𝔽.toℕ (rai sk r₃)))))
+               _≡_
+               (rai f r₁)
+               ((_mod ℕ.suc b)
+                 (ℕ._+_
+                   (𝔽.toℕ $ rai sk r₂)
+                   (2 ℕ.^ 𝔽.toℕ (rai sk r₃)))))
         d0' N = ≡.trans (N0-d N) ∘ d0
 
         d1' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
