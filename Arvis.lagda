@@ -1071,6 +1071,9 @@ module Instructions where
       module _ where
         open ≡.≡-Reasoning
 
+        private
+          *r₂ℕ = 𝔽.toℕ *r₂
+
         d0 : bit ≡ 𝔽.zero
            → (_≡_
                *r₁'!
@@ -1086,7 +1089,6 @@ module Instructions where
           (smj *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
           (*r₂ℕ ℕ.+ 2^r₃) mod ℕ.suc b ∎
           where
-          *r₂ℕ = 𝔽.toℕ *r₂
           2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
 
@@ -1098,7 +1100,6 @@ module Instructions where
           (𝔽.toℕ *r₂) mod ℕ.suc b ≡⟨ {!!} ⟩
           *r₂ ∎
           where
-          *r₂ℕ = 𝔽.toℕ *r₂
           2^r₃ = 2 ℕ.^ 𝔽.toℕ *r₃
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
           iF : _ → 𝔽 $ ℕ.suc b
