@@ -833,7 +833,10 @@ module Instructions where
     nibarda = srli-nibarda
 
     opf : ℕ → ℕ → ℕ
-    opf imm *r₂ = ℕ._div_ *r₂ (2 ℕ.^_ $ imm % ℕ.suc b) {2^n≢0 $ imm % ℕ.suc b}
+    opf imm *r₂ = (ℕ._div_
+                    *r₂
+                    (2 ℕ.^_ $ imm % ℕ.suc b)
+                    {2^n≢0 $ imm % ℕ.suc b})
 
     open op1x1i b r m nibarda r₁ r₂ imm opf
 
