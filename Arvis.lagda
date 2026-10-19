@@ -1081,20 +1081,23 @@ module Instructions where
     bext = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : typeOf sk
+      sk' = Instruction.f bext sk
+
       *r₁'<2 : (ℕ._<_
                   (𝔽.toℕ
                     (𝕍.lookup
                       ((Rucyca'a.reg ∘ Skami.rucyca'a)
-                        (Instruction.f bext sk))
+                        sk')
                       r₁))
                   2)
       *r₁'<2 = {!!}
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk $ Instruction.f bext sk
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
       *r₁'≡0⊎1 : (zm : ℕ.suc b ℕ.≥ 2)
-               → (let G = λ i → RPc-Sd A b r m 𝕃.[ r₁ , i ] sk $ Instruction.f bext sk in
+               → (let G = λ i → RPc-Sd A b r m 𝕃.[ r₁ , i ] sk sk' in
                   G 𝔽.zero ⊎ G (𝔽.fromℕ< {1} zm))
       *r₁'≡0⊎1 = {!!}
 
