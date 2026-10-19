@@ -300,10 +300,10 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
 
 \begin{code}
 module RV32 where
-  module Instructions where
-    i-size : (b r m nibarda : ℕ) → ℕ
-    i-size = {!!}
+  i-size : (b r m nibarda : ℕ) → ℕ
+  i-size = {!!}
   
+  module Instructions where
     x0-vrici : {b r : ℕ}
              → (r₁ : 𝔽 r)
              → (n : 𝔽 $ ℕ.suc b)
