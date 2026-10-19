@@ -1080,6 +1080,16 @@ module Instructions where
     bext : ∀ {a} → {A : Set a} → Instruction A b r m
     bext = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      *r₁'<2 : (ℕ._<_
+                  (𝔽.toℕ
+                    (𝕍.lookup
+                      ((Rucyca'a.reg ∘ Skami.rucyca'a)
+                        (Instruction.f bext sk))
+                      r₁))
+                  2)
+      *r₁'<2 = {!!}
+
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
