@@ -1090,6 +1090,9 @@ module Instructions where
                   2)
       *r₁'<2 = {!!}
 
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk $ Instruction.f bext sk
+      rpcs = {!!}
+
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
