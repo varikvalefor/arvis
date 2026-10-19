@@ -873,7 +873,7 @@ module Instructions where
            → let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
              𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
-      
+
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = λ {j → λ N → dun' j $ N 𝔽.zero};
