@@ -1087,6 +1087,10 @@ module Instructions where
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
+      𝔽1⇒0 : ℕ.suc b ≡ 1
+            → RPc-Sd A b r m 𝕃.[ r₁ , 𝔽0 (f.*r₂ sk) ] sk sk'
+      𝔽1⇒0 = {!!}
+
       *r₁'≡0⊎1 : (zm : ℕ.suc b ℕ.≥ 2)
                → (let G = λ i → RPc-Sd A b r m 𝕃.[ r₁ , i ] sk sk' in
                   G 𝔽.zero ⊎ G (𝔽.fromℕ< {1} zm))
