@@ -1185,5 +1185,24 @@ module Instructions where
           rpcs = rpcs;
           dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
           }
+
+  module bclr (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    nibarda : ℕ
+    nibarda = {!!}
+
+    smj : ℕ → ℕ → ℕ
+    smj x z = x ℕ.+_ $ 2 ℕ.∸ (z % ℕ.suc b)
+
+    opf : ℕ → ℕ → ℕ
+    opf *r₂ *r₃ = if iz *r₂ $ smj *r₂ *r₃
+      where
+      iz = bitn *r₂ *r₃ ≡ᵇ 𝔽.zero
+
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
+
+    bclr : ∀ {a} → {A : Set a} → Instruction A b r m
+    bclr = op
+
+  bclr = bclr.bclr
 \end{code}
 \end{document}
