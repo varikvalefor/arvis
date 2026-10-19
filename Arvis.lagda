@@ -1087,8 +1087,7 @@ module Instructions where
       *r₁'<2 : ((ℕ._< 2)
                   (𝔽.toℕ
                     (𝕍.lookup
-                      ((Rucyca'a.reg ∘ Skami.rucyca'a)
-                        sk')
+                      (Rucyca'a.reg $ Skami.rucyca'a sk')
                       r₁)))
       *r₁'<2 = {!!}
 
