@@ -1093,6 +1093,10 @@ module Instructions where
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk $ Instruction.f bext sk
       rpcs = {!!}
 
+      *r₁'≡0⊎1 : (let G = λ i → RPc-Sd A b r m 𝕃.[ r₁ , i ] sk $ Instruction.f bext sk in
+                  G 𝔽.zero ⊎ G {!!})
+      *r₁'≡0⊎1 = {!!}
+
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
