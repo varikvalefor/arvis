@@ -1084,13 +1084,6 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bext sk
 
-      *r₁'<2 : ((ℕ._< 2)
-                  (𝔽.toℕ
-                    (𝕍.lookup
-                      (Rucyca'a.reg $ Skami.rucyca'a sk')
-                      r₁)))
-      *r₁'<2 = {!!}
-
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
@@ -1098,6 +1091,13 @@ module Instructions where
                → (let G = λ i → RPc-Sd A b r m 𝕃.[ r₁ , i ] sk sk' in
                   G 𝔽.zero ⊎ G (𝔽.fromℕ< {1} zm))
       *r₁'≡0⊎1 = {!!}
+
+      *r₁'<2 : ((ℕ._< 2)
+                  (𝔽.toℕ
+                    (𝕍.lookup
+                      (Rucyca'a.reg $ Skami.rucyca'a sk')
+                      r₁)))
+      *r₁'<2 = {!!}
 
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
