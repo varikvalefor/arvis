@@ -1084,13 +1084,12 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bext sk
 
-      *r₁'<2 : (ℕ._<_
+      *r₁'<2 : ((ℕ._< 2)
                   (𝔽.toℕ
                     (𝕍.lookup
                       ((Rucyca'a.reg ∘ Skami.rucyca'a)
                         sk')
-                      r₁))
-                  2)
+                      r₁)))
       *r₁'<2 = {!!}
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
