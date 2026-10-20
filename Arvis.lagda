@@ -1099,7 +1099,11 @@ module Instructions where
       sk' = Instruction.f bext sk
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
       𝔽1⇒0 : ℕ.suc b ≡ 1
             → RPc-Sd A b r m 𝕃.[ r₁ , 𝔽0 (f.*r₂ sk) ] sk sk'
