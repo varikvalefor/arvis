@@ -1278,7 +1278,7 @@ module Instructions where
                   𝔽._≤_
                    (𝕍.lookup (ra sk') r₁)
                    (𝕍.lookup (ra sk) r₂))
-      *r₁'≤*r₂ with bit ≟ 𝔽.zero
+      *r₁'≤*r₂ with 𝔽.toℕ r₁ ≟ 0
       ... | yes d = {!!}
       ... | no N = {!!}
 
