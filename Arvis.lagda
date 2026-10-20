@@ -1280,7 +1280,9 @@ module Instructions where
                    (𝕍.lookup (ra sk) r₂))
       *r₁'≤*r₂ with 𝔽.toℕ r₁ ≟ 0
       ... | yes d = {!!}
-      ... | no N = {!!}
+      ... | no N with bit ≟ 𝔽.zero
+      ... | yes d = {!!}
+      ... | no Nb = {!!}
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = record {
