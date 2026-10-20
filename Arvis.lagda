@@ -1119,7 +1119,7 @@ module Instructions where
     nibarda = {!!}
 
     modulus : ℕ
-    modulus = ℕ.suc b
+    modulus = ℕ.suc {!!}
 
     smj : ℕ → ℕ → ℕ
     smj x z = x ℕ.+_ $ 2 ℕ.^ (z % modulus)
