@@ -692,8 +692,10 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      dun⁻¹ : let sk' = sk ▹ Instruction.f add in
-              (r₄ : 𝔽 r)
+      sk' : typeOf sk
+      sk' = Instruction.f add sk
+
+      dun⁻¹ : (r₄ : 𝔽 r)
             → ¬_ $ r₄ ≡ r₁
             → let reg = Rucyca'a.reg ∘ Skami.rucyca'a in
               ((_≡_ on (λ x → 𝕍.lookup (reg x) r₄))
@@ -711,7 +713,7 @@ module Instructions where
             ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (let ri = 𝔽.toℕ ∘ 𝕍.lookup (rx sk) in
              _≡_
-              (𝔽.toℕ $ 𝕍.lookup (rx f) r₁)
+              (𝔽.toℕ $ 𝕍.lookup (rx sk') r₁)
               ((_% ℕ.suc b)
                 (ℕ._+_
                   (ri r₂)
