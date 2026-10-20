@@ -1278,7 +1278,9 @@ module Instructions where
                   𝔽._≤_
                    (𝕍.lookup (ra sk') r₁)
                    (𝕍.lookup (ra sk) r₂))
-      *r₁'≤*r₂ = {!!}
+      *r₁'≤*r₂ with bit ≟ 𝔽.zero
+      ... | yes d = {!!}
+      ... | no N = {!!}
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = record {
