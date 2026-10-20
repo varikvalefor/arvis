@@ -1248,6 +1248,11 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bclr sk
 
+      *r₁'≤*r₂ : (𝔽._≤_
+                   (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
+                   (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂))
+      *r₁'≤*r₂ = {!!}
+
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
