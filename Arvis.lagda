@@ -1283,7 +1283,7 @@ module Instructions where
       rpcsd1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → bit ≡ 𝔽.suc 𝔽.zero
              → RPc-Sd A b r m 𝕃.[ r₁ , {!!} ] sk sk'
-      rpcsd1 = λ N d0 → record {
+      rpcsd1 N d0 = record {
         rpcs = {!!};
         dr' = {!!}
         }
