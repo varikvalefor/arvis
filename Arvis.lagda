@@ -1254,7 +1254,11 @@ module Instructions where
       *r₁'≤*r₂ = {!!}
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   bclr = bclr.bclr
 \end{code}
