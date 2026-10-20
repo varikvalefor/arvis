@@ -1126,8 +1126,8 @@ module Instructions where
                       (Rucyca'a.reg $ Skami.rucyca'a sk')
                       r₁)))
       *r₁'<2 with ℕ.suc b ℕ.≥? 2
-      ... | yes zm = {!!}
       ... | no Nzm = {!!}
+      ... | yes zm = {!!}
 
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
