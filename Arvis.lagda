@@ -1011,9 +1011,12 @@ module Instructions where
         dm = ≡.refl
         }
 
-  module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 {!!}) where
+  auipc-nibarda : ℕ
+  auipc-nibarda = {!!}
+
+  module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 $ i-size b r mx auipc-nibarda) where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = auipc-nibarda
 
     module f {a} {A : Set a} (sk : Skami b r mx A) where
       pc+nb : 𝔽 $ ℕ.suc b
