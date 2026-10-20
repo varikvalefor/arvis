@@ -1232,8 +1232,11 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
+    modulus : ℕ
+    modulus = ℕ.suc b
+
     smj : ℕ → ℕ → ℕ
-    smj x z = x ℕ.+_ $ 2 ℕ.∸ (z % ℕ.suc b)
+    smj x z = x ℕ.+_ $ 2 ℕ.∸ (z % modulus)
 
     opf : ℕ → ℕ → ℕ
     opf *r₂ *r₃ = if iz *r₂ $ smj *r₂ *r₃
