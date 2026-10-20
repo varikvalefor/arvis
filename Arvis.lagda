@@ -595,8 +595,7 @@ module Instructions where
       f = f.f
       }
 
-    module Veritas {a} {A : Set a}
-                   (sk : Skami b r m A) where
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
       dpc : (_≡_
