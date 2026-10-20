@@ -1257,7 +1257,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = ≡.refl;
-        dm = {!!}
+        dm = ≡.refl
         }
 
   bclr = bclr.bclr
