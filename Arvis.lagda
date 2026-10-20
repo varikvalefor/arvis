@@ -1062,10 +1062,13 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
+      sk' : Skami b r mx A
+      sk' = Instruction.f (auipc A) sk
+
       lup : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
              _≡_
-              (𝔽.toℕ $ 𝕍.lookup (ra $ f.f sk) r₁)
+              (𝔽.toℕ $ 𝕍.lookup (ra sk') r₁)
               ((_% ℕ.suc b)
                 (𝔽.toℕ (Skami.pc sk) ℕ.+ 𝔽.toℕ imm)))
       lup N = ≡.trans *r₁'≡mod $ toℕ-fromℕ< _
@@ -1076,7 +1079,7 @@ module Instructions where
            → ¬_ $ r₄ ≡ r₁
            → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
               _≡_
-               (𝕍.lookup (ra $ f.f sk) r₄)
+               (𝕍.lookup (ra sk') r₄)
                (𝕍.lookup (ra sk) r₄))
       lup' = N0-d-s' r₁ pc+i rx rx' ≡.refl
 
