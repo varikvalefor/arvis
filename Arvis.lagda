@@ -1255,7 +1255,7 @@ module Instructions where
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = record {
-        dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
+        dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
         dm = ≡.refl
         }
