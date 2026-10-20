@@ -1050,8 +1050,8 @@ module Instructions where
       f : Skami b r mx A
       f = record sk {rucyca'a = rc'; pc = pc+nb}
 
-    auipc : ∀ {a} → (A : Set a) → Instruction A b r mx
-    auipc A = record {
+    auipc : ∀ {a} → {A : Set a} → Instruction A b r mx
+    auipc = record {
       nibarda = nibarda;
       f = f.f
       }
@@ -1063,7 +1063,7 @@ module Instructions where
       b32→32 = {!!}
 
       sk' : Skami b r mx A
-      sk' = Instruction.f (auipc A) sk
+      sk' = Instruction.f auipc sk
 
       lup : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
