@@ -266,6 +266,17 @@ module 𝔽0 where
 
 bitn : ℕ → ℕ → 𝔽 2
 bitn n b = (_mod 2) $ ℕ._div_ n (2 ℕ.^ b) {2^n≢0 b}
+
+module log (b n : ℕ) where
+  f : ℕ
+  f = {!!}
+
+  module Veritas where
+    ml : n ℕ.≤_ $ b ℕ.^_ $ f ℕ.+ 1
+    ml = {!!}
+
+    zm : n ℕ.≥_ $ b ℕ.^ f
+    zm = {!!}
 \end{code}
 
 \section{le rucyca'a se ctaipe}
