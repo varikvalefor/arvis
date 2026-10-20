@@ -1151,6 +1151,11 @@ module Instructions where
                    (𝔽.toℕ $ 𝕍.lookup (ra sk) r₃))))
       N0-d = N0-d-s _ _ _ _ ≡.refl
 
+      *r₁'≥*r₂ : (𝔽._≥_
+                   (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
+                   (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂))
+      *r₁'≥*r₂ = {!!}
+
       private
         bit : 𝔽 2
         bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
