@@ -1279,7 +1279,7 @@ module Instructions where
       rpcsd0 : bit ≡ 𝔽.zero
              → RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk sk'
       rpcsd0 d0 = record {
-        rpcs = {!!};
+        rpcs = rpcs;
         dr' = {!!}
         }
 
