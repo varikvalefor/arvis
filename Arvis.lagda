@@ -598,9 +598,12 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
+      sk' : Skami b r m A
+      sk' = Instruction.f jalr sk
+
       dpc : (_≡_
               (𝕍.lookup rx r₂)
-              (Skami.pc $ f.f sk))
+              (Skami.pc sk'))
       dpc = _≡_.refl
 
       drx : (r₄ : 𝔽 r)
@@ -608,7 +611,7 @@ module Instructions where
           → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
             ((_≡_ on (λ s → 𝕍.lookup (rx s) r₄))
               sk
-              f)
+              sk')
       drx _ N = 𝕍P.lookup∘updateAt′ _ _ N _ ▹ ≡.sym
 
       drx' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
@@ -617,14 +620,14 @@ module Instructions where
            → let rx = Rucyca'a.reg ∘ Skami.rucyca'a in
              ((_≡_ on ((𝕍.lookup ⍨) r₄ ∘ rx))
                sk
-               f)
+               sk')
            → ¬_ $ r₄ ≡ r₁
       drx' = {!!}
 
       0-dro : 𝔽.toℕ r₁ ≡ 0
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
-               f)
+               sk')
       0-dro = 0-dro-s r₁ pc+nb (rvra sk) _ ≡.refl
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
