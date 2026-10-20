@@ -1284,7 +1284,7 @@ module Instructions where
              → bit ≡ 𝔽.suc 𝔽.zero
              → RPc-Sd A b r m 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd1 N d0 = record {
-        rpcs = {!!};
+        rpcs = rpcs;
         dr' = {!!}
         }
 
