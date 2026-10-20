@@ -1127,9 +1127,7 @@ module Instructions where
                       r₁)))
       *r₁'<2 with ℕ.suc b ℕ.≥? 2
       ... | no Nzm = {!!}
-      ... | yes zm with *r₁'≡0⊎1 zm
-      ... | inj₁ d0 = {!!}
-      ... | inj₂ d1 = {!!}
+      ... | yes zm = _⊎_.[_,_]′ {!!} {!!} $ *r₁'≡0⊎1 zm
 
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
