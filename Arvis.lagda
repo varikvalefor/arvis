@@ -645,8 +645,7 @@ module Instructions where
     jr : ∀ {a} → {A : Set a} → Instruction A b r m
     jr = jalr.jalr b r m f0 r₁
 
-    module Veritas {a} {A : Set a}
-                   (sk : Skami b r m A) where
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open jalr b r m f0 r₁
       open f sk
         renaming (
