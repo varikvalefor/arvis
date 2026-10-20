@@ -1242,6 +1242,15 @@ module Instructions where
     bclr : ∀ {a} → {A : Set a} → Instruction A b r m
     bclr = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      open f sk
+
+      sk' : typeOf sk
+      sk' = Instruction.f bclr sk
+
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   bclr = bclr.bclr
 \end{code}
 \end{document}
