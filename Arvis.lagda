@@ -1118,8 +1118,11 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
+    modulus : ℕ
+    modulus = ℕ.suc b
+
     smj : ℕ → ℕ → ℕ
-    smj x z = x ℕ.+_ $ 2 ℕ.^ (z % ℕ.suc b)
+    smj x z = x ℕ.+_ $ 2 ℕ.^ (z % modulus)
 
     opf : ℕ → ℕ → ℕ
     opf *r₂ *r₃ = if iz (smj *r₂ *r₃) *r₂
@@ -1166,7 +1169,7 @@ module Instructions where
         private
           *r₂ℕ = 𝔽.toℕ *r₂
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
-          2^r₃ = 2 ℕ.^_ $ 𝔽.toℕ *r₃ % ℕ.suc b
+          2^r₃ = 2 ℕ.^_ $ 𝔽.toℕ *r₃ % modulus
 
           iF : _ → 𝔽 $ ℕ.suc b
           iF d = (_mod _) $ if d (smj *r₂ℕ $ 𝔽.toℕ *r₃) *r₂ℕ
@@ -1177,7 +1180,7 @@ module Instructions where
                ((_mod ℕ.suc b)
                  (ℕ._+_
                    (𝔽.toℕ *r₂)
-                   (2 ℕ.^_ $ 𝔽.toℕ *r₃ % ℕ.suc b))))
+                   (2 ℕ.^_ $ 𝔽.toℕ *r₃ % modulus))))
         d0 d = begin
           *r₁'! ≡⟨ ≡.refl ⟩
           (opf *r₂ℕ $ 𝔽.toℕ *r₃) mod ℕ.suc b ≡⟨ ≡.refl ⟩
@@ -1206,7 +1209,7 @@ module Instructions where
                ((_mod ℕ.suc b)
                  (ℕ._+_
                    (𝔽.toℕ $ rai sk r₂)
-                   (2 ℕ.^_ $ 𝔽.toℕ (rai sk r₃) % ℕ.suc b))))
+                   (2 ℕ.^_ $ 𝔽.toℕ (rai sk r₃) % modulus))))
         d0' N = ≡.trans (N0-d N) ∘ d0
 
         d1' : ¬_ $ 𝔽.toℕ r₁ ≡ 0
