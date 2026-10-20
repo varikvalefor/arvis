@@ -652,7 +652,8 @@ module Instructions where
           *r₂ to *r₁
         )
 
-      sk' = f.f sk
+      sk' : typeOf sk
+      sk' = Instruction.f jalr sk
 
       pc-r₁ : Skami.pc sk' ≡ *r₁
       pc-r₁ = ≡.refl
