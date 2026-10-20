@@ -1014,7 +1014,9 @@ module Instructions where
   auipc-nibarda : ℕ
   auipc-nibarda = {!!}
 
-  module auipc (b r mx : ℕ) (r₁ : 𝔽 r) (imm : 𝔽 $ i-size b r mx auipc-nibarda) where
+  module auipc (b r mx : ℕ)
+               (r₁ : 𝔽 r)
+               (imm : 𝔽 $ i-size b r mx auipc-nibarda) where
     nibarda : ℕ
     nibarda = auipc-nibarda
 
