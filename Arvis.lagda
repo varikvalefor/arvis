@@ -560,8 +560,7 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    module f {a} {A : Set a}
-             (sk : Skami b r m A) where
+    module f {a} {A : Set a} (sk : Skami b r m A) where
 
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
