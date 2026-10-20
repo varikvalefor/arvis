@@ -1128,8 +1128,8 @@ module Instructions where
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
-    bext : ∀ {a} → {A : Set a} → Instruction A b r m
-    bext = op
+    bset : ∀ {a} → {A : Set a} → Instruction A b r m
+    bset = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
