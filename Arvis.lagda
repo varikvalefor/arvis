@@ -1105,7 +1105,8 @@ module Instructions where
         dm = ≡.refl
         }
 
-      𝔽1⇒0 : ℕ.suc b ≡ 1
+      𝔽1⇒0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → ℕ.suc b ≡ 1
             → RPc-Sd A b r m 𝕃.[ r₁ , 𝔽0 (f.*r₂ sk) ] sk sk'
       𝔽1⇒0 = {!!}
 
