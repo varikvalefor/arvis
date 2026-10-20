@@ -1245,6 +1245,13 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
+      private
+        bit : 𝔽 2
+        bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
+
+      d0 : bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
+      d0 = {!!}
+
       sk' : typeOf sk
       sk' = Instruction.f bclr sk
 
