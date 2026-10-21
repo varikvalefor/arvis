@@ -285,7 +285,7 @@ module log (b n : ℕ) where
 record Rucyca'a (b r : ℕ) : Set where
   field
     reg : Vec (𝔽 $ ℕ.suc b) r
-    x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup reg $ 𝔽.fromℕ< ml)
+    x0 : (ml : 0 ℕ.< r) → 𝔽.zero ≡ 𝕍.lookup reg (𝔽.fromℕ< ml)
 \end{code}
 
 \section{le skami se ctaipe}
@@ -325,13 +325,13 @@ module Instructions where
                  (λ _ → if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rc r₁) n)
                  rc))
            → (ml : 0 ℕ.< r)
-           → let 0d = λ R → 0 ≡_ $ 𝔽.toℕ $ 𝕍.lookup R $ 𝔽.fromℕ< ml in
+           → let 0d = λ R → 𝔽.zero ≡ 𝕍.lookup R (𝔽.fromℕ< ml) in
              0d rc
            → 0d rc'
   x0-vrici {b = b} r₁ n rx rx' d ml d0 = ≡.trans d0 $ ≡.sym rxdun
     where
     *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup rx r₁) n
-    rxdun = cong 𝔽.toℕ $ begin
+    rxdun = begin
       f rx' ≡⟨ cong f d ⟩
       f (𝕍.updateAt r₁ (λ _ → *r₁') rx) ≡⟨ ud ⟩
       f rx ∎
@@ -498,7 +498,7 @@ module Instructions where
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
-      x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
+      x0 : (ml : 0 ℕ.< r) → 𝔽.zero ≡ 𝕍.lookup rx' (𝔽.fromℕ< ml)
       x0 ml = x0-vrici r₁ *r₁'! rx rx' ≡.refl ml x0'
         where
         x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
@@ -577,7 +577,7 @@ module Instructions where
       rx' : typeOf rx
       rx' = 𝕍.updateAt r₁ (λ _ → *r₁') rx
 
-      x0 : (ml : 0 ℕ.< r) → 0 ≡ 𝔽.toℕ (𝕍.lookup rx' $ 𝔽.fromℕ< ml)
+      x0 : (ml : 0 ℕ.< r) → 𝔽.zero ≡ 𝕍.lookup rx' (𝔽.fromℕ< ml)
       x0 ml = x0-vrici r₁ pc+nb rx rx' ≡.refl ml x0'
         where
         x0' = Rucyca'a.x0 (Skami.rucyca'a sk) ml
