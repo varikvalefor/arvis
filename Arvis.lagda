@@ -1396,7 +1396,7 @@ module Instructions where
   max = max.max
 
   module minu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ ℕ._⊓_)
 
     minu : ∀ {a} → {A : Set a} → Instruction A b r m
     minu = op
