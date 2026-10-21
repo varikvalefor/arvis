@@ -1379,7 +1379,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = {!!};
-        dm = {!!}
+        dm = ≡.refl
         }
 
   maxu = maxu.maxu
