@@ -1331,6 +1331,12 @@ module Instructions where
 
   bclr = bclr.bclr
 
+  module maxu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    maxu : ∀ {a} → {A : Set a} → Instruction A b r m
+    maxu = {!!}
+
+  maxu = maxu.maxu
+
   module max (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     max : ∀ {a} → {A : Set a} → Instruction A b r m
     max = {!!}
