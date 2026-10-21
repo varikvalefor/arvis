@@ -441,9 +441,9 @@ module Instructions where
     open ≡.≡-Reasoning
 
   record RPc-S {a} (A : Set a)
-                  (b r m : ℕ)
-                  (is : List $ 𝔽 r)
-                  (x z : Skami b r m A) : Set a where
+               (b r m : ℕ)
+               (is : List $ 𝔽 r)
+               (x z : Skami b r m A) : Set a where
     private
       ra : Skami b r m A → Vec (𝔽 $ ℕ.suc b) r
       ra = Rucyca'a.reg ∘ Skami.rucyca'a
