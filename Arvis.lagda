@@ -1290,7 +1290,7 @@ module Instructions where
                    (𝕍.lookup (ra sk') r₁)
                    (𝕍.lookup (ra sk) r₂))
       *r₁'≤*r₂ with 𝔽.toℕ r₁ ≟ 0
-      ... | yes d = {!!}
+      ... | yes d = ≡.subst (𝔽._≤ _) {!!} $ ℕ.z≤n
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = {!!}
       ... | no Nb = {!!}
