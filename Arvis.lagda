@@ -1387,7 +1387,7 @@ module Instructions where
               let _≥ᵇ_ = λ x z → (ℕ._≤ᵇ_ ⍨) (𝔽.toℕ x) $ 𝔽.toℕ z in
               RPc-Sd 𝕃.[ r₁ , if (F r₂ ≥ᵇ F r₃) (F r₂) (F r₃) ] sk sk'
       rpcsd = λ N → record {
-        rpcs = {!!};
+        rpcs = rpcs;
         dr' = {!!}
         }
 
