@@ -1330,5 +1330,11 @@ module Instructions where
         }
 
   bclr = bclr.bclr
+
+  module max (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    max : ∀ {a} → {A : Set a} → Instruction A b r m
+    max = {!!}
+
+  max = max.max
 \end{code}
 \end{document}
