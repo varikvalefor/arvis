@@ -1362,8 +1362,10 @@ module Instructions where
   max = max.max
 
   module minu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+
     minu : ∀ {a} → {A : Set a} → Instruction A b r m
-    minu = {!!}
+    minu = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       sk' : typeOf sk
