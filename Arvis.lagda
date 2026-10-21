@@ -1382,6 +1382,10 @@ module Instructions where
         dm = ≡.refl
         }
 
+      rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcsd = {!!}
+
   maxu = maxu.maxu
 
   module max (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
