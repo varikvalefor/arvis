@@ -1385,7 +1385,11 @@ module Instructions where
       sk' = Instruction.f min sk
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   min = min.min
 \end{code}
