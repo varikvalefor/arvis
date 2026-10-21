@@ -1383,7 +1383,7 @@ module Instructions where
               → L r₂ 𝔽.≥ L r₃
               → RPc-Sd A b r m 𝕃.[ r₁ , L r₃ ] sk sk'
       rpcsd-≥ = λ N zm → record {
-        rpcs = {!!};
+        rpcs = rpcs;
         dr' = {!!}
         }
 
