@@ -1332,8 +1332,10 @@ module Instructions where
   bclr = bclr.bclr
 
   module maxu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+
     maxu : ∀ {a} → {A : Set a} → Instruction A b r m
-    maxu = {!!}
+    maxu = op
 
   maxu = maxu.maxu
 
