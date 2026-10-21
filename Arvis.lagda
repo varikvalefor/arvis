@@ -1377,6 +1377,11 @@ module Instructions where
               → RPc-Sd A b r m 𝕃.[ r₁ , L r₂ ] sk sk'
       rpcsd-≤ = {!!}
 
+      rpcsd-≥ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
+                L r₂ 𝔽.≥ L r₃
+              → RPc-Sd A b r m 𝕃.[ r₁ , L r₃ ] sk sk'
+      rpcsd-≥ = {!!}
+
   minu = minu.minu
 
   module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
