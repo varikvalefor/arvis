@@ -856,7 +856,9 @@ module Instructions where
     srli-nibarda : ℕ
     srli-nibarda = {!!}
 
-  module srli (b r m : ℕ) (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m srli-nibarda) where
+  module srli (b r m : ℕ)
+              (r₁ r₂ : 𝔽 r)
+              (imm : 𝔽 $ i-size b r m srli-nibarda) where
     nibarda : ℕ
     nibarda = srli-nibarda
 
