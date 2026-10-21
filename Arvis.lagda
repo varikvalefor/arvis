@@ -1400,7 +1400,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = {!!};
-        dm = {!!}
+        dm = ≡.refl
         }
 
       rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
