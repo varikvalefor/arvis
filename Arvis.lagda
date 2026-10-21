@@ -1412,6 +1412,11 @@ module Instructions where
         dm = ≡.refl
         }
 
+      rpcsd-0 : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
+                𝔽.toℕ r₁ ≡ 0
+              → RPc-Sd 𝕃.[] sk sk'
+      rpcsd-0 = {!!}
+
       rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
                 ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → L r₂ 𝔽.≤ L r₃
