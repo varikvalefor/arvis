@@ -1386,7 +1386,10 @@ module Instructions where
             → let F = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
               let _≥ᵇ_ = λ x z → (ℕ._≤ᵇ_ ⍨) (𝔽.toℕ x) $ 𝔽.toℕ z in
               RPc-Sd 𝕃.[ r₁ , if (F r₂ ≥ᵇ F r₃) (F r₂) (F r₃) ] sk sk'
-      rpcsd = {!!}
+      rpcsd = λ N → record {
+        rpcs = {!!};
+        dr' = {!!}
+        }
 
   maxu = maxu.maxu
 
