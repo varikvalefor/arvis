@@ -1376,7 +1376,10 @@ module Instructions where
                 ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → L r₂ 𝔽.≤ L r₃
               → RPc-Sd A b r m 𝕃.[ r₁ , L r₂ ] sk sk'
-      rpcsd-≤ = {!!}
+      rpcsd-≤ = λ N ml → record {
+        rpcs = {!!};
+        dr' = {!!}
+        }
 
       rpcsd-≥ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
                 ¬_ $ 𝔽.toℕ r₁ ≡ 0
