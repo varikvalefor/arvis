@@ -1337,6 +1337,13 @@ module Instructions where
     maxu : ∀ {a} → {A : Set a} → Instruction A b r m
     maxu = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : typeOf sk
+      sk' = Instruction.f maxu sk
+
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   maxu = maxu.maxu
 
   module max (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
