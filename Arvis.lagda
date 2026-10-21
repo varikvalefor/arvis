@@ -1365,6 +1365,13 @@ module Instructions where
     minu : ∀ {a} → {A : Set a} → Instruction A b r m
     minu = {!!}
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : typeOf sk
+      sk' = Instruction.f minu sk
+
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   minu = minu.minu
 
   module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
