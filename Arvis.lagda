@@ -1306,7 +1306,11 @@ module Instructions where
                      (𝕍.lookup
                        (Rucyca'a.reg $ Skami.rucyca'a sk')
                        r₁))
-      ¬x0⇒*r₁'! = {!!}
+      ¬x0⇒*r₁'! = λ N → begin
+        𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+        *r₁' ∎
+        where
+        open ≡.≡-Reasoning
 
       *r₁'≤*r₂ : (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
                   𝔽._≤_
