@@ -1332,6 +1332,12 @@ module Instructions where
         dr' = λ {𝔽.zero → {!!}}
         }
 
+      rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd A b r m 𝕃.[] sk sk'
+      rpcsd' d = record {
+        rpcs = {!!};
+        dr' = λ ()
+        }
+
       rpcsd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → bit ≡ 𝔽.zero
              → RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk sk'
