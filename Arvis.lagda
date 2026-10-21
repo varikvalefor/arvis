@@ -1438,7 +1438,7 @@ module Instructions where
   minu = minu.minu
 
   module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ ℕ._⊓_)
+    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
     min : ∀ {a} → {A : Set a} → Instruction A b r m
     min = op
