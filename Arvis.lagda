@@ -1370,7 +1370,11 @@ module Instructions where
       sk' = Instruction.f minu sk
 
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
-      rpcs = record { dr = ? ; dv = ? ; dm = ? }
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = ≡.refl
+        }
 
       rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
                 ¬_ $ 𝔽.toℕ r₁ ≡ 0
