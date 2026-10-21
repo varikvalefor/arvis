@@ -440,8 +440,8 @@ module Instructions where
     where
     open ≡.≡-Reasoning
 
-  record RPc-S {a} (A : Set a)
-               (b r m : ℕ)
+  record RPc-S {a} {A : Set a}
+               {b r m : ℕ}
                (is : List $ 𝔽 r)
                (x z : Skami b r m A) : Set a where
     private
@@ -467,7 +467,7 @@ module Instructions where
       ra = Rucyca'a.reg ∘ Skami.rucyca'a
 
     field
-      rpcs : RPc-S A b r m (𝕃.map Σ.proj₁ is) x z
+      rpcs : RPc-S (𝕃.map Σ.proj₁ is) x z
       dr' : (i : 𝔽 _)
           → (_≡_
               (Σ.proj₂ $ 𝕃.lookup is i)
@@ -640,7 +640,7 @@ module Instructions where
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs : RPc-S 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = λ j N → drx j (N 𝔽.zero) ▹ ≡.sym;
         dv = ≡.refl;
@@ -680,7 +680,7 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
-      rpcs : RPc-S A b r m 𝕃.[ 𝔽0 r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ 𝔽0 r₁ ] sk sk'
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -772,7 +772,7 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs : RPc-S 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -798,7 +798,7 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs : RPc-S 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -897,7 +897,7 @@ module Instructions where
              𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs : RPc-S 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = λ {j → λ N → dun' j $ N 𝔽.zero};
         dv = ≡.refl;
@@ -928,7 +928,7 @@ module Instructions where
       open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) (inj₁ opf)
       open f sk
 
-      drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
+      drpc : RPc-S 𝕃.[ r₁ ] sk f
       drpc = record {
         dr = λ j N → add.Veritas.dun⁻¹ b r mx r₁ r₂ (𝔽0 r₁) sk j $ N 𝔽.zero;
         dv = ≡.refl;
@@ -1025,7 +1025,7 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
-      drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
+      drpc : RPc-S 𝕃.[ r₁ ] sk f
       drpc = record {
         dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -1104,7 +1104,7 @@ module Instructions where
                (𝕍.lookup (ra sk) r₄))
       lup' = N0-d-s' r₁ pc+i rx rx' ≡.refl
 
-      drpc : RPc-S A b r mx 𝕃.[ r₁ ] sk f
+      drpc : RPc-S 𝕃.[ r₁ ] sk f
       drpc = record {
         dr = λ j N → lup' _ $ N 𝔽.zero;
         dv = ≡.refl;
@@ -1127,7 +1127,7 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bext sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -1176,7 +1176,7 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk f
+      rpcs : RPc-S 𝕃.[ r₁ ] sk f
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -1323,7 +1323,7 @@ module Instructions where
       ... | yes d = {!!}
       ... | no Nb = {!!}
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -1375,7 +1375,7 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f maxu sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
   maxu = maxu.maxu
@@ -1390,7 +1390,7 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f max sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
   max = max.max
@@ -1405,7 +1405,7 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f minu sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -1442,7 +1442,7 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f min sk
 
-      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
