@@ -315,7 +315,7 @@ seq : ∀ {a} → {A : Set a}
     → (sk : Skami b r m A)
     → List $ Instruction A b r m
     → Skami b r m A
-seq = {!!}
+seq = 𝕃.foldr Instruction.f
 \end{code}
 
 \begin{code}
