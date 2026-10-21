@@ -1380,6 +1380,13 @@ module Instructions where
     min : ∀ {a} → {A : Set a} → Instruction A b r m
     min = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : typeOf sk
+      sk' = Instruction.f min sk
+
+      rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   min = min.min
 \end{code}
 \end{document}
