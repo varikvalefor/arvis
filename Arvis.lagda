@@ -1307,7 +1307,7 @@ module Instructions where
                        (Rucyca'a.reg $ Skami.rucyca'a sk')
                        r₁))
       ¬x0⇒*r₁'! N = begin
-        𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+        𝕍.lookup rx' r₁ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ⟩
         *r₁' ∎
         where
         open ≡.≡-Reasoning
