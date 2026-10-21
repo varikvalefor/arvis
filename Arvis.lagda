@@ -1302,13 +1302,14 @@ module Instructions where
 
       ¬x0⇒*r₁'! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                  → ((_≡_ ⍨)
-                     *r₁'
+                     *r₁'!
                      (𝕍.lookup
                        (Rucyca'a.reg $ Skami.rucyca'a sk')
                        r₁))
       ¬x0⇒*r₁'! N = begin
         𝕍.lookup rx' r₁ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ⟩
-        *r₁' ∎
+        *r₁' ≡⟨ {!!} ⟩
+        *r₁'! ∎
         where
         open ≡.≡-Reasoning
 
