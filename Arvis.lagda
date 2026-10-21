@@ -1337,7 +1337,7 @@ module Instructions where
         dr' = λ ();
         rpcs = record {
           dr = {!!};
-          dv = {!!};
+          dv = ≡.refl;
           dm = ≡.refl
           }
         }
