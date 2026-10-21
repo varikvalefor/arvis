@@ -1378,7 +1378,7 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = {!!};
-        dv = {!!};
+        dv = ≡.refl;
         dm = ≡.refl
         }
 
