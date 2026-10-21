@@ -1279,6 +1279,12 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bclr sk
 
+      ¬x0⇒*r₁'! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+                 → (_≡_
+                     (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
+                     *r₁')
+      ¬x0⇒*r₁'! = {!!}
+
       *r₁'≤*r₂ : (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
                   𝔽._≤_
                    (𝕍.lookup (ra sk') r₁)
