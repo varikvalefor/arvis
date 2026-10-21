@@ -1334,12 +1334,12 @@ module Instructions where
 
       rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd A b r m 𝕃.[] sk sk'
       rpcsd' d = record {
+        dr' = λ ();
         rpcs = record {
           dr = {!!};
           dv = {!!};
           dm = {!!}
-          };
-        dr' = λ ()
+          }
         }
 
       rpcsd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
