@@ -1352,5 +1352,11 @@ module Instructions where
     minu = {!!}
 
   minu = minu.minu
+
+  module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    min : ∀ {a} → {A : Set a} → Instruction A b r m
+    min = {!!}
+
+  min = min.min
 \end{code}
 \end{document}
