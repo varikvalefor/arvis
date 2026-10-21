@@ -1372,8 +1372,8 @@ module Instructions where
       rpcs : RPc-S A b r m 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = {!!};
-        dv = ≡.refl;
-        dm = ≡.refl
+        dv = {!!};
+        dm = {!!}
         }
 
       rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
