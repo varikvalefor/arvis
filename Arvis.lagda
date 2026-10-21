@@ -1327,7 +1327,7 @@ module Instructions where
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk sk'
-      rpcsd = λ N → record {
+      rpcsd N = record {
         rpcs = rpcs;
         dr' = λ {𝔽.zero → {!!}}
         }
