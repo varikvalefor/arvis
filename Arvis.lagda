@@ -310,6 +310,15 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
 \end{code}
 
 \begin{code}
+seq : ∀ {a} → {A : Set a}
+    → {b r m : ℕ}
+    → (sk : Skami b r m A)
+    → List $ Instruction A b r m
+    → Skami b r m A
+seq = {!!}
+\end{code}
+
+\begin{code}
 module Instructions where
   i-size : (b r m nibarda : ℕ) → ℕ
   i-size = {!!}
