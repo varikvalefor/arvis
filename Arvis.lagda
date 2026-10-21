@@ -960,6 +960,12 @@ module Instructions where
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
       dun = N0-d-s _ _ _ _ ≡.refl
 
+  module div (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    div : ∀ {a} → {A : Set a} → Instruction A b r m
+    div = {!!}
+
+  div = div.div
+
   private
     addi-nibarda : ℕ
     addi-nibarda = {!!}
