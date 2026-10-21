@@ -1346,5 +1346,11 @@ module Instructions where
     max = op
 
   max = max.max
+
+  module minu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    minu : ∀ {a} → {A : Set a} → Instruction A b r m
+    minu = {!!}
+
+  minu = minu.minu
 \end{code}
 \end{document}
