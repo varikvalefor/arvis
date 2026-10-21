@@ -458,8 +458,8 @@ module Instructions where
       dv : D Skami.vrici
       dm : D Skami.mem
 
-  record RPc-Sd {a} (A : Set a)
-                (b r m : ℕ)
+  record RPc-Sd {a} {A : Set a}
+                {b r m : ℕ}
                 (is : List $ 𝔽 r × 𝔽 (ℕ.suc b))
                 (x z : Skami b r m A) : Set a where
     private
@@ -905,7 +905,7 @@ module Instructions where
         }
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk f
+            → RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk f
       rpcsd N = record {
         rpcs = rpcs;
         dr' = λ {𝔽.zero → dun N ▹ ≡.sym}
@@ -1136,11 +1136,11 @@ module Instructions where
 
       𝔽1⇒0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → ℕ.suc b ≡ 1
-            → RPc-Sd A b r m 𝕃.[ r₁ , 𝔽0 (f.*r₂ sk) ] sk sk'
+            → RPc-Sd 𝕃.[ r₁ , 𝔽0 (f.*r₂ sk) ] sk sk'
       𝔽1⇒0 = {!!}
 
       *r₁'≡0⊎1 : (zm : ℕ.suc b ℕ.≥ 2)
-               → (let G = λ i → RPc-Sd A b r m 𝕃.[ r₁ , i ] sk sk' in
+               → (let G = λ i → RPc-Sd 𝕃.[ r₁ , i ] sk sk' in
                   G 𝔽.zero ⊎ G (𝔽.fromℕ< {1} zm))
       *r₁'≡0⊎1 = {!!}
 
@@ -1261,7 +1261,7 @@ module Instructions where
         rpcsd-1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                 → bit ≡ 𝔽.suc 𝔽.zero
                 → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂ in
-                   RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk f)
+                   RPc-Sd 𝕃.[ r₁ , *r₂ ] sk f)
         rpcsd-1 N d = record {
           rpcs = rpcs;
           dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
@@ -1326,13 +1326,13 @@ module Instructions where
         }
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk sk'
+            → RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk sk'
       rpcsd N = record {
         rpcs = rpcs;
         dr' = λ {𝔽.zero → {!!}}
         }
 
-      rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd A b r m 𝕃.[] sk sk'
+      rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd' d = record {
         dr' = λ ();
         rpcs = record {
@@ -1344,7 +1344,7 @@ module Instructions where
 
       rpcsd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → bit ≡ 𝔽.zero
-             → RPc-Sd A b r m 𝕃.[ r₁ , *r₂ ] sk sk'
+             → RPc-Sd 𝕃.[ r₁ , *r₂ ] sk sk'
       rpcsd0 N d0 = record {
         rpcs = rpcs;
         dr' = {!!}
@@ -1352,7 +1352,7 @@ module Instructions where
 
       rpcsd1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → bit ≡ 𝔽.suc 𝔽.zero
-             → RPc-Sd A b r m 𝕃.[ r₁ , {!!} ] sk sk'
+             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd1 N d0 = record {
         rpcs = rpcs;
         dr' = {!!}
@@ -1410,7 +1410,7 @@ module Instructions where
       rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
                 ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → L r₂ 𝔽.≤ L r₃
-              → RPc-Sd A b r m 𝕃.[ r₁ , L r₂ ] sk sk'
+              → RPc-Sd 𝕃.[ r₁ , L r₂ ] sk sk'
       rpcsd-≤ N ml = record {
         rpcs = rpcs;
         dr' = {!!}
@@ -1419,7 +1419,7 @@ module Instructions where
       rpcsd-≥ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
                 ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → L r₂ 𝔽.≥ L r₃
-              → RPc-Sd A b r m 𝕃.[ r₁ , L r₃ ] sk sk'
+              → RPc-Sd 𝕃.[ r₁ , L r₃ ] sk sk'
       rpcsd-≥ N zm = record {
         rpcs = rpcs;
         dr' = {!!}
