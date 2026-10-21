@@ -1329,7 +1329,7 @@ module Instructions where
             → RPc-Sd A b r m 𝕃.[ r₁ , *r₁'! ] sk sk'
       rpcsd = λ N → record {
         rpcs = rpcs;
-        dr' = {!!}
+        dr' = λ {𝔽.zero → {!!}}
         }
 
       rpcsd0 : bit ≡ 𝔽.zero
