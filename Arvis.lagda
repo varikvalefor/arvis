@@ -792,6 +792,12 @@ module Instructions where
            → ri sk' r₁ ≡ ri sk r₂
       xor0 = {!!}
 
+      xor⍨ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+             ¬_ $ 𝔽.toℕ r₁ ≡ 0
+           → ri sk r₂ ≡ ri sk r₃
+           → ri sk' r₁ ≡ 𝔽.zero
+      xor⍨ = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
