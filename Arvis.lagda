@@ -751,7 +751,7 @@ module Instructions where
     nibarda = {!!}
 
     opf : ℕ → ℕ → ℕ
-    opf = {!!}
+    opf = λ x z → x ℕ.+_ $ b ℕ.∸ z
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
