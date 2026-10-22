@@ -758,7 +758,7 @@ module Instructions where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
     or : ∀ {a} → {A : Set a} → Instruction A b r m
-    or = {!!}
+    or = op
 
   or = or.or
 
