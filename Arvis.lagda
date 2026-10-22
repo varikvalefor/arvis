@@ -750,10 +750,10 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
-    opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
+    opf : ℕ → ℕ → ℕ
     opf = {!!}
 
-    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₁ opf)
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = op
