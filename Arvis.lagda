@@ -766,7 +766,7 @@ module Instructions where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
     xor : ∀ {a} → {A : Set a} → Instruction A b r m
-    xor = {!!}
+    xor = op
 
   xor = xor.xor
 
