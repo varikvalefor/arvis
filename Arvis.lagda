@@ -750,7 +750,7 @@ module Instructions where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
     and : ∀ {a} → {A : Set a} → Instruction A b r m
-    and = {!!}
+    and = op
 
   and = and.and
 
