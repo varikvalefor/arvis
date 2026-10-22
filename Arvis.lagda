@@ -799,7 +799,11 @@ module Instructions where
       xor⍨ = {!!}
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   xor = xor.xor
 
