@@ -780,6 +780,12 @@ module Instructions where
           → ri sk' r₁ ≡ ri sk r₂
       or0 = {!!}
 
+      or⍨ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+            ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → ri sk r₂ ≡ ri sk r₃
+          → ri sk' r₁ ≡ ri sk r₂
+      or⍨ = {!!}
+
   or = or.or
 
   module xor (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
