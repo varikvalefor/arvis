@@ -754,6 +754,14 @@ module Instructions where
 
   and = and.and
 
+  module or (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+
+    or : ∀ {a} → {A : Set a} → Instruction A b r m
+    or = {!!}
+
+  or = and.and
+
   module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
