@@ -752,6 +752,13 @@ module Instructions where
     and : ∀ {a} → {A : Set a} → Instruction A b r m
     and = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : Skami b r m A
+      sk' = Instruction.f and sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   and = and.and
 
   module or (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
