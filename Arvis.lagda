@@ -786,6 +786,12 @@ module Instructions where
       sk' : Skami b r m A
       sk' = Instruction.f xor sk
 
+      xor0 : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+             ¬_ $ 𝔽.toℕ r₁ ≡ 0
+           → ri sk r₃ ≡ 𝔽.zero
+           → ri sk' r₁ ≡ ri sk r₂
+      xor0 = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
