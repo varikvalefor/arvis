@@ -779,6 +779,11 @@ module Instructions where
            → ri sk' r₁ ≡ ri sk r₂
       and⍨ = {!!}
 
+      and≤₁ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+               ¬_ $ 𝔽.toℕ r₁ ≡ 0
+             → ri sk' r₁ 𝔽.≤ ri sk r₂
+      and≤₁ = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
