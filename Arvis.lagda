@@ -774,6 +774,12 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
+      or0 : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+            ¬_ $ 𝔽.toℕ r₁ ≡ 0
+          → ri sk r₃ ≡ 𝔽.zero
+          → ri sk' r₁ ≡ ri sk r₂
+      or0 = {!!}
+
   or = or.or
 
   module xor (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
