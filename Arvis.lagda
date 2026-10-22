@@ -746,6 +746,14 @@ module Instructions where
 
   add = add.add
 
+  module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+
+    and : ∀ {a} → {A : Set a} → Instruction A b r m
+    and = {!!}
+
+  and = and.and
+
   module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
