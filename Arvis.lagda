@@ -559,7 +559,7 @@ module Instructions where
         open f sk
 
       rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
-      rpcsd0 = λ d → record {
+      rpcsd0 d = record {
         rpcs = {!!};
         dr' = {!!}
         }
