@@ -539,8 +539,14 @@ module Instructions where
              → RPc-Sd 𝕃.[ r₁ , f.*r₁'! sk ] sk sk'
       rpcsd! = λ N → record {
         rpcs = rpcs;
-        dr' = {!!}
+        dr' = λ {𝔽.zero → ≡.sym $ begin
+            𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+            *r₁'! ∎
+          }
         }
+        where
+        open f sk
+        open ≡.≡-Reasoning
 
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
