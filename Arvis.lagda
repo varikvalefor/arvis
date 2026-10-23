@@ -802,6 +802,13 @@ module Instructions where
     sub : ∀ {a} → {A : Set a} → Instruction A b r m
     sub = op
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : Skami b r m A
+      sk' = Instruction.f sub sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = Veritas-S.rpcs sk
+
   module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
