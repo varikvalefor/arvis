@@ -540,7 +540,8 @@ module Instructions where
       rpcsd! = λ N → record {
         rpcs = rpcs;
         dr' = λ {𝔽.zero → ≡.sym $ begin
-            𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+            𝕍.lookup rx' r₁ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ⟩
+            *r₁' ≡⟨ {!!} ⟩
             *r₁'! ∎
           }
         }
