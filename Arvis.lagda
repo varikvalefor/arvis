@@ -817,9 +817,10 @@ module Instructions where
       ... | yes d0 = {!!}
       ... | no N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
-        f.*r₁'! sk ≡⟨ {!!} ⟩
+        *r₁'! ≡⟨ {!!} ⟩
         𝔽.zero ∎
         where
+        open f sk
         open ≡.≡-Reasoning
 
   module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
