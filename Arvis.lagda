@@ -814,9 +814,10 @@ module Instructions where
                r₃)
            → 𝔽.zero ≡ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁
       sub⍨ d with 𝔽.toℕ r₁ ≟ 0
-      ... | yes d' = {!!}
+      ... | yes d0 = {!!}
       ... | no N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
+        f.*r₁'! sk ≡⟨ {!!} ⟩
         𝔽.zero ∎
         where
         open ≡.≡-Reasoning
