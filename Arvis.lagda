@@ -1020,7 +1020,7 @@ module Instructions where
         }
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk f
+            → RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk sk'
       rpcsd N = record {
         rpcs = rpcs;
         dr' = λ {𝔽.zero → dun N ▹ ≡.sym}
