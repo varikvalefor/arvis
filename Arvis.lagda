@@ -559,7 +559,10 @@ module Instructions where
         open f sk
 
       rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
-      rpcsd0 = {!!}
+      rpcsd0 = λ d → record {
+        rpcs = {!!};
+        dr' = {!!}
+        }
 
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
