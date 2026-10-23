@@ -1108,6 +1108,9 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
       open f sk
 
+      sk' : Skami b r mx A
+      sk' = Instruction.f addi sk
+
       rgra : ∀ {a} → {A : Set a}
            → {b r m : ℕ}
            → Skami b r m A
@@ -1116,7 +1119,7 @@ module Instructions where
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
         r₁+ : (_≡_
-                (𝔽.toℕ $ 𝕍.lookup (rgra f) r₁)
+                (𝔽.toℕ $ 𝕍.lookup (rgra sk') r₁)
                 ((_% ℕ.suc b)
                   (𝔽.toℕ i ℕ.+_ $ 𝔽.toℕ $ 𝕍.lookup (rgra sk) r₂)))
         r₁+ = begin
@@ -1134,7 +1137,7 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
-      drpc : RPc-S 𝕃.[ r₁ ] sk f
+      drpc : RPc-S 𝕃.[ r₁ ] sk sk'
       drpc = record {
         dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
