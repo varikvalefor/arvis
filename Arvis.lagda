@@ -553,7 +553,7 @@ module Instructions where
             →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
                sk
                sk')
-      0-dro = 0-dro-s r₁ pc+nb (rvra sk) _ {!!}
+      0-dro = 0-dro-s r₁ *r₁'! (rvra sk) _ {!!}
         where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
         open f sk
