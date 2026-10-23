@@ -1482,14 +1482,7 @@ module Instructions where
       rpcsd = Veritas-S.rpcsd! sk
 
       rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
-      rpcsd' d = record {
-        dr' = λ ();
-        rpcs = record {
-          dr = {!!};
-          dv = ≡.refl;
-          dm = ≡.refl
-          }
-        }
+      rpcsd' d = Veritas-S.rpcsd0 sk d
 
       rpcsd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → bit ≡ 𝔽.zero
