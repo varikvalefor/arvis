@@ -558,8 +558,7 @@ module Instructions where
         rvra = Rucyca'a.reg ∘ Skami.rucyca'a
         open f sk
 
-      rpcsd0 : 𝔽.toℕ r₁ ≡ 0
-             → RPc-Sd 𝕃.[] sk sk'
+      rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd0 = {!!}
 
   module op1x1i (b r mx nibarda : ℕ)
