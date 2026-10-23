@@ -261,7 +261,7 @@ module 𝔽0 where
 
 2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
 2^n≢0 n with (2 ℕ.^ n) ≟ 0
-... | no N = tt
+... | no _ = tt
 ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
 
 bitn : ℕ → ℕ → 𝔽 2
