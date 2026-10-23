@@ -1322,7 +1322,10 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      rpcs : RPc-S 𝕃.[ r₁ ] sk f
+      sk' : Skami b r m A
+      sk' = Instruction.f bset sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
@@ -1332,7 +1335,7 @@ module Instructions where
       N0-d : ¬_ $ 𝔽.toℕ r₁ ≡ 0
            → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
               _≡_
-               (𝕍.lookup (ra f) r₁)
+               (𝕍.lookup (ra sk') r₁)
                ((_mod _)
                  (opf
                    (𝔽.toℕ $ 𝕍.lookup (ra sk) r₂)
@@ -1340,7 +1343,7 @@ module Instructions where
       N0-d = N0-d-s _ _ _ _ ≡.refl
 
       *r₁'≥*r₂ : (𝔽._≥_
-                   (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
+                   (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
                    (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂))
       *r₁'≥*r₂ = {!!}
 
@@ -1401,13 +1404,13 @@ module Instructions where
             → bit ≡ 𝔽.suc 𝔽.zero
             → (let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
                let rai = λ r i → 𝕍.lookup (ra r) i in
-               rai f r₁ ≡ rai sk r₂)
+               rai sk' r₁ ≡ rai sk r₂)
         d1' N = ≡.trans (N0-d N) ∘ d1
 
         rpcsd-1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                 → bit ≡ 𝔽.suc 𝔽.zero
                 → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂ in
-                   RPc-Sd 𝕃.[ r₁ , *r₂ ] sk f)
+                   RPc-Sd 𝕃.[ r₁ , *r₂ ] sk sk')
         rpcsd-1 N d = record {
           rpcs = rpcs;
           dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
