@@ -884,11 +884,7 @@ module Instructions where
       open f sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk f
-      rpcs = record {
-        dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
-        dv = ≡.refl;
-        dm = ≡.refl
-        }
+      rpcs = Veritas-S.rpcs sk
 
   sll = sll.sll
 
