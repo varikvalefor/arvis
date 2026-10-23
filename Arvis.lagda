@@ -818,6 +818,7 @@ module Instructions where
       ... | no N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
         *r₁'! ≡⟨ {!!} ⟩
+        (𝔽.toℕ *r₂ ℕ.+ (b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
         𝔽.zero ∎
         where
         open f sk
