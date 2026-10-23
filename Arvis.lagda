@@ -813,7 +813,9 @@ module Instructions where
                r₂
                r₃)
            → 𝔽.zero ≡ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁
-      sub⍨ = λ d → ≡.sym $ begin
+      sub⍨ d with 𝔽.toℕ r₁ ≟ 0
+      ... | yes d' = {!!}
+      ... | no N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
         𝔽.zero ∎
         where
