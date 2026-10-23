@@ -530,7 +530,7 @@ module Instructions where
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
-        dr = {!!};
+        dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
         dm = ≡.refl
         }
