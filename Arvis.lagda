@@ -529,7 +529,11 @@ module Instructions where
       sk' = Instruction.f op sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = record {
+        dr = {!!};
+        dv = {!!};
+        dm = {!!}
+        }
 
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
