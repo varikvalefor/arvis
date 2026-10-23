@@ -561,7 +561,7 @@ module Instructions where
       rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd0 d = record {
         rpcs = {!!};
-        dr' = {!!}
+        dr' = λ ()
         }
 
   module op1x1i (b r mx nibarda : ℕ)
