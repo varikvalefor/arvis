@@ -549,6 +549,15 @@ module Instructions where
         open f sk
         open ≡.≡-Reasoning
 
+      0-dro : 𝔽.toℕ r₁ ≡ 0
+            →((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
+               sk
+               sk')
+      0-dro = 0-dro-s r₁ pc+nb (rvra sk) _ {!!}
+        where
+        rvra = Rucyca'a.reg ∘ Skami.rucyca'a
+        open f sk
+
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
                 (imm : 𝔽 $ i-size b r mx nibarda)
