@@ -524,6 +524,13 @@ module Instructions where
       f = f.f
       }
 
+    module Veritas-S {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : Skami b r m A
+      sk' = Instruction.f op sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
                 (imm : 𝔽 $ i-size b r mx nibarda)
