@@ -801,7 +801,7 @@ module Instructions where
       and≤₂ = {!!}
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = Veritas-S.rpcs sk
 
   and = and.and
 
