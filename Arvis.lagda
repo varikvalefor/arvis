@@ -1034,8 +1034,7 @@ module Instructions where
       where
       ad = add b r mx r₁ r₂ (𝔽0 r₁)
 
-    module Veritas {a} {A : Set a}
-                   (sk : Skami b r mx A) where
+    module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
       open add b r mx r₁ r₂ (𝔽0 r₁)
       open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) (inj₁ opf)
       open f sk
