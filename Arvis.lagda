@@ -982,8 +982,7 @@ module Instructions where
     srli : ∀ {a} → {A : Set a} → Instruction A b r m
     srli = op
 
-    module Veritas {a} {A : Set a}
-                   (sk : Skami b r m A) where
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
