@@ -1105,8 +1105,7 @@ module Instructions where
     addi : ∀ {a} → {A : Set a} → Instruction A b r mx
     addi = op
 
-    module Veritas {a} {A : Set a}
-                   (sk : Skami b r mx A) where
+    module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
 
       open f sk
 
