@@ -1278,11 +1278,7 @@ module Instructions where
       sk' = Instruction.f bext sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = record {
-        dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
-        dv = ≡.refl;
-        dm = ≡.refl
-        }
+      rpcs = Veritas-S.rpcs sk
 
       𝔽1⇒0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → ℕ.suc b ≡ 1
