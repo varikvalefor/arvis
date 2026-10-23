@@ -813,7 +813,11 @@ module Instructions where
                r₂
                r₃)
            → 𝔽.zero ≡ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁
-      sub⍨ = {!!}
+      sub⍨ = λ d → ≡.sym $ begin
+        𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
+        𝔽.zero ∎
+        where
+        open ≡.≡-Reasoning
 
   module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
