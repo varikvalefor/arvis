@@ -535,6 +535,10 @@ module Instructions where
         dm = ≡.refl
         }
 
+      rpcsd! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+             → RPc-Sd 𝕃.[ r₁ , f.*r₁'! sk ] sk sk'
+      rpcsd! = {!!}
+
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
                 (imm : 𝔽 $ i-size b r mx nibarda)
