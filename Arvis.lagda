@@ -1355,6 +1355,7 @@ module Instructions where
         open ≡.≡-Reasoning
 
         private
+          *r₂ℕ : ℕ
           *r₂ℕ = 𝔽.toℕ *r₂
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
           2^r₃ = 2 ℕ.^_ $ 𝔽.toℕ *r₃ % modulus
