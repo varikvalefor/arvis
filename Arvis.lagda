@@ -1407,14 +1407,14 @@ module Instructions where
                rai sk' r₁ ≡ rai sk r₂)
         d1' N = ≡.trans (N0-d N) ∘ d1
 
-        rpcsd-1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-                → bit ≡ 𝔽.suc 𝔽.zero
-                → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂ in
-                   RPc-Sd 𝕃.[ r₁ , *r₂ ] sk sk')
-        rpcsd-1 N d = record {
-          rpcs = rpcs;
-          dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
-          }
+      rpcsd-1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+              → bit ≡ 𝔽.suc 𝔽.zero
+              → (let *r₂ = 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂ in
+                 RPc-Sd 𝕃.[ r₁ , *r₂ ] sk sk')
+      rpcsd-1 N d = record {
+        rpcs = rpcs;
+        dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
+        }
 
   module bclr (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
