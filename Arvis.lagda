@@ -537,7 +537,7 @@ module Instructions where
 
       rpcsd! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → RPc-Sd 𝕃.[ r₁ , f.*r₁'! sk ] sk sk'
-      rpcsd! = λ N → record {
+      rpcsd! N = record {
         rpcs = rpcs;
         dr' = λ {𝔽.zero → ≡.sym $ begin
             𝕍.lookup rx' r₁ ≡⟨ 𝕍P.lookup∘updateAt r₁ _ ⟩
