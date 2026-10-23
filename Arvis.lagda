@@ -76,7 +76,7 @@
 \newunicodechar{ₚ}{\ensuremath{\mathnormal{_p}}}
 \newunicodechar{ₙ}{\ensuremath{\mathnormal{_n}}}
 \newunicodechar{ᵥ}{\ensuremath{\mathnormal{_v}}}
-\newunicodechar{′}{\ensuremath{\mathnormal{'}}}
+\newunicodechar{′}{\ensuremath{\mathnormal{\prime}}}
 \newunicodechar{⊎}{\ensuremath{\mathnormal{\uplus}}}
 \newunicodechar{≗}{\ensuremath{\mathnormal{\circeq}}}
 \newunicodechar{⇒}{\ensuremath{\mathnormal{\Rightarrow}}}
@@ -1042,7 +1042,10 @@ module Instructions where
       open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) (inj₁ opf)
       open f sk
 
-      drpc : RPc-S 𝕃.[ r₁ ] sk f
+      sk' : Skami b r mx A
+      sk' = Instruction.f mv sk
+
+      drpc : RPc-S 𝕃.[ r₁ ] sk sk'
       drpc = record {
         dr = λ j N → add.Veritas.dun⁻¹ b r mx r₁ r₂ (𝔽0 r₁) sk j $ N 𝔽.zero;
         dv = ≡.refl;
