@@ -809,6 +809,12 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
+      sub⍨ : ((_≡_ on 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk))
+               r₂
+               r₃)
+           → 𝔽.zero ≡ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁
+      sub⍨ = {!!}
+
   module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
