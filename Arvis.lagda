@@ -532,7 +532,7 @@ module Instructions where
       rpcs = record {
         dr = {!!};
         dv = {!!};
-        dm = {!!}
+        dm = ≡.refl
         }
 
   module op1x1i (b r mx nibarda : ℕ)
