@@ -985,6 +985,9 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
+      sk' : Skami b r m A
+      sk' = Instruction.f srli sk
+
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
@@ -994,7 +997,7 @@ module Instructions where
 
       dunV : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → (_≡_
-              (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a f) r₁)
+              (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
               (_%_
                 (ℕ._div_
                   (𝔽.toℕ *r₂)
@@ -1006,10 +1009,10 @@ module Instructions where
       dun' : (r₄ : 𝔽 _)
            → ¬_ $ r₄ ≡ r₁
            → let ra = Rucyca'a.reg ∘ Skami.rucyca'a in
-             𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
+             𝕍.lookup (ra sk') r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
 
-      rpcs : RPc-S 𝕃.[ r₁ ] sk f
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ {j → λ N → dun' j $ N 𝔽.zero};
         dv = ≡.refl;
