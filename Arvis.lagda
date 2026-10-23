@@ -938,7 +938,10 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      rpcs : RPc-S 𝕃.[ r₁ ] sk f
+      sk' : Skami b r m A
+      sk' = Instruction.f srl sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
   srl = srl.srl
