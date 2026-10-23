@@ -1106,7 +1106,6 @@ module Instructions where
     addi = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
-
       open f sk
 
       rgra : ∀ {a} → {A : Set a}
