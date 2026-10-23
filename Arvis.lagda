@@ -954,6 +954,9 @@ module Instructions where
              𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
 
+      rpcs : RPc-S 𝕃.[ r₁ ] sk $ Instruction.f (slli _) sk
+      rpcs = {!!}
+
   slli = slli.slli
 
   private
