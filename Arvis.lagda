@@ -559,8 +559,8 @@ module Instructions where
       f : Skami b r mx A
       f = record sk {rucyca'a = rx; pc = pc+nb}
 
-    op : ∀ {a} → (A : Set a) → Instruction A b r mx
-    op A = record {
+    op : ∀ {a} → {A : Set a} → Instruction A b r mx
+    op = record {
       nibarda = nibarda;
       f = f.f
       }
@@ -926,7 +926,7 @@ module Instructions where
 
     open op1x1i b r m nibarda r₁ r₂ imm opf
 
-    slli : ∀ {a} → (A : Set a) → Instruction A b r m
+    slli : ∀ {a} → {A : Set a} → Instruction A b r m
     slli = op
 
     module Veritas {a} {A : Set a}
@@ -954,7 +954,7 @@ module Instructions where
              𝕍.lookup (ra f) r₄ ≡ 𝕍.lookup (ra sk) r₄
       dun' = N0-d-s' r₁ *r₁'! reg reg' ≡.refl
 
-      rpcs : RPc-S 𝕃.[ r₁ ] sk $ Instruction.f (slli _) sk
+      rpcs : RPc-S 𝕃.[ r₁ ] sk $ Instruction.f slli sk
       rpcs = {!!}
 
   slli = slli.slli
@@ -977,7 +977,7 @@ module Instructions where
 
     open op1x1i b r m nibarda r₁ r₂ imm opf
 
-    srli : ∀ {a} → (A : Set a) → Instruction A b r m
+    srli : ∀ {a} → {A : Set a} → Instruction A b r m
     srli = op
 
     module Veritas {a} {A : Set a}
@@ -1102,7 +1102,7 @@ module Instructions where
 
     open op1x1i b r mx nibarda r₁ r₂ i ℕ._+_
 
-    addi : ∀ {a} → (A : Set a) → Instruction A b r mx
+    addi : ∀ {a} → {A : Set a} → Instruction A b r mx
     addi = op
 
     module Veritas {a} {A : Set a}
