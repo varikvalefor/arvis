@@ -1479,10 +1479,7 @@ module Instructions where
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk sk'
-      rpcsd N = record {
-        rpcs = rpcs;
-        dr' = λ {𝔽.zero → {!!}}
-        }
+      rpcsd = Veritas-S.rpcsd! sk
 
       rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd' d = record {
