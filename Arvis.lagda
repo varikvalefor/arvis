@@ -816,7 +816,7 @@ module Instructions where
       sk' = Instruction.f or sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = Veritas-S.rpcs sk
 
       or0 : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
             ¬_ $ 𝔽.toℕ r₁ ≡ 0
