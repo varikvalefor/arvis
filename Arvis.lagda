@@ -1357,6 +1357,7 @@ module Instructions where
         private
           *r₂ℕ : ℕ
           *r₂ℕ = 𝔽.toℕ *r₂
+          iz : Data.Bool.Bool
           iz = bitn *r₂ℕ (𝔽.toℕ *r₃) ≡ᵇ 𝔽.zero
           2^r₃ = 2 ℕ.^_ $ 𝔽.toℕ *r₃ % modulus
 
