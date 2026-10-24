@@ -1555,7 +1555,7 @@ module Instructions where
           where
           𝔽>0 : {n : ℕ} → 𝔽 n → 0 ℕ.< n
           𝔽>0 {0} ()
-          𝔽>0 {ℕ.suc n} = {!!}
+          𝔽>0 {ℕ.suc n} = λ _ → ℕ.s≤s ℕ.z≤n
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = {!!}
       ... | no Nb = {!!}
