@@ -1689,7 +1689,7 @@ module Instructions where
       ℕ→ℤ-+ = {!!}
 
       ℕ→ℤ-- : (n : ℕ)
-            → {!!} Function.∋ Set
+            → Set Function.∋ {!!}
             → ℕ→ℤ n ≡ ℤ.negsuc {!!}
       ℕ→ℤ-- = {!!}
 
