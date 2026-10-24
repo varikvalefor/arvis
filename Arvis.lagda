@@ -1640,6 +1640,11 @@ module Instructions where
     min = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      ℕ→ℤ-+ : (n : ℕ)
+            → {!!} Function.∋ Set
+            → ℕ→ℤ n ≡ ℤ.pos n
+      ℕ→ℤ-+ = {!!}
+
       sk' : typeOf sk
       sk' = Instruction.f min sk
 
