@@ -1336,6 +1336,9 @@ module Instructions where
            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcd = {!!}
 
+      rpcd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
+      rpcd0 = {!!}
+
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
