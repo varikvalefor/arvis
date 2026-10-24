@@ -1333,7 +1333,7 @@ module Instructions where
         }
 
       rpcd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-           → RPc-Sd 𝕃.[ r₁ , {!!} ] sk f
+           → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcd = {!!}
 
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
