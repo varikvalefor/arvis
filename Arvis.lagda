@@ -810,6 +810,9 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   add = add.add
 
   module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
