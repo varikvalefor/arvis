@@ -1563,7 +1563,7 @@ module Instructions where
                       → (f : 𝔽 n)
                       → f ≡ 𝔽.fromℕ< (𝔽>0 f)
             fromℕ-𝔽>0 {0} ()
-            fromℕ-𝔽>0 {ℕ.suc n} 𝔽.zero = {!!}
+            fromℕ-𝔽>0 {ℕ.suc n} 𝔽.zero = ≡.refl
             fromℕ-𝔽>0 {ℕ.suc n} (𝔽.suc f) = {!!}
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = {!!}
