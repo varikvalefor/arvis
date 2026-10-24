@@ -811,7 +811,7 @@ module Instructions where
       b32→32 = {!!}
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = {!!}
+      rpcs = Veritas-S.rpcs sk
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
