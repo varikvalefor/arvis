@@ -182,6 +182,11 @@ open import Data.Product
     _×_;
     _,_
   )
+open import Data.Integer
+  as ℤ
+  using (
+    ℤ
+  )
 open import Data.Nat.DivMod
   as ℕ
   using (
@@ -1623,7 +1628,13 @@ module Instructions where
   minu = minu.minu
 
   module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+    ℕ→ℤ : ℕ → ℤ
+    ℕ→ℤ = {!!}
+
+    minx : ℕ → ℕ → ℕ
+    minx x z = if (ℕ→ℤ x ℤ.≤ᵇ ℕ→ℤ z) x z
+
+    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ minx)
 
     min : ∀ {a} → {A : Set a} → Instruction A b r m
     min = op
