@@ -1551,7 +1551,7 @@ module Instructions where
       ... | yes d = ≡.subst (𝔽._≤ _) (≡.trans dl {!!}) $ ℕ.z≤n
         where
         dl :  𝔽.zero ≡ 𝕍.lookup rx r₁
-        dl = {!!}
+        dl = ≡.subst (λ i → 𝔽.zero ≡ 𝕍.lookup rx i) {!!} $ Rucyca'a.x0 (Skami.rucyca'a sk) {!!}
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = {!!}
       ... | no Nb = {!!}
