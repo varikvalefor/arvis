@@ -1649,6 +1649,7 @@ module Instructions where
       sk' = Instruction.f min sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = Veritas-S.rpcs sk
 
   min = min.min
 \end{code}
