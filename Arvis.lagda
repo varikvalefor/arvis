@@ -1548,7 +1548,7 @@ module Instructions where
                    (𝕍.lookup (ra sk') r₁)
                    (𝕍.lookup (ra sk) r₂))
       *r₁'≤*r₂ with 𝔽.toℕ r₁ ≟ 0
-      ... | yes d = ≡.subst (𝔽._≤ _) (≡.trans dl {!!}) $ ℕ.z≤n
+      ... | yes d = ≡.subst (𝔽._≤ _) (≡.trans dl $ ≡.sym $ 𝕍P.lookup∘updateAt r₁ _) $ ℕ.z≤n
         where
         dl :  𝔽.zero ≡ 𝕍.lookup rx r₁
         dl = ≡.subst (λ i → 𝔽.zero ≡ 𝕍.lookup rx i) {!!} x0'
