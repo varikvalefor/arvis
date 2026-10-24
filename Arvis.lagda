@@ -1663,6 +1663,12 @@ module Instructions where
               → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
       rpcsd-≥ = {!!}
 
+      rpcs-⊎ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+             → let L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+               let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
+               D r₂ ⊎ D r₃
+      rpcs-⊎ = {!!}
+
   min = min.min
 \end{code}
 \end{document}
