@@ -712,7 +712,6 @@ module Instructions where
       rpcsd0 = {!!}
 
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
-
     f0 : 𝔽 r
     f0 = 𝔽0 r₁
 
