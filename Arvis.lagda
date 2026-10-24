@@ -1644,11 +1644,6 @@ module Instructions where
       sk' = Instruction.f min sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = record {
-        dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
-        dv = ≡.refl;
-        dm = ≡.refl
-        }
 
   min = min.min
 \end{code}
