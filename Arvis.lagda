@@ -708,6 +708,9 @@ module Instructions where
             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd = {!!}
 
+      rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
+      rpcsd0 = {!!}
+
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
 
     f0 : 𝔽 r
