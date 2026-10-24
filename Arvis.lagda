@@ -475,6 +475,14 @@ module Instructions where
                 (ra z)
                 (Σ.proj₁ $ 𝕃.lookup is i)))
 
+  0rpcs : ∀ {a} → {A : Set a}
+        → {b r m : ℕ}
+        → {r₁ : 𝔽 r}
+        → {x z : Skami b r m A}
+        → RPc-S 𝕃.[ 𝔽0 r₁ ] x z
+        → RPc-S 𝕃.[] x z
+  0rpcs = {!!}
+
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
                (opf : (_⊎_
