@@ -743,7 +743,7 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
-      rpcs : RPc-S 𝕃.[ 𝔽0 r₁ ] sk sk'
+      rpcs : RPc-S 𝕃.[ f0 ] sk sk'
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
         dv = ≡.refl;
