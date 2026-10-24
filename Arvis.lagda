@@ -1684,7 +1684,7 @@ module Instructions where
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       ℕ→ℤ-+ : (n : ℕ)
-            → {!!} Function.∋ Set
+            → Set Function.∋ {!!}
             → ℕ→ℤ n ≡ ℤ.pos n
       ℕ→ℤ-+ = {!!}
 
