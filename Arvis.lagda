@@ -1688,6 +1688,11 @@ module Instructions where
             → ℕ→ℤ n ≡ ℤ.pos n
       ℕ→ℤ-+ = {!!}
 
+      ℕ→ℤ-- : (n : ℕ)
+            → {!!} Function.∋ Set
+            → ℕ→ℤ n ≡ ℤ.negsuc {!!}
+      ℕ→ℤ-- = {!!}
+
       sk' : typeOf sk
       sk' = Instruction.f min sk
 
