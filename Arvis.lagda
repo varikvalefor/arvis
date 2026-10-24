@@ -1325,8 +1325,8 @@ module Instructions where
                (𝕍.lookup (ra sk) r₄))
       lup' = N0-d-s' r₁ pc+i rx rx' ≡.refl
 
-      drpc : RPc-S 𝕃.[ r₁ ] sk f
-      drpc = record {
+      rpcs : RPc-S 𝕃.[ r₁ ] sk f
+      rpcs = record {
         dr = λ j N → lup' _ $ N 𝔽.zero;
         dv = ≡.refl;
         dm = ≡.refl
