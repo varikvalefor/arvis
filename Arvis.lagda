@@ -751,6 +751,10 @@ module Instructions where
         dm = ≡.refl
         }
 
+      rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcsd = {!!}
+
   module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf x z = (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod _
