@@ -817,8 +817,7 @@ module Instructions where
             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd = {!!}
 
-      rpcsd0 : 𝔽.toℕ r₁ ≡ 0
-             → RPc-Sd 𝕃.[] sk sk'
+      rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd0 = {!!}
 
   add = add.add
