@@ -704,6 +704,10 @@ module Instructions where
         dm = ≡.refl
         }
 
+      rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcsd = {!!}
+
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
 
     f0 : 𝔽 r
