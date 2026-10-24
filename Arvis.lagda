@@ -1551,11 +1551,12 @@ module Instructions where
       ... | yes d = ≡.subst (𝔽._≤ _) (≡.trans dl {!!}) $ ℕ.z≤n
         where
         dl :  𝔽.zero ≡ 𝕍.lookup rx r₁
-        dl = ≡.subst (λ i → 𝔽.zero ≡ 𝕍.lookup rx i) {!!} $ Rucyca'a.x0 (Skami.rucyca'a sk) $ 𝔽>0 r₁
+        dl = ≡.subst (λ i → 𝔽.zero ≡ 𝕍.lookup rx i) {!!} x0'
           where
           𝔽>0 : {n : ℕ} → 𝔽 n → 0 ℕ.< n
           𝔽>0 {0} ()
           𝔽>0 {ℕ.suc n} = λ _ → ℕ.s≤s ℕ.z≤n
+          x0' = Rucyca'a.x0 (Skami.rucyca'a sk) $ 𝔽>0 r₁
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = {!!}
       ... | no Nb = {!!}
