@@ -1650,11 +1650,7 @@ module Instructions where
       sk' = Instruction.f minu sk
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
-      rpcs = record {
-        dr = λ j N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
-        dv = ≡.refl;
-        dm = ≡.refl
-        }
+      rpcs = Veritas-S.rpcs sk
 
       rpcsd-0 : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
                 𝔽.toℕ r₁ ≡ 0
