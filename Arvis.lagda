@@ -1599,28 +1599,26 @@ module Instructions where
         dm = ≡.refl
         }
 
-      rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk sk'
-      rpcsd = Veritas-S.rpcsd! sk
-
       rpcsd' : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd' = Veritas-S.rpcsd0 sk
 
-      rpcsd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → bit ≡ 𝔽.zero
-             → RPc-Sd 𝕃.[ r₁ , *r₂ ] sk sk'
-      rpcsd0 N d0 = record {
-        rpcs = rpcs;
-        dr' = {!!}
-        }
+      module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
+        rpcsd : RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk sk'
+        rpcsd = Veritas-S.rpcsd! sk N
 
-      rpcsd1 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → bit ≡ 𝔽.suc 𝔽.zero
-             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
-      rpcsd1 N d0 = record {
-        rpcs = rpcs;
-        dr' = {!!}
-        }
+        rpcsd0 : bit ≡ 𝔽.zero
+               → RPc-Sd 𝕃.[ r₁ , *r₂ ] sk sk'
+        rpcsd0 d0 = record {
+          rpcs = rpcs;
+          dr' = {!!}
+          }
+
+        rpcsd1 : bit ≡ 𝔽.suc 𝔽.zero
+               → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+        rpcsd1 d0 = record {
+          rpcs = rpcs;
+          dr' = {!!}
+          }
 
   bclr = bclr.bclr
 
