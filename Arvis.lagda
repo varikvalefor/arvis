@@ -1689,23 +1689,22 @@ module Instructions where
               → RPc-Sd 𝕃.[] sk sk'
       rpcsd-0 = Veritas-S.rpcsd0 sk
 
-      rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
-                ¬_ $ 𝔽.toℕ r₁ ≡ 0
-              → L r₂ 𝔽.≤ L r₃
-              → RPc-Sd 𝕃.[ r₁ , L r₂ ] sk sk'
-      rpcsd-≤ N ml = record {
-        rpcs = rpcs;
-        dr' = {!!}
-        }
+      module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
+        rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
+                  L r₂ 𝔽.≤ L r₃
+                → RPc-Sd 𝕃.[ r₁ , L r₂ ] sk sk'
+        rpcsd-≤ ml = record {
+          rpcs = rpcs;
+          dr' = {!!}
+          }
 
-      rpcsd-≥ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
-                ¬_ $ 𝔽.toℕ r₁ ≡ 0
-              → L r₂ 𝔽.≥ L r₃
-              → RPc-Sd 𝕃.[ r₁ , L r₃ ] sk sk'
-      rpcsd-≥ N zm = record {
-        rpcs = rpcs;
-        dr' = {!!}
-        }
+        rpcsd-≥ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
+                  L r₂ 𝔽.≥ L r₃
+                → RPc-Sd 𝕃.[ r₁ , L r₃ ] sk sk'
+        rpcsd-≥ zm = record {
+          rpcs = rpcs;
+          dr' = {!!}
+          }
 
   minu = minu.minu
 
