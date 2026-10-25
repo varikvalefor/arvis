@@ -488,6 +488,7 @@ module Instructions where
         → RPc-S 𝕃.[] x z
   0rpcs = {!!}
 
+  -- OP r₁, r₂, r₃
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
                (opf : (_⊎_
