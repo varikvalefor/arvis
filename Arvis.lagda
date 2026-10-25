@@ -1739,10 +1739,10 @@ module Instructions where
               → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
       rpcsd-≥ = {!!}
 
-      rpcs-⊎ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
-               D r₂ ⊎ D r₃
-      rpcs-⊎ = {!!}
+      rpcsd-⊎ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+              → let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
+                D r₂ ⊎ D r₃
+      rpcsd-⊎ = {!!}
 
   min = min.min
 \end{code}
