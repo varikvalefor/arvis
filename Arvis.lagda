@@ -1729,10 +1729,10 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
-      rpcs-≤ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
-             → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
-      rpcs-≤ = {!!}
+      rpcsd-≤ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+              → (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
+              → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
+      rpcsd-≤ = {!!}
 
       rpcsd-≥ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → ((ℤ._≤_ ⍨) on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
