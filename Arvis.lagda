@@ -576,11 +576,20 @@ module Instructions where
       rpcsd0 d = record {
         dr' = λ ();
         rpcs = record {
-          dr = {!!};
+          dr = dr;
           dv = ≡.refl;
           dm = ≡.refl
           }
         }
+        where
+        dr : (j : 𝔽 r)
+           → (_ : (i : 𝔽 0) → ¬_ $ j ≡ 𝕃.lookup 𝕃.[] i)
+           → ((λ f → f sk' ≡ f sk)
+               (λ x →
+                  (𝕍.lookup
+                    (Rucyca'a.reg $ Skami.rucyca'a x)
+                    j)))
+        dr = {!!}
 
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
