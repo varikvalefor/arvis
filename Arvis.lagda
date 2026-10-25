@@ -1729,20 +1729,18 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
-      rpcsd-≤ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-              → (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
-              → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
-      rpcsd-≤ = {!!}
+      module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
+        rpcsd-≤ : (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
+                → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
+        rpcsd-≤ = {!!}
 
-      rpcsd-≥ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-              → ((ℤ._≤_ ⍨) on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
-              → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
-      rpcsd-≥ = {!!}
+        rpcsd-≥ : ((ℤ._≤_ ⍨) on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
+                → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
+        rpcsd-≥ = {!!}
 
-      rpcsd-⊎ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-              → let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
-                D r₂ ⊎ D r₃
-      rpcsd-⊎ = {!!}
+        rpcsd-⊎ : let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
+                  D r₂ ⊎ D r₃
+        rpcsd-⊎ = {!!}
 
   min = min.min
 \end{code}
