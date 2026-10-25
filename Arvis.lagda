@@ -1647,6 +1647,10 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
+      rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcsd = {!!}
+
   max = max.max
 
   module minu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
