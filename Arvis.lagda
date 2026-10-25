@@ -589,7 +589,8 @@ module Instructions where
                   (𝕍.lookup
                     (Rucyca'a.reg $ Skami.rucyca'a x)
                     j)))
-        dr = {!!}
+        dr 𝔽.zero = {!!}
+        dr (𝔽.suc f) = {!!}
 
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
