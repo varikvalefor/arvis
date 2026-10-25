@@ -1719,6 +1719,10 @@ module Instructions where
     min = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      private
+        L : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
       sk' : typeOf sk
       sk' = Instruction.f min sk
 
@@ -1726,20 +1730,17 @@ module Instructions where
       rpcs = Veritas-S.rpcs sk
 
       rpcs-≤ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → let L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-               (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
+             → (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
              → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
       rpcs-≤ = {!!}
 
       rpcsd-≥ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-              → let L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-                ((ℤ._≤_ ⍨) on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
+              → ((ℤ._≤_ ⍨) on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
               → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
       rpcsd-≥ = {!!}
 
       rpcs-⊎ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → let L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-               let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
+             → let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
                D r₂ ⊎ D r₃
       rpcs-⊎ = {!!}
 
