@@ -284,6 +284,24 @@ module log (b n : ℕ) where
     zm = {!!}
 \end{code}
 
+\begin{code}
+module ℕ→ℤ (n : ℕ) where
+  f : ℤ
+  f = {!!}
+
+  module Veritas where
+    x+ : Set Function.∋ {!!}
+       → f ≡ ℤ.pos n
+    x+ = {!!}
+
+    x- : Set Function.∋ {!!}
+       → f ≡ ℤ.negsuc {!!}
+    x- = {!!}
+
+ℕ→ℤ = ℕ→ℤ.f
+\end{code}
+
+
 \section{le rucyca'a se ctaipe}
 
 \begin{code}
@@ -1692,9 +1710,6 @@ module Instructions where
   minu = minu.minu
 
   module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
-    ℕ→ℤ : ℕ → ℤ
-    ℕ→ℤ = {!!}
-
     minx : ℕ → ℕ → ℕ
     minx x z = if (ℕ→ℤ x ℤ.≤ᵇ ℕ→ℤ z) x z
 
@@ -1704,16 +1719,6 @@ module Instructions where
     min = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      ℕ→ℤ-+ : (n : ℕ)
-            → Set Function.∋ {!!}
-            → ℕ→ℤ n ≡ ℤ.pos n
-      ℕ→ℤ-+ = {!!}
-
-      ℕ→ℤ-- : (n : ℕ)
-            → Set Function.∋ {!!}
-            → ℕ→ℤ n ≡ ℤ.negsuc {!!}
-      ℕ→ℤ-- = {!!}
-
       sk' : typeOf sk
       sk' = Instruction.f min sk
 
