@@ -340,9 +340,14 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
 
 \begin{code}
 module Instructions where
+\end{code}
+
+\begin{code}
   i-size : (b r m nibarda : ℕ) → ℕ
   i-size = {!!}
+\end{code}
 
+\begin{code}
   x0-vrici : {b r : ℕ}
            → (r₁ : 𝔽 r)
            → (n : 𝔽 $ ℕ.suc b)
@@ -389,7 +394,9 @@ module Instructions where
         lud x = d ▹ cong (𝕍.lookup x)
         import Data.Fin.Properties
           as 𝔽P
+\end{code}
 
+\begin{code}
   0-dro-s : {b r : ℕ}
           → (i : 𝔽 r)
           → (n : 𝔽 $ ℕ.suc b)
@@ -418,7 +425,9 @@ module Instructions where
       updateAt-id (_ 𝕍.∷ _ 𝕍.∷ xs) (𝔽.suc i) f = cong (_ 𝕍.∷_) ∘ rd
         where
         rd = updateAt-id (_ 𝕍.∷ xs) i f
+\end{code}
 
+\begin{code}
   N0-d-s : {b r : ℕ}
          → (i : 𝔽 r)
          → (n : 𝔽 $ ℕ.suc b)
@@ -439,7 +448,9 @@ module Instructions where
     n ∎
     where
     open ≡.≡-Reasoning
+\end{code}
 
+\begin{code}
   N0-d-s' : {b r : ℕ}
           → (i : 𝔽 r)
           → (n : 𝔽 $ ℕ.suc b)
@@ -459,7 +470,9 @@ module Instructions where
     𝕍.lookup rc j ∎
     where
     open ≡.≡-Reasoning
+\end{code}
 
+\begin{code}
   record RPc-S {a} {A : Set a}
                {b r m : ℕ}
                (is : List $ 𝔽 r)
@@ -477,7 +490,9 @@ module Instructions where
          → D $ λ x → 𝕍.lookup (ra x) j
       dv : D Skami.vrici
       dm : D Skami.mem
+\end{code}
 
+\begin{code}
   record RPc-Sd {a} {A : Set a}
                 {b r m : ℕ}
                 (is : List $ 𝔽 r × 𝔽 (ℕ.suc b))
@@ -502,7 +517,9 @@ module Instructions where
         → RPc-S 𝕃.[ 𝔽0 r₁ ] x z
         → RPc-S 𝕃.[] x z
   0rpcs = {!!}
+\end{code}
 
+\begin{code}
   -- OP r₁, r₂, r₃
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
@@ -606,7 +623,9 @@ module Instructions where
                     j)))
         dr 𝔽.zero = {!!}
         dr (𝔽.suc f) = {!!}
+\end{code}
 
+\begin{code}
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
                 (imm : 𝔽 $ i-size b r mx nibarda)
@@ -647,7 +666,9 @@ module Instructions where
       nibarda = nibarda;
       f = f.f
       }
+\end{code}
 
+\begin{code}
   module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -736,7 +757,9 @@ module Instructions where
 
       rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd0 = {!!}
+\end{code}
 
+\begin{code}
   module jr (b r m : ℕ) (r₁ : 𝔽 r) where
     f0 : 𝔽 r
     f0 = 𝔽0 r₁
@@ -778,7 +801,9 @@ module Instructions where
 
       rpcsd0 : RPc-Sd 𝕃.[] sk sk'
       rpcsd0 = {!!}
+\end{code}
 
+\begin{code}
   module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf x z = (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod _
@@ -850,7 +875,9 @@ module Instructions where
       rpcsd0 = Veritas-S.rpcsd0 sk
 
   add = add.add
+\end{code}
 
+\begin{code}
   module sub (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -891,7 +918,9 @@ module Instructions where
         where
         open f sk
         open ≡.≡-Reasoning
+\end{code}
 
+\begin{code}
   module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
@@ -934,7 +963,9 @@ module Instructions where
       rpcsd0 = {!!}
 
   and = and.and
+\end{code}
 
+\begin{code}
   module or (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
@@ -971,7 +1002,9 @@ module Instructions where
       or≥₂ = {!!}
 
   or = or.or
+\end{code}
 
+\begin{code}
   module xor (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
@@ -998,7 +1031,9 @@ module Instructions where
       rpcs = Veritas-S.rpcs sk
 
   xor = xor.xor
+\end{code}
 
+\begin{code}
   module sll (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -1017,7 +1052,9 @@ module Instructions where
       rpcs = Veritas-S.rpcs sk
 
   sll = sll.sll
+\end{code}
 
+\begin{code}
   module srl (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -1042,7 +1079,9 @@ module Instructions where
       rpcs = Veritas-S.rpcs sk
 
   srl = srl.srl
+\end{code}
 
+\begin{code}
   private
     slli-nibarda : ℕ
     slli-nibarda = {!!}
@@ -1089,7 +1128,9 @@ module Instructions where
       rpcs = {!!}
 
   slli = slli.slli
+\end{code}
 
+\begin{code}
   private
     srli-nibarda : ℕ
     srli-nibarda = {!!}
@@ -1156,7 +1197,9 @@ module Instructions where
         }
 
   srli = srli.srli
+\end{code}
 
+\begin{code}
   module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
     mv {A = A} = record {
@@ -1180,7 +1223,9 @@ module Instructions where
         dv = ≡.refl;
         dm = ≡.refl
         }
+\end{code}
 
+\begin{code}
   module mul (b r mx : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -1214,7 +1259,9 @@ module Instructions where
               (𝕍.lookup (rx $ Instruction.f mul sk) r₁)
                ((l r₂ ℕ.* l r₃) mod ℕ.suc b))
       dun = N0-d-s _ _ _ _ ≡.refl
+\end{code}
 
+\begin{code}
   module div (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     div : ∀ {a} → {A : Set a} → Instruction A b r m
     div = {!!}
@@ -1278,7 +1325,9 @@ module Instructions where
         dv = ≡.refl;
         dm = ≡.refl
         }
+\end{code}
 
+\begin{code}
   auipc-nibarda : ℕ
   auipc-nibarda = {!!}
 
@@ -1364,7 +1413,9 @@ module Instructions where
 
       rpcd0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcd0 = {!!}
+\end{code}
 
+\begin{code}
   module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -1402,7 +1453,9 @@ module Instructions where
       *r₁'<2 with ℕ.suc b ℕ.≥? 2
       ... | no Nzm = {!!}
       ... | yes zm = _⊎_.[_,_]′ {!!} {!!} $ *r₁'≡0⊎1 zm
+\end{code}
 
+\begin{code}
   module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -1522,7 +1575,9 @@ module Instructions where
         rpcs = rpcs;
         dr' = λ {𝔽.zero → d1' N d ▹ ≡.sym}
         }
+\end{code}
 
+\begin{code}
   module bclr (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
@@ -1618,7 +1673,9 @@ module Instructions where
           }
 
   bclr = bclr.bclr
+\end{code}
 
+\begin{code}
   module maxu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ ℕ._⊔_)
 
@@ -1646,7 +1703,9 @@ module Instructions where
         }
 
   maxu = maxu.maxu
+\end{code}
 
+\begin{code}
   module max (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
@@ -1665,7 +1724,9 @@ module Instructions where
       rpcsd = {!!}
 
   max = max.max
+\end{code}
 
+\begin{code}
   module minu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ ℕ._⊓_)
 
@@ -1702,7 +1763,9 @@ module Instructions where
           }
 
   minu = minu.minu
+\end{code}
 
+\begin{code}
   module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
     minx : ℕ → ℕ → ℕ
     minx x z = if (ℕ→ℤ x ℤ.≤ᵇ ℕ→ℤ z) x z
