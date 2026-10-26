@@ -1744,6 +1744,10 @@ module Instructions where
     minu = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      private
+        L : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
       sk' : typeOf sk
       sk' = Instruction.f minu sk
 
@@ -1771,6 +1775,10 @@ module Instructions where
           rpcs = rpcs;
           dr' = {!!}
           }
+
+        rpcsd-⊎ : let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
+                  D r₂ ⊎ D r₃
+        rpcsd-⊎ = {!!}
 
   minu = minu.minu
 \end{code}
