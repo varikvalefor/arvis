@@ -272,6 +272,6 @@ Seq+T sks s (i 𝕃.∷ is) = Af s s' × Seq+T sks s' is
   where
   open Seq+T.Instruction+ i
   open Skami-S sks
-  sk' = f ins s
+  s' = f ins s
 \end{code}
 \end{document}
