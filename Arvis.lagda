@@ -342,6 +342,24 @@ seq = 𝕃.foldr Instruction.f
 \end{code}
 
 \begin{code}
+module Seq+T {a} (A : Set a) (b r m : ℕ) where
+  record Instruction+ : Set (lsuc a) where
+    field
+      ins : Instruction A b r m
+      Af : Skami b r m A → Set a
+
+Seq+T : ∀ {a} → {A : Set a}
+     → {b r m : ℕ}
+     → Skami b r m A
+     → List $ Seq+T.Instruction+ A b r m
+     → Set a
+Seq+T _ 𝕃.[] = {!!}
+Seq+T sk (i 𝕃.∷ is) = Af (Instruction.f ins sk) × Seq+T sk is
+  where
+  open Seq+T.Instruction+ i
+\end{code}
+
+\begin{code}
 module Instructions where
   i-size : (b r m nibarda : ℕ) → ℕ
   i-size = {!!}
