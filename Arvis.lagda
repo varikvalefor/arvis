@@ -353,19 +353,20 @@ seq = 𝕃.foldr Instruction.f
 \end{code}
 
 \begin{code}
-module Seq+T {a} (A : Set a) (b r m : ℕ) where
-  record Instruction+ : Set (lsuc a) where
+module Seq+T {a b} {A : Set a} {B : Set b}
+             (sks : Skami-S A B) where
+  record Instruction+ : Set (lsuc a ⊔ b) where
     field
-      ins : Instruction A b r m
-      Af : Skami b r m A → Set a
+      ins : Skami-S.Instruction sks
+      Af : Skami-S.State sks → Set a
 
-Seq+T : ∀ {a} → {A : Set a}
-     → {b r m : ℕ}
-     → Skami b r m A
-     → List $ Seq+T.Instruction+ A b r m
+Seq+T : ∀ {a b} → {A : Set a} → {B : Set b}
+     → (sks : Skami-S A B)
+     → Skami-S.State sks
+     → List $ Seq+T.Instruction+ sks
      → Set a
-Seq+T _ 𝕃.[] = {!!}
-Seq+T sk (i 𝕃.∷ is) = Af (Instruction.f ins sk) × Seq+T sk is
+Seq+T _ _ 𝕃.[] = {!!}
+Seq+T sks sk (i 𝕃.∷ is) = Af (Skami-S.f sks ins sk) × Seq+T sks sk is
   where
   open Seq+T.Instruction+ i
 \end{code}
