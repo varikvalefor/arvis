@@ -1770,4 +1770,11 @@ module Instructions where
 
   min = min.min
 \end{code}
+
+\begin{code}
+rv : ∀ {a} → (A : Set a)
+   → (b r m : ℕ)
+   → Skami-S (Skami b r m A) $ Instruction A b r m
+rv _ _ _ _ = record {f = Instruction.f}
+\end{code}
 \end{document}
