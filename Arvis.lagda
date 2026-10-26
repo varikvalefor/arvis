@@ -311,6 +311,35 @@ record Skami-S {a b}
     f : Instruction → State → State
 \end{code}
 
+\begin{code}
+seq : ∀ {a b} → {State : Set a} → {Inst : Set b}
+    → (sks : Skami-S State Inst)
+    → State
+    → List Inst
+    → State
+seq = 𝕃.foldr ∘ Skami-S.f
+\end{code}
+
+\begin{code}
+module Seq+T {a b} {State : Set a} {Inst : Set b}
+             (sks : Skami-S State Inst) where
+  record Instruction+ : Set (lsuc a ⊔ b) where
+    field
+      ins : Inst
+      Af : State → Set a
+
+Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
+      → (sks : Skami-S State Inst)
+      → State
+      → List $ Seq+T.Instruction+ sks
+      → Set a
+Seq+T _ _ 𝕃.[] = {!!}
+Seq+T sks sk (i 𝕃.∷ is) = Af (f ins sk) × Seq+T sks sk is
+  where
+  open Seq+T.Instruction+ i
+  open Skami-S sks
+\end{code}
+
 \section{le rucyca'a se ctaipe}
 
 \begin{code}
@@ -339,35 +368,6 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
   field
     nibarda : ℕ
     f : Skami b r m A → Skami b r m A
-\end{code}
-
-\begin{code}
-seq : ∀ {a b} → {State : Set a} → {Inst : Set b}
-    → (sks : Skami-S State Inst)
-    → State
-    → List Inst
-    → State
-seq = 𝕃.foldr ∘ Skami-S.f
-\end{code}
-
-\begin{code}
-module Seq+T {a b} {State : Set a} {Inst : Set b}
-             (sks : Skami-S State Inst) where
-  record Instruction+ : Set (lsuc a ⊔ b) where
-    field
-      ins : Inst
-      Af : State → Set a
-
-Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
-      → (sks : Skami-S State Inst)
-      → State
-      → List $ Seq+T.Instruction+ sks
-      → Set a
-Seq+T _ _ 𝕃.[] = {!!}
-Seq+T sks sk (i 𝕃.∷ is) = Af (f ins sk) × Seq+T sks sk is
-  where
-  open Seq+T.Instruction+ i
-  open Skami-S sks
 \end{code}
 
 \begin{code}
