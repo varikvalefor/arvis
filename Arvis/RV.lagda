@@ -536,8 +536,7 @@ module Instructions where
                (opf : (_⊎_
                         ((_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b)
                         (ℕ → ℕ → ℕ))) where
-    module f {a} {A : Set a}
-             (sk : Skami b r m A) where
+    module f {a} {A : Set a} (sk : Skami b r m A) where
 
       rx : Vec (𝔽 $ ℕ.suc b) r
       rx = Rucyca'a.reg $ Skami.rucyca'a sk
