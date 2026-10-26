@@ -105,7 +105,7 @@ ni'o bau la .lojban.\ joi la'oi .Agda.\ la .varik.\ cu ciksi tu'a la'o zoi.\ RIS
 \section{le vrici}
 
 \begin{code}
--- {-# OPTIONS --safe #-}
+{-# OPTIONS --safe #-}
 
 module Arvis.RV where
 open import Level
