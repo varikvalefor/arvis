@@ -366,9 +366,10 @@ Seq+T : ∀ {a b} → {A : Set a} → {B : Set b}
       → List $ Seq+T.Instruction+ sks
       → Set a
 Seq+T _ _ 𝕃.[] = {!!}
-Seq+T sks sk (i 𝕃.∷ is) = Af (Skami-S.f sks ins sk) × Seq+T sks sk is
+Seq+T sks sk (i 𝕃.∷ is) = Af (f ins sk) × Seq+T sks sk is
   where
   open Seq+T.Instruction+ i
+  open Skami-S sks
 \end{code}
 
 \begin{code}
