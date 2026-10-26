@@ -361,10 +361,10 @@ module Seq+T {a b} {A : Set a} {B : Set b}
       Af : Skami-S.State sks → Set a
 
 Seq+T : ∀ {a b} → {A : Set a} → {B : Set b}
-     → (sks : Skami-S A B)
-     → Skami-S.State sks
-     → List $ Seq+T.Instruction+ sks
-     → Set a
+      → (sks : Skami-S A B)
+      → Skami-S.State sks
+      → List $ Seq+T.Instruction+ sks
+      → Set a
 Seq+T _ _ 𝕃.[] = {!!}
 Seq+T sks sk (i 𝕃.∷ is) = Af (Skami-S.f sks ins sk) × Seq+T sks sk is
   where
