@@ -305,11 +305,9 @@ module ℕ→ℤ (n : ℕ) where
 
 \begin{code}
 record Skami-S {a b}
-               (A : Set a)
-               (B : Set b) : Set (lsuc $ a ⊔ b) where
+               (State : Set a)
+               (Instruction : Set b) : Set (lsuc $ a ⊔ b) where
   field
-    State : Set a
-    Instruction : Set b
     f : Instruction → State → State
 \end{code}
 
@@ -344,25 +342,25 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
 \end{code}
 
 \begin{code}
-seq : ∀ {a b} → {A : Set a} → {B : Set b}
-    → (sks : Skami-S A B)
-    → Skami-S.State sks
-    → List $ Skami-S.Instruction sks
-    → Skami-S.State sks
+seq : ∀ {a b} → {State : Set a} → {Inst : Set b}
+    → (sks : Skami-S State Inst)
+    → State
+    → List Inst
+    → State
 seq = 𝕃.foldr ∘ Skami-S.f
 \end{code}
 
 \begin{code}
-module Seq+T {a b} {A : Set a} {B : Set b}
-             (sks : Skami-S A B) where
+module Seq+T {a b} {State : Set a} {Inst : Set b}
+             (sks : Skami-S State Inst) where
   record Instruction+ : Set (lsuc a ⊔ b) where
     field
-      ins : Skami-S.Instruction sks
-      Af : Skami-S.State sks → Set a
+      ins : Inst
+      Af : State → Set a
 
-Seq+T : ∀ {a b} → {A : Set a} → {B : Set b}
-      → (sks : Skami-S A B)
-      → Skami-S.State sks
+Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
+      → (sks : Skami-S State Inst)
+      → State
       → List $ Seq+T.Instruction+ sks
       → Set a
 Seq+T _ _ 𝕃.[] = {!!}
