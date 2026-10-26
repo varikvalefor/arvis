@@ -301,6 +301,17 @@ module ℕ→ℤ (n : ℕ) where
 ℕ→ℤ = ℕ→ℤ.f
 \end{code}
 
+\section{le sucta}
+
+\begin{code}
+record Skami-S {a b}
+               (A : Set a)
+               (B : Set b) : Set (lsuc $ a ⊔ b) where
+  field
+    State : Set a
+    Instruction : Set b
+    f : Instruction → State → State
+\end{code}
 
 \section{le rucyca'a se ctaipe}
 
