@@ -260,17 +260,17 @@ module Seq+T {a b} {State : Set a} {Inst : Set b}
   record Instruction+ : Set (lsuc a ⊔ b) where
     field
       ins : Inst
-      Af : State → Set a
+      Af : (_ _ : State) → Set a
 
-  main : State
-       → List Instruction+
-       → Set a
-  main _ 𝕃.[] = ⊤
-  main sk (i 𝕃.∷ is) = Af (f ins sk) × main sk is
-    where
-    open Instruction+ i
-    open Skami-S sks
-
-Seq+T = Seq+T.main
+Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
+      → (sks : Skami-S State Inst)
+      → State
+      → List $ Seq+T.Instruction+ sks
+      → Set a
+Seq+T sks _ 𝕃.[] = ⊤
+Seq+T sks sk (i 𝕃.∷ is) = Af sk (f ins sk) × Seq+T sks (f ins sk) is
+  where
+  open Seq+T.Instruction+ i
+  open Skami-S sks
 \end{code}
 \end{document}
