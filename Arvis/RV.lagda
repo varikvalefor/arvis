@@ -1780,7 +1780,7 @@ module Instructions where
                   D r₂ ⊎ D r₃
         rpcsd-⊎ with 𝔽.toℕ (L sk r₂) ℕ.≤? 𝔽.toℕ (L sk r₃)
         ... | yes djm = inj₁ $ rpcsd-≤ djm
-        ... | no N = {!!}
+        ... | no N = inj₂ $ rpcsd-≥ {!!}
 
   minu = minu.minu
 \end{code}
