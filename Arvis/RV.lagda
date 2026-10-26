@@ -1758,9 +1758,8 @@ module Instructions where
       rpcsd-0 = Veritas-S.rpcsd0 sk
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
-        rpcsd-≤ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
-                  L r₂ 𝔽.≤ L r₃
-                → RPc-Sd 𝕃.[ r₁ , L r₂ ] sk sk'
+        rpcsd-≤ : L sk r₂ 𝔽.≤ L sk r₃
+                → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
         rpcsd-≤ ml = record {
           rpcs = rpcs;
           dr' = {!!}
