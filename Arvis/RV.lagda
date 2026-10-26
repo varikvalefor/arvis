@@ -1737,6 +1737,8 @@ module Instructions where
   min = min.min
 \end{code}
 
+\section{le ctaipe be le su'u mapti la'o zoi.\ \AgdaRecord{Skami-S}\ .zoi.}
+
 \begin{code}
 rv : ∀ {a} → (A : Set a)
    → (b r m : ℕ)
