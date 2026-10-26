@@ -938,27 +938,27 @@ module Instructions where
     and = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      private
+        ri : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
       sk' : Skami b r m A
       sk' = Instruction.f and sk
 
-      and0 : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-             ri sk r₃ ≡ 𝔽.zero
+      and0 : ri sk r₃ ≡ 𝔽.zero
            → ri sk' r₁ ≡ 𝔽.zero
       and0 = {!!}
 
-      and⍨ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-             ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      and⍨ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
            → ri sk r₂ ≡ ri sk r₃
            → ri sk' r₁ ≡ ri sk r₂
       and⍨ = {!!}
 
-      and≤₁ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-               ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      and≤₁ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → ri sk' r₁ 𝔽.≤ ri sk r₂
       and≤₁ = {!!}
 
-      and≤₂ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-               ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      and≤₂ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
              → ri sk' r₁ 𝔽.≤ ri sk r₃
       and≤₂ = {!!}
 
