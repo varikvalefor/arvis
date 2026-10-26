@@ -166,11 +166,6 @@ open import Data.List
   using (
     List
   )
-open import Data.Unit
-  using (
-    tt;
-    ⊤
-  )
 open import Data.Empty
   as ⊥
   using (
@@ -220,6 +215,11 @@ open import Truthbrary.Record.Eq
     _≟_;
     Eq
   )
+open import Data.Unit.Polymorphic
+  using (
+    tt;
+    ⊤
+  )
 open import Relation.Nullary.Decidable
   using (
     isYes≗does;
@@ -267,7 +267,7 @@ Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
       → State
       → List $ Seq+T.Instruction+ sks
       → Set a
-Seq+T _ _ 𝕃.[] = {!!}
+Seq+T _ _ 𝕃.[] = ⊤
 Seq+T sks sk (i 𝕃.∷ is) = Af (f ins sk) × Seq+T sks sk is
   where
   open Seq+T.Instruction+ i
