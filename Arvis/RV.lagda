@@ -254,29 +254,39 @@ module 𝔽0 where
     d0 {ℕ.suc _} _ = ≡.refl
 
 𝔽0 = 𝔽0.f
+\end{code}
 
+\begin{code}
 ≡⇒≡ᵇ : ∀ {a} → {A : Set a}
      → ⦃ _ : Eq A ⦄
      → {x z : A}
      → x ≡ z
      → x ≡ᵇ z ≡ Data.Bool.true
 ≡⇒≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-true (x ≟ z)
+\end{code}
 
+\begin{code}
 ¬≡⇒¬≡ᵇ : ∀ {a} → {A : Set a}
        → ⦃ _ : Eq A ⦄
        → {x z : A}
        → ¬_ $ x ≡ z
        → x ≡ᵇ z ≡ Data.Bool.false
 ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-false (x ≟ z)
+\end{code}
 
+\begin{code}
 2^n≢0 : (n : ℕ) → False $ (2 ℕ.^ n) ≟ 0
 2^n≢0 n with (2 ℕ.^ n) ≟ 0
 ... | no _ = tt
 ... | yes d = (λ ()) $ m^n≡0⇒m≡0 2 n d
+\end{code}
 
+\begin{code}
 bitn : ℕ → ℕ → 𝔽 2
 bitn n b = (_mod 2) $ ℕ._div_ n (2 ℕ.^ b) {2^n≢0 b}
+\end{code}
 
+\begin{code}
 module log (b n : ℕ) where
   f : ℕ
   f = {!!}
