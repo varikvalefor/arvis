@@ -1682,6 +1682,10 @@ module Instructions where
           dr' = {!!}
           }
 
+        rpcsd-⊎ : let D = λ x → RPc-Sd 𝕃.[ r₁ , x ] sk sk' in
+                  D *r₂ ⊎ D {!!}
+        rpcsd-⊎ = {!!}
+
   bclr = bclr.bclr
 \end{code}
 
