@@ -1765,9 +1765,8 @@ module Instructions where
           dr' = {!!}
           }
 
-        rpcsd-≥ : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
-                  L r₂ 𝔽.≥ L r₃
-                → RPc-Sd 𝕃.[ r₁ , L r₃ ] sk sk'
+        rpcsd-≥ : L sk r₂ 𝔽.≥ L sk r₃
+                → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
         rpcsd-≥ zm = record {
           rpcs = rpcs;
           dr' = {!!}
