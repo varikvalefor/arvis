@@ -105,9 +105,9 @@ ni'o bau la .lojban.\ joi la'oi .Agda.\ la .varik.\ cu ciksi tu'a la'o zoi.\ RIS
 \section{le vrici}
 
 \begin{code}
-{-# OPTIONS --safe #-}
+-- {-# OPTIONS --safe #-}
 
-module Arvis where
+module Arvis.RV where
 open import Level
   using (
     _⊔_;
@@ -233,6 +233,11 @@ open import Relation.Binary.PropositionalEquality
     cong;
     _≡_
   )
+
+open import Arvis.Base
+  using (
+    Skami-S
+  )
 \end{code}
 
 \section{le vrici je fancu}
@@ -299,45 +304,6 @@ module ℕ→ℤ (n : ℕ) where
     x- = {!!}
 
 ℕ→ℤ = ℕ→ℤ.f
-\end{code}
-
-\section{le sucta}
-
-\begin{code}
-record Skami-S {a b}
-               (State : Set a)
-               (Instruction : Set b) : Set (lsuc $ a ⊔ b) where
-  field
-    f : Instruction → State → State
-\end{code}
-
-\begin{code}
-seq : ∀ {a b} → {State : Set a} → {Inst : Set b}
-    → (sks : Skami-S State Inst)
-    → State
-    → List Inst
-    → State
-seq = 𝕃.foldr ∘ Skami-S.f
-\end{code}
-
-\begin{code}
-module Seq+T {a b} {State : Set a} {Inst : Set b}
-             (sks : Skami-S State Inst) where
-  record Instruction+ : Set (lsuc a ⊔ b) where
-    field
-      ins : Inst
-      Af : State → Set a
-
-Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
-      → (sks : Skami-S State Inst)
-      → State
-      → List $ Seq+T.Instruction+ sks
-      → Set a
-Seq+T _ _ 𝕃.[] = {!!}
-Seq+T sks sk (i 𝕃.∷ is) = Af (f ins sk) × Seq+T sks sk is
-  where
-  open Seq+T.Instruction+ i
-  open Skami-S sks
 \end{code}
 
 \section{le rucyca'a se ctaipe}
