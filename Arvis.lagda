@@ -344,12 +344,12 @@ record Instruction {a} (A : Set a) (b r m : ℕ) : Set (lsuc a ⊔ lsuc 0ₗ) wh
 \end{code}
 
 \begin{code}
-seq : ∀ {a} → {A : Set a}
-    → {b r m : ℕ}
-    → (sk : Skami b r m A)
-    → List $ Instruction A b r m
-    → Skami b r m A
-seq = 𝕃.foldr Instruction.f
+seq : ∀ {a b} → {A : Set a} → {B : Set b}
+    → (sks : Skami-S A B)
+    → Skami-S.State sks
+    → List $ Skami-S.Instruction sks
+    → Skami-S.State sks
+seq = 𝕃.foldr ∘ Skami-S.f
 \end{code}
 
 \begin{code}
