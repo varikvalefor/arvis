@@ -268,10 +268,10 @@ Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
       → List $ Seq+T.Instruction+ sks
       → Set a
 Seq+T sks _ 𝕃.[] = ⊤
-Seq+T sks sk (i 𝕃.∷ is) = Af sk sk' × Seq+T sks sk' is
+Seq+T sks s (i 𝕃.∷ is) = Af s s' × Seq+T sks s' is
   where
   open Seq+T.Instruction+ i
   open Skami-S sks
-  sk' = f ins sk
+  sk' = f ins s
 \end{code}
 \end{document}
