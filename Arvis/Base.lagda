@@ -262,15 +262,15 @@ module Seq+T {a b} {State : Set a} {Inst : Set b}
       ins : Inst
       Af : State → Set a
 
-Seq+T : ∀ {a b} → {State : Set a} → {Inst : Set b}
-      → (sks : Skami-S State Inst)
-      → State
-      → List $ Seq+T.Instruction+ sks
-      → Set a
-Seq+T _ _ 𝕃.[] = ⊤
-Seq+T sks sk (i 𝕃.∷ is) = Af (f ins sk) × Seq+T sks sk is
-  where
-  open Seq+T.Instruction+ i
-  open Skami-S sks
+  main : State
+       → List Instruction+
+       → Set a
+  main _ 𝕃.[] = ⊤
+  main sk (i 𝕃.∷ is) = Af (f ins sk) × main sk is
+    where
+    open Instruction+ i
+    open Skami-S sks
+
+Seq+T = Seq+T.main
 \end{code}
 \end{document}
