@@ -1779,7 +1779,7 @@ module Instructions where
         rpcsd-⊎ : let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
                   D r₂ ⊎ D r₃
         rpcsd-⊎ with 𝔽.toℕ (L sk r₂) ℕ.≤? 𝔽.toℕ (L sk r₃)
-        ... | yes djm = {!!}
+        ... | yes djm = inj₁ $ rpcsd-≤ djm
         ... | no N = {!!}
 
   minu = minu.minu
