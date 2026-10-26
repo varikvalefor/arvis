@@ -1754,8 +1754,7 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
-      rpcsd-0 : let L = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk in
-                𝔽.toℕ r₁ ≡ 0
+      rpcsd-0 : 𝔽.toℕ r₁ ≡ 0
               → RPc-Sd 𝕃.[] sk sk'
       rpcsd-0 = Veritas-S.rpcsd0 sk
 
