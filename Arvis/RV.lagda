@@ -1689,7 +1689,7 @@ module Instructions where
         rpcsd-⊎ with bit ≟ 𝔽.zero
         ... | yes d = inj₁ $ rpcsd0 d
         ... | no N with bit ≟ 𝔽.suc 𝔽.zero
-        ... | yes d = {!!}
+        ... | yes d = inj₂ $ rpcsd1 d
         ... | no N = {!!}
 
   bclr = bclr.bclr
