@@ -1688,6 +1688,8 @@ module Instructions where
                   D *r₂ ⊎ D akt
         rpcsd-⊎ with bit ≟ 𝔽.zero
         ... | yes d = inj₁ $ rpcsd0 d
+        ... | no N with bit ≟ 𝔽.suc 𝔽.zero
+        ... | yes d = {!!}
         ... | no N = {!!}
 
   bclr = bclr.bclr
