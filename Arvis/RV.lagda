@@ -1686,7 +1686,9 @@ module Instructions where
 
         rpcsd-⊎ : let D = λ x → RPc-Sd 𝕃.[ r₁ , x ] sk sk' in
                   D *r₂ ⊎ D akt
-        rpcsd-⊎ = {!!}
+        rpcsd-⊎ with bit ≟ 𝔽.zero
+        ... | yes d = {!!}
+        ... | no N = {!!}
 
   bclr = bclr.bclr
 \end{code}
