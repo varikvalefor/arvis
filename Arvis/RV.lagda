@@ -1797,8 +1797,19 @@ module Instructions where
                 → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
         rpcsd-≥ zm = record {
           rpcs = rpcs;
-          dr' = {!!}
+          dr' = λ {𝔽.zero → ≡.sym $ begin
+            𝕍.lookup rx' r₁ ≡⟨ ≡.refl ⟩
+            _ ≡⟨ RPc-Sd.dr' (Veritas-S.rpcsd! sk N) 𝔽.zero ▹ ≡.sym ⟩
+            (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ ≡.refl ⟩
+            _ ≡⟨ ℕP.m≥n⇒m⊓n≡n zm ▹ cong (_mod _) ⟩
+            L' sk r₃ mod _ ≡⟨ ≡.sym mod∘toℕ ⟩
+            L sk r₃ ∎}
           }
+          where
+          L' = 𝔽.toℕ Function.∘₂ L
+          open ≡.≡-Reasoning
+          open f sk
+          
 
         rpcsd-⊎ : let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
                   D r₂ ⊎ D r₃
