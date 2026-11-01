@@ -1774,9 +1774,11 @@ module Instructions where
           rpcs = rpcs;
           dr' = λ {𝔽.zero → ≡.sym $ begin
             𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+            (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ {!!} ⟩
             L sk r₂ ∎}
           }
           where
+          L' = 𝔽.toℕ Function.∘₂ L
           open ≡.≡-Reasoning
           open f sk
 
