@@ -1774,7 +1774,7 @@ module Instructions where
           rpcs = rpcs;
           dr' = λ {𝔽.zero → ≡.sym $ begin
             𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
-            (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ {!!} ⟩
+            (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ ℕP.m≤n⇒m⊓n≡m ml ▹ cong (_mod _) ⟩
             L' sk r₂ mod _ ≡⟨ {!!} ⟩
             L sk r₂ ∎}
           }
