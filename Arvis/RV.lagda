@@ -1773,7 +1773,7 @@ module Instructions where
         rpcsd-≤ ml = record {
           rpcs = rpcs;
           dr' = λ {𝔽.zero → ≡.sym $ begin
-            𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+            𝕍.lookup rx' r₁ ≡⟨ RPc-Sd.dr' (Veritas-S.rpcsd! sk N) 𝔽.zero ▹ ≡.sym ⟩
             (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ ≡.refl ⟩
             _ ≡⟨ ℕP.m≤n⇒m⊓n≡m ml ▹ cong (_mod _) ⟩
             L' sk r₂ mod _ ≡⟨ {!!} ⟩
