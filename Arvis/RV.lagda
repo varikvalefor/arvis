@@ -1772,8 +1772,13 @@ module Instructions where
                 → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
         rpcsd-≤ ml = record {
           rpcs = rpcs;
-          dr' = {!!}
+          dr' = λ {𝔽.zero → ≡.sym $ begin
+            𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
+            L sk r₂ ∎}
           }
+          where
+          open ≡.≡-Reasoning
+          open f sk
 
         rpcsd-≥ : L sk r₂ 𝔽.≥ L sk r₃
                 → RPc-Sd 𝕃.[ r₁ , L sk r₃ ] sk sk'
