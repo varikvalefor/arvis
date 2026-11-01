@@ -1338,6 +1338,9 @@ module Instructions where
         dv = ≡.refl;
         dm = ≡.refl
         }
+
+      rpcd : ¬_ $ 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcd = {!!}
 \end{code}
 
 \begin{code}
