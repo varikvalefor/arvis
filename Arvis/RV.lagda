@@ -316,6 +316,11 @@ module ℕ→ℤ (n : ℕ) where
 ℕ→ℤ = ℕ→ℤ.f
 \end{code}
 
+\begin{code}
+mod∘toℕ : {m : ℕ} → {f : 𝔽 $ ℕ.suc m} → f ≡ 𝔽.toℕ f mod _
+mod∘toℕ = {!!}
+\end{code}
+
 \section{le rucyca'a se ctaipe}
 
 \begin{code}
@@ -1777,7 +1782,7 @@ module Instructions where
             _ ≡⟨ RPc-Sd.dr' (Veritas-S.rpcsd! sk N) 𝔽.zero ▹ ≡.sym ⟩
             (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ ≡.refl ⟩
             _ ≡⟨ ℕP.m≤n⇒m⊓n≡m ml ▹ cong (_mod _) ⟩
-            L' sk r₂ mod _ ≡⟨ {!!} ⟩
+            L' sk r₂ mod _ ≡⟨ ≡.sym mod∘toℕ ⟩
             L sk r₂ ∎}
           }
           where
