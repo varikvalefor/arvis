@@ -1751,6 +1751,11 @@ module Instructions where
             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd = {!!}
 
+      rpcsd-⊎ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+              → let D = λ i → RPc-Sd 𝕃.[ r₁ , 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) i ] sk sk' in
+                D r₂ ⊎ D r₃
+      rpcsd-⊎ = {!!}
+
   max = max.max
 \end{code}
 
