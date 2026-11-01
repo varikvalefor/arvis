@@ -1775,6 +1775,7 @@ module Instructions where
           dr' = λ {𝔽.zero → ≡.sym $ begin
             𝕍.lookup rx' r₁ ≡⟨ {!!} ⟩
             (L' sk r₂ ℕ.⊓ L' sk r₃) mod _ ≡⟨ {!!} ⟩
+            L' sk r₂ mod _ ≡⟨ {!!} ⟩
             L sk r₂ ∎}
           }
           where
