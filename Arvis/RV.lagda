@@ -1874,6 +1874,9 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk $ Instruction.f lb sk
       rpcs = {!!}
 
+      rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk $ Instruction.f lb sk
+      rpcsd = {!!}
+
   lb = lb.lb
 \end{code}
 
