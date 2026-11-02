@@ -1871,10 +1871,13 @@ module Instructions where
     lb = {!!}
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      rpcs : RPc-S 𝕃.[ r₁ ] sk $ Instruction.f lb sk
+      sk' : Skami b r m A
+      sk' = Instruction.f lb sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
-      rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk $ Instruction.f lb sk
+      rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd = {!!}
 
   lb = lb.lb
