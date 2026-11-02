@@ -1672,8 +1672,8 @@ module Instructions where
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
         private
-          akt : 𝔽 $ ℕ.suc b
-          akt = {!!}
+          cnino : 𝔽 $ ℕ.suc b
+          cnino = {!!}
 
         rpcsd : RPc-Sd 𝕃.[ r₁ , *r₁'! ] sk sk'
         rpcsd = Veritas-S.rpcsd! sk N
@@ -1686,14 +1686,14 @@ module Instructions where
           }
 
         rpcsd1 : bit ≡ 𝔽.suc 𝔽.zero
-               → RPc-Sd 𝕃.[ r₁ , akt ] sk sk'
+               → RPc-Sd 𝕃.[ r₁ , cnino ] sk sk'
         rpcsd1 d0 = record {
           rpcs = rpcs;
           dr' = {!!}
           }
 
         rpcsd-⊎ : let D = λ x → RPc-Sd 𝕃.[ r₁ , x ] sk sk' in
-                  D *r₂ ⊎ D akt
+                  D *r₂ ⊎ D cnino
         rpcsd-⊎ with bit ≟ 𝔽.zero
         ... | yes d = inj₁ $ rpcsd0 d
         ... | no N with bit ≟ 𝔽.suc 𝔽.zero
