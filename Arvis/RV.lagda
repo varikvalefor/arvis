@@ -1866,7 +1866,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module lb {b r m : ℕ} (r₁ r₂ : 𝔽 r) where
+  module lb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     lb : ∀ {a} → {A : Set a} → Instruction A b r m
     lb = {!!}
 
