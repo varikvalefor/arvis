@@ -1657,7 +1657,7 @@ module Instructions where
             𝔽>0 {ℕ.suc n} = λ _ → ℕ.s≤s ℕ.z≤n
             x0' = Rucyca'a.x0 (Skami.rucyca'a sk) $ 𝔽>0 r₁
       ... | no N with bit ≟ 𝔽.zero
-      ... | yes d = {!!}
+      ... | yes d = ℕP.≤-reflexive {!!}
       ... | no Nb = {!!}
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
