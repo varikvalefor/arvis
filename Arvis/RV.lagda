@@ -1880,6 +1880,11 @@ module Instructions where
   lw = {!!}
 \end{code}
 
+\begin{code}
+  sb : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
+  sb = {!!}
+\end{code}
+
 \section{le ctaipe be le su'u mapti la'o zoi.\ \AgdaRecord{Skami-S}\ .zoi.}
 
 \begin{code}
