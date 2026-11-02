@@ -1860,7 +1860,7 @@ module Instructions where
         rpcsd-⊎ with f (L sk r₂) ℤ.≤? f (L sk r₃)
           where
           f = ℕ→ℤ ∘ 𝔽.toℕ
-        ... | yes mld = {!!}
+        ... | yes mld = inj₁ $ rpcsd-≤ mld
         ... | no N = {!!}
 
   min = min.min
