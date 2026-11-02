@@ -1694,11 +1694,9 @@ module Instructions where
 
         rpcsd-⊎ : let D = λ x → RPc-Sd 𝕃.[ r₁ , x ] sk sk' in
                   D *r₂ ⊎ D *r₂-
-        rpcsd-⊎ with bit ≟ 𝔽.zero
-        ... | yes d = inj₁ $ rpcsd0 d
-        ... | no N with bit ≟ 𝔽.suc 𝔽.zero
-        ... | yes d = inj₂ $ rpcsd1 d
-        ... | no N1 = {!!}
+        rpcsd-⊎ with bit | ≡.inspect (bitn $ 𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
+        ... | 𝔽.zero | ≡.[ d ] = inj₁ $ rpcsd0 d
+        ... | 𝔽.suc 𝔽.zero | ≡.[ d ] = inj₂ $ rpcsd1 d
 
   bclr = bclr.bclr
 \end{code}
