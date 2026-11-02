@@ -1857,7 +1857,11 @@ module Instructions where
 
         rpcsd-⊎ : let D = λ i → RPc-Sd 𝕃.[ r₁ , L sk i ] sk sk' in
                   D r₂ ⊎ D r₃
-        rpcsd-⊎ = {!!}
+        rpcsd-⊎ with f (L sk r₂) ℤ.≤? f (L sk r₃)
+          where
+          f = ℕ→ℤ ∘ 𝔽.toℕ
+        ... | yes mld = {!!}
+        ... | no N = {!!}
 
   min = min.min
 \end{code}
