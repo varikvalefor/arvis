@@ -1866,8 +1866,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  lb : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
-  lb = {!!}
+  module lb {b r m : ℕ} where
+    lb : ∀ {a} → {A : Set a} → Instruction A b r m
+    lb = {!!}
+
+  lb = lb.lb
 \end{code}
 
 \begin{code}
