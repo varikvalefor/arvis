@@ -1870,6 +1870,10 @@ module Instructions where
     lb : ∀ {a} → {A : Set a} → Instruction A b r m
     lb = {!!}
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      rpcs : RPc-S 𝕃.[ {!!} ] sk $ Instruction.f lb sk
+      rpcs = {!!}
+
   lb = lb.lb
 \end{code}
 
