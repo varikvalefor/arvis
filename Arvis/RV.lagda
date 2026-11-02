@@ -1871,7 +1871,7 @@ module Instructions where
     lb = {!!}
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      rpcs : RPc-S 𝕃.[ {!!} ] sk $ Instruction.f lb sk
+      rpcs : RPc-S 𝕃.[ r₁ ] sk $ Instruction.f lb sk
       rpcs = {!!}
 
   lb = lb.lb
