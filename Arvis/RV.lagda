@@ -1866,6 +1866,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
+  lh : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
+  lh = {!!}
+\end{code}
+
+\begin{code}
   lw : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
   lw = {!!}
 \end{code}
