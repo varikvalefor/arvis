@@ -1608,9 +1608,9 @@ module Instructions where
     smj x z = x ℕ.+_ $ 2 ℕ.∸ (z % modulus)
 
     opf : ℕ → ℕ → ℕ
-    opf *r₂ *r₃ = if iz *r₂ $ smj *r₂ *r₃
+    opf *r₂ *r₃ = if bit≡0 *r₂ $ smj *r₂ *r₃
       where
-      iz = bitn *r₂ *r₃ ≡ᵇ 𝔽.zero
+      bit≡0 = bitn *r₂ *r₃ ≡ᵇ 𝔽.zero
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
