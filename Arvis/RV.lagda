@@ -1861,7 +1861,7 @@ module Instructions where
           where
           f = ℕ→ℤ ∘ 𝔽.toℕ
         ... | yes mld = inj₁ $ rpcsd-≤ mld
-        ... | no N = {!!}
+        ... | no N = inj₂ {!!}
 
   min = min.min
 \end{code}
