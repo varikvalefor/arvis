@@ -928,11 +928,18 @@ module Instructions where
         *r₁'! ≡⟨ {!!} ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
         (ℕ.suc b ℕ.+_ $ 𝔽.toℕ *r₂ ℕ.∸ 𝔽.toℕ *r₂) mod _ ≡⟨ {!!} ⟩
-        ℕ.suc b mod _ ≡⟨ {!!} ⟩
+        ℕ.suc b mod _ ≡⟨ mod-0-𝔽 b ⟩
         𝔽.zero ∎
         where
         open f sk
         open ≡.≡-Reasoning
+        mod-0-𝔽 : (n : ℕ) → ℕ.suc n mod ℕ.suc n ≡ 𝔽.zero
+        mod-0-𝔽 n with 𝒻 (ℕ.suc n) | ≡.inspect 𝒻 $ ℕ.suc n
+          where
+          𝒻 = λ x → x mod x
+        ... | 𝔽.zero | d = {!!}
+        ... | 𝔽.suc x | d = {!!}
+
 \end{code}
 
 \begin{code}
