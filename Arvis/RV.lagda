@@ -896,7 +896,7 @@ module Instructions where
     nibarda = {!!}
 
     opf : ℕ → ℕ → ℕ
-    opf = λ x z → x ℕ.+_ $ b ℕ.∸ z
+    opf = λ x z → x ℕ.+_ $ ℕ.suc b ℕ.∸ z
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
@@ -926,9 +926,9 @@ module Instructions where
       ... | no N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
         *r₁'! ≡⟨ {!!} ⟩
-        (𝔽.toℕ *r₂ ℕ.+ (b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
-        (b ℕ.+_ $ 𝔽.toℕ *r₂ ℕ.∸ 𝔽.toℕ *r₂) mod _ ≡⟨ {!!} ⟩
-        b mod _ ≡⟨ {!!} ⟩
+        (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
+        (ℕ.suc b ℕ.+_ $ 𝔽.toℕ *r₂ ℕ.∸ 𝔽.toℕ *r₂) mod _ ≡⟨ {!!} ⟩
+        ℕ.suc b mod _ ≡⟨ {!!} ⟩
         𝔽.zero ∎
         where
         open f sk
