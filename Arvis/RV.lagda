@@ -958,10 +958,12 @@ module Instructions where
       +∘sub N = ≡.sym $ begin
         gfx (ri sk' r₁) (ri sk r₃) ≡⟨ {!!} ⟩
         gfx ((opf (𝔽.toℕ $ ri sk r₂) $ 𝔽.toℕ $ ri sk r₃) mod _) (ri sk r₃) ≡⟨ {!!} ⟩
+        ((ri' sk r₂) ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ {!!} ⟩
         ri sk r₂ ∎
         where
         open ≡.≡-Reasoning
         gfx = λ x z → (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod ℕ.suc b
+        ri' = 𝔽.toℕ Function.∘₂ ri
 \end{code}
 
 \begin{code}
