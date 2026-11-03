@@ -907,6 +907,10 @@ module Instructions where
       sk' : Skami b r m A
       sk' = Instruction.f sub sk
 
+      private
+        ri : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
@@ -917,14 +921,14 @@ module Instructions where
       rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd0 = {!!}
 
-      sub⍨ : ((_≡_ on 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk))
+      sub⍨ : ((_≡_ on ri sk)
                r₂
                r₃)
-           → 𝔽.zero ≡ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁
+           → 𝔽.zero ≡ ri sk r₁
       sub⍨ d with 𝔽.toℕ r₁ ≟ 0
       ... | yes d0 = {!!}
       ... | no N = ≡.sym $ begin
-        𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
+        ri sk r₁ ≡⟨ {!!} ⟩
         *r₁'! ≡⟨ ≡.refl ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₃)) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ d ▹ ≡.sym ▹ cong (λ x → (𝔽.toℕ *r₂ ℕ.+_ $ ℕ.suc b ℕ.∸ 𝔽.toℕ x) mod _) ⟩
@@ -946,11 +950,11 @@ module Instructions where
 
       +∘sub : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → (_≡_
-                (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂)
+                (ri sk r₂)
                 ((_mod ℕ.suc b)
                   (ℕ._+_
-                    (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
-                    (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₃))))
+                    (𝔽.toℕ $ ri sk' r₁)
+                    (𝔽.toℕ $ ri sk r₃))))
       +∘sub = {!!}
 \end{code}
 
