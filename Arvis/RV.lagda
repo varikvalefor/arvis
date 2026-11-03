@@ -964,18 +964,16 @@ module Instructions where
            → ri sk' r₁ ≡ 𝔽.zero
       and0 = {!!}
 
-      and⍨ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-           → ri sk r₂ ≡ ri sk r₃
-           → ri sk' r₁ ≡ ri sk r₂
-      and⍨ = {!!}
+      module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
+        and⍨ : ri sk r₂ ≡ ri sk r₃
+             → ri sk' r₁ ≡ ri sk r₂
+        and⍨ = {!!}
 
-      and≤₁ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → ri sk' r₁ 𝔽.≤ ri sk r₂
-      and≤₁ = {!!}
+        and≤₁ : ri sk' r₁ 𝔽.≤ ri sk r₂
+        and≤₁ = {!!}
 
-      and≤₂ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-             → ri sk' r₁ 𝔽.≤ ri sk r₃
-      and≤₂ = {!!}
+        and≤₂ : ri sk' r₁ 𝔽.≤ ri sk r₃
+        and≤₂ = {!!}
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
