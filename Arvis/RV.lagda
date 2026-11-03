@@ -961,6 +961,7 @@ module Instructions where
         (ri' sk r₂ ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ {!!} ⟩
         (ri' sk r₂ ℕ.+ ℕ.suc b) mod _ ≡⟨ {!!} ⟩
         ((ri' sk r₂ % ℕ.suc b) ℕ.+ (ℕ.suc b % ℕ.suc b)) mod _ ≡⟨ {!!} ⟩
+        ((ri' sk r₂ % ℕ.suc b) ℕ.+ 0) mod _ ≡⟨ {!!} ⟩
         ri' sk r₂ mod _ ≡⟨ {!!} ⟩
         ri sk r₂ ∎
         where
