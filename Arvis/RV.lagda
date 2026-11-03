@@ -962,7 +962,8 @@ module Instructions where
         (ri' sk r₂ ℕ.+ ℕ.suc b) mod _ ≡⟨ {!!} ⟩
         ((ri' sk r₂ % ℕ.suc b) ℕ.+ (ℕ.suc b % ℕ.suc b)) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ ℕ.n%n≡0 b ▹ cong (λ d → ((ri' sk r₂ % ℕ.suc b) ℕ.+ d) mod _) ⟩
-        ((ri' sk r₂ % ℕ.suc b) ℕ.+ 0) mod _ ≡⟨ ℕP.+-comm (ri' sk r₂ % ℕ.suc b) 0 ▹ cong (_mod _) ⟩
+        ((ri' sk r₂ % ℕ.suc b) ℕ.+ 0) mod _ ≡⟨ ≡.refl ⟩
+        _ ≡⟨ ℕP.+-comm (ri' sk r₂ % ℕ.suc b) 0 ▹ cong (_mod _) ⟩
         (ri' sk r₂ % ℕ.suc b) mod _ ≡⟨ {!!} ⟩
         ri' sk r₂ mod _ ≡⟨ {!!} ⟩
         ri sk r₂ ∎
