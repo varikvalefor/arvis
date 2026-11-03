@@ -958,7 +958,8 @@ module Instructions where
       +∘sub N = ≡.sym $ begin
         gfx (ri sk' r₁) (ri sk r₃) ≡⟨ {!!} ⟩
         gfx ((opf (ri' sk r₂) $ ri' sk r₃) mod _) (ri sk r₃) ≡⟨ {!!} ⟩
-        (ri' sk r₂ ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ {!!} ⟩
+        (ri' sk r₂ ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ ℕP.+-assoc (ri' sk r₂) (ℕ.suc b ℕ.∸ ri' sk r₃) (ri' sk r₃) ▹ cong (_mod _) ⟩
+        (ri' sk r₂ ℕ.+ ((ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃)) mod _ ≡⟨ {!!} ⟩
         (ri' sk r₂ ℕ.+ ℕ.suc b) mod _ ≡⟨ {!!} ⟩
         ((ri' sk r₂ % ℕ.suc b) ℕ.+ (ℕ.suc b % ℕ.suc b)) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ ℕ.n%n≡0 b ▹ cong (λ d → ((ri' sk r₂ % ℕ.suc b) ℕ.+ d) mod _) ⟩
