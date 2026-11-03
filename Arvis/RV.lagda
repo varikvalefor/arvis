@@ -948,6 +948,8 @@ module Instructions where
         fromℕ<0 {0} ≡.refl _ = ≡.refl
         fromℕ<0 {ℕ.suc _} ()
 
+      -- | .i co'e ja fegli la .varik.
+      -- .i la .varik. na toldji lo nu vo'a zengau pe'a fi le ka frili fa lo nu jimpe fi ce'u
       +∘sub : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → (_≡_
                 (ri sk r₂)
