@@ -955,7 +955,7 @@ module Instructions where
                   (ℕ._+_
                     (𝔽.toℕ $ ri sk' r₁)
                     (𝔽.toℕ $ ri sk r₃))))
-      +∘sub = λ N → ≡.sym $ begin
+      +∘sub N = ≡.sym $ begin
         gfx (𝔽.toℕ $ ri sk' r₁) (𝔽.toℕ $ ri sk r₃) ≡⟨ {!!} ⟩
         ri sk r₂ ∎
         where
