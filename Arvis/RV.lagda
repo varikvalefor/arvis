@@ -968,6 +968,7 @@ module Instructions where
         _ ≡⟨ ℕP.+-comm (ri' sk r₂ % ℕ.suc b) 0 ▹ cong (_mod _) ⟩
         (ri' sk r₂ % ℕ.suc b) mod _ ≡⟨ ≡.refl ⟩
         𝔽.fromℕ< {(ri' sk r₂ % ℕ.suc b) % ℕ.suc b} _ ≡⟨ {!!} ⟩
+        𝔽.fromℕ< {ri' sk r₂ % ℕ.suc b} _ ≡⟨ ≡.refl ⟩
         ri' sk r₂ mod _ ≡⟨ {!!} ⟩
         ri sk r₂ ∎
         where
