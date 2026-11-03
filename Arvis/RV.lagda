@@ -1002,25 +1002,25 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
-      or0 : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-            ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      private
+        ri : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
+      or0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → ri sk r₃ ≡ 𝔽.zero
           → ri sk' r₁ ≡ ri sk r₂
       or0 = {!!}
 
-      or⍨ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-            ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      or⍨ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → ri sk r₂ ≡ ri sk r₃
           → ri sk' r₁ ≡ ri sk r₂
       or⍨ = {!!}
 
-      or≥₁ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-              ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      or≥₁ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → ri sk' r₁ 𝔽.≥ ri sk r₂
       or≥₁ = {!!}
 
-      or≥₂ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-              ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      or≥₂ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → ri sk' r₁ 𝔽.≥ ri sk r₃
       or≥₂ = {!!}
 
