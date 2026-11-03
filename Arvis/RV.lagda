@@ -926,7 +926,7 @@ module Instructions where
       ... | no N = ≡.sym $ begin
         𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁ ≡⟨ {!!} ⟩
         *r₁'! ≡⟨ ≡.refl ⟩
-        (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₃)) mod _ ≡⟨ {!!} ⟩
+        (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₃)) mod _ ≡⟨ d ▹ ≡.sym ▹ cong (λ x → (𝔽.toℕ *r₂ ℕ.+_ $ ℕ.suc b ℕ.∸ 𝔽.toℕ x) mod _) ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
         (ℕ.suc b ℕ.+_ $ 𝔽.toℕ *r₂ ℕ.∸ 𝔽.toℕ *r₂) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ ℕP.n∸n≡0 (𝔽.toℕ *r₂) ▹ cong (λ x → (ℕ.suc b ℕ.+ x) mod _) ⟩
