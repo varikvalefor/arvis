@@ -959,6 +959,7 @@ module Instructions where
         gfx (ri sk' r₁) (ri sk r₃) ≡⟨ {!!} ⟩
         gfx ((opf (𝔽.toℕ $ ri sk r₂) $ 𝔽.toℕ $ ri sk r₃) mod _) (ri sk r₃) ≡⟨ {!!} ⟩
         ((ri' sk r₂) ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ {!!} ⟩
+        ri' sk r₂ mod _ ≡⟨ {!!} ⟩
         ri sk r₂ ∎
         where
         open ≡.≡-Reasoning
