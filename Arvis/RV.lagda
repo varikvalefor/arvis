@@ -1021,6 +1021,9 @@ module Instructions where
         or≥₂ : ri sk' r₁ 𝔽.≥ ri sk r₃
         or≥₂ = {!!}
 
+        rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+        rpcsd = {!!}
+
   or = or.or
 \end{code}
 
