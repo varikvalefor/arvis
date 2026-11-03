@@ -937,7 +937,8 @@ module Instructions where
                 → m ≡ 0
                 → (ml : m ℕ.< ℕ.suc n)
                 → 𝔽.fromℕ< ml ≡ 𝔽.zero
-        fromℕ<0 = {!!}
+        fromℕ<0 {0} ≡.refl = {!!}
+        fromℕ<0 {ℕ.suc _} ()
 \end{code}
 
 \begin{code}
