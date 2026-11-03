@@ -1006,23 +1006,20 @@ module Instructions where
         ri : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
         ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
 
-      or0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-          → ri sk r₃ ≡ 𝔽.zero
-          → ri sk' r₁ ≡ ri sk r₂
-      or0 = {!!}
+      module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
+        or0 : ri sk r₃ ≡ 𝔽.zero
+            → ri sk' r₁ ≡ ri sk r₂
+        or0 = {!!}
 
-      or⍨ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-          → ri sk r₂ ≡ ri sk r₃
-          → ri sk' r₁ ≡ ri sk r₂
-      or⍨ = {!!}
+        or⍨ : ri sk r₂ ≡ ri sk r₃
+            → ri sk' r₁ ≡ ri sk r₂
+        or⍨ = {!!}
 
-      or≥₁ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → ri sk' r₁ 𝔽.≥ ri sk r₂
-      or≥₁ = {!!}
+        or≥₁ : ri sk' r₁ 𝔽.≥ ri sk r₂
+        or≥₁ = {!!}
 
-      or≥₂ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → ri sk' r₁ 𝔽.≥ ri sk r₃
-      or≥₂ = {!!}
+        or≥₂ : ri sk' r₁ 𝔽.≥ ri sk r₃
+        or≥₂ = {!!}
 
   or = or.or
 \end{code}
