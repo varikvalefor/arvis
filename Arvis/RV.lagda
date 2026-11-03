@@ -1890,7 +1890,7 @@ module Instructions where
       rpcs = Veritas-S.rpcs sk
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
-        rpcsd-≤ : (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ) (L sk r₂) $ L sk r₃
+        rpcsd-≤ : (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ ∘ L sk) r₂ r₃
                 → RPc-Sd 𝕃.[ r₁ , L sk r₂ ] sk sk'
         rpcsd-≤ = {!!}
 
