@@ -959,7 +959,8 @@ module Instructions where
                     (𝔽.toℕ $ ri sk r₃))))
       +∘sub N = ≡.sym $ begin
         gfx (ri sk' r₁) (ri sk r₃) ≡⟨ ≡.refl ⟩
-        _ ≡⟨ RPc-Sd.dr' (rpcsd! N) 𝔽.zero ▹ ≡.sym ▹ cong ((gfx ⍨) $ ri sk r₃) ⟩
+        _ ≡⟨ ((cong $ (gfx ⍨) $ ri sk r₃)
+               (RPc-Sd.dr' (rpcsd! N) 𝔽.zero ▹ ≡.sym)) ⟩
         gfx ((opf (ri' sk r₂) $ ri' sk r₃) mod _) (ri sk r₃) ≡⟨ {!!} ⟩
         (ri' sk r₂ ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ ℕP.+-assoc (ri' sk r₂) _ _ ▹ cong (_mod _) ⟩
