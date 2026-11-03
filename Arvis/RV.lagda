@@ -928,7 +928,7 @@ module Instructions where
         *r₁'! ≡⟨ {!!} ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
         (ℕ.suc b ℕ.+_ $ 𝔽.toℕ *r₂ ℕ.∸ 𝔽.toℕ *r₂) mod _ ≡⟨ {!!} ⟩
-        ℕ.suc b mod _ ≡⟨ fromℕ<0 {!!} {!!} ⟩
+        ℕ.suc b mod _ ≡⟨ fromℕ<0 (ℕ.n%n≡0 b) {!!} ⟩
         𝔽.zero ∎
         where
         open f sk
