@@ -943,6 +943,15 @@ module Instructions where
                 → 𝔽.fromℕ< ml ≡ 𝔽.zero
         fromℕ<0 {0} ≡.refl _ = ≡.refl
         fromℕ<0 {ℕ.suc _} ()
+
+      +∘sub : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+            → (_≡_
+                (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂)
+                ((_mod ℕ.suc b)
+                  (ℕ._+_
+                    (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
+                    (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₃))))
+      +∘sub = {!!}
 \end{code}
 
 \begin{code}
