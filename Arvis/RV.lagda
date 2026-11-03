@@ -955,7 +955,12 @@ module Instructions where
                   (ℕ._+_
                     (𝔽.toℕ $ ri sk' r₁)
                     (𝔽.toℕ $ ri sk r₃))))
-      +∘sub = {!!}
+      +∘sub = λ N → ≡.sym $ begin
+        gfx (𝔽.toℕ $ ri sk' r₁) (𝔽.toℕ $ ri sk r₃) ≡⟨ {!!} ⟩
+        ri sk r₂ ∎
+        where
+        open ≡.≡-Reasoning
+        gfx = λ x z → (x ℕ.+ z) mod ℕ.suc b
 \end{code}
 
 \begin{code}
