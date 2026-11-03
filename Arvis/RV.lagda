@@ -959,7 +959,7 @@ module Instructions where
         gfx (ri sk' r₁) (ri sk r₃) ≡⟨ {!!} ⟩
         gfx ((opf (ri' sk r₂) $ ri' sk r₃) mod _) (ri sk r₃) ≡⟨ {!!} ⟩
         (ri' sk r₂ ℕ.+ (ℕ.suc b ℕ.∸ ri' sk r₃) ℕ.+ ri' sk r₃) mod _ ≡⟨ {!!} ⟩
-        ((ri' sk r₂) ℕ.+ ℕ.suc b) mod _ ≡⟨ {!!} ⟩
+        (ri' sk r₂ ℕ.+ ℕ.suc b) mod _ ≡⟨ {!!} ⟩
         ri' sk r₂ mod _ ≡⟨ {!!} ⟩
         ri sk r₂ ∎
         where
