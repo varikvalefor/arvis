@@ -928,6 +928,7 @@ module Instructions where
         *r₁'! ≡⟨ {!!} ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₂)) mod _ ≡⟨ {!!} ⟩
         (ℕ.suc b ℕ.+_ $ 𝔽.toℕ *r₂ ℕ.∸ 𝔽.toℕ *r₂) mod _ ≡⟨ {!!} ⟩
+        (ℕ.suc b ℕ.+ 0) mod _ ≡⟨ {!!} ⟩
         ℕ.suc b mod _ ≡⟨ fromℕ<0 (ℕ.n%n≡0 b) (ℕ.m%n<n (ℕ.suc b) b) ⟩
         𝔽.zero ∎
         where
