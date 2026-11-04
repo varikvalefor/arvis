@@ -1994,6 +1994,12 @@ module Instructions where
     sb : ∀ {a} → {A : Set a} → Instruction A b r m
     sb = {!!}
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
+             sk
+             (Instruction.f sb sk))
+      Dr = {!!}
+
   sb = sb.sb
 \end{code}
 
