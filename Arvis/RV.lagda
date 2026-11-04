@@ -1335,7 +1335,7 @@ module Instructions where
 
   div = div.div
 
-  module divu (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module divu {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     divu : ∀ {a} → {A : Set a} → Instruction A b r m
     divu = {!!}
 
