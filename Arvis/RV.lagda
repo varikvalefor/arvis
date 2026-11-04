@@ -1990,7 +1990,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module sb {b r m : ℕ} where
+  module sb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     sb : ∀ {a} → {A : Set a} → Instruction A b r m
     sb = {!!}
 
