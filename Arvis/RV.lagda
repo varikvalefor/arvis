@@ -1526,7 +1526,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module bset (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module bset {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
 
