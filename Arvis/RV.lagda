@@ -990,7 +990,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module and (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module and {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
     and : ∀ {a} → {A : Set a} → Instruction A b r m
