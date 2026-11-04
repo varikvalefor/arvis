@@ -682,7 +682,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module jalr (b r m : ℕ) (r₁ r₂ : 𝔽 r) where
+  module jalr {b r m : ℕ} (r₁ r₂ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
 
@@ -778,10 +778,10 @@ module Instructions where
     f0 = 𝔽0 r₁
 
     jr : ∀ {a} → {A : Set a} → Instruction A b r m
-    jr = jalr.jalr b r m f0 r₁
+    jr = jalr.jalr f0 r₁
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      open jalr b r m f0 r₁
+      open jalr {b} {m = m} f0 r₁
       open f sk
         renaming (
           *r₂ to *r₁
@@ -1940,6 +1940,13 @@ module Instructions where
   module lh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     lh : ∀ {a} → {A : Set a} → Instruction A b r m
     lh = {!!}
+
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : Skami b r m A
+      sk' = Instruction.f lh sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
 
   lh = lh.lh
 \end{code}
