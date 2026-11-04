@@ -1033,7 +1033,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module or (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module or {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
 
     or : ∀ {a} → {A : Set a} → Instruction A b r m
