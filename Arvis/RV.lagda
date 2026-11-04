@@ -773,7 +773,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module jr (b r m : ℕ) (r₁ : 𝔽 r) where
+  module jr {b r m : ℕ} (r₁ : 𝔽 r) where
     f0 : 𝔽 r
     f0 = 𝔽0 r₁
 
