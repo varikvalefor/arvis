@@ -1267,7 +1267,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module mv (b r mx : ℕ) (r₁ r₂ : 𝔽 r) where
+  module mv {b r mx : ℕ} (r₁ r₂ : 𝔽 r) where
     mv : ∀ {a} → {A : Set a} → Instruction A b r mx
     mv {A = A} = record {
       nibarda = Instruction.nibarda {A = A} ad;
