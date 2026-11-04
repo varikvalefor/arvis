@@ -1707,9 +1707,8 @@ module Instructions where
         0≡*r₁' = ≡.trans dl $ ≡.sym $ 𝕍P.lookup∘updateAt r₁ _
           where
           dl :  𝔽.zero ≡ 𝕍.lookup rx r₁
-          dl = ≡.subst Lu0 D x0'
+          dl = ≡.subst (λ i → 𝔽.zero ≡ 𝕍.lookup rx i) D x0'
             where
-            Lu0 = λ i → 𝔽.zero ≡ 𝕍.lookup rx i
             𝔽>0 : {n : ℕ} → 𝔽 n → 0 ℕ.< n
             𝔽>0 {0} ()
             𝔽>0 {ℕ.suc n} _ = ℕ.s≤s ℕ.z≤n
