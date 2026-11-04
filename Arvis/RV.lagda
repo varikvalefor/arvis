@@ -1961,6 +1961,13 @@ module Instructions where
     lw : ∀ {a} → {A : Set a} → Instruction A b r m
     lw = {!!}
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      sk' : Skami b r m A
+      sk' = Instruction.f lw sk
+
+      rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
+      rpcs = {!!}
+
   lw = lw.lw
 \end{code}
 
