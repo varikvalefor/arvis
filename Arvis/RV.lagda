@@ -1707,7 +1707,7 @@ module Instructions where
         0≡*r₁' = ≡.trans dl $ ≡.sym $ 𝕍P.lookup∘updateAt r₁ _
           where
           dl :  𝔽.zero ≡ 𝕍.lookup rx r₁
-          dl = ≡.subst Lu0 (≡.trans {!!} $ 𝔽0-0 d) x0'
+          dl = ≡.subst Lu0 D x0'
             where
             Lu0 = λ i → 𝔽.zero ≡ 𝕍.lookup rx i
             𝔽>0 : {n : ℕ} → 𝔽 n → 0 ℕ.< n
@@ -1720,6 +1720,12 @@ module Instructions where
                  → 𝔽0 f ≡ f
             𝔽0-0 {ℕ.suc _} {𝔽.zero} = λ _ → ≡.refl
             𝔽0-0 {ℕ.suc (ℕ.suc _)} {𝔽.suc _} = λ ()
+            D = begin
+              𝔽.fromℕ< (𝔽>0 r₁) ≡⟨ {!!} ⟩
+              𝔽0 r₁ ≡⟨ 𝔽0-0 d ⟩
+              r₁ ∎
+              where
+              open ≡.≡-Reasoning
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = ℕP.≤-reflexive {!!}
       ... | no Nb = {!!}
