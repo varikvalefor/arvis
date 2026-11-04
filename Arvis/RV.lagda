@@ -1719,7 +1719,7 @@ module Instructions where
                  → 𝔽.toℕ f ≡ 0
                  → 𝔽0 f ≡ f
             𝔽0-0 {ℕ.suc _} {𝔽.zero} = λ _ → ≡.refl
-            𝔽0-0 {ℕ.suc (ℕ.suc _)} {𝔽.suc _} = {!!}
+            𝔽0-0 {ℕ.suc (ℕ.suc _)} {𝔽.suc _} = λ ()
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = ℕP.≤-reflexive {!!}
       ... | no Nb = {!!}
