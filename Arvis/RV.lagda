@@ -1277,7 +1277,7 @@ module Instructions where
       ad = add r₁ r₂ (𝔽0 r₁)
 
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
-      open add {b} {m = mx} r₁ r₂ (𝔽0 r₁)
+      open add {b} {r} {mx} r₁ r₂ (𝔽0 r₁)
       open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) (inj₁ opf)
       open f sk
 
