@@ -1345,7 +1345,7 @@ module Instructions where
     addi-nibarda : ℕ
     addi-nibarda = {!!}
 
-  module addi (b r mx : ℕ) (r₁ r₂ : 𝔽 r) (i : 𝔽 $ i-size b r mx addi-nibarda) where
+  module addi {b r mx : ℕ} (r₁ r₂ : 𝔽 r) (i : 𝔽 $ i-size b r mx addi-nibarda) where
     nibarda : ℕ
     nibarda = addi-nibarda
 
