@@ -1329,7 +1329,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module div (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module div {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     div : ∀ {a} → {A : Set a} → Instruction A b r m
     div = {!!}
 
