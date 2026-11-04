@@ -1990,8 +1990,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  sb : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
-  sb = {!!}
+  module sb {b r m : ℕ} where
+    sb : ∀ {a} → {A : Set a} → Instruction A b r m
+    sb = {!!}
+
+  sb = sb.sb
 \end{code}
 
 \begin{code}
