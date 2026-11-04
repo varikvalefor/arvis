@@ -1879,7 +1879,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module min (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module min {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     minx : ℕ → ℕ → ℕ
     minx x z = if (ℕ→ℤ x ℤ.≤ᵇ ℕ→ℤ z) x z
 
