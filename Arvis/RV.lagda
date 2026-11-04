@@ -1948,6 +1948,9 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
+      rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcsd = {!!}
+
   lh = lh.lh
 \end{code}
 
