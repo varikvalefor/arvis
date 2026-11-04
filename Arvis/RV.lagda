@@ -1957,8 +1957,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  lw : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
-  lw = {!!}
+  module lw {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+    lw : ∀ {a} → {A : Set a} → Instruction A b r m
+    lw = {!!}
+
+  lw = lw.lw
 \end{code}
 
 \begin{code}
