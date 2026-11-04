@@ -1486,7 +1486,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module bext (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module bext {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     nibarda : ℕ
     nibarda = {!!}
 
