@@ -1714,17 +1714,17 @@ module Instructions where
             𝔽>0 {0} ()
             𝔽>0 {ℕ.suc n} _ = ℕ.s≤s ℕ.z≤n
             x0' = Rucyca'a.x0 (Skami.rucyca'a sk) $ 𝔽>0 r₁
-            𝔽0-0 : {n : ℕ}
-                 → {f : 𝔽 n}
-                 → 𝔽.toℕ f ≡ 0
-                 → 𝔽0 f ≡ f
-            𝔽0-0 {ℕ.suc _} {𝔽.zero} = λ _ → ≡.refl
-            𝔽0-0 {ℕ.suc (ℕ.suc _)} {𝔽.suc _} = λ ()
             D = begin
               𝔽.fromℕ< (𝔽>0 r₁) ≡⟨ {!!} ⟩
               𝔽0 r₁ ≡⟨ 𝔽0-0 d ⟩
               r₁ ∎
               where
+              𝔽0-0 : {n : ℕ}
+                   → {f : 𝔽 n}
+                   → 𝔽.toℕ f ≡ 0
+                   → 𝔽0 f ≡ f
+              𝔽0-0 {ℕ.suc _} {𝔽.zero} = λ _ → ≡.refl
+              𝔽0-0 {ℕ.suc (ℕ.suc _)} {𝔽.suc _} = λ ()
               open ≡.≡-Reasoning
       ... | no N with bit ≟ 𝔽.zero
       ... | yes d = ℕP.≤-reflexive {!!}
