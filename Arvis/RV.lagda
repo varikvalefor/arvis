@@ -817,7 +817,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module add (b r m : ℕ) (r₁ r₂ r₃ : 𝔽 r) where
+  module add {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf x z = (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod _
 
@@ -1274,10 +1274,10 @@ module Instructions where
       f = Instruction.f ad
       }
       where
-      ad = add b r mx r₁ r₂ (𝔽0 r₁)
+      ad = add r₁ r₂ (𝔽0 r₁)
 
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
-      open add b r mx r₁ r₂ (𝔽0 r₁)
+      open add {b} r₁ r₂ (𝔽0 r₁)
       open op1x3 b r mx nibarda r₁ r₂ (𝔽0 r₁) (inj₁ opf)
       open f sk
 
@@ -1286,7 +1286,7 @@ module Instructions where
 
       drpc : RPc-S 𝕃.[ r₁ ] sk sk'
       drpc = record {
-        dr = λ j N → add.Veritas.dun⁻¹ b r mx r₁ r₂ (𝔽0 r₁) sk j $ N 𝔽.zero;
+        dr = λ j N → add.Veritas.dun⁻¹ r₁ r₂ (𝔽0 r₁) sk j $ N 𝔽.zero;
         dv = ≡.refl;
         dm = ≡.refl
         }
