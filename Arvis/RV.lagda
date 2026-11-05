@@ -834,7 +834,7 @@ module Instructions where
 
 \begin{code}
     bnez : {b r m : ℕ}
-         → {!!}
+        → Set Function.∋ {!!}
          → ∀ {a} → {A : Set a}
          → Instruction A b r m
     bnez = {!!}
