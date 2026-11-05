@@ -818,7 +818,7 @@ module Instructions where
 
 \begin{code}
     beq : {b r m : ℕ}
-        → {!!}
+        → (Set Function.∋ {!!})
         → ∀ {a} → {A : Set a}
         → Instruction A b r m
     beq = {!!}
