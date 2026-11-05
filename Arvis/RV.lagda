@@ -817,6 +817,14 @@ module Instructions where
 \end{code}
 
 \begin{code}
+    beq : {b r m : ℕ}
+        → {!!}
+        → ∀ {a} → {A : Set a}
+        → Instruction A b r m
+    beq = {!!}
+\end{code}
+
+\begin{code}
     bnez : {b r m : ℕ}
          → {!!}
          → ∀ {a} → {A : Set a}
