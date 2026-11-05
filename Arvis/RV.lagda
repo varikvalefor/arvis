@@ -2019,6 +2019,11 @@ module Instructions where
              (Instruction.f sh sk))
       Dr = {!!}
 
+      Dm : (_≡_
+             (Skami.mem $ Instruction.f sh sk)
+             {!!})
+      Dm = {!!}
+
   sh = sh.sh
 \end{code}
 
