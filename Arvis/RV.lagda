@@ -2004,8 +2004,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  sh : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
-  sh = {!!}
+  module sh {b r m : ℕ} where
+    sh : ∀ {a} → {A : Set a} → Instruction A b r m
+    sh = {!!}
+
+  sh = sh.sh
 \end{code}
 
 \begin{code}
