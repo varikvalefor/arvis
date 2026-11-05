@@ -817,6 +817,14 @@ module Instructions where
 \end{code}
 
 \begin{code}
+    bnez : {b r m : ℕ}
+         → {!!}
+         → ∀ {a} → {A : Set a}
+         → Instruction A b r m
+    bnez = {!!}
+\end{code}
+
+\begin{code}
   module add {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
     opf : (_ _ : 𝔽 $ ℕ.suc b) → 𝔽 $ ℕ.suc b
     opf x z = (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod _
