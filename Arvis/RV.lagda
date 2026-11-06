@@ -534,7 +534,7 @@ module Instructions where
   0rpcs R = record {
     dr = {!!};
     dv = {!!};
-    dm = {!!}
+    dm = RPc-S.dm R
     }
 \end{code}
 
