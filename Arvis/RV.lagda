@@ -2052,7 +2052,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  sw : ∀ {a} → {A : Set a} → {b r m : ℕ} → Instruction A b r m
+  sw : {b r m : ℕ} → ∀ {a} → {A : Set a} → Instruction A b r m
   sw = {!!}
 \end{code}
 
