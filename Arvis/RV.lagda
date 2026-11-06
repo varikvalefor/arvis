@@ -2033,7 +2033,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module sh {b r m : ℕ} where
+  module sh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     sh : ∀ {a} → {A : Set a} → Instruction A b r m
     sh = {!!}
 
