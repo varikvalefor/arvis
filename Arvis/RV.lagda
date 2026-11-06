@@ -1910,6 +1910,9 @@ module Instructions where
     max = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      b32→32 : b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       sk' : typeOf sk
       sk' = Instruction.f max sk
 
