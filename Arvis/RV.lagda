@@ -725,7 +725,14 @@ module Instructions where
       *r₂ = 𝕍.lookup reg r₂
 
       f : Skami b r mx A
-      f = record (opf (𝔽.toℕ imm) (𝔽.toℕ *r₂) (Skami.vrici sk) (Skami.rucyca'a sk) (Skami.mem sk)) {pc = pc+nb}
+      f = (record
+            (opf
+              (𝔽.toℕ imm)
+              (𝔽.toℕ *r₂)
+              (Skami.vrici sk)
+              (Skami.rucyca'a sk)
+              (Skami.mem sk))
+            {pc = pc+nb})
 
     op : Instruction A b r mx
     op = record {
