@@ -2131,11 +2131,13 @@ module Instructions where
     sw-nibarda : ℕ
     sw-nibarda = {!!}
 
-  module sw {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sw-nibarda) where
-    sw : ∀ {a} → {A : Set a} → Instruction A b r m
-    sw = {!!}
+  module sw {a} {A : Set a} {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sw-nibarda) where
+    open op1x1i+ A b r m sw-nibarda r₁ r₂ imm {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    sw : Instruction A b r m
+    sw = op
+
+    module Veritas (sk : Skami b r m A) where
       private
         sk' : Skami b r m A
         sk' = Instruction.f sw sk
