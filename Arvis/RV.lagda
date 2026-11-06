@@ -1777,6 +1777,9 @@ module Instructions where
         bit : 𝔽 2
         bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
 
+      b32→32 : b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       d0 : bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
       d0 = {!!}
 
