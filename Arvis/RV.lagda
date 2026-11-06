@@ -2005,6 +2005,9 @@ module Instructions where
     min = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       private
         L : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
         L = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
