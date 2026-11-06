@@ -2121,7 +2121,10 @@ module Instructions where
     sh-nibarda : ℕ
     sh-nibarda = {!!}
 
-  module sh {a} {A : Set a} {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sh-nibarda) where
+  module sh {a} {A : Set a}
+            {b r m : ℕ}
+            (r₁ r₂ : 𝔽 r)
+            (imm : 𝔽 $ i-size b r m sh-nibarda) where
     nibarda : ℕ
     nibarda = sh-nibarda
 
