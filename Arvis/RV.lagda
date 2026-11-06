@@ -995,7 +995,7 @@ module Instructions where
     nibarda = {!!}
 
     opf : ℕ → ℕ → ℕ
-    opf = λ x z → x ℕ.+_ $ ℕ.suc b ℕ.∸ z
+    opf x z = x ℕ.+_ $ ℕ.suc b ℕ.∸ z
 
     open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ opf)
 
