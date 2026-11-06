@@ -2066,6 +2066,9 @@ module Instructions where
              {!!})
       Dm = {!!}
 
+      vmpcs : VMPc-S {!!} sk $ Instruction.f sh sk
+      vmpcs = {!!}
+
   sh = sh.sh
 \end{code}
 
