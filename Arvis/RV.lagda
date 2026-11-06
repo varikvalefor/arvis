@@ -2124,6 +2124,9 @@ module Instructions where
   module sh {a} {A : Set a} {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sh-nibarda) where
     open op1x1i+ A b r m sh-nibarda r₁ r₂ imm {!!}
 
+    nibarda : ℕ
+    nibarda = sh-nibarda
+
     sh : ∀ {a} → {A : Set a} → Instruction A b r m
     sh = {!!}
 
