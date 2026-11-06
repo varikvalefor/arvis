@@ -531,7 +531,7 @@ module Instructions where
         → {x z : Skami b r m A}
         → RPc-S 𝕃.[ 𝔽0 r₁ ] x z
         → RPc-S 𝕃.[] x z
-  0rpcs = λ R → record {
+  0rpcs R = record {
     dr = {!!};
     dv = {!!};
     dm = {!!}
