@@ -540,7 +540,7 @@ module Instructions where
     dr : (i : 𝔽 _)
        → (_ : (j : 𝔽 0)
             → ¬_ $ i ≡ 𝕃.lookup List.[] j)
-       → ((λ f → f x ≡ f z)
+       → ((λ f → f z ≡ f x)
            (λ x₁ →
               (𝕍.lookup
                 (Rucyca'a.reg $ Skami.rucyca'a x₁)
