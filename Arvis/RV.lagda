@@ -2155,7 +2155,10 @@ module Instructions where
     sw-nibarda : ℕ
     sw-nibarda = {!!}
 
-  module sw {a} {A : Set a} {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sw-nibarda) where
+  module sw {a} {A : Set a}
+            {b r m : ℕ}
+            (r₁ r₂ : 𝔽 r)
+            (imm : 𝔽 $ i-size b r m sw-nibarda) where
     open op1x1i+ A b r m sw-nibarda r₁ r₂ imm {!!}
 
     nibarda : ℕ
