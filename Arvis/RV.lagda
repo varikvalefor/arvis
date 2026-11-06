@@ -1996,7 +1996,10 @@ module Instructions where
     minx : ℕ → ℕ → ℕ
     minx x z = if (ℕ→ℤ x ℤ.≤ᵇ ℕ→ℤ z) x z
 
-    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ minx)
+    nibarda : ℕ
+    nibarda = {!!}
+
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ minx)
 
     min : ∀ {a} → {A : Set a} → Instruction A b r m
     min = op
