@@ -2062,6 +2062,11 @@ module Instructions where
              (Instruction.f sw sk))
       Dr = {!!}
 
+      Dm : (_≡_
+             (Skami.mem $ Instruction.f sw sk)
+             {!!})
+      Dm = {!!}
+
   sw = sw.sw
 \end{code}
 
