@@ -931,6 +931,9 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       sk' : typeOf sk
       sk' = Instruction.f add sk
 
@@ -969,9 +972,6 @@ module Instructions where
         *r₁ = 𝕍.lookup rx r₁
         fℕ = 𝔽.toℕ ∘ 𝕍.lookup rx
         open ≡.≡-Reasoning
-
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
