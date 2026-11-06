@@ -546,7 +546,7 @@ module Instructions where
                 (Rucyca'a.reg $ Skami.rucyca'a x₁)
                 i)))
     dr 𝔽.zero f = {!!}
-    dr (𝔽.suc i) f = {!!}
+    dr (𝔽.suc i) f = RPc-S.dr R (𝔽.suc i) {!!}
 \end{code}
 
 \begin{code}
