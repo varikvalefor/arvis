@@ -2127,7 +2127,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module sw {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+  private
+    sw-nibarda : ℕ
+    sw-nibarda = {!!}
+
+  module sw {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sw-nibarda) where
     sw : ∀ {a} → {A : Set a} → Instruction A b r m
     sw = {!!}
 
