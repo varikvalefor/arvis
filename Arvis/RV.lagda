@@ -2178,6 +2178,9 @@ module Instructions where
         sk' : Skami b r m A
         sk' = Instruction.f sw sk
 
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
              sk
              sk')
