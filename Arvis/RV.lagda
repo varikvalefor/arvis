@@ -531,11 +531,21 @@ module Instructions where
         → {x z : Skami b r m A}
         → RPc-S 𝕃.[ 𝔽0 r₁ ] x z
         → RPc-S 𝕃.[] x z
-  0rpcs R = record {
+  0rpcs {x = x} {z} R = record {
     dr = {!!};
     dv = RPc-S.dv R;
     dm = RPc-S.dm R
     }
+    where
+    dr : (i : 𝔽 _)
+       → (_ : (j : 𝔽 0)
+            → ¬_ $ i ≡ 𝕃.lookup List.[] j)
+       → ((λ f → f x ≡ f z)
+           (λ x₁ →
+              (𝕍.lookup
+                (Rucyca'a.reg $ Skami.rucyca'a x₁)
+                i)))
+    dr = {!!}
 \end{code}
 
 \begin{code}
