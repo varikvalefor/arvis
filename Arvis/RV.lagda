@@ -535,6 +535,24 @@ module Instructions where
 \end{code}
 
 \begin{code}
+  record VMPc-S {a} {A : Set a}
+                {b r m : ℕ}
+                (is : List $ 𝔽 m)
+                (x z : Skami b r m A) : Set a where
+    private
+      ma : Skami b r m A → Vec (𝔽 $ ℕ.suc b) m
+      ma = Skami.mem
+
+      D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
+      D f = f z ≡ f x
+
+    field
+      dm : (j : 𝔽 m)
+         → ((i : 𝔽 _) → ¬_ $ j ≡ 𝕃.lookup is i)
+         → D $ λ x → 𝕍.lookup (ma x) j
+\end{code}
+
+\begin{code}
   -- OP r₁, r₂, r₃
   module op1x3 (b r m nibarda : ℕ)
                (r₁ r₂ r₃ : 𝔽 r)
