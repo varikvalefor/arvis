@@ -2084,6 +2084,9 @@ module Instructions where
     lw = {!!}
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       sk' : Skami b r m A
       sk' = Instruction.f lw sk
 
