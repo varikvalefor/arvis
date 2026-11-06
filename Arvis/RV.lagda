@@ -2046,6 +2046,9 @@ module Instructions where
 
 \begin{code}
   module lh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     lh : ∀ {a} → {A : Set a} → Instruction A b r m
     lh = {!!}
 
