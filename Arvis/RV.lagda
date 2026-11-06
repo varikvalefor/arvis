@@ -2130,10 +2130,10 @@ module Instructions where
 
     open op1x1i+ A b r m sh-nibarda r₁ r₂ imm {!!}
 
-    sh : ∀ {a} → {A : Set a} → Instruction A b r m
-    sh = {!!}
+    sh : Instruction A b r m
+    sh = op
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    module Veritas (sk : Skami b r m A) where
       Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
              sk
              (Instruction.f sh sk))
