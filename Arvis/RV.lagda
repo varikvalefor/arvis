@@ -2056,6 +2056,12 @@ module Instructions where
     sw : ∀ {a} → {A : Set a} → Instruction A b r m
     sw = {!!}
 
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
+             sk
+             (Instruction.f sw sk))
+      Dr = {!!}
+
   sw = sw.sw
 \end{code}
 
