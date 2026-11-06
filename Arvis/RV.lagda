@@ -533,7 +533,7 @@ module Instructions where
         → RPc-S 𝕃.[] x z
   0rpcs R = record {
     dr = {!!};
-    dv = {!!};
+    dv = RPc-S.dv R;
     dm = RPc-S.dm R
     }
 \end{code}
