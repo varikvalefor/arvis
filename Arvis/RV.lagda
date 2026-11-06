@@ -2052,8 +2052,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  sw : {b r m : ℕ} → ∀ {a} → {A : Set a} → Instruction A b r m
-  sw = {!!}
+  module sw {b r m : ℕ} where
+    sw : ∀ {a} → {A : Set a} → Instruction A b r m
+    sw = {!!}
+
+  sw = sw.sw
 \end{code}
 
 \section{le ctaipe be le su'u mapti la'o zoi.\ \AgdaRecord{Skami-S}\ .zoi.}
