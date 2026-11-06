@@ -545,7 +545,8 @@ module Instructions where
               (𝕍.lookup
                 (Rucyca'a.reg $ Skami.rucyca'a x₁)
                 i)))
-    dr = {!!}
+    dr 𝔽.zero f = {!!}
+    dr (𝔽.suc i) f = {!!}
 \end{code}
 
 \begin{code}
