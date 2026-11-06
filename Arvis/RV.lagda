@@ -545,7 +545,7 @@ module Instructions where
               (𝕍.lookup
                 (Rucyca'a.reg $ Skami.rucyca'a x₁)
                 i)))
-    dr 𝔽.zero f = {!!}
+    dr 𝔽.zero f = ≡.trans {j = 𝔽.zero} {!!} {!!}
     dr (𝔽.suc i) f = RPc-S.dr R (𝔽.suc i) {!!}
 \end{code}
 
