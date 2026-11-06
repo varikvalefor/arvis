@@ -2027,6 +2027,9 @@ module Instructions where
 
 \begin{code}
   module lb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     lb : ∀ {a} → {A : Set a} → Instruction A b r m
     lb = {!!}
 
