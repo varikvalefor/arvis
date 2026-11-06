@@ -2075,17 +2075,21 @@ module Instructions where
     sw = {!!}
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      private
+        sk' : Skami b r m A
+        sk' = Instruction.f sw sk
+
       Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
              sk
-             (Instruction.f sw sk))
+             sk')
       Dr = {!!}
 
       Dm : (_≡_
-             (Skami.mem $ Instruction.f sw sk)
+             (Skami.mem sk')
              {!!})
       Dm = {!!}
 
-      vmpcs : VMPc-S {!!} sk $ Instruction.f sw sk
+      vmpcs : VMPc-S {!!} sk sk'
       vmpcs = {!!}
 
   sw = sw.sw
