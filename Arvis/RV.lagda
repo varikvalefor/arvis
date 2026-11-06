@@ -657,7 +657,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  -- | op r₁, r₂, imm
+  -- | op r₁, r₂ , imm
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
                 (imm : 𝔽 $ i-size b r mx nibarda)
@@ -694,6 +694,56 @@ module Instructions where
       f = record sk {rucyca'a = rx; pc = pc+nb}
 
     op : ∀ {a} → {A : Set a} → Instruction A b r mx
+    op = record {
+      nibarda = nibarda;
+      f = f.f
+      }
+\end{code}
+
+\begin{code}
+  -- | op r₁, r₂, imm
+  module op1x1i+ {a}
+                 (A : Set a)
+                 (b r mx nibarda : ℕ)
+                 (r₁ r₂ : 𝔽 r)
+                 (imm : 𝔽 $ i-size b r mx nibarda)
+                 (opf : ℕ
+                      → ℕ
+                      → A
+                      → Rucyca'a b r
+                      → Vec (𝔽 $ ℕ.suc b) mx
+                      → ℕ) where
+    module f (sk : Skami b r mx A) where
+
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
+
+      reg : Vec (𝔽 $ ℕ.suc b) r
+      reg = Rucyca'a.reg $ Skami.rucyca'a sk
+
+      *r₂ : 𝔽 $ ℕ.suc b
+      *r₂ = 𝕍.lookup reg r₂
+
+      *r₁'! : 𝔽 $ ℕ.suc b
+      *r₁'! = opf (𝔽.toℕ imm) (𝔽.toℕ *r₂) (Skami.vrici sk) (Skami.rucyca'a sk) (Skami.mem sk) mod _
+
+      *r₁' : 𝔽 $ ℕ.suc b
+      *r₁' = if (𝔽.toℕ r₁ ≡ᵇ 0) (𝕍.lookup reg r₁) *r₁'!
+
+      reg' : Vec (𝔽 $ ℕ.suc b) r
+      reg' = 𝕍.updateAt r₁ (λ _ → *r₁') reg
+
+      rx : Rucyca'a b r
+      rx = record (Skami.rucyca'a sk) {reg = reg'; x0 = x0}
+        where
+        x0 = x0-vrici r₁ _ reg _ ≡.refl ˢ x0'
+          where
+          x0' = Rucyca'a.x0 $ Skami.rucyca'a sk
+
+      f : Skami b r mx A
+      f = record sk {rucyca'a = rx; pc = pc+nb}
+
+    op : Instruction A b r mx
     op = record {
       nibarda = nibarda;
       f = f.f
