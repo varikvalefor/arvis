@@ -657,7 +657,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  -- | op r₁, r₂ , imm
+  -- | op r₁, r₂, imm
   module op1x1i (b r mx nibarda : ℕ)
                 (r₁ r₂ : 𝔽 r)
                 (imm : 𝔽 $ i-size b r mx nibarda)
