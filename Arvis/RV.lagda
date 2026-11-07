@@ -1097,7 +1097,7 @@ module Instructions where
         where
         open ≡.≡-Reasoning
         gfx = λ x z → (𝔽.toℕ x ℕ.+ 𝔽.toℕ z) mod ℕ.suc b
-        ri' = 𝔽.toℕ Function.∘₂ ri
+        ri' = 𝔽.toℕ ∘₂ ri
         open Veritas-S sk
           using (
             rpcsd!
