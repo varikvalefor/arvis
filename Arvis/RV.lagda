@@ -1248,7 +1248,11 @@ module Instructions where
                       (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₃))
                     0
                     1))
-      xor-nth = {!!}
+      xor-nth = λ N i → begin
+        𝔽.toℕ (bitn (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁) i) ≡⟨ {!!} ⟩
+        if _ 0 1 ∎
+        where
+        open ≡.≡-Reasoning
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
