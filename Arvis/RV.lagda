@@ -1249,7 +1249,7 @@ module Instructions where
                       (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₃))
                     0
                     1))
-      xor-nth = λ N i → begin
+      xor-nth N i = begin
         𝔽.toℕ (bitn (𝔽.toℕ $ ri sk' r₁) i) ≡⟨ {!!} ⟩
         if _ 0 1 ∎
         where
