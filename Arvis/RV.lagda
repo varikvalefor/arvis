@@ -1188,7 +1188,10 @@ module Instructions where
 
 \begin{code}
   module xor {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
-    open op1x3 b r m {!!} r₁ r₂ r₃ {!!}
+    opf : ℕ → ℕ → ℕ
+    opf = {!!}
+
+    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ opf)
 
     xor : ∀ {a} → {A : Set a} → Instruction A b r m
     xor = op
