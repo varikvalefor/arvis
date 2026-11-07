@@ -1251,8 +1251,11 @@ module Instructions where
                     1))
       xor-nth N i = begin
         𝔽.toℕ (bitn (𝔽.toℕ $ ri sk' r₁) i) ≡⟨ {!!} ⟩
-        if _ 0 1 ∎
+        if B 0 1 ∎
         where
+        B = (_≡ᵇ_
+              (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
+              (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₃))
         open ≡.≡-Reasoning
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
