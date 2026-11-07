@@ -1252,6 +1252,7 @@ module Instructions where
       xor-nth N i = begin
         𝔽.toℕ (bitn (𝔽.toℕ $ ri sk' r₁) i) ≡⟨ {!!} ⟩
         𝔽.toℕ (bitn (𝔽.toℕ $ opf (ri' sk r₂) (ri' sk r₃) mod ℕ.suc b) i) ≡⟨ {!!} ⟩
+        𝔽.toℕ (bitn (opf (ri' sk r₂) $ ri' sk r₃) i) ≡⟨ {!!} ⟩
         if B 0 1 ∎
         where
         ri' = 𝔽.toℕ ∘₂ ri
