@@ -1210,6 +1210,9 @@ module Instructions where
         xor-c : (m n : ℕ) → opf m n ≡ opf n m
         xor-c = {!!}
 
+        xor-a : (m n o : ℕ) → opf m (opf n o) ≡ opf (opf m n) o
+        xor-a = {!!}
+
       sk' : Skami b r m A
       sk' = Instruction.f xor sk
 
