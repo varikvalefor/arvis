@@ -1259,7 +1259,7 @@ module Instructions where
                    𝔽.zero))) ⟩
         bitn (𝔽.toℕ $ opf *r₂ *r₃ mod ℕ.suc b) i ≡⟨ ≡.refl ⟩
         _ ≡⟨ DFP.toℕ-fromℕ< (ℕ.m%n<n (opf *r₂ *r₃) b) ▹ cong (_⍨ bitn i) ⟩
-        bitn (opf *r₂ *r₃ % ℕ.suc b) i ≡⟨ {!!} ⟩
+        bitn (opf *r₂ *r₃ % ℕ.suc b) i ≡⟨ {!!} ▹ cong (_⍨ bitn i) ⟩
         bitn (opf *r₂ *r₃) i ≡⟨ ≡.refl ⟩
         _ ≡⟨ opf.xor-nth *r₂ *r₃ i ⟩
         if B (𝔽.# 0) (𝔽.# 1) ∎
