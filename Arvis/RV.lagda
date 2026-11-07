@@ -1250,7 +1250,7 @@ module Instructions where
                     (𝔽.# 0)
                     (𝔽.# 1)))
       xor-nth N i = begin
-        bitn (𝔽.toℕ $ ri sk' r₁) i ≡⟨ {!!} ⟩
+        bitn (𝔽.toℕ $ ri sk' r₁) i ≡⟨ RPc-Sd.dr' (Veritas-S.rpcsd! sk N) 𝔽.zero ▹ ≡.sym ▹ cong (_⍨ bitn i ∘ 𝔽.toℕ) ⟩
         bitn (𝔽.toℕ $ opf (ri' sk r₂) (ri' sk r₃) mod ℕ.suc b) i ≡⟨ {!!} ⟩
         bitn (opf (ri' sk r₂) $ ri' sk r₃) i ≡⟨ ≡.refl ⟩
         _ ≡⟨ opf.xor-nth (ri' sk r₂) (ri' sk r₃) i ⟩
