@@ -1216,6 +1216,12 @@ module Instructions where
                   (opf (opf m n) o))
         xor-a = {!!}
 
+        xor-nth : (m n i : ℕ)
+                → (_≡_
+                    (𝔽.toℕ $ bitn (opf m n) i)
+                    (if (bitn m i ≡ᵇ bitn n i) 0 1))
+        xor-nth = {!!}
+
       sk' : Skami b r m A
       sk' = Instruction.f xor sk
 
