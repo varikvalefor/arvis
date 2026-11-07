@@ -147,6 +147,7 @@ open import Function
   using (
     typeOf;
     _on_;
+    _∘₂_;
     _ˢ_;
     _∘_;
     _$_
@@ -499,7 +500,7 @@ module Instructions where
     pc₂' = 𝔽.toℕ $ Skami.pc sk'
     pc₁ = Skami.pc sk
     _+_ : {n : ℕ} → ℕ → ℕ → 𝔽 $ ℕ.suc n
-    _+_ {n} = (_mod ℕ.suc n) Function.∘₂ ℕ._+_
+    _+_ {n} = (_mod ℕ.suc n) ∘₂ ℕ._+_
 \end{code}
 
 \begin{code}
