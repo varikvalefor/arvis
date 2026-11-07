@@ -1197,7 +1197,7 @@ module Instructions where
     xor = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      module ℕV where
+      module opf where
         xor∘xor : (m n : ℕ) → n ≡_ $ opf m $ opf m n
         xor∘xor = {!!}
 
