@@ -1207,6 +1207,9 @@ module Instructions where
         xor0 : (m : ℕ) → m ≡ opf m 0
         xor0 = {!!}
 
+        xor-c : (m n : ℕ) → opf m n ≡ opf n m
+        xor-c = {!!}
+
       sk' : Skami b r m A
       sk' = Instruction.f xor sk
 
