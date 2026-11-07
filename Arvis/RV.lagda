@@ -1250,7 +1250,7 @@ module Instructions where
                     0
                     1))
       xor-nth = λ N i → begin
-        𝔽.toℕ (bitn (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁) i) ≡⟨ {!!} ⟩
+        𝔽.toℕ (bitn (𝔽.toℕ $ ri sk' r₁) i) ≡⟨ {!!} ⟩
         if _ 0 1 ∎
         where
         open ≡.≡-Reasoning
