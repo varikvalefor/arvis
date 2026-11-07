@@ -1257,13 +1257,14 @@ module Instructions where
                  (RPc-Sd.dr'
                    (Veritas-S.rpcsd! sk N)
                    𝔽.zero))) ⟩
-        bitn (𝔽.toℕ $ opf *r₂ *r₃ mod ℕ.suc b) i ≡⟨ ≡.refl ⟩
-        _ ≡⟨ DFP.toℕ-fromℕ< (ℕ.m%n<n (opf *r₂ *r₃) b) ▹ cong (_⍨ bitn i) ⟩
-        bitn (opf *r₂ *r₃ % ℕ.suc b) i ≡⟨ {!!} ▹ cong (_⍨ bitn i) ⟩
-        bitn (opf *r₂ *r₃) i ≡⟨ ≡.refl ⟩
+        bi (𝔽.toℕ $ opf *r₂ *r₃ mod ℕ.suc b) ≡⟨ ≡.refl ⟩
+        _ ≡⟨ DFP.toℕ-fromℕ< (ℕ.m%n<n (opf *r₂ *r₃) b) ▹ cong bi ⟩
+        bi (opf *r₂ *r₃ % ℕ.suc b) ≡⟨ {!!} ▹ cong bi ⟩
+        bi (opf *r₂ *r₃) ≡⟨ ≡.refl ⟩
         _ ≡⟨ opf.xor-nth *r₂ *r₃ i ⟩
         if B (𝔽.# 0) (𝔽.# 1) ∎
         where
+        bi = _⍨ bitn i
         ri' = 𝔽.toℕ ∘₂ ri
         *r₂ = ri' sk r₂
         *r₃ = ri' sk r₃
