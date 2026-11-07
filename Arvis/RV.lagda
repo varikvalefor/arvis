@@ -1242,18 +1242,18 @@ module Instructions where
       xor-nth : ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → (i : ℕ)
               → (_≡_
-                  (𝔽.toℕ $ bitn (𝔽.toℕ $ ri sk' r₁) i)
+                  (bitn (𝔽.toℕ $ ri sk' r₁) i)
                   (if
                     (_≡ᵇ_
                       (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
                       (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₃))
-                    0
-                    1))
+                    (𝔽.# 0)
+                    (𝔽.# 1)))
       xor-nth N i = begin
-        𝔽.toℕ (bitn (𝔽.toℕ $ ri sk' r₁) i) ≡⟨ {!!} ⟩
-        𝔽.toℕ (bitn (𝔽.toℕ $ opf (ri' sk r₂) (ri' sk r₃) mod ℕ.suc b) i) ≡⟨ {!!} ⟩
-        𝔽.toℕ (bitn (opf (ri' sk r₂) $ ri' sk r₃) i) ≡⟨ {!!} ⟩
-        if B 0 1 ∎
+        bitn (𝔽.toℕ $ ri sk' r₁) i ≡⟨ {!!} ⟩
+        bitn (𝔽.toℕ $ opf (ri' sk r₂) (ri' sk r₃) mod ℕ.suc b) i ≡⟨ {!!} ⟩
+        bitn (opf (ri' sk r₂) $ ri' sk r₃) i ≡⟨ {!!} ⟩
+        if B (𝔽.# 0) (𝔽.# 1) ∎
         where
         ri' = 𝔽.toℕ ∘₂ ri
         Bf = _⍨ bitn i ∘ 𝔽.toℕ ∘ ri sk
