@@ -1257,6 +1257,7 @@ module Instructions where
                  (RPc-Sd.dr'
                    (Veritas-S.rpcsd! sk N)
                    𝔽.zero))) ⟩
+        bitn (𝔽.toℕ $ opf *r₂ *r₃ mod ℕ.suc b) i ≡⟨ ≡.refl ⟩
         bi (𝔽.toℕ $ opf *r₂ *r₃ mod ℕ.suc b) ≡⟨ ≡.refl ⟩
         _ ≡⟨ DFP.toℕ-fromℕ< (ℕ.m%n<n (opf *r₂ *r₃) b) ▹ cong bi ⟩
         bi (opf *r₂ *r₃ % ℕ.suc b) ≡⟨ {!!} ▹ cong bi ⟩
