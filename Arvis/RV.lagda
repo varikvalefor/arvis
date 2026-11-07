@@ -1225,20 +1225,21 @@ module Instructions where
       sk' : Skami b r m A
       sk' = Instruction.f xor sk
 
-      xor0 : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-             ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      private
+        ri : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
+      xor0 : ¬_ $ 𝔽.toℕ r₁ ≡ 0
            → ri sk r₃ ≡ 𝔽.zero
            → ri sk' r₁ ≡ ri sk r₂
       xor0 = {!!}
 
-      xor⍨ : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-             ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      xor⍨ : ¬_ $ 𝔽.toℕ r₁ ≡ 0
            → ri sk r₂ ≡ ri sk r₃
            → ri sk' r₁ ≡ 𝔽.zero
       xor⍨ = {!!}
 
-      xor-nth : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
-                ¬_ $ 𝔽.toℕ r₁ ≡ 0
+      xor-nth : ¬_ $ 𝔽.toℕ r₁ ≡ 0
               → (i : ℕ)
               → (_≡_
                   (𝔽.toℕ $ bitn (𝔽.toℕ $ ri sk' r₁) i)
