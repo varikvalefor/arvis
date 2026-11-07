@@ -1254,7 +1254,7 @@ module Instructions where
         if B 0 1 ∎
         where
         Bf = _⍨ bitn i ∘ 𝔽.toℕ ∘ ri sk
-        B = (Bf r₂) ≡ᵇ (Bf r₃)
+        B = Bf r₂ ≡ᵇ Bf r₃
         open ≡.≡-Reasoning
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
