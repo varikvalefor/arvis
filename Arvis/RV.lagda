@@ -1237,6 +1237,19 @@ module Instructions where
            → ri sk' r₁ ≡ 𝔽.zero
       xor⍨ = {!!}
 
+      xor-nth : let ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a in
+                ¬_ $ 𝔽.toℕ r₁ ≡ 0
+              → (i : ℕ)
+              → (_≡_
+                  (𝔽.toℕ $ bitn (𝔽.toℕ $ ri sk' r₁) i)
+                  (if
+                    (_≡ᵇ_
+                      (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
+                      (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₃))
+                    0
+                    1))
+      xor-nth = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
