@@ -1201,6 +1201,9 @@ module Instructions where
         xor∘xor : (m n : ℕ) → n ≡_ $ opf m $ opf m n
         xor∘xor = {!!}
 
+        xor⍨ : (m : ℕ) → 0 ≡ opf m m
+        xor⍨ = {!!}
+
       sk' : Skami b r m A
       sk' = Instruction.f xor sk
 
