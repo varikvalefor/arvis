@@ -1986,7 +1986,7 @@ module Instructions where
             L sk r₂ ∎}
           }
           where
-          L' = 𝔽.toℕ Function.∘₂ L
+          L' = 𝔽.toℕ ∘₂ L
           open ≡.≡-Reasoning
           open f sk
 
