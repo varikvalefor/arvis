@@ -1253,9 +1253,10 @@ module Instructions where
         𝔽.toℕ (bitn (𝔽.toℕ $ ri sk' r₁) i) ≡⟨ {!!} ⟩
         if B 0 1 ∎
         where
+        Bf = _⍨ bitn i ∘ 𝔽.toℕ ∘ ri sk
         B = (_≡ᵇ_
-              (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
-              (_⍨ bitn i $ 𝔽.toℕ $ ri sk r₃))
+              (Bf r₂)
+              (Bf r₃))
         open ≡.≡-Reasoning
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
