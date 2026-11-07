@@ -1218,8 +1218,8 @@ module Instructions where
 
         xor-nth : (m n i : ℕ)
                 → (_≡_
-                    (𝔽.toℕ $ bitn (opf m n) i)
-                    (if (bitn m i ≡ᵇ bitn n i) 0 1))
+                    (bitn (opf m n) i)
+                    (if (bitn m i ≡ᵇ bitn n i) (𝔽.# 0) $ 𝔽.# 1))
         xor-nth = {!!}
 
       sk' : Skami b r m A
