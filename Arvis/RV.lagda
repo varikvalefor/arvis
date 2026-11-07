@@ -1262,6 +1262,7 @@ module Instructions where
         _ ≡⟨ DFP.toℕ-fromℕ< (ℕ.m%n<n (opf *r₂ *r₃) b) ▹ cong bi ⟩
         bi (opf *r₂ *r₃ % ℕ.suc b) ≡⟨ {!!} ▹ cong bi ⟩
         bi (opf *r₂ *r₃) ≡⟨ ≡.refl ⟩
+        bitn (opf *r₂ *r₃) i ≡⟨ ≡.refl ⟩
         _ ≡⟨ opf.xor-nth *r₂ *r₃ i ⟩
         if B (𝔽.# 0) (𝔽.# 1) ∎
         where
