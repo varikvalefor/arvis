@@ -1215,6 +1215,9 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
+      rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+      rpcsd = {!!}
+
   xor = xor.xor
 \end{code}
 
