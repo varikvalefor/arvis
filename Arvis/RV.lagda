@@ -488,6 +488,21 @@ module Instructions where
 \end{code}
 
 \begin{code}
+  Pc-Selidne : ∀ {a} → {A : Set a}
+             → {b r m : ℕ}
+             → ℕ
+             → Skami b r m A
+             → Skami b r m A
+             → Set
+  Pc-Selidne nibarda sk sk' = pc₁ ≡ (pc₂' + nibarda)
+    where
+    pc₂' = 𝔽.toℕ $ Skami.pc sk'
+    pc₁ = Skami.pc sk
+    _+_ : {n : ℕ} → ℕ → ℕ → 𝔽 $ ℕ.suc n
+    _+_ {n} = (_mod ℕ.suc n) Function.∘₂ ℕ._+_
+\end{code}
+
+\begin{code}
   record RPc-S {a} {A : Set a}
                {b r m : ℕ}
                (is : List $ 𝔽 r)
