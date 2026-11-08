@@ -2267,6 +2267,9 @@ module Instructions where
       vmpcs : VMPc-S {!!} sk $ Instruction.f sh sk
       vmpcs = {!!}
 
+      pc-s : Pc-Selidne nibarda sk $ Instruction.f sh sk
+      pc-s = {!!}
+
   sh = sh.sh
 \end{code}
 
