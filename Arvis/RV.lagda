@@ -911,7 +911,7 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module beq {b r m : ℕ} (_ : Set Function.∋ {!!}) where
+  module beq {b r m : ℕ} (r₁ r₂ : 𝔽 r) (_ : Set Function.∋ {!!}) where
     nibarda : ℕ
     nibarda = {!!}
 
