@@ -918,7 +918,7 @@ module Instructions where
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
     beq = record {
       nibarda = nibarda;
-      f = {!!}
+      f = λ sk → record sk {nibarda = {!!}}
       }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
