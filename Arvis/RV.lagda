@@ -2199,7 +2199,7 @@ module Instructions where
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → let mn = 𝕍.lookup (Skami.mem sk) {!!} in
-              RPc-Sd 𝕃.[ r₁ , 𝔽.toℕ (mn) mod _ ] sk sk'
+              RPc-Sd 𝕃.[ r₁ , 𝔽.toℕ mn mod _ ] sk sk'
       rpcsd = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
