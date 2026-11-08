@@ -2264,7 +2264,7 @@ module Instructions where
       Dr = {!!}
 
       Dm : (_≡_
-             (Skami.mem $ sk')
+             (Skami.mem sk')
              {!!})
       Dm = {!!}
 
