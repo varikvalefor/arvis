@@ -915,10 +915,14 @@ module Instructions where
     nibarda : ℕ
     nibarda = {!!}
 
+    module f {a} {A : Set a} (sk : Skami b r m A) where
+      f : Skami b r m A
+      f = record sk {nibarda = {!!}}
+
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
     beq = record {
       nibarda = nibarda;
-      f = λ sk → record sk {nibarda = {!!}}
+      f = f.f
       }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
