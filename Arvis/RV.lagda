@@ -943,9 +943,12 @@ module Instructions where
 
 \begin{code}
   module bne {b r m : ℕ} (_ : Set Function.∋ {!!}) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     bne : ∀ {a} → {A : Set a} → Instruction A b r m
     bne = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       f = {!!}
       }
 
