@@ -953,6 +953,9 @@ module Instructions where
       }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
+      b32→32 = {!!}
+
       pc-⊎ : let pcx = Skami.pc $ Instruction.f bne sk in
              (_⊎_
                (pcx ≡ {!!})
