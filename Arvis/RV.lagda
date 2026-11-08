@@ -896,8 +896,8 @@ module Instructions where
       vdun : (_≡_ on Skami.vrici) sk' sk
       vdun = ≡.refl
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       rpcs : RPc-S 𝕃.[ f0 ] sk sk'
       rpcs = record {
