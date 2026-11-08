@@ -2308,6 +2308,9 @@ module Instructions where
       vmpcs : VMPc-S {!!} sk sk'
       vmpcs = {!!}
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
+
   sw = sw.sw
 \end{code}
 
