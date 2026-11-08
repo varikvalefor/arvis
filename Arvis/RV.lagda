@@ -917,7 +917,9 @@ module Instructions where
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
       f : Skami b r m A
-      f = record sk {nibarda = {!!}}
+      f = record sk {nibarda = if (ri (r₁ ≡ᵇ r₂) {!!} {!!})}
+        where
+        ri = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk
 
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
     beq = record {
