@@ -916,7 +916,10 @@ module Instructions where
     nibarda = {!!}
 
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
-    beq = {!!}
+    beq = record {
+      nibarda = {!!};
+      f = {!!}
+      }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       pc-⊎ : let pcx = Skami.pc $ Instruction.f beq sk in
