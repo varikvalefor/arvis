@@ -2152,6 +2152,9 @@ module Instructions where
             → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
       rpcsd = {!!}
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
+
   lb = lb.lb
 \end{code}
 
