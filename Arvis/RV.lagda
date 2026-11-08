@@ -912,6 +912,9 @@ module Instructions where
 
 \begin{code}
   module beq {b r m : ℕ} (_ : Set Function.∋ {!!}) where
+    nibarda : ℕ
+    nibarda = {!!}
+
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
     beq = {!!}
 
