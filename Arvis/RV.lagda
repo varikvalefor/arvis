@@ -687,7 +687,7 @@ module Instructions where
         dr (𝔽.suc f) = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 \end{code}
 
 \begin{code}
