@@ -915,7 +915,7 @@ module Instructions where
     beq-nibarda : ℕ
     beq-nibarda = {!!}
 
-  module beq {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m {!!}) where
+  module beq {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m beq-nibarda) where
     nibarda : ℕ
     nibarda = beq-nibarda
 
