@@ -2231,7 +2231,7 @@ module Instructions where
              {!!})
       Dm = {!!}
 
-      vmpcs : VMPc-S {!!} sk $ sk'
+      vmpcs : VMPc-S {!!} sk sk'
       vmpcs = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
