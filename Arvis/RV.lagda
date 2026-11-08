@@ -2260,7 +2260,7 @@ module Instructions where
 
       Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
              sk
-             (sk'))
+             sk')
       Dr = {!!}
 
       Dm : (_≡_
