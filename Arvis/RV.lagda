@@ -158,6 +158,7 @@ open import Function
   )
 open import Data.Bool
   using (
+    false;
     true
   )
   renaming (
@@ -272,7 +273,7 @@ module 𝔽0 where
        → ⦃ _ : Eq A ⦄
        → {x z : A}
        → ¬_ $ x ≡ z
-       → x ≡ᵇ z ≡ Data.Bool.false
+       → x ≡ᵇ z ≡ false
 ¬≡⇒¬≡ᵇ {x = x} {z} = ≡.trans (isYes≗does _) ∘ dec-false (x ≟ z)
 \end{code}
 
