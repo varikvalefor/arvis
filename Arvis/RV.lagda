@@ -922,7 +922,7 @@ module Instructions where
       pc-⊎ : let pcx = Skami.pc $ Instruction.f beq sk in
              (_⊎_
                (pcx ≡ {!!})
-               (pcx ≡ (𝔽.toℕ (Skami.pc sk) ℕ.+ {!!}) mod _))
+               (pcx ≡ (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _))
       pc-⊎ = {!!}
 \end{code}
 
