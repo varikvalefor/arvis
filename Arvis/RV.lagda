@@ -245,16 +245,16 @@ open import Arvis.Base
 
 \begin{code}
 module 𝔽0 where
-  f : {n : ℕ} → 𝔽 n → 𝔽 n
-  f {0} ()
-  f {ℕ.suc _} _ = 𝔽.zero
+  main : {n : ℕ} → 𝔽 n → 𝔽 n
+  main {0} ()
+  main {ℕ.suc _} _ = 𝔽.zero
 
   module Veritas where
-    d0 : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (f x)
+    d0 : {n : ℕ} → (x : 𝔽 n) → 0 ≡ 𝔽.toℕ (main x)
     d0 {0} ()
     d0 {ℕ.suc _} _ = ≡.refl
 
-𝔽0 = 𝔽0.f
+𝔽0 = 𝔽0.main
 \end{code}
 
 \begin{code}
