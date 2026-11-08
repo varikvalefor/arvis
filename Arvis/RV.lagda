@@ -917,7 +917,7 @@ module Instructions where
 
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
     beq = record {
-      nibarda = {!!};
+      nibarda = nibarda;
       f = {!!}
       }
 
