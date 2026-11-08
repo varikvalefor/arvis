@@ -685,6 +685,9 @@ module Instructions where
                     j)))
         dr 𝔽.zero = {!!}
         dr (𝔽.suc f) = {!!}
+
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
 \end{code}
 
 \begin{code}
