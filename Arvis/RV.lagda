@@ -859,7 +859,7 @@ module Instructions where
         }
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+            → RPc-Sd 𝕃.[ r₁ , (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _ ] sk sk'
       rpcsd = {!!}
 
       rpcsd0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
