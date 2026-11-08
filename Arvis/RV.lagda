@@ -2254,20 +2254,24 @@ module Instructions where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
+      private
+        sk' : Skami b r m A
+        sk' = Instruction.f sh sk
+
       Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
              sk
-             (Instruction.f sh sk))
+             (sk'))
       Dr = {!!}
 
       Dm : (_≡_
-             (Skami.mem $ Instruction.f sh sk)
+             (Skami.mem $ sk')
              {!!})
       Dm = {!!}
 
-      vmpcs : VMPc-S {!!} sk $ Instruction.f sh sk
+      vmpcs : VMPc-S {!!} sk $ sk'
       vmpcs = {!!}
 
-      pc-s : Pc-Selidne nibarda sk $ Instruction.f sh sk
+      pc-s : Pc-Selidne nibarda sk $ sk'
       pc-s = {!!}
 
   sh = sh.sh
