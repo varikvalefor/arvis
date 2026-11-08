@@ -2210,7 +2210,9 @@ module Instructions where
     sb-nibarda : ℕ
     sb-nibarda = {!!}
 
-  module sb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m sb-nibarda) where
+  module sb {b r m : ℕ}
+            (r₁ r₂ : 𝔽 r)
+            (imm : 𝔽 $ i-size b r m sb-nibarda) where
     nibarda : ℕ
     nibarda = sb-nibarda
 
