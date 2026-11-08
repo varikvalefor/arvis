@@ -1399,8 +1399,8 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → 𝕍.lookup reg' r₁ ≡ *r₁'!
