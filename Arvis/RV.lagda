@@ -2115,7 +2115,7 @@ module Instructions where
       rpcs = Veritas-S.rpcs sk
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
         rpcsd-≤ : (ℤ._≤_ on_ $ ℕ→ℤ ∘ 𝔽.toℕ ∘ L sk) r₂ r₃
