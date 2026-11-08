@@ -925,11 +925,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-    bnez : {b r m : ℕ}
-        → Set Function.∋ {!!}
-         → ∀ {a} → {A : Set a}
-         → Instruction A b r m
-    bnez = {!!}
+  bnez : {b r m : ℕ}
+      → Set Function.∋ {!!}
+       → ∀ {a} → {A : Set a}
+       → Instruction A b r m
+  bnez = {!!}
 \end{code}
 
 \begin{code}
