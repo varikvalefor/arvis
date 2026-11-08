@@ -920,7 +920,7 @@ module Instructions where
       pc+nb = {!!}
 
       f : Skami b r m A
-      f = record sk {pc = if ri (r₁ ≡ᵇ r₂) {!!} {!!})}
+      f = record sk {pc = if ri (r₁ ≡ᵇ r₂) {!!} pc+nb}
         where
         ri = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk
 
