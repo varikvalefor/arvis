@@ -624,7 +624,7 @@ module Instructions where
       rc' = record (Skami.rucyca'a sk) {reg = rx'; x0 = x0}
 
       f : Skami b r m A
-      f = record sk {pc = *r₂; rucyca'a = rc'}
+      f = record sk {pc = pc+nb; rucyca'a = rc'}
 
     op : ∀ {a} → {A : Set a} → Instruction A b r m
     op = record {
