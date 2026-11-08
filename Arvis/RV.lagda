@@ -495,10 +495,10 @@ module Instructions where
              → Skami b r m A
              → Skami b r m A
              → Set
-  Pc-Selidne nibarda sk sk' = pc₁ ≡ (pc₂' + nibarda)
+  Pc-Selidne nibarda sk sk' = pc₂ ≡ (pc₁' + nibarda)
     where
-    pc₂' = 𝔽.toℕ $ Skami.pc sk'
-    pc₁ = Skami.pc sk
+    pc₂ = Skami.pc sk'
+    pc₁' = 𝔽.toℕ $ Skami.pc sk
     _+_ : {n : ℕ} → ℕ → ℕ → 𝔽 $ ℕ.suc n
     _+_ {n} = (_mod ℕ.suc n) ∘₂ ℕ._+_
 \end{code}
