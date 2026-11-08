@@ -914,6 +914,13 @@ module Instructions where
   module beq {b r m : ℕ} (_ : Set Function.∋ {!!}) where
     beq : ∀ {a} → {A : Set a} → Instruction A b r m
     beq = {!!}
+
+    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+      pc-⊎ : let pcx = Skami.pc $ Instruction.f beq sk in
+             (_⊎_
+               (pcx ≡ {!!})
+               (pcx ≡ (𝔽.toℕ (Skami.pc sk) ℕ.+ {!!}) mod _))
+      pc-⊎ = {!!}
 \end{code}
 
 \begin{code}
