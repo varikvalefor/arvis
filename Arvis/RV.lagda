@@ -1614,8 +1614,8 @@ module Instructions where
           *r₁ = 𝕍.lookup reg r₁
           open ≡.≡-Reasoning
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       drpc : RPc-S 𝕃.[ r₁ ] sk sk'
       drpc = record {
