@@ -911,9 +911,13 @@ module Instructions where
 \end{code}
 
 \begin{code}
+  private
+    beq-nibarda : ℕ
+    beq-nibarda = {!!}
+
   module beq {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m {!!}) where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = beq-nibarda
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
       pc+nb : 𝔽 $ ℕ.suc b
