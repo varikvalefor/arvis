@@ -911,9 +911,9 @@ module Instructions where
 \end{code}
 
 \begin{code}
-    module beq {b r m : ℕ} (_ : Set Function.∋ {!!}) where
-      beq : ∀ {a} → {A : Set a} → Instruction A b r m
-      beq = {!!}
+  module beq {b r m : ℕ} (_ : Set Function.∋ {!!}) where
+    beq : ∀ {a} → {A : Set a} → Instruction A b r m
+    beq = {!!}
 \end{code}
 
 \begin{code}
