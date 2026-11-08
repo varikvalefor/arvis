@@ -916,8 +916,11 @@ module Instructions where
     nibarda = {!!}
 
     module f {a} {A : Set a} (sk : Skami b r m A) where
+      pc+nb : 𝔽 $ ℕ.suc b
+      pc+nb = {!!}
+
       f : Skami b r m A
-      f = record sk {nibarda = if (ri (r₁ ≡ᵇ r₂) {!!} {!!})}
+      f = record sk {nibarda = if (ri r₁ ≡ᵇ ri r₂) {!!} pc+nb}
         where
         ri = 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk
 
