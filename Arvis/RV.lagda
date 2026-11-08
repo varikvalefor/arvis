@@ -920,7 +920,7 @@ module Instructions where
       pc+nb = {!!}
 
       f : Skami b r m A
-      f = record sk {pc = if (ri r₁ ≡ᵇ ri r₂) {!!} pc+nb}
+      f = record sk {pc = if (_≡ᵇ_ ⦃ Truthbrary.Record.Eq.Eqℕ ⦄ (ri r₁) $ ri r₂) {!!} pc+nb}
         where
         ri = 𝔽.toℕ ∘_ $ 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk
 
