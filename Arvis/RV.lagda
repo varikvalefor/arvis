@@ -917,11 +917,11 @@ module Instructions where
 \end{code}
 
 \begin{code}
-    bne : {b r m : ℕ}
-        → Set Function.∋ {!!}
-        → ∀ {a} → {A : Set a}
-        → Instruction A b r m
-    bne = {!!}
+  bne : {b r m : ℕ}
+      → Set Function.∋ {!!}
+      → ∀ {a} → {A : Set a}
+      → Instruction A b r m
+  bne = {!!}
 \end{code}
 
 \begin{code}
