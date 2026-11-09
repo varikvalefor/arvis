@@ -341,7 +341,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
   field
     pc : 𝔽 $ ℕ.suc b
     rucyca'a : Rucyca'a b r
-    mem : Vec (𝔽 8) m
+    mem : Vec (𝔽 $ 2 ℕ.^ 8) m
     vrici : A
 \end{code}
 
@@ -573,7 +573,7 @@ module Instructions where
                 (is : List $ 𝔽 m)
                 (x z : Skami b r m A) : Set a where
     private
-      ma : Skami b r m A → Vec (𝔽 8) m
+      ma : Skami b r m A → Vec (𝔽 $ 2 ℕ.^ 8) m
       ma = Skami.mem
 
       D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
@@ -747,7 +747,7 @@ module Instructions where
                       → ℕ
                       → A
                       → Rucyca'a b r
-                      → Vec (𝔽 8) mx
+                      → Vec (𝔽 $ 2 ℕ.^ 8) mx
                       → Skami b r mx A) where
     module f (sk : Skami b r mx A) where
 
