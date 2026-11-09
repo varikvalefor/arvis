@@ -679,7 +679,7 @@ module Instructions where
         }
         where
         dr : (j : 𝔽 r)
-           → (_ : (i : 𝔽 0) → ¬_ $ j ≡ 𝕃.lookup 𝕃.[] i)
+           → ((i : 𝔽 0) → ¬_ $ j ≡ 𝕃.lookup 𝕃.[] i)
            → ((λ f → f sk' ≡ f sk)
                (λ x →
                   (𝕍.lookup
