@@ -2033,6 +2033,9 @@ module Instructions where
         dr' = {!!}
         }
 
+      pc-s : Pc-Selidne {!!} sk sk'
+      pc-s = {!!}
+
   maxu = maxu.maxu
 \end{code}
 
