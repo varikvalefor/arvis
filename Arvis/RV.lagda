@@ -2082,7 +2082,7 @@ module Instructions where
       rpcsd-⊎ = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   max = max.max
 \end{code}
