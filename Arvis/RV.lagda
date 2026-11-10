@@ -1787,6 +1787,9 @@ module Instructions where
       sk' : Skami b r m A
       sk' = Instruction.f bset sk
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
         dr = λ _ N → 𝕍P.lookup∘updateAt′ _ _ (N 𝔽.zero) _;
