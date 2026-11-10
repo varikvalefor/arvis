@@ -2008,7 +2008,10 @@ module Instructions where
 
 \begin{code}
   module maxu {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
-    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ ℕ._⊔_)
+    nibarda : ℕ
+    nibarda = {!!}
+
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ ℕ._⊔_)
 
     maxu : ∀ {a} → {A : Set a} → Instruction A b r m
     maxu = op
@@ -2033,7 +2036,7 @@ module Instructions where
         dr' = {!!}
         }
 
-      pc-s : Pc-Selidne {!!} sk sk'
+      pc-s : Pc-Selidne nibarda sk sk'
       pc-s = {!!}
 
   maxu = maxu.maxu
