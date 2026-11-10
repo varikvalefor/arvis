@@ -1737,6 +1737,9 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bext sk
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
