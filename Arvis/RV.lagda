@@ -2415,7 +2415,7 @@ module Instructions where
       vmpcs = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   sw = sw.sw
 \end{code}
