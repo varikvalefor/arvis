@@ -2071,7 +2071,10 @@ module Instructions where
 
 \begin{code}
   module minu {b r m : ℕ} (r₁ r₂ r₃ : 𝔽 r) where
-    open op1x3 b r m {!!} r₁ r₂ r₃ (inj₂ ℕ._⊓_)
+    nibarda : ℕ
+    nibarda = {!!}
+
+    open op1x3 b r m nibarda r₁ r₂ r₃ (inj₂ ℕ._⊓_)
 
     minu : ∀ {a} → {A : Set a} → Instruction A b r m
     minu = op
@@ -2090,7 +2093,7 @@ module Instructions where
       rpcsd-0 : 𝔽.toℕ r₁ ≡ 0 → RPc-Sd 𝕃.[] sk sk'
       rpcsd-0 = Veritas-S.rpcsd0 sk
 
-      pc-s : Pc-Selidne {!!} sk sk'
+      pc-s : Pc-Selidne nibarda sk sk'
       pc-s = {!!}
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
