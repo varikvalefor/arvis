@@ -2066,6 +2066,9 @@ module Instructions where
                 D r₂ ⊎ D r₃
       rpcsd-⊎ = {!!}
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
+
   max = max.max
 \end{code}
 
