@@ -2046,7 +2046,7 @@ module Instructions where
         }
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   maxu = maxu.maxu
 \end{code}
