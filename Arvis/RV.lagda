@@ -1920,6 +1920,9 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bclr sk
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = {!!}
+
       ¬x0⇒*r₁'! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                  → ((_≡_ ⍨)
                      *r₁'!
