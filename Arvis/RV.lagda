@@ -2327,7 +2327,7 @@ module Instructions where
       vmpcs = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   sb = sb.sb
 \end{code}
