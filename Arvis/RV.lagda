@@ -1927,7 +1927,7 @@ module Instructions where
       sk' = Instruction.f bclr sk
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
       ¬x0⇒*r₁'! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                  → ((_≡_ ⍨)
