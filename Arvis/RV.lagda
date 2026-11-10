@@ -2286,7 +2286,7 @@ module Instructions where
       rpcsd = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   lw = lw.lw
 \end{code}
