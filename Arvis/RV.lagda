@@ -2270,14 +2270,16 @@ module Instructions where
 
   module lw {b r m : ℕ}
             (r₁ r₂ : 𝔽 r)
-            (imm : 𝔽 $ i-size b r m lw-nibarda) where
+            (imm : 𝔽 $ i-size b r m lw-nibarda)
+            {a}
+            {A : Set a} where
     nibarda : ℕ
     nibarda = lw-nibarda
 
-    lw : ∀ {a} → {A : Set a} → Instruction A b r m
+    lw : Instruction A b r m
     lw = {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    module Veritas (sk : Skami b r m A) where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
