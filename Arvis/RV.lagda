@@ -2304,8 +2304,10 @@ module Instructions where
     nibarda : ℕ
     nibarda = sb-nibarda
 
+    open op1x1i+ A b r m sb-nibarda r₁ r₂ imm {!!}
+
     sb : Instruction A b r m
-    sb = {!!}
+    sb = op
 
     module Veritas (sk : Skami b r m A) where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
