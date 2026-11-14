@@ -2240,7 +2240,7 @@ module Instructions where
     lh-nibarda : ℕ
     lh-nibarda = {!!}
 
-  module lh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+  module lh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m lh-nibarda) where
     nibarda : ℕ
     nibarda = lh-nibarda
 
