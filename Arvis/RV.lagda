@@ -2211,14 +2211,14 @@ module Instructions where
   private
     lb-nibarda : ℕ
     lb-nibarda = {!!}
-  module lb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m lb-nibarda) where
+  module lb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 $ i-size b r m lb-nibarda) {a} {A : Set a} where
     nibarda : ℕ
     nibarda = lb-nibarda
 
-    lb : ∀ {a} → {A : Set a} → Instruction A b r m
+    lb : Instruction A b r m
     lb = {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    module Veritas (sk : Skami b r m A) where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
