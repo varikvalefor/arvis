@@ -1087,11 +1087,11 @@ module Instructions where
       sub⍨ : ((_≡_ on ri sk)
                r₂
                r₃)
-           → 𝔽.zero ≡ ri sk' r₁
+           → 𝔽.zero ≡ _
       sub⍨ d with 𝔽.toℕ r₁ ≟ 0
       ... | yes d0 = {!!}
       ... | no N = ≡.sym $ begin
-        _ ≡⟨ {!!} ⟩
+        ri sk' r₁ ≡⟨ {!!} ⟩
         *r₁'! ≡⟨ ≡.refl ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₃)) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ d ▹ ≡.sym ▹ cong (λ x → (𝔽.toℕ *r₂ ℕ.+_ $ ℕ.suc b ℕ.∸ 𝔽.toℕ x) mod _) ⟩
