@@ -2236,9 +2236,13 @@ module Instructions where
 \end{code}
 
 \begin{code}
+  private
+    lh-nibarda : ℕ
+    lh-nibarda = {!!}
+
   module lh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = lh-nibarda
 
     lh : ∀ {a} → {A : Set a} → Instruction A b r m
     lh = {!!}
