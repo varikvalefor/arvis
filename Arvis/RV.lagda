@@ -1184,6 +1184,20 @@ module Instructions where
         and≤₂ : ri sk' r₁ 𝔽.≤ ri sk r₃
         and≤₂ = {!!}
 
+        and-nth : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+                → (i : ℕ)
+                → (_≡_
+                    (bitn (𝔽.toℕ $ ri sk' r₁) i)
+                    (if
+                      (_≡ᵇ_
+                        2
+                        (ℕ._+_
+                          (𝔽.toℕ $ _⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
+                          (𝔽.toℕ $ _⍨ bitn i $ 𝔽.toℕ $ ri sk r₃)))
+                      (𝔽.# 1)
+                      (𝔽.# 0)))
+        and-nth = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
