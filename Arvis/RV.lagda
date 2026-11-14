@@ -1091,7 +1091,7 @@ module Instructions where
       sub⍨ d with 𝔽.toℕ r₁ ≟ 0
       ... | yes d0 = {!!}
       ... | no N = ≡.sym $ begin
-        ri sk' r₁ ≡⟨ {!!} ⟩
+        ri sk' r₁ ≡⟨ RPc-Sd.dr' (Veritas-S.rpcsd! sk N) 𝔽.zero ▹ ≡.sym ⟩
         *r₁'! ≡⟨ ≡.refl ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₃)) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ d ▹ ≡.sym ▹ cong (λ x → (𝔽.toℕ *r₂ ℕ.+_ $ ℕ.suc b ℕ.∸ 𝔽.toℕ x) mod _) ⟩
