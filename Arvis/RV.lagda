@@ -1737,6 +1737,9 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bext sk
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = ≡.refl
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
@@ -1786,6 +1789,9 @@ module Instructions where
 
       sk' : Skami b r m A
       sk' = Instruction.f bset sk
+
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = ≡.refl
 
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = record {
@@ -1920,6 +1926,9 @@ module Instructions where
       sk' : typeOf sk
       sk' = Instruction.f bclr sk
 
+      pc-s : Pc-Selidne nibarda sk sk'
+      pc-s = ≡.refl
+
       ¬x0⇒*r₁'! : ¬_ $ 𝔽.toℕ r₁ ≡ 0
                  → ((_≡_ ⍨)
                      *r₁'!
@@ -2037,7 +2046,7 @@ module Instructions where
         }
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   maxu = maxu.maxu
 \end{code}
@@ -2073,7 +2082,7 @@ module Instructions where
       rpcsd-⊎ = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   max = max.max
 \end{code}
@@ -2103,7 +2112,7 @@ module Instructions where
       rpcsd-0 = Veritas-S.rpcsd0 sk
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
       module _ (N : ¬_ $ 𝔽.toℕ r₁ ≡ 0) where
         rpcsd-≤ : L sk r₂ 𝔽.≤ L sk r₃
@@ -2199,14 +2208,23 @@ module Instructions where
 \end{code}
 
 \begin{code}
-  module lb {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+  private
+    lb-nibarda : ℕ
+    lb-nibarda = {!!}
+  module lb {b r m : ℕ}
+            (r₁ r₂ : 𝔽 r)
+            (imm : 𝔽 $ i-size b r m lb-nibarda)
+            {a}
+            {A : Set a} where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = lb-nibarda
 
-    lb : ∀ {a} → {A : Set a} → Instruction A b r m
-    lb = {!!}
+    open op1x1i+ A b r m nibarda r₁ r₂ imm {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    lb : Instruction A b r m
+    lb = op
+
+    module Veritas (sk : Skami b r m A) where
       b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
       b32→4 = {!!}
 
@@ -2222,20 +2240,30 @@ module Instructions where
       rpcsd = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   lb = lb.lb
 \end{code}
 
 \begin{code}
-  module lh {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+  private
+    lh-nibarda : ℕ
+    lh-nibarda = {!!}
+
+  module lh {b r m : ℕ}
+            (r₁ r₂ : 𝔽 r)
+            (imm : 𝔽 $ i-size b r m lh-nibarda)
+            {a}
+            {A : Set a} where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = lh-nibarda
 
-    lh : ∀ {a} → {A : Set a} → Instruction A b r m
-    lh = {!!}
+    open op1x1i+ A b r m nibarda r₁ r₂ imm {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    lh : Instruction A b r m
+    lh = op
+
+    module Veritas (sk : Skami b r m A) where
       b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
       b32→4 = {!!}
 
@@ -2250,20 +2278,30 @@ module Instructions where
       rpcsd = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   lh = lh.lh
 \end{code}
 
 \begin{code}
-  module lw {b r m : ℕ} (r₁ r₂ : 𝔽 r) (imm : 𝔽 {!!}) where
+  private
+    lw-nibarda : ℕ
+    lw-nibarda = {!!}
+
+  module lw {b r m : ℕ}
+            (r₁ r₂ : 𝔽 r)
+            (imm : 𝔽 $ i-size b r m lw-nibarda)
+            {a}
+            {A : Set a} where
     nibarda : ℕ
-    nibarda = {!!}
+    nibarda = lw-nibarda
 
-    lw : ∀ {a} → {A : Set a} → Instruction A b r m
-    lw = {!!}
+    open op1x1i+ A b r m nibarda r₁ r₂ imm {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    lw : Instruction A b r m
+    lw = op
+
+    module Veritas (sk : Skami b r m A) where
       b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
       b32→4 = {!!}
 
@@ -2278,7 +2316,7 @@ module Instructions where
       rpcsd = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   lw = lw.lw
 \end{code}
@@ -2290,14 +2328,18 @@ module Instructions where
 
   module sb {b r m : ℕ}
             (r₁ r₂ : 𝔽 r)
-            (imm : 𝔽 $ i-size b r m sb-nibarda) where
+            (imm : 𝔽 $ i-size b r m sb-nibarda)
+            {a}
+            {A : Set a} where
     nibarda : ℕ
     nibarda = sb-nibarda
 
-    sb : ∀ {a} → {A : Set a} → Instruction A b r m
-    sb = {!!}
+    open op1x1i+ A b r m sb-nibarda r₁ r₂ imm {!!}
 
-    module Veritas {a} {A : Set a} (sk : Skami b r m A) where
+    sb : Instruction A b r m
+    sb = op
+
+    module Veritas (sk : Skami b r m A) where
       b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
       b32→32 = {!!}
 
@@ -2319,7 +2361,7 @@ module Instructions where
       vmpcs = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   sb = sb.sb
 \end{code}
@@ -2363,7 +2405,7 @@ module Instructions where
       vmpcs = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   sh = sh.sh
 \end{code}
@@ -2407,7 +2449,7 @@ module Instructions where
       vmpcs = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
-      pc-s = {!!}
+      pc-s = ≡.refl
 
   sw = sw.sw
 \end{code}
