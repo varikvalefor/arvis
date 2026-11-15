@@ -927,8 +927,13 @@ module Instructions where
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
+      mop : 𝔽 $ ℕ.suc b
+          → 𝔽 $ i-size b r m beq-nibarda
+          → 𝔽 $ ℕ.suc b
+      mop = {!!}
+
       f : Skami b r m A
-      f = record sk {pc = if (_≡ᵇ_ ⦃ Truthbrary.Record.Eq.Eqℕ ⦄ (ri r₁) $ ri r₂) {!!} pc+nb}
+      f = record sk {pc = if (_≡ᵇ_ ⦃ Truthbrary.Record.Eq.Eqℕ ⦄ (ri r₁) $ ri r₂) (mop (Skami.pc sk) imm) pc+nb}
         where
         ri = 𝔽.toℕ ∘_ $ 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk
 
