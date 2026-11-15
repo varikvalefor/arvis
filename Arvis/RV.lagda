@@ -2384,6 +2384,9 @@ module Instructions where
         sk' : Skami b r m A
         sk' = Instruction.f sb sk
 
+        ri : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
+        ri = 𝕍.lookup ∘_ $ Rucyca'a.reg ∘ Skami.rucyca'a
+
       Dr : ((_≡_ on_ $ Rucyca'a.reg ∘ Skami.rucyca'a)
              sk
              sk')
@@ -2396,9 +2399,12 @@ module Instructions where
 
       lur₂imm : (nez : _)
               → (_≡_
-                   (𝕍.lookup (Skami.mem sk') $ (λ x → _mod_ x m {nez}) $ 𝔽.toℕ imm ℕ.+ 𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂))
+                   (𝕍.lookup
+                     (Skami.mem sk')
+                     ((λ x → _mod_ x m {nez})
+                       (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (ri sk r₂))))
                    ((_mod (2 ℕ.^ 8))
-                     (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁)))
+                     (𝔽.toℕ $ ri sk r₁)))
       lur₂imm = {!!}
 
       vmpcs : VMPc-S {!!} sk sk'
