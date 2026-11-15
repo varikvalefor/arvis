@@ -2395,7 +2395,10 @@ module Instructions where
 
       lur₂imm : (nez : _)
               → (_≡_
-                   (𝕍.lookup (Skami.mem sk') $ (λ x → _mod_ x m {nez}) $ 𝔽.toℕ imm ℕ.+ 𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂))
+                   (𝕍.lookup
+                     (Skami.mem sk')
+                     ((λ x → _mod_ x m {nez})
+                       (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₂))))
                    ((_mod ℕ.suc b)
                      (𝔽.toℕ $ 𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁)))
       lur₂imm = {!!}
