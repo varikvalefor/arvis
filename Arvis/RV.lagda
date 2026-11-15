@@ -321,7 +321,11 @@ module ℕ→ℤ (n : ℕ) where
 
 \begin{code}
 mod∘toℕ : {m : ℕ} → {f : 𝔽 $ ℕ.suc m} → f ≡ 𝔽.toℕ f mod _
-mod∘toℕ = {!!}
+mod∘toℕ {m} {f} = ≡.sym $ begin
+  𝔽.toℕ f mod _ ≡⟨ {!!} ⟩
+  f ∎
+  where
+  open ≡.≡-Reasoning
 \end{code}
 
 \section{le rucyca'a se ctaipe}
