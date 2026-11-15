@@ -2397,12 +2397,11 @@ module Instructions where
       Dm = {!!}
 
       lur₂imm : (nez : _)
-              → (let *r₂ = ri sk r₂ in
-                 _≡_
+              → (_≡_
                    (𝕍.lookup
                      (Skami.mem sk')
                      ((λ x → _mod_ x m {nez})
-                       (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (*r₂))))
+                       (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (ri sk r₂))))
                    ((_mod ℕ.suc b)
                      (𝔽.toℕ $ ri sk r₁)))
       lur₂imm = {!!}
