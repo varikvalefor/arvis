@@ -323,6 +323,7 @@ module ℕ→ℤ (n : ℕ) where
 mod∘toℕ : {m : ℕ} → {f : 𝔽 $ ℕ.suc m} → f ≡ 𝔽.toℕ f mod _
 mod∘toℕ {m} {f} = ≡.sym $ begin
   𝔽.toℕ f mod _ ≡⟨ {!!} ⟩
+  𝔽.toℕ f mod _ ≡⟨ {!!} ⟩
   f ∎
   where
   open ≡.≡-Reasoning
