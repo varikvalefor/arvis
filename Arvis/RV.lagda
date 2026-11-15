@@ -321,7 +321,11 @@ module ℕ→ℤ (n : ℕ) where
 
 \begin{code}
 mod∘toℕ : {m : ℕ} → {f : 𝔽 $ ℕ.suc m} → f ≡ 𝔽.toℕ f mod _
-mod∘toℕ = {!!}
+mod∘toℕ {m} {f} = ≡.sym $ begin
+  𝔽.toℕ f mod _ ≡⟨ {!!} ⟩
+  f ∎
+  where
+  open ≡.≡-Reasoning
 \end{code}
 
 \section{le rucyca'a se ctaipe}
@@ -927,8 +931,13 @@ module Instructions where
       pc+nb : 𝔽 $ ℕ.suc b
       pc+nb = (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _
 
+      mop : 𝔽 $ ℕ.suc b
+          → 𝔽 $ i-size b r m beq-nibarda
+          → 𝔽 $ ℕ.suc b
+      mop = {!!}
+
       f : Skami b r m A
-      f = record sk {pc = if (_≡ᵇ_ ⦃ Truthbrary.Record.Eq.Eqℕ ⦄ (ri r₁) $ ri r₂) {!!} pc+nb}
+      f = record sk {pc = if (ri r₁ ≡ᵇ ri r₂) (mop (Skami.pc sk) imm) pc+nb}
         where
         ri = 𝔽.toℕ ∘_ $ 𝕍.lookup $ Rucyca'a.reg $ Skami.rucyca'a sk
 
@@ -944,7 +953,7 @@ module Instructions where
 
       pc-⊎ : let pcx = Skami.pc $ Instruction.f beq sk in
              (_⊎_
-               (pcx ≡ {!!})
+               (pcx ≡ f.mop sk (Skami.pc sk) imm)
                (pcx ≡ (𝔽.toℕ (Skami.pc sk) ℕ.+ nibarda) mod _))
       pc-⊎ = {!!}
 \end{code}
@@ -1087,11 +1096,11 @@ module Instructions where
       sub⍨ : ((_≡_ on ri sk)
                r₂
                r₃)
-           → 𝔽.zero ≡ ri sk r₁
+           → 𝔽.zero ≡ _
       sub⍨ d with 𝔽.toℕ r₁ ≟ 0
       ... | yes d0 = {!!}
       ... | no N = ≡.sym $ begin
-        ri sk r₁ ≡⟨ {!!} ⟩
+        ri sk' r₁ ≡⟨ RPc-Sd.dr' (Veritas-S.rpcsd! sk N) 𝔽.zero ▹ ≡.sym ⟩
         *r₁'! ≡⟨ ≡.refl ⟩
         (𝔽.toℕ *r₂ ℕ.+ (ℕ.suc b ℕ.∸ 𝔽.toℕ *r₃)) mod _ ≡⟨ ≡.refl ⟩
         _ ≡⟨ d ▹ ≡.sym ▹ cong (λ x → (𝔽.toℕ *r₂ ℕ.+_ $ ℕ.suc b ℕ.∸ 𝔽.toℕ x) mod _) ⟩
@@ -1184,6 +1193,20 @@ module Instructions where
         and≤₂ : ri sk' r₁ 𝔽.≤ ri sk r₃
         and≤₂ = {!!}
 
+        and-nth : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+                → (i : ℕ)
+                → (_≡_
+                    (bitn (𝔽.toℕ $ ri sk' r₁) i)
+                    (if
+                      (_≡ᵇ_
+                        2
+                        (ℕ._+_
+                          (𝔽.toℕ $ _⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
+                          (𝔽.toℕ $ _⍨ bitn i $ 𝔽.toℕ $ ri sk r₃)))
+                      (𝔽.# 1)
+                      (𝔽.# 0)))
+        and-nth = {!!}
+
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = Veritas-S.rpcs sk
 
@@ -1229,6 +1252,20 @@ module Instructions where
 
         or≥₂ : ri sk' r₁ 𝔽.≥ ri sk r₃
         or≥₂ = {!!}
+
+        or-nth : ¬_ $ 𝔽.toℕ r₁ ≡ 0
+               → (i : ℕ)
+               → (_≡_
+                   (bitn (𝔽.toℕ $ ri sk' r₁) i)
+                   (if
+                     (ℕ._≤ᵇ_
+                       1
+                       (ℕ._+_
+                         (𝔽.toℕ $ _⍨ bitn i $ 𝔽.toℕ $ ri sk r₂)
+                         (𝔽.toℕ $ _⍨ bitn i $ 𝔽.toℕ $ ri sk r₃)))
+                     (𝔽.# 1)
+                     (𝔽.# 0)))
+        or-nth = {!!}
 
         rpcsd : RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
         rpcsd = {!!}
