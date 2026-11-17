@@ -2271,14 +2271,6 @@ module Instructions where
       rpcs : RPc-S 𝕃.[ r₁ ] sk sk'
       rpcs = {!!}
 
-      *r₁'d : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → (_≡_
-                 (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
-                 (_▹_
-                   (𝕍.lookup (Skami.mem sk) {!!})
-                   (λ n → 𝔽.toℕ n mod _)))
-      *r₁'d = {!!}
-
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → let mn = 𝕍.lookup (Skami.mem sk) {!!} in
               RPc-Sd 𝕃.[ r₁ , 𝔽.toℕ mn mod _ ] sk sk'
