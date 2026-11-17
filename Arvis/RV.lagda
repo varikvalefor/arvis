@@ -2273,7 +2273,7 @@ module Instructions where
 
       *r₁'d : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → (_≡_
-                 (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk) r₁)
+                 (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
                  {!!})
       *r₁'d = {!!}
 
