@@ -2403,7 +2403,7 @@ module Instructions where
                      (Skami.mem sk')
                      ((λ x → _mod_ x m {nez})
                        (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (ri sk r₂))))
-                   ((𝔽.toℕ $ ri sk r₁) mod (2 ℕ.^ 8)))
+                   (𝔽.toℕ (ri sk r₁) mod (2 ℕ.^ 8)))
       lur₂imm = {!!}
 
       vmpcs : VMPc-S {!!} sk sk'
