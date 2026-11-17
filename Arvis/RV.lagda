@@ -2274,7 +2274,7 @@ module Instructions where
       *r₁'d : ¬_ $ 𝔽.toℕ r₁ ≡ 0
             → (_≡_
                  (𝕍.lookup (Rucyca'a.reg $ Skami.rucyca'a sk') r₁)
-                 {!!})
+                 ((λ n → 𝔽.toℕ n mod _) $ 𝕍.lookup (Skami.mem sk) {!!}))
       *r₁'d = {!!}
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
