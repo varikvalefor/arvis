@@ -345,7 +345,7 @@ record Skami {a} (b r m : ℕ) (A : Set a) : Set (lsuc a) where
   field
     pc : 𝔽 $ ℕ.suc b
     rucyca'a : Rucyca'a b r
-    mem : Vec (𝔽 $ ℕ.suc b) m
+    mem : Vec (𝔽 $ 2 ℕ.^ 8) m
     vrici : A
 \end{code}
 
@@ -577,7 +577,7 @@ module Instructions where
                 (is : List $ 𝔽 m)
                 (x z : Skami b r m A) : Set a where
     private
-      ma : Skami b r m A → Vec (𝔽 $ ℕ.suc b) m
+      ma : Skami b r m A → Vec (𝔽 $ 2 ℕ.^ 8) m
       ma = Skami.mem
 
       D : ∀ {c} → {C : Set c} → (Skami b r m A → C) → Set c
@@ -751,7 +751,7 @@ module Instructions where
                       → ℕ
                       → A
                       → Rucyca'a b r
-                      → Vec (𝔽 $ ℕ.suc b) mx
+                      → Vec (𝔽 $ 2 ℕ.^ 8) mx
                       → Skami b r mx A) where
     module f (sk : Skami b r mx A) where
 
@@ -902,8 +902,8 @@ module Instructions where
       vdun : (_≡_ on Skami.vrici) sk' sk
       vdun = ≡.refl
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       rpcs : RPc-S 𝕃.[ f0 ] sk sk'
       rpcs = record {
@@ -948,8 +948,8 @@ module Instructions where
       }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       pc-⊎ : let pcx = Skami.pc $ Instruction.f beq sk in
              (_⊎_
@@ -970,8 +970,8 @@ module Instructions where
       }
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       pc-⊎ : let pcx = Skami.pc $ Instruction.f bne sk in
              (_⊎_
@@ -1004,8 +1004,8 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       sk' : typeOf sk
       sk' = Instruction.f add sk
@@ -1440,8 +1440,8 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
       open f sk
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → 𝕍.lookup reg' r₁ ≡ *r₁'!
@@ -1495,8 +1495,8 @@ module Instructions where
       sk' : Skami b r m A
       sk' = Instruction.f srli sk
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       dun : ¬_ $ 𝔽.toℕ r₁ ≡ 0
           → 𝕍.lookup reg' r₁ ≡ *r₁'!
@@ -1655,8 +1655,8 @@ module Instructions where
           *r₁ = 𝕍.lookup reg r₁
           open ≡.≡-Reasoning
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       drpc : RPc-S 𝕃.[ r₁ ] sk sk'
       drpc = record {
@@ -1718,8 +1718,8 @@ module Instructions where
     module Veritas {a} {A : Set a} (sk : Skami b r mx A) where
       open f sk
 
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       sk' : Skami b r mx A
       sk' = Instruction.f auipc sk
@@ -1954,8 +1954,8 @@ module Instructions where
         bit : 𝔽 2
         bit = bitn (𝔽.toℕ *r₂) $ 𝔽.toℕ *r₃
 
-      b32→32 : b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       d0 : bit ≡ 𝔽.zero → *r₁'! ≡ *r₂
       d0 = {!!}
@@ -2099,8 +2099,8 @@ module Instructions where
     max = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      b32→32 : b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       sk' : typeOf sk
       sk' = Instruction.f max sk
@@ -2209,8 +2209,8 @@ module Instructions where
     min = op
 
     module Veritas {a} {A : Set a} (sk : Skami b r m A) where
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       private
         L : Skami b r m A → 𝔽 r → 𝔽 $ ℕ.suc b
@@ -2262,8 +2262,8 @@ module Instructions where
     lb = op
 
     module Veritas (sk : Skami b r m A) where
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       sk' : Skami b r m A
       sk' = Instruction.f lb sk
@@ -2272,7 +2272,8 @@ module Instructions where
       rpcs = {!!}
 
       rpcsd : ¬_ $ 𝔽.toℕ r₁ ≡ 0
-            → RPc-Sd 𝕃.[ r₁ , {!!} ] sk sk'
+            → let mn = 𝕍.lookup (Skami.mem sk) {!!} in
+              RPc-Sd 𝕃.[ r₁ , 𝔽.toℕ mn mod _ ] sk sk'
       rpcsd = {!!}
 
       pc-s : Pc-Selidne nibarda sk sk'
@@ -2300,8 +2301,8 @@ module Instructions where
     lh = op
 
     module Veritas (sk : Skami b r m A) where
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       sk' : Skami b r m A
       sk' = Instruction.f lh sk
@@ -2338,8 +2339,8 @@ module Instructions where
     lw = op
 
     module Veritas (sk : Skami b r m A) where
-      b32→32 : ℕ.suc b ≡ 32 → nibarda ≡ 32
-      b32→32 = {!!}
+      b32→4 : ℕ.suc b ≡ 32 → nibarda ≡ 4
+      b32→4 = {!!}
 
       sk' : Skami b r m A
       sk' = Instruction.f lw sk
@@ -2402,8 +2403,20 @@ module Instructions where
                      (Skami.mem sk')
                      ((λ x → _mod_ x m {nez})
                        (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (ri sk r₂))))
-                   {!!})
+                   (𝔽.toℕ (ri sk r₁) mod (2 ℕ.^ 8)))
       lur₂imm = {!!}
+
+      lur₂imm⁻¹ : (nez : _)
+                → (f : 𝔽 m)
+                → (¬_
+                    (_≡_
+                      f 
+                      ((λ x → _mod_ x m {nez})
+                        (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (ri sk r₂)))))
+                → (_≡_
+                     (𝕍.lookup (Skami.mem sk') f)
+                     (𝔽.toℕ (ri sk r₁) mod (2 ℕ.^ 8)))
+      lur₂imm⁻¹ = {!!}
 
       vmpcs : VMPc-S {!!} sk sk'
       vmpcs = {!!}
