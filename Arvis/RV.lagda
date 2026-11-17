@@ -2406,6 +2406,18 @@ module Instructions where
                    (𝔽.toℕ (ri sk r₁) mod (2 ℕ.^ 8)))
       lur₂imm = {!!}
 
+      lur₂imm⁻¹ : (nez : _)
+                → (f : 𝔽 m)
+                → (¬_
+                    (_≡_
+                      f 
+                      ((λ x → _mod_ x m {nez})
+                        (𝔽.toℕ imm ℕ.+ 𝔽.toℕ (ri sk r₂)))))
+                → (_≡_
+                     (𝕍.lookup (Skami.mem sk') f)
+                     (𝔽.toℕ (ri sk r₁) mod (2 ℕ.^ 8)))
+      lur₂imm⁻¹ = {!!}
+
       vmpcs : VMPc-S {!!} sk sk'
       vmpcs = {!!}
 
